@@ -1,3 +1,4 @@
+
 /* ---------- Theme Variables ---------- */
 :root {
   --bg-app: #f7f9fc;
@@ -126,11 +127,11 @@
 }
 .brand-title {
   font-weight: 700;
-   color: rgb(5, 178, 246);
+  color: rgb(5, 178, 246);
 }
 .brand-subtitle {
   font-size: 12px;
-   color: rgb(5, 178, 246);
+  color: rgb(5, 178, 246);
 }
 
 /* Sidebar menu items */
@@ -144,22 +145,25 @@
   padding: 12px 12px;
   margin: 6px 4px;
   border-radius: var(--radius-sm);
-  color: rgb(5, 178, 246);
+  color: black; /* changed to black */
   text-decoration: none;
   border: 1px solid transparent;
   transition: background 160ms ease, color 160ms ease, transform 160ms ease,
     border-color 160ms ease;
-    font-weight: 800;
+  font-weight: 800;
 }
 .menu-item i {
   font-size: 18px;
-  color: rgb(26, 15, 234);
+  color: black; /* changed to black */
 }
 .menu-item:hover {
   background: #f1f5f9;
-  color: white;
+  color: white; /* on hover: white text */
   transform: translateX(2px);
   border-color: var(--border-soft);
+}
+.menu-item:hover i {
+  color: white; /* on hover: white icon */
 }
 .menu-item.active {
   background: #eef2ff;
@@ -279,3 +283,4 @@
     color: #7aa2ff;
   }
 }
+

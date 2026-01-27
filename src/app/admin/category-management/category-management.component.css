@@ -1,29 +1,60 @@
 
+/* Root tokens (easy to tweak) */
+:root {
+  --pastel-1: #fef6f6; /* blush */
+  --pastel-2: #f7f9ff; /* very light periwinkle */
+  --pastel-3: #f5fff7; /* mint hint */
+  --pastel-4: #fff9f0; /* peach */
+  --ink: #0f172a;
+  --ink-soft: #334155;
+  --muted: rgba(148,163,184,0.25);
+  --muted-strong: rgba(148,163,184,0.35);
+  --card-bg: #ffffff;
+  --head-bg: #f1f5f9;
+  --hover-row: #f8fafc;
+}
+
 :host { display: block; }
 :host ::ng-deep main.content {
   padding: 0 !important;
   background: transparent !important;
 }
 
-/* Background layer */
+/* ===========================
+   Background layer (Pastel)
+   =========================== */
 .cat-bg {
   position: fixed;
   inset: 0;
-  /* background-image: url('https://images.unsplash.com/photo-1512314889357-e157c22f938d?w=1400&q=80'); */
-  background-image: url('https://plus.unsplash.com/premium_photo-1720287601300-cf423c3d6760?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
   z-index: 0;
+
+  /* Soft pastel multi-stop gradient */
+  background:
+    radial-gradient(1200px 800px at 20% 15%, var(--pastel-1) 0%, transparent 60%),
+    radial-gradient(1000px 700px at 80% 20%, var(--pastel-2) 0%, transparent 60%),
+    radial-gradient(1200px 900px at 25% 80%, var(--pastel-3) 0%, transparent 60%),
+    linear-gradient(180deg, var(--pastel-4) 0%, #ffffff 100%);
 }
+
+/* Optional: ultra subtle noise texture overlay (keeps it from feeling “flat”)
+   Remove this block if you want perfectly clean color. */
 .cat-bg::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(15, 23, 42, 0.80);
+  pointer-events: none;
+  opacity: 0.05; /* keep this very low */
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, rgba(0,0,0,0.3) 1px, transparent 1px),
+    radial-gradient(1px 1px at 70% 60%, rgba(0,0,0,0.25) 1px, transparent 1px),
+    radial-gradient(1px 1px at 40% 80%, rgba(0,0,0,0.25) 1px, transparent 1px);
+  background-size: 120px 120px, 140px 140px, 160px 160px;
+  mix-blend-mode: multiply;
 }
 
-/* Foreground container */
+/* ===========================
+   Foreground container
+   =========================== */
 .cat-container {
   position: relative;
   z-index: 1;
@@ -31,43 +62,51 @@
   padding: 24px;
 }
 
-/* Header */
+/* ===========================
+   Header
+   =========================== */
 .cat-header { gap: 12px; }
 .cat-title {
-  color: #e5e7eb;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.4), 0 1px 2px rgba(255,255,255,0.5);    
+  color: var(--ink);
+  text-shadow: none;
 }
 
 /* Add Category button */
 .header-actions { display: flex; align-items: center; gap: 8px; }
 .btn-add {
   appearance: none;
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  background: linear-gradient(135deg, rgba(30, 41, 59, 0.72) 0%, rgba(2, 6, 23, 0.82) 100%);
+  border: 1px solid var(--muted-strong);
+  /* elegant, subtle gradient suited to pastels */
+  background: linear-gradient(135deg, #7c9cff, #6fd4b3);
   color: #fff;
   padding: 8px 14px;
   border-radius: 12px;
   font-weight: 600;
-  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.12);
   transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
 }
 .btn-add:hover {
   transform: translateY(-1px);
-  filter: brightness(1.06);
-  box-shadow: 0 10px 24px rgba(2, 6, 23, 0.34);
+  filter: brightness(1.05);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.18);
 }
 .btn-add:active { transform: scale(0.98); }
 
-/* Card surface */
+/* ===========================
+   Card surface
+   =========================== */
 .cat-card {
-  background: rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(8px);
+  background: var(--card-bg);
   border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-  border: 1px solid rgba(148,163,184,0.35);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+  border: 1px solid var(--muted);
+  /* remove glass blur on light pastel for crisper look */
+  backdrop-filter: none;
 }
 
-/* Table */
+/* ===========================
+   Table
+   =========================== */
 .cat-table {
   width: 100%;
   margin: 0;
@@ -76,28 +115,30 @@
   border-radius: 16px;
 }
 .cat-table thead th {
-  background: rgba(15, 23, 42, 0.08);
-  color: #e5e7eb;
+  background: var(--head-bg);
+  color: var(--ink);
   padding: 12px;
   font-weight: 700;
-  border-bottom: 1px solid rgba(148,163,184,0.35);
+  border-bottom: 1px solid var(--muted);
 }
 .cat-table tbody td {
   padding: 12px;
-  color: #0f172a;
-  background: rgba(255, 255, 255, 0.65);
-  border-bottom: 1px solid rgba(148,163,184,0.25);
+  color: var(--ink);
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--muted);
 }
 .cat-table tbody tr:hover td {
-  background: rgba(255, 255, 255, 0.78);
+  background: var(--hover-row);
 }
 
-/* Icon buttons */
+/* ===========================
+   Icon buttons
+   =========================== */
 .icon-btn {
   appearance: none;
-  border: 1px solid rgba(148,163,184,0.35);
-  background: rgba(255,255,255,0.85);
-  color: #0f172a;
+  border: 1px solid var(--muted-strong);
+  background: #ffffff;
+  color: var(--ink);
   padding: 6px 10px;
   border-radius: 10px;
   margin: 0 4px;
@@ -110,27 +151,54 @@
   background: #fff;
 }
 
-/* Inline form buttons */
+/* ===========================
+   Inline form buttons
+   =========================== */
 .btn-secondary, .btn-primary {
   appearance: none;
   border-radius: 10px;
   padding: 8px 12px;
-  border: 1px solid rgba(148,163,184,0.35);
+  border: 1px solid var(--muted-strong);
   cursor: pointer;
 }
 .btn-secondary {
-  background: rgba(255,255,255,0.85);
-  color: #0f172a;
+  background: #ffffff;
+  color: var(--ink);
 }
-.btn-secondary:hover { background: #fff; }
-.btn-primary {
-  background: linear-gradient(135deg, rgba(30, 41, 59, 0.72), rgba(2, 6, 23, 0.82));
-  color: #fff;
-  border-color: rgba(148,163,184,0.45);
-}
-.btn-primary:hover { filter: brightness(1.06); }
+.btn-secondary:hover { background: var(--hover-row); }
 
-/* Empty state */
-.empty-state { text-align: center; padding: 16px; }
+.btn-primary {
+  /* soft, pastel-friendly gradient */
+  background: linear-gradient(135deg, #9bd3ff, #b9f3c9);
+  color: #0b1324;
+  border-color: var(--muted-strong);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.10);
+}
+.btn-primary:hover { filter: brightness(1.04); }
+
+/* ===========================
+   Empty state
+   =========================== */
+.empty-state { text-align: center; padding: 16px; color: var(--ink-soft); }
 .empty-icon { font-size: 22px; margin-bottom: 6px; }
 
+/* ===========================
+   Accessibility & Motion
+   =========================== */
+@media (prefers-reduced-motion: reduce) {
+  .btn-add,
+  .icon-btn,
+  .btn-primary,
+  .btn-secondary {
+    transition: none;
+  }
+}
+
+/* ===========================
+   Optional: Dark text contrast helper
+   =========================== */
+* {
+  /* Improves text rendering on light backgrounds */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

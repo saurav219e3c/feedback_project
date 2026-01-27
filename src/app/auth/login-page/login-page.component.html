@@ -32,6 +32,7 @@
             </div>
           </div>
           <!-- PASSWORD FIELD -->
+          
           <div class="field">
             <label>Password</label>
             <input 
@@ -46,7 +47,7 @@
             </div>
           </div>
            <!-- SIGN IN LOGGED IN BUTTON -->
-          <button type="submit" class="login-btn" [disabled]="form.invalid" >Sign In</button>
+          <button type="submit" class="login-btn" [disabled]="form.invalid" (click)="havingthis()" >Sign In</button>
         </form>
         <!-- FORGOT PASS N REGISTER PAGE NAVI -->
         <div class="action-footer">
