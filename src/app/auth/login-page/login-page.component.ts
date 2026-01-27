@@ -26,6 +26,7 @@ export class LoginPageComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private loginService: LoginService,
+    
     private route: ActivatedRoute,
     private auth: AuthService,
   ) {
