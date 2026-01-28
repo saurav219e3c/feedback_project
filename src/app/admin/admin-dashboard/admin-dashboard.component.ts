@@ -29,8 +29,7 @@ type BarView = 'category' | 'monthly-line' | 'monthly-bar';
   styleUrls: ['./admin-dashboard.component.css'],
 })
 export class AdminDashboardComponent
-  implements OnInit, AfterViewInit, OnDestroy
-{
+  implements OnInit, AfterViewInit, OnDestroy {
   // Summary cards + Activity
   summary?: DashboardSummary;
   activities: ActivityItem[] = [];
@@ -71,7 +70,7 @@ export class AdminDashboardComponent
     textStrong: '#1a1a1a',
   };
 
-  constructor(private dashboardSvc: AdminDashboardService) {}
+  constructor(private dashboardSvc: AdminDashboardService) { }
 
   // Lifecycle
   ngOnInit(): void {
@@ -100,12 +99,12 @@ export class AdminDashboardComponent
           this.recognitionByCategory = recognitionByCat;
           this.monthlyFeedback = monthlyFb;
           this.monthlyRecognition = monthlyRec;
-          this.refreshBarIfNeeded(); 
+          this.refreshBarIfNeeded();
         }
       )
     );
 
-    
+
     this.subs.add(
       combineLatest([
         this.dashboardSvc.getFeedbackTypeDistribution$(),
@@ -113,7 +112,7 @@ export class AdminDashboardComponent
       ]).subscribe(([feedbackPie, recognitionPie]) => {
         this.feedbackTypeDist = feedbackPie;
         this.recognitionTypeDist = recognitionPie;
-        this.refreshPieIfNeeded(); 
+        this.refreshPieIfNeeded();
       })
     );
   }
@@ -208,15 +207,15 @@ export class AdminDashboardComponent
     const colors =
       this.currentDataset === 'feedback'
         ? [
-            this.palette.bluePrimary,
-            this.palette.blueLight,
-            this.palette.blueSoft3,
-          ]
+          this.palette.bluePrimary,
+          this.palette.blueLight,
+          this.palette.blueSoft3,
+        ]
         : [
-            this.palette.saffron,
-            this.palette.saffronLight,
-            this.palette.saffronSoft3,
-          ];
+          this.palette.saffron,
+          this.palette.saffronLight,
+          this.palette.saffronSoft3,
+        ];
     const label =
       this.currentDataset === 'feedback'
         ? 'Feedback Type Distribution'

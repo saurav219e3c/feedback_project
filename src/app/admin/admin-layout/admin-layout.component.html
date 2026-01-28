@@ -1,28 +1,15 @@
-
 <!-- Fixed overlay topbar with only the hamburger (no visible bar) -->
 <header class="topbar d-flex align-items-center" aria-label="App actions">
-  <button
-    *ngIf="!isSidebarOpen"
-    class="hamburger"
-    aria-label="Toggle navigation"
-    [attr.aria-expanded]="isSidebarOpen"
-    (click)="toggleSidebar()"
-  >
+  <button *ngIf="!isSidebarOpen" class="hamburger" aria-label="Toggle navigation" [attr.aria-expanded]="isSidebarOpen"
+    (click)="toggleSidebar()">
     <span></span><span></span><span></span>
   </button>
 </header>
 
-<!-- rest of your layout (unchanged) -->
-
 
 <div class="layout">
   <!-- Sidebar -->
-  <aside
-    class="sidebar"
-    [class.open]="isSidebarOpen"
-    role="navigation"
-    aria-label="Sidebar"
-  >
+  <aside class="sidebar" [class.open]="isSidebarOpen" role="navigation" aria-label="Sidebar">
     <div class="sidebar-header">
       <div class="brand-icon">⚙️</div>
       <div class="brand-text">
@@ -32,12 +19,7 @@
     </div>
 
     <nav class="menu">
-      <a
-        class="menu-item"
-        routerLink="/admin"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
+      <a class="menu-item" routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
         <i class="bi bi-speedometer2"></i>
         <span>Dashboard</span>
       </a>
@@ -72,12 +54,6 @@
 
   <!-- Main content -->
   <main class="content">
-    <!-- Optional page header INSIDE content (not a global bar) -->
-    <!-- <div class="page-header">
-      <h1 class="page-title">Admin Panel</h1>
-      <p class="page-subtitle">Manage users, categories, reports & settings</p>
-    </div> -->
-
     <section class="page-body card-surface">
       <router-outlet></router-outlet>
     </section>
@@ -85,9 +61,4 @@
 </div>
 
 <!-- Backdrop when sidebar is open on any screen -->
-<div
-  class="backdrop"
-  *ngIf="isSidebarOpen"
-  (click)="closeSidebar()"
-  aria-hidden="true"
-></div>
+<div class="backdrop" *ngIf="isSidebarOpen" (click)="closeSidebar()" aria-hidden="true"></div>

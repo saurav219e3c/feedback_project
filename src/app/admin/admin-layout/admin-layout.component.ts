@@ -18,10 +18,11 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./admin-layout.component.css']
 })
 export class AdminLayoutComponent {
+  
   isSidebarOpen = false;
 
   constructor(private router: Router) {
-    // Close sidebar on each route change (mobile-like UX on all screens)
+    // Close sidebar on each route change on mobile
     this.router.events
       .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
       .subscribe(() => {
