@@ -6,8 +6,8 @@ import { EmployeeRecognitionComponent } from "./employee-recognition/employee-re
 import { SubmitFeedbackComponent } from './submit-feedback/submit-feedback.component';
 import { EmployeeLayoutComponent } from "./employee-layout/employee-layout.component";
 import { ReceivedRecognitionComponent } from "./received-recognition/received-recognition.component";
-import { authGuard } from "../core/guards/auth.guard";
-import { roleGuard } from "../core/guards/role.guard";
+import { authGuard } from '../core/guards/auth.guard';
+import { roleGuard } from '../core/guards/role.guard';
 
 export const EMPLOYEE_ROUTES: Routes = [
   {

@@ -1,6 +1,7 @@
 
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../core/services/auth.service';
 import {
   Router,
   NavigationEnd,
@@ -20,7 +21,7 @@ import { filter } from 'rxjs/operators';
 export class AdminLayoutComponent {
   
   isSidebarOpen = false;
-
+  auth= inject(AuthService);
   constructor(private router: Router) {
     // Close sidebar on each route change on mobile
     this.router.events
@@ -36,6 +37,10 @@ export class AdminLayoutComponent {
 
   closeSidebar(): void {
     this.isSidebarOpen = false;
+  }
+  logout() :void{
+    this.auth.logout();
+    this.router.navigate(['/auth/home-page']);
   }
 
   @HostListener('document:keydown.escape')

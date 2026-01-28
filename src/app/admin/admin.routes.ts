@@ -7,7 +7,7 @@ import { CategoryManagementComponent } from './category-management/category-mana
 import { UserManagementComponent } from './user-management/user-management.component';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 
-// ⬇️ add these two imports
+
 import { authGuard } from '../core/guards/auth.guard';
 import { roleGuard } from '../core/guards/role.guard';
 
@@ -24,6 +24,8 @@ export const ADMIN_ROUTES: Routes = [
       { path: 'categories', component: CategoryManagementComponent },
       { path: 'reports', component: AdminReportsComponent },
       { path: 'settings', component: AdminSettingsComponent },
+      { path: '**', component: AdminDashboardComponent  },
+
     ]
   }
 ];
