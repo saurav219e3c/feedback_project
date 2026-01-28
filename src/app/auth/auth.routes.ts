@@ -8,7 +8,13 @@ import { loginGuard } from '../core/guards/login.guard';
 export const AUTH_ROUTES: Routes = [
   
   { path: '', pathMatch: 'full', redirectTo: 'home-page' },
-  { path: 'home-page', component: HomePageComponent },
-  { path: 'login-page', component: LoginPageComponent },
-  { path: 'register-page', component: RegisterPageComponent },
+
+  
+  { path: 'home-page',canMatch: [loginGuard], component: HomePageComponent },
+
+  // /auth/login-page?role=admin|manager|employee
+  { path: 'login-page',canMatch: [loginGuard], component: LoginPageComponent },
+
+  // /auth/register-page
+  { path: 'register-page',canMatch: [loginGuard], component: RegisterPageComponent },
 ];
