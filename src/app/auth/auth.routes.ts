@@ -12,9 +12,9 @@ export const AUTH_ROUTES: Routes = [
   
   { path: 'home-page',canMatch: [loginGuard], component: HomePageComponent },
 
-  // /auth/login-page?role=admin|manager|employee
+  
   { path: 'login-page',canMatch: [loginGuard], component: LoginPageComponent },
 
-  // /auth/register-page
+
   { path: 'register-page',canMatch: [loginGuard], component: RegisterPageComponent },
 ];

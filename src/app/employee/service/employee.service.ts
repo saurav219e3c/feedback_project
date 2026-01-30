@@ -150,7 +150,7 @@ export class EmployeeService {
 
   // --- 6. EMPLOYEE LIST ---
 
-  // I added ': Employee[]' here so TypeScript knows what this returns
+  
   getAllEmployees(): Employee[] {
     
     const data = localStorage.getItem(this.KEYS.USERS);

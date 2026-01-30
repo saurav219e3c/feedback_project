@@ -16,13 +16,13 @@ export class EmployeeLayoutComponent implements OnInit {
 
  
 
-  //user data from auth service
+  
   userName:string='User';
   userEmail: string='';
   employeeId:string='';
   currentUser: User | null=null;
 
-  constructor(private authService: AuthService,private router:Router){} // Inject AuthService and Router
+  constructor(private authService: AuthService,private router:Router){} 
   ngOnInit(): void {
 
     this.authService.user$.subscribe(user =>{
@@ -40,16 +40,16 @@ export class EmployeeLayoutComponent implements OnInit {
   }
 
   toggleProfile(event: Event): void {
-    event.stopPropagation(); // Prevents document click from closing it immediately
+    event.stopPropagation(); 
     this.isProfileOpen = !this.isProfileOpen;
   }
 
   onNavClick(): void {
-    // Unconditionally close the sidebar (works on Desktop & Mobile)
+    
     this.isSidebarOpen = false;
   }
 
-  // Closes dropdown when clicking anywhere else
+  
   @HostListener('document:click', ['$event'])
   closeProfile(event: Event) {
     this.isProfileOpen = false;
@@ -64,6 +64,8 @@ export class EmployeeLayoutComponent implements OnInit {
     }
     return name.slice(0, 2).toUpperCase();
   }
+   
+  
  
 
   //logout method

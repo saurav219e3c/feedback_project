@@ -9,23 +9,20 @@ export class AuthService {
   
   private _user$ = new BehaviorSubject<User | null>(null);
   
-  // NEW: Key for saving user to Local Storage
+  
   private readonly USER_KEY = 'mock_logged_in_user';
-
-  /** Current user stream */
   readonly user$ = this._user$.asObservable();
-  /** Logged-in flag */
+  
   readonly isLoggedIn$ = this.user$.pipe(map(u => !!u));
-  /** Roles stream */
+  
   readonly roles$ = this.user$.pipe(map(u => u?.roles ?? []));
 
   constructor(private tokenSvc: TokenService) {
-    // 1. TRY TO LOAD FROM LOCAL STORAGE (For Mock/Local Dev)
+    
     const savedUser = localStorage.getItem(this.USER_KEY);
     if (savedUser) {
       this._user$.next(JSON.parse(savedUser));
     } 
-    // 2. FALLBACK: TRY TO LOAD FROM TOKEN (For Future Real Backend)
     else {
       const token = this.tokenSvc.getToken();
       if (token) this.hydrateUserFromToken(token);
@@ -45,22 +42,20 @@ export class AuthService {
     return this.user$.pipe(map(u => u?.name ?? null));
   }
 
-  /** Use this when backend returns a JWT */
+  
   loginWithToken(token: string): void {
     this.tokenSvc.setToken(token);
     this.hydrateUserFromToken(token);
   }
 
-  /** FIXED: Now saves to Local Storage */
+  
   loginWithUser(user: User): void {
-    // 1. Update the in-memory variable
-    this._user$.next(user);
     
-    // 2. SAVE to Local Storage (This fixes the refresh issue!)
+    this._user$.next(user);
     localStorage.setItem(this.USER_KEY, JSON.stringify(user));
   }
 
-  /** FIXED: Clears Local Storage on logout */
+  
   logout(): void {
     this.tokenSvc.clearToken();
     localStorage.removeItem(this.USER_KEY); // Clear the saved user

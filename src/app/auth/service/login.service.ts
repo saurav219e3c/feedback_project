@@ -15,7 +15,7 @@ constructor() {
   const data = localStorage.getItem(this.STORAGE_KEY);
   if (!data) {
     const defaultAdmin = [{
-      username: 'adm1234',      // Changed from userId to username to match your login form
+      username: 'adm1234',      
       name: 'System Admin',
       password: 'Admin@123', 
       role: 'admin',

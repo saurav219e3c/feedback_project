@@ -28,12 +28,8 @@ export class SubmitFeedbackComponent implements OnInit {
   ngOnInit(): void {
 
     this.employees = this.empService.getAllEmployees();
-
-
-
     this.feedbackForm = this.fb.group({
       searchEmployee: ['', Validators.required],
-      // 2. Keep this disabled so users don't type manually; let the logic fill it
       employeeId: [{ value: '', disabled: true }, Validators.required],
       category: ['', Validators.required],
       comments: ['', [Validators.required, Validators.minLength(10)]],
@@ -41,7 +37,7 @@ export class SubmitFeedbackComponent implements OnInit {
       submissionDate: [new Date().toISOString().substring(0, 10), Validators.required]
     });
 
-    // 3. AUTO-FILL LOGIC: Listen to search box changes
+    // AUTO-FILL LOGIC
     this.feedbackForm.get('searchEmployee')?.valueChanges.subscribe(name => {
       const selected = this.employees.find(e => e.name === name);
       if (selected) {
@@ -58,15 +54,9 @@ export class SubmitFeedbackComponent implements OnInit {
       const isAnonymous = formValue.isAnonymous;
 
       const finalData: Feedback = {
-        feedbackId: '', // Service will fill this
-
-        // ADDED: Who is sending this? (Get from Service)
+        feedbackId: '', 
         submittedByUserId: isAnonymous ? 'Anonymous' : this.empService.getCurrentUser(),
-
-        // ADDED: Who is this for? (Map it from the form's 'employeeId')
         targetUserId: formValue.employeeId,
-
-        // Existing Form Data
         searchEmployee: formValue.searchEmployee,
         category: formValue.category,
         comments: formValue.comments,
