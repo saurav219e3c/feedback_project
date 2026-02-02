@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { EmployeeService, Feedback as ServiceFeedback } from '../../employee/service/employee.service';
+//import { EmployeeService, Feedback as ServiceFeedback } from '../../employee/service/employee.service';
 import { ManagerService } from '../service/manager_service'; 
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
@@ -29,7 +29,7 @@ export class ManagerFeedbackComponent implements OnInit {
   searchText = '';
 
   constructor(
-    private employeeService: EmployeeService,
+    // private employeeService: EmployeeService,
     private managerService: ManagerService
   ) {}
 
@@ -101,7 +101,7 @@ export class ManagerFeedbackComponent implements OnInit {
     if (item) {
       alert(`Feedback Details:\n${item.details}`);
     }
-  }
+  } 
 
   trackById(_: number, item: Feedback): number {
     return item.id;

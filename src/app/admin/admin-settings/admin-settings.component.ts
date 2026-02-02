@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { AuthService } from '../../core/services/auth.service';
+import { Router } from '@angular/router';
+
+
+
+
 
 @Component({
   selector: 'app-admin-settings',
@@ -7,5 +13,13 @@ import { Component } from '@angular/core';
   styleUrl: './admin-settings.component.css'
 })
 export class AdminSettingsComponent {
+  auth = inject(AuthService);
+  router = inject(Router);
+
+  logout(): void {
+    this.auth.logout();
+    this.router.navigate(['/auth/home-page']);
+  
+  }
 
 }

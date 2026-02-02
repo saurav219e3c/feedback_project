@@ -13,7 +13,7 @@ export class ManagerService {
     return data ? JSON.parse(data) : [];
   }
 
-  // --- Recognition Logic (NEW) ---
+  // --- Recognition Logic ---
   getAllRecognitions(): any[] {
     const data = localStorage.getItem(this.recognitionKey);
     return data ? JSON.parse(data) : [];
