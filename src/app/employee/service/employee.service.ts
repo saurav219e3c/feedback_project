@@ -67,6 +67,7 @@ export class EmployeeService {
   }
 
   private saveToStorage() {
+    //
     localStorage.setItem(this.KEYS.FEEDBACK, JSON.stringify(this.feedbackList));
     localStorage.setItem(this.KEYS.RECOGNITION, JSON.stringify(this.recognitionList));
   }

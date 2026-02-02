@@ -53,6 +53,7 @@ export class LoginPageComponent implements OnInit {
 
   // Submit handler
   onLogin() {
+    debugger;
     if (this.form.invalid) { //true
       this.form.markAllAsTouched();
       return;

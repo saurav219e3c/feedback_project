@@ -12,7 +12,6 @@ export const routes: Routes = [
   { path: 'employee', children: EMPLOYEE_ROUTES },
   { path: 'admin', children: ADMIN_ROUTES },
   { path: 'manager', children: managerRoutes },
-
   { path: '**', redirectTo: 'auth/home-page' }, 
 ];
 
