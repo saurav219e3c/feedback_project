@@ -9,6 +9,14 @@ import { RouterModule } from '@angular/router';
   styleUrl: './home-page.component.css'
 })
 export class HomePageComponent {
+  scrollToAbout(): void {
+    const element = document.getElementById('about-anchor');
+    if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 
+  scrollToRoles(): void {
+    const element = document.getElementById('roles-anchor');
+    if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
 
