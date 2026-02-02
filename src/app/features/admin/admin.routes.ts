@@ -8,8 +8,8 @@ import { UserManagementComponent } from './user-management/user-management.compo
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 
 
-import { authGuard } from '../core/guards/auth.guard';
-import { roleGuard } from '../core/guards/role.guard';
+import { authGuard } from '../../core/guards/auth.guard';
+import { roleGuard } from '../../core/guards/role.guard';
 
 export const ADMIN_ROUTES: Routes = [
   {

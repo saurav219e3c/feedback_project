@@ -1,13 +1,13 @@
 import { Routes } from "@angular/router";
-import { EmployeeDashboardComponent } from "./employee-dashboard/employee-dashboard.component";
-import { EmployeeFeedbackComponent } from "./employee-feedback/employee-feedback.component";
-import { EmployeeNotificationComponent } from "./employee-notification/employee-notification.component";
-import { EmployeeRecognitionComponent } from "./employee-recognition/employee-recognition.component";
-import { SubmitFeedbackComponent } from './submit-feedback/submit-feedback.component';
-import { EmployeeLayoutComponent } from "./employee-layout/employee-layout.component";
+import { EmployeeDashboardComponent } from "./pages/employee-dashboard/employee-dashboard.component";
+import { EmployeeFeedbackComponent } from "./pages/employee-received-feedback/employee-feedback.component";
+import { EmployeeNotificationComponent } from "./pages/employee-notification/employee-notification.component";
+import { EmployeeRecognitionComponent } from "./pages/employee-recognition/employee-recognition.component";
+import { SubmitFeedbackComponent } from './pages/submit-feedback/submit-feedback.component';
+import { EmployeeLayoutComponent } from "./layout/employee-layout/employee-layout.component";
 import { ReceivedRecognitionComponent } from "./received-recognition/received-recognition.component";
-import { authGuard } from "../core/guards/auth.guard";
-import { roleGuard } from "../core/guards/role.guard";
+import { authGuard } from "../../core/guards/auth.guard";
+import { roleGuard } from "../../core/guards/role.guard";
 
 export const EMPLOYEE_ROUTES: Routes = [
   {

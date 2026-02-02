@@ -1,6 +1,6 @@
   import { CommonModule } from '@angular/common';
 import { Component, computed, OnInit, signal } from '@angular/core';
-import { EmployeeService, Feedback } from '../service/employee.service';
+import { EmployeeService, Feedback } from '../../services/employee.service';
 
 
 
