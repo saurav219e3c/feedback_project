@@ -15,6 +15,7 @@ export const EMPLOYEE_ROUTES: Routes = [
     component: EmployeeLayoutComponent,
     canActivate:[authGuard,roleGuard],
     children: [
+      
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, 
       { path: 'dashboard', component: EmployeeDashboardComponent },
       { path: 'feedback', component: SubmitFeedbackComponent},
@@ -22,7 +23,8 @@ export const EMPLOYEE_ROUTES: Routes = [
       { path: 'recognition', component: EmployeeRecognitionComponent },
       {path: 'received-recognition',component:ReceivedRecognitionComponent},
       {path: 'recivedfeedback',component:EmployeeFeedbackComponent},
-      {path:'**', redirectTo:'dashboard', pathMatch:'full'}
+      {path:'**', redirectTo:'dashboard', pathMatch:'full'},
+      
     ]
   }
 ];
