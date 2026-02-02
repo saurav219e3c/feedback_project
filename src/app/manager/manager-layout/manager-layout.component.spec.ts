@@ -19,5 +19,5 @@ describe('ManagerLayoutComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
+  }); 
 });

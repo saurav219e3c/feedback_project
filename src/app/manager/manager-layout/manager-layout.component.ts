@@ -2,13 +2,13 @@ import { Component, HostListener, inject, OnInit, OnDestroy } from '@angular/cor
 import { CommonModule } from '@angular/common';
 import { Router, NavigationEnd, RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
-import { AuthService } from '../../core/services/auth.service'; // Adjust path
-import { User } from '../../core/models/user.model'; // Adjust path
+import { AuthService } from '../../core/services/auth.service'; 
+import { User } from '../../core/models/user.model'; 
 
 @Component({
   selector: 'app-manager-layout',
   standalone: true,
-  imports: [
+  imports: [ 
     CommonModule,
     RouterOutlet,
     RouterLink,
