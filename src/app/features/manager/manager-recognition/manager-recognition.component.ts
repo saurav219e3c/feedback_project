@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ManagerService } from '../service/manager_service';
-import { Recognition } from '../../employee/service/employee.service';
+import { Recognition } from '../../employee/services/employee.service';
 
 @Component({
   selector: 'app-manager-recognition',

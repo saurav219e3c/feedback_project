@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { EmployeeService, Recognition } from '../service/employee.service';
-import { AuthService } from '../../../core/services/auth.service';
+import { EmployeeService, Recognition } from '../../services/employee.service';
+import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-received-recognition',

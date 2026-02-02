@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { EmployeeService, Recognition } from '../service/employee.service';
+import { EmployeeService, Recognition } from '../../services/employee.service';
 
 @Component({
   selector: 'app-employee-recognition',

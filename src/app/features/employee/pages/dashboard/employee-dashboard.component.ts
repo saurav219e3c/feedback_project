@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { AuthService } from '../../../core/services/auth.service';
-import { EmployeeService } from '../service/employee.service';
+import { AuthService } from '../../../../core/services/auth.service';
+import { EmployeeService } from '../../services/employee.service';
 
 export interface DashboardStat {
   label: string;

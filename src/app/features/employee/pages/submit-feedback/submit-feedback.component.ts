@@ -2,8 +2,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { EmployeeService, Feedback } from '../service/employee.service';
-import { CategoryManagementComponent } from '../../admin/category-management/category-management.component';
+import { EmployeeService, Feedback } from '../../services/employee.service';
+import { CategoryManagementComponent } from '../../../admin/category-management/category-management.component';
 
 
 @Component({
