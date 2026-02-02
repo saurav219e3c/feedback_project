@@ -7,7 +7,7 @@ import { AuthService } from '../../core/services/auth.service';
 @Component({
   selector: 'app-manager-profile',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, CommonModule, FormsModule],
+  imports: [ CommonModule, FormsModule],
   templateUrl: './manager-profile.component.html',
   styleUrl: './manager-profile.component.css'
 })

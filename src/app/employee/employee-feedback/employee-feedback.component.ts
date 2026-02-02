@@ -15,10 +15,8 @@ import { EmployeeService, Feedback } from '../service/employee.service';
 export class EmployeeFeedbackComponent implements OnInit {
 
 
-  feedbackList: Feedback[]=[];
+  //feedbackList: Feedback[]=[];
   currentUser: string ='';
- 
-
   constructor(private empService:EmployeeService){}
 
   rawFeedback = signal<Feedback[]>([]);
@@ -33,15 +31,10 @@ export class EmployeeFeedbackComponent implements OnInit {
   });
 
 
-
   
-
   ngOnInit(): void { 
-    
-    
     this.currentUser=this.empService.getCurrentUser();
-    this.feedbackList = this.empService.getMyReceivedFeedback();
-
+    //this.feedbackList = this.empService.getMyReceivedFeedback();
     //load data into signal
     const data = this.empService.getMyReceivedFeedback();  //backend se data lana hai 
     this.rawFeedback.set(data);
@@ -51,7 +44,6 @@ export class EmployeeFeedbackComponent implements OnInit {
   // Helper to get initials for the avatar
   getInitials(name: string): string {
     const safeName = name || 'Unknown';
-
     return safeName.split(' ').map(n => n[0]).join('').toLocaleUpperCase();
   }
 }

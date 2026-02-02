@@ -21,7 +21,6 @@ export class EmployeeRecognitionComponent implements OnInit {
   employees: any[] = []; 
 
   // 2. SIGNALS for UI State (The Angular 19 Way)
-  
   filteredEmployees = signal<any[]>([]); 
   selectedEmp = signal<any>(null);
 

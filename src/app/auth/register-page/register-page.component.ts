@@ -15,6 +15,7 @@ type Role = 'manager' | 'employee'; // union
   styleUrls: ['./register-page.component.css'],
 })
 export class RegisterPageComponent implements OnInit {
+  
   form!: FormGroup;
   roleFromLogin?: Role;
 

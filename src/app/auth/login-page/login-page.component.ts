@@ -6,7 +6,7 @@ import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angula
 import { CommonModule } from '@angular/common';
 
 import { LoginService } from '../service/login.service';
-// ⬇️ Add AuthService to set auth state for guards
+
 import { AuthService } from '../../core/services/auth.service';
 
 @Component({
@@ -39,6 +39,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   ngOnInit() {
+
     // Subscribe to query parameters to get the role
     this.route.queryParamMap.subscribe(params => {
       this.role = params.get('role') ?? undefined;
@@ -106,7 +107,7 @@ export class LoginPageComponent implements OnInit {
 
  }
   goToRegister() {
-    // Navigate to the feature route
+    // Navigate 
     this.router.navigate(['/auth/register-page']);
   }
    onForgotPassword() {

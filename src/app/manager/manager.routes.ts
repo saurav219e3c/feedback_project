@@ -7,11 +7,14 @@ import { ManagerFeedbackComponent } from "./manager-feedback/manager-feedback.co
 import { ManagerProfileComponent } from "./manager-profile/manager-profile.component";
 import { ManagerNotificationComponent } from "./manager-notification/manager-notification.component";
 import { ManagerRecognitionComponent } from "./manager-recognition/manager-recognition.component";
+import { authGuard } from "../core/guards/auth.guard";
+import { roleGuard } from "../core/guards/role.guard";
 
 export const managerRoutes :Routes = [{
   
     path:'',
     component:ManagerLayoutComponent,
+    canActivate:[authGuard,roleGuard],
     children:[{
 
         path:'',
@@ -26,10 +29,7 @@ export const managerRoutes :Routes = [{
         },
         {
             path:'profile',
-            component:ManagerProfileComponent,
-            
-
-            
+            component:ManagerProfileComponent,  
 
         },
         {

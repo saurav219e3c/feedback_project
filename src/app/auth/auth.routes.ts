@@ -5,15 +5,9 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 import { ADMIN_ROUTES } from '../admin/admin.routes';
 
 export const AUTH_ROUTES: Routes = [
-  // /auth -> redirect to /auth/home-page
+  
   { path: '', pathMatch: 'full', redirectTo: 'home-page' },
-
-  // /auth/home-page
   { path: 'home-page', component: HomePageComponent },
-
-  // /auth/login-page?role=admin|manager|employee
   { path: 'login-page', component: LoginPageComponent },
-
-  // /auth/register-page
   { path: 'register-page', component: RegisterPageComponent },
 ];

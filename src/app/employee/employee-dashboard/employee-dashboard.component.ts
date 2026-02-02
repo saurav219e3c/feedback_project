@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 import { EmployeeService } from '../service/employee.service';
+
 export interface DashboardStat {
   label: string;
   value: number;
@@ -27,7 +28,7 @@ export class EmployeeDashboardComponent implements OnInit {
 
  
 
-  stats: any[] = [];
+   stats: any[] = [];
 
    today = new Date();
 

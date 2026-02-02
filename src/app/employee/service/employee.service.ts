@@ -46,7 +46,7 @@ export class EmployeeService {
     USERS: 'feedback_project_users'
   };
 
-  // State Variables  
+  //  Variables  
   private feedbackList: Feedback[] = [];
   private recognitionList: Recognition[] = [];
 

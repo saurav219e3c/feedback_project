@@ -7,21 +7,22 @@ import { SubmitFeedbackComponent } from './submit-feedback/submit-feedback.compo
 import { EmployeeLayoutComponent } from "./employee-layout/employee-layout.component";
 import { ReceivedRecognitionComponent } from "./received-recognition/received-recognition.component";
 import { authGuard } from "../core/guards/auth.guard";
+import { roleGuard } from "../core/guards/role.guard";
 
 export const EMPLOYEE_ROUTES: Routes = [
   {
     path: '',
     component: EmployeeLayoutComponent,
-    canActivate:[authGuard],
+    canActivate:[authGuard,roleGuard],
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, 
       { path: 'dashboard', component: EmployeeDashboardComponent },
       { path: 'feedback', component: SubmitFeedbackComponent},
-      { path: 'notification', component: EmployeeNotificationComponent },
+      { path: 'notifications', component: EmployeeNotificationComponent },
       { path: 'recognition', component: EmployeeRecognitionComponent },
       {path: 'received-recognition',component:ReceivedRecognitionComponent},
-      {path: 'recivedfeedback',component:EmployeeFeedbackComponent}
-     
+      {path: 'recivedfeedback',component:EmployeeFeedbackComponent},
+      {path:'**', redirectTo:'dashboard', pathMatch:'full'}
     ]
   }
 ];
