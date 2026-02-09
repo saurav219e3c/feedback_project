@@ -6,7 +6,7 @@ import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angula
 import { CommonModule } from '@angular/common';
 
 import { LoginService } from '../service/login.service';
-// ⬇️ Add AuthService to set auth state for guards
+
 import { AuthService } from '../../core/services/auth.service';
 
 @Component({
@@ -26,6 +26,7 @@ export class LoginPageComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private loginService: LoginService,
+    
     private route: ActivatedRoute,
     private auth: AuthService,
   ) {
@@ -38,6 +39,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   ngOnInit() {
+
     // Subscribe to query parameters to get the role
     this.route.queryParamMap.subscribe(params => {
       this.role = params.get('role') ?? undefined;
@@ -48,14 +50,13 @@ export class LoginPageComponent implements OnInit {
     return this.form.controls;
   }
 
- 
+
 
   // Submit handler
   onLogin() {
-    
+    debugger;
     if (this.form.invalid) { //true
       this.form.markAllAsTouched();
-      
       return;
     }
 
@@ -73,8 +74,8 @@ export class LoginPageComponent implements OnInit {
         const r = (this.role ?? user.role ?? 'employee').toString().toLowerCase();
         const normalizedRole =
           r === 'admin' ? 'Admin' :
-          r === 'manager' ? 'Manager' :
-          'Employee';
+            r === 'manager' ? 'Manager' :
+              'Employee';
 
         this.auth.loginWithUser({
           id: user.userId ?? user.id ?? 'unknown',
@@ -86,30 +87,30 @@ export class LoginPageComponent implements OnInit {
 
         //Otherwise navigate based on role
         const target =
-          normalizedRole === 'Admin'   ? '/admin'   :
-          normalizedRole === 'Manager' ? '/manager' :
-                                         '/employee';
+          normalizedRole === 'Admin' ? '/admin' :
+            normalizedRole === 'Manager' ? '/manager' :
+              '/employee';
 
         this.router.navigate([target]);
 
-        
+
 
       } else {
         alert('Invalid credentials or role. Please try again.');
       }
     });
   }
- havingthis(){
-  
-      console.log(this.f['username']?.value);
-      
+  havingthis() {
 
- }
+    console.log(this.f['username']?.value);
+
+
+  }
   goToRegister() {
-    // Navigate to the feature route
+    // Navigate 
     this.router.navigate(['/auth/register-page']);
   }
-   onForgotPassword() {
+  onForgotPassword() {
     alert('Forgot password clicked.');
   }
 

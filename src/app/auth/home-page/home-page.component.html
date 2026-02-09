@@ -1,37 +1,72 @@
-<div class="home-viewport">
-  <div class="home-content">
-    
-    <div class="welcome-text">
-      <h1>Select Your Portal For Feedback</h1>
-      <p>Please choose your role to continue to the login screen.</p>
+<div class="home-container">
+  <nav class="glass-header">
+    <div class="nav-logo"></div>
+    <div class="nav-actions">
+      <button class="nav-btn login-btn" (click)="scrollToRoles()">Login</button>
+      <button class="nav-btn register-btn" [routerLink]="['/auth/register-page']">Register</button>
     </div>
+  </nav>
 
-    <div class="cards-container">
+  <header class="hero-section">
+    <div class="hero-content">
+      <div class="badge">Internal System</div>
+      <h1 class="project-name">
+        <span>Feedback</span>
+        <span>Track</span>
+      </h1>
+      <p class="project-subtitle">Internal Employee Feedback & Recognition System</p>
       
-      <a class="glass-card" [routerLink]="['/auth/login-page']" [queryParams]="{ role: 'admin' }">
-        <div class="icon-box">
-          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Admin Icon">
+      <a (click)="scrollToAbout()" class="explore-btn">
+        <span class="philosophy-text">Our Philosophy</span>
+        <div class="mouse-icon">
+          <div class="wheel"></div>
         </div>
-        <h3>Admin</h3>
-        <span class="tap-hint">Access Portal</span>
       </a>
-
-      <a class="glass-card" [routerLink]="['/auth/login-page']" [queryParams]="{ role: 'manager' }">
-        <div class="icon-box">
-          <img src="https://cdn-icons-png.flaticon.com/512/912/912318.png" alt="Manager Icon">
-        </div>
-        <h3>Manager</h3>
-        <span class="tap-hint">Access Portal</span>
-      </a>
-
-      <a class="glass-card" [routerLink]="['/auth/login-page']" [queryParams]="{ role: 'employee' }">
-        <div class="icon-box">
-          <img src="https://cdn-icons-png.flaticon.com/512/1256/1256650.png" alt="Employee Icon">
-        </div>
-        <h3>Employee</h3>
-        <span class="tap-hint">Access Portal</span>
-      </a>
-
     </div>
-  </div>
+  </header>
+
+  <section id="about-anchor" class="about-section">
+    <div class="about-content">
+      <div class="about-text">
+        <span class="text-accent">Empowering Every Voice</span>
+        <h2>Cultivating Excellence Through <span class="highlight">Transparent Insights</span></h2>
+        <p><strong>Feedback Track</strong> is a sophisticated ecosystem designed to transform organizational culture.</p>
+        <p>Our mission is to foster an environment of <strong>continuous growth</strong> and appreciation.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-item">
+          <span class="stat-val">Real-time</span>
+          <span class="stat-label">Analytics</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">360°</span>
+          <span class="stat-label">Recognition</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="roles-anchor" class="roles-section">
+    <div class="section-header">
+      <h2>Select Your Portal For Feedback</h2>
+      <p>Please choose your specialized role to begin your journey.</p>
+    </div>
+    <div class="cards-grid">
+      <a class="glass-card" [routerLink]="['/auth/login-page']" [queryParams]="{ role: 'admin' }">
+        <div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Admin"></div>
+        <h3>Administrator</h3>
+        <span class="portal-link">Access Portal →</span>
+      </a>
+      <a class="glass-card" [routerLink]="['/auth/login-page']" [queryParams]="{ role: 'manager' }">
+        <div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/912/912318.png" alt="Manager"></div>
+        <h3>Manager</h3>
+        <span class="portal-link">Access Portal →</span>
+      </a>
+      <a class="glass-card" [routerLink]="['/auth/login-page']" [queryParams]="{ role: 'employee' }">
+        <div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/1256/1256650.png" alt="Employee"></div>
+        <h3>Employee</h3>
+        <span class="portal-link">Access Portal →</span>
+      </a>
+    </div>
+  </section>
 </div>

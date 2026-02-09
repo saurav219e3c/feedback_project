@@ -1,0 +1,69 @@
+<!-- Fixed overlay topbar with only the hamburger (no visible bar) -->
+<header class="topbar d-flex align-items-center" aria-label="App actions">
+  <button *ngIf="!isSidebarOpen" class="hamburger" aria-label="Toggle navigation" [attr.aria-expanded]="isSidebarOpen"
+    (click)="toggleSidebar()">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+
+<div class="layout">
+  <!-- Sidebar -->
+  <aside class="sidebar" [class.open]="isSidebarOpen" role="navigation" aria-label="Sidebar">
+    <div class="sidebar-header">
+      <div class="brand-icon">⚙️</div>
+      <div class="brand-text">
+        <div class="brand-title">Admin</div>
+        <div class="brand-subtitle">Control Panel</div>
+      </div>
+    </div>
+
+    <nav class="menu">
+      <a class="menu-item" routerLink="/admin" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <i class="bi bi-speedometer2"></i>
+        <span>Dashboard</span>
+      </a>
+
+      <a class="menu-item" routerLink="/admin/users" routerLinkActive="active">
+        <i class="bi bi-people"></i>
+        <span>Users</span>
+      </a>
+
+      <a class="menu-item" routerLink="/admin/categories" routerLinkActive="active">
+        <i class="bi bi-tags"></i>
+        <span>Categories</span>
+      </a>
+
+      <a class="menu-item" routerLink="/admin/reports" routerLinkActive="active">
+        <i class="bi bi-graph-up"></i>
+        <span>Reports</span>
+      </a>
+
+      <a class="menu-item" routerLink="/admin/settings" routerLinkActive="active">
+        <i class="bi bi-sliders"></i>
+        <span>Settings</span>
+      </a>
+
+      <a class="menu-item"  (click)="logout()">
+        <i class="bi bi-sliders"></i>
+        <span>Logout</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button class="collapse-btn" (click)="closeSidebar()" aria-label="Close sidebar">
+        <i class="bi bi-x-lg"></i> Close
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="content">
+    <section class="page-body card-surface">
+      <router-outlet></router-outlet>
+    </section>
+  </main>
+</div>
+
+<!-- Backdrop when sidebar is open on any screen -->
+<div class="backdrop" *ngIf="isSidebarOpen" (click)="closeSidebar()" aria-hidden="true"></div>
