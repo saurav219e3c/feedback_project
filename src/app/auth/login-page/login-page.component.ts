@@ -52,9 +52,10 @@ export class LoginPageComponent implements OnInit {
 
   // Submit handler
   onLogin() {
+    
     if (this.form.invalid) { //true
       this.form.markAllAsTouched();
-
+      
       return;
     }
 
@@ -83,7 +84,7 @@ export class LoginPageComponent implements OnInit {
         });
 
 
-        // ✅ Otherwise navigate based on role
+        //Otherwise navigate based on role
         const target =
           normalizedRole === 'Admin'   ? '/admin'   :
           normalizedRole === 'Manager' ? '/manager' :

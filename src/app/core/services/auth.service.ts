@@ -66,7 +66,7 @@ export class AuthService {
     this._user$.next(null);
   }
 
-  // --- Role Helpers (Unchanged) ---
+  // --- Role Help ---
   hasRole$(role: Role): Observable<boolean> {
     return this.roles$.pipe(map(roles => roles.includes(role)));
   }
