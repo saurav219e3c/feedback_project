@@ -1,0 +1,22 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FeedbackSystem.API.DTOs;
+
+public record CategoryCreateDto(
+    [property: Required, StringLength(100)] string CategoryName,
+    [property: StringLength(225)] string? Description
+);
+
+public record CategoryUpdateDto(
+    [property: Required, StringLength(100)] string CategoryName,
+    [property: StringLength(225)] string? Description,
+    bool IsActive
+);
+
+public record CategoryReadDto(
+    int CategoryId,
+    string CategoryName,
+    string? Description,
+    bool IsActive,
+    DateTime CreatedAt
+);

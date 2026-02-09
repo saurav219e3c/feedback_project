@@ -1,0 +1,59 @@
+﻿using AutoMapper;
+using FeedbackSystem.API.DTOs;
+using FeedbackSystem.API.Entities;
+using FeedbackSystem.API.Repositories;
+
+namespace FeedbackSystem.API.Services;
+
+public class CategoryService : ICategoryService
+{
+    private readonly ICategoryRepository _repo;
+    private readonly IMapper _mapper;
+
+    public CategoryService(ICategoryRepository repo, IMapper mapper)
+    {
+        _repo = repo;
+        _mapper = mapper;
+    }
+
+    public async Task<List<CategoryReadDto>> GetAllAsync(CancellationToken ct = default)
+    {
+        var data = await _repo.GetAllAsync(ct);
+        return _mapper.Map<List<CategoryReadDto>>(data);
+    }
+
+    public async Task<CategoryReadDto?> GetByIdAsync(int id, CancellationToken ct = default)
+    {
+        var entity = await _repo.GetByIdAsync(id, ct);
+        return entity is null ? null : _mapper.Map<CategoryReadDto>(entity);
+    }
+
+    public async Task<CategoryReadDto> CreateAsync(CategoryCreateDto dto, CancellationToken ct = default)
+    {
+        if (await _repo.ExistsByNameAsync(dto.CategoryName, ct))
+            throw new InvalidOperationException("Category name already exists.");
+
+        var entity = _mapper.Map<Category>(dto);
+        await _repo.AddAsync(entity, ct);
+        return _mapper.Map<CategoryReadDto>(entity);
+    }
+
+    public async Task<bool> UpdateAsync(int id, CategoryUpdateDto dto, CancellationToken ct = default)
+    {
+        var existing = await _repo.GetByIdAsync(id, ct);
+        if (existing is null) return false;
+
+        _mapper.Map(dto, existing);
+        await _repo.UpdateAsync(existing, ct);
+        return true;
+    }
+
+    public async Task<bool> DeleteAsync(int id, CancellationToken ct = default)
+    {
+        var existing = await _repo.GetByIdAsync(id, ct);
+        if (existing is null) return false;
+
+        await _repo.DeleteAsync(existing, ct);
+        return true;
+    }
+}

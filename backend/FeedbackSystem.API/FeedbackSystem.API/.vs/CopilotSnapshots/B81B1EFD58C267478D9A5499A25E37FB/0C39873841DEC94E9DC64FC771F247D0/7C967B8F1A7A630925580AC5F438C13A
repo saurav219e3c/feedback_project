@@ -1,0 +1,58 @@
+﻿using AutoMapper;
+using FeedbackSystem.API.DTOs;
+using FeedbackSystem.API.Entities;
+using FeedbackSystem.API.Repositories;
+using FeedbackSystem.API.Security;
+
+namespace FeedbackSystem.API.Services;
+
+public class AuthService : IAuthService
+{
+    private readonly IUserRepository _users;
+    private readonly IJwtTokenService _jwt;
+    private readonly IMapper _mapper;
+
+    public AuthService(IUserRepository users, IJwtTokenService jwt, IMapper mapper)
+    {
+        _users = users;
+        _jwt = jwt;
+        _mapper = mapper;
+    }
+
+    public async Task<AuthResponseDto?> LoginAsync(LoginRequestDto dto, CancellationToken ct = default)
+    {
+        var user = await _users.GetByEmailAsync(dto.Email, ct);
+        if (user is null || !user.IsActive) return null;
+
+        if (!PasswordHasher.Verify(dto.Password, user.PasswordHash))
+            return null;
+
+        var (token, expires) = _jwt.CreateToken(user);
+        var authUser = _mapper.Map<AuthUserDto>(user);
+        return new AuthResponseDto(token, expires, authUser);
+    }
+
+    public async Task<UserReadDto> RegisterAsync(RegisterUserDto dto, CancellationToken ct = default)
+    {
+        if (await _users.EmailExistsAsync(dto.Email, ct))
+            throw new InvalidOperationException("Email already exists.");
+
+        var role = await _users.GetRoleByNameAsync(dto.RoleName, ct)
+                   ?? throw new InvalidOperationException("Role not found.");
+
+        var user = new User
+        {
+            FullName = dto.FullName,
+            Email = dto.Email,
+            PasswordHash = PasswordHasher.Hash(dto.Password),
+            RoleId = role.RoleId,
+            IsActive = true,
+            CreatedAt = DateTime.UtcNow
+        };
+
+        await _users.AddAsync(user, ct);
+
+        user = await _users.GetByIdAsync(user.UserId, ct) ?? user;
+        return _mapper.Map<UserReadDto>(user);
+    }
+}
