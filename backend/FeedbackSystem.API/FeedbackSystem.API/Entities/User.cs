@@ -3,14 +3,22 @@
     public class User
     {
         public int UserId { get; set; }
+
         public string FullName { get; set; } = null!;
         public string Email { get; set; } = null!;
         public string PasswordHash { get; set; } = null!;
+
         public int RoleId { get; set; }
         public bool IsActive { get; set; }
         public DateTime CreatedAt { get; set; }
 
+        // ✅ New: FK to Department
+        public int DepartmentId { get; set; }
+
+        // Navigations
         public Role Role { get; set; } = null!;
+        public Department Department { get; set; } = null!;
+
         public ICollection<Feedback> FeedbacksFrom { get; set; } = new List<Feedback>();
         public ICollection<Feedback> FeedbacksTo { get; set; } = new List<Feedback>();
         public ICollection<FeedbackReview> ReviewsDone { get; set; } = new List<FeedbackReview>();

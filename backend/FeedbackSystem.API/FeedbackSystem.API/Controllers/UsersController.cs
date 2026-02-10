@@ -38,4 +38,9 @@ public class UsersController : ControllerBase
     [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete(int id, CancellationToken ct)
         => await _service.DeleteAsync(id, ct) ? NoContent() : NotFound();
+
+    // ✅ Statistics endpoint
+    [HttpGet("stats")]
+    public async Task<ActionResult<UserStatsDto>> GetStats(CancellationToken ct)
+        => Ok(await _service.GetStatsAsync(ct));
 }

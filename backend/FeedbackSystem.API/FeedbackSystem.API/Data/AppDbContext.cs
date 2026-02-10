@@ -19,6 +19,9 @@ public class AppDbContext : DbContext
     public DbSet<Notification> Notifications => Set<Notification>();
     public DbSet<ActivityLog> ActivityLogs => Set<ActivityLog>();
 
+    // NEW: Departments
+    public DbSet<Department> Departments => Set<Department>();
+
     protected override void OnModelCreating(ModelBuilder model)
     {
         // ---------- ROLES ----------
@@ -30,6 +33,20 @@ public class AppDbContext : DbContext
             e.Property(x => x.IsActive).HasDefaultValue(true);
             e.Property(x => x.CreatedAt).HasDefaultValueSql("GETDATE()");
             e.HasIndex(x => x.RoleName).IsUnique();
+        });
+
+        // ---------- DEPARTMENTS (NEW) ----------
+        model.Entity<Department>(e =>
+        {
+            e.ToTable("Departments");
+            e.HasKey(x => x.DepartmentId);
+
+            e.Property(x => x.DepartmentName).IsRequired().HasMaxLength(100);
+            e.Property(x => x.Description).HasMaxLength(225);
+            e.Property(x => x.IsActive).HasDefaultValue(true);
+            e.Property(x => x.CreatedAt).HasDefaultValueSql("GETDATE()");
+
+            e.HasIndex(x => x.DepartmentName).IsUnique();
         });
 
         // ---------- USERS ----------
@@ -49,6 +66,16 @@ public class AppDbContext : DbContext
              .HasForeignKey(x => x.RoleId)
              .OnDelete(DeleteBehavior.Restrict)
              .HasConstraintName("FK_Users_Roles");
+
+            // ✅ NEW: User → Department (many-to-one)
+            e.HasOne(x => x.Department)
+             .WithMany(d => d.Users)
+             .HasForeignKey(x => x.DepartmentId)
+             .OnDelete(DeleteBehavior.Restrict)
+             .HasConstraintName("FK_Users_Departments");
+
+            // (Optional but useful) index for lookups by department
+            e.HasIndex(x => x.DepartmentId).HasDatabaseName("IX_Users_DepartmentId");
         });
 
         // ---------- CATEGORIES ----------
@@ -122,8 +149,18 @@ public class AppDbContext : DbContext
         {
             e.ToTable("Recognition");
             e.HasKey(x => x.RecognitionId);
+
             e.Property(x => x.Message).IsRequired().HasMaxLength(500);
             e.Property(x => x.CreatedAt).HasDefaultValueSql("GETDATE()");
+
+            // ✅ Points with check constraint (1–10)
+            e.Property(x => x.Points).IsRequired();
+
+            // CHECK constraint at table-level (SQL Server)
+            e.ToTable(t =>
+            {
+                t.HasCheckConstraint("CK_Recognition_Points_Range", "[Points] BETWEEN 1 AND 10");
+            });
 
             e.HasOne(x => x.FromUser)
              .WithMany(u => u.RecognitionsFrom)
@@ -137,9 +174,16 @@ public class AppDbContext : DbContext
              .OnDelete(DeleteBehavior.Restrict)
              .HasConstraintName("FK_Recognition_ToUser");
 
-            e.HasIndex(x => x.ToUserId).HasDatabaseName("IX_Recognition_ToUserId");
-        });
+            // ✅ Category relationship (same as Feedback)
+            e.HasOne(x => x.Category)
+             .WithMany(c => c.Recognitions)
+             .HasForeignKey(x => x.CategoryId)
+             .OnDelete(DeleteBehavior.Restrict)
+             .HasConstraintName("FK_Recognition_Category");
 
+            e.HasIndex(x => x.ToUserId).HasDatabaseName("IX_Recognition_ToUserId");
+            e.HasIndex(x => x.CategoryId).HasDatabaseName("IX_Recognition_CategoryId");
+        });
         // ---------- APP SETTINGS ----------
         model.Entity<AppSetting>(e =>
         {

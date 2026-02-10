@@ -9,7 +9,16 @@ public interface IUserRepository
     Task<List<User>> GetAllAsync(CancellationToken ct = default);
     Task<bool> EmailExistsAsync(string email, CancellationToken ct = default);
     Task<Role?> GetRoleByNameAsync(string roleName, CancellationToken ct = default);
+    Task<Department?> GetDepartmentByIdAsync(int departmentId, CancellationToken ct = default);
     Task<User> AddAsync(User user, CancellationToken ct = default);
     Task UpdateAsync(User user, CancellationToken ct = default);
     Task DeleteAsync(User user, CancellationToken ct = default);
+    
+    // ✅ Count methods
+    Task<int> GetTotalCountAsync(CancellationToken ct = default);
+    Task<int> GetActiveCountAsync(CancellationToken ct = default);
+
+    // ✅ Helpers for InsightsService
+    Task<bool> UserExistsAsync(int userId, CancellationToken ct = default);
+    Task<int> GetDepartmentIdAsync(int userId, CancellationToken ct = default);
 }

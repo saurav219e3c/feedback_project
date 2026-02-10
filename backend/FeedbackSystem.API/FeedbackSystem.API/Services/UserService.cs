@@ -8,10 +8,14 @@ namespace FeedbackSystem.API.Services;
 public class UserService : IUserService
 {
     private readonly IUserRepository _repo;
+    private readonly IFeedbackRepository _feedbackRepo;
+    private readonly IRecognitionRepository _recognitionRepo;
 
-    public UserService(IUserRepository repo)
+    public UserService(IUserRepository repo, IFeedbackRepository feedbackRepo, IRecognitionRepository recognitionRepo)
     {
         _repo = repo;
+        _feedbackRepo = feedbackRepo;
+        _recognitionRepo = recognitionRepo;
     }
 
     public async Task<List<UserReadDto>> GetAllAsync(CancellationToken ct = default)
@@ -22,6 +26,8 @@ public class UserService : IUserService
             u.FullName,
             u.Email,
             u.Role.RoleName,
+            u.DepartmentId,
+            u.Department.DepartmentName,
             u.IsActive,
             u.CreatedAt
         )).ToList();
@@ -37,6 +43,8 @@ public class UserService : IUserService
             user.FullName,
             user.Email,
             user.Role.RoleName,
+            user.DepartmentId,
+            user.Department.DepartmentName,
             user.IsActive,
             user.CreatedAt
         );
@@ -50,12 +58,16 @@ public class UserService : IUserService
         var role = await _repo.GetRoleByNameAsync(dto.RoleName, ct)
                    ?? throw new InvalidOperationException("Role not found.");
 
+        var department = await _repo.GetDepartmentByIdAsync(dto.DepartmentId, ct)
+                        ?? throw new InvalidOperationException("Department not found or inactive.");
+
         var entity = new User
         {
             FullName = dto.FullName,
             Email = dto.Email,
             PasswordHash = PasswordHasher.Hash(dto.Password),
             RoleId = role.RoleId,
+            DepartmentId = department.DepartmentId,
             IsActive = true,
             CreatedAt = DateTime.UtcNow
         };
@@ -68,6 +80,8 @@ public class UserService : IUserService
             entity.FullName,
             entity.Email,
             entity.Role.RoleName,
+            entity.DepartmentId,
+            entity.Department.DepartmentName,
             entity.IsActive,
             entity.CreatedAt
         );
@@ -81,8 +95,12 @@ public class UserService : IUserService
         var role = await _repo.GetRoleByNameAsync(dto.RoleName, ct)
                    ?? throw new InvalidOperationException("Role not found.");
 
+        var department = await _repo.GetDepartmentByIdAsync(dto.DepartmentId, ct)
+                        ?? throw new InvalidOperationException("Department not found or inactive.");
+
         user.FullName = dto.FullName;
         user.RoleId = role.RoleId;
+        user.DepartmentId = department.DepartmentId;
         user.IsActive = dto.IsActive;
 
         await _repo.UpdateAsync(user, ct);
@@ -94,7 +112,20 @@ public class UserService : IUserService
         var user = await _repo.GetByIdAsync(id, ct);
         if (user is null) return false;
 
+
         await _repo.DeleteAsync(user, ct);
         return true;
+    }
+
+    // ✅ Statistics
+    public async Task<UserStatsDto> GetStatsAsync(CancellationToken ct = default)
+    {
+        var totalUsers = await _repo.GetTotalCountAsync(ct);
+        var activeUsers = await _repo.GetActiveCountAsync(ct);
+        var inactiveUsers = totalUsers - activeUsers;
+        var totalFeedbacks = await _feedbackRepo.GetTotalCountAsync(ct);
+        var totalRecognitions = await _recognitionRepo.GetTotalCountAsync(ct);
+
+        return new UserStatsDto(totalUsers, activeUsers, inactiveUsers, totalFeedbacks, totalRecognitions);
     }
 }

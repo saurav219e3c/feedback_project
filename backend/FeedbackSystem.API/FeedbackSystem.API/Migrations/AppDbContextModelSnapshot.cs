@@ -116,6 +116,41 @@ namespace FeedbackSystem.API.Migrations
                     b.ToTable("Categories", (string)null);
                 });
 
+            modelBuilder.Entity("FeedbackSystem.API.Entities.Department", b =>
+                {
+                    b.Property<int>("DepartmentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DepartmentId"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<string>("DepartmentName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(225)
+                        .HasColumnType("nvarchar(225)");
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
+                    b.HasKey("DepartmentId");
+
+                    b.HasIndex("DepartmentName")
+                        .IsUnique();
+
+                    b.ToTable("Departments", (string)null);
+                });
+
             modelBuilder.Entity("FeedbackSystem.API.Entities.Feedback", b =>
                 {
                     b.Property<int>("FeedbackId")
@@ -242,6 +277,9 @@ namespace FeedbackSystem.API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RecognitionId"));
 
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
@@ -255,17 +293,26 @@ namespace FeedbackSystem.API.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
+                    b.Property<int>("Points")
+                        .HasColumnType("int");
+
                     b.Property<int>("ToUserId")
                         .HasColumnType("int");
 
                     b.HasKey("RecognitionId");
+
+                    b.HasIndex("CategoryId")
+                        .HasDatabaseName("IX_Recognition_CategoryId");
 
                     b.HasIndex("FromUserId");
 
                     b.HasIndex("ToUserId")
                         .HasDatabaseName("IX_Recognition_ToUserId");
 
-                    b.ToTable("Recognition", (string)null);
+                    b.ToTable("Recognition", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_Recognition_Points_Range", "[Points] BETWEEN 1 AND 10");
+                        });
                 });
 
             modelBuilder.Entity("FeedbackSystem.API.Entities.Role", b =>
@@ -312,6 +359,9 @@ namespace FeedbackSystem.API.Migrations
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("GETDATE()");
 
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -336,6 +386,9 @@ namespace FeedbackSystem.API.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("UserId");
+
+                    b.HasIndex("DepartmentId")
+                        .HasDatabaseName("IX_Users_DepartmentId");
 
                     b.HasIndex("Email")
                         .IsUnique();
@@ -422,6 +475,13 @@ namespace FeedbackSystem.API.Migrations
 
             modelBuilder.Entity("FeedbackSystem.API.Entities.Recognition", b =>
                 {
+                    b.HasOne("FeedbackSystem.API.Entities.Category", "Category")
+                        .WithMany("Recognitions")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_Recognition_Category");
+
                     b.HasOne("FeedbackSystem.API.Entities.User", "FromUser")
                         .WithMany("RecognitionsFrom")
                         .HasForeignKey("FromUserId")
@@ -436,6 +496,8 @@ namespace FeedbackSystem.API.Migrations
                         .IsRequired()
                         .HasConstraintName("FK_Recognition_ToUser");
 
+                    b.Navigation("Category");
+
                     b.Navigation("FromUser");
 
                     b.Navigation("ToUser");
@@ -443,6 +505,13 @@ namespace FeedbackSystem.API.Migrations
 
             modelBuilder.Entity("FeedbackSystem.API.Entities.User", b =>
                 {
+                    b.HasOne("FeedbackSystem.API.Entities.Department", "Department")
+                        .WithMany("Users")
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_Users_Departments");
+
                     b.HasOne("FeedbackSystem.API.Entities.Role", "Role")
                         .WithMany("Users")
                         .HasForeignKey("RoleId")
@@ -450,12 +519,21 @@ namespace FeedbackSystem.API.Migrations
                         .IsRequired()
                         .HasConstraintName("FK_Users_Roles");
 
+                    b.Navigation("Department");
+
                     b.Navigation("Role");
                 });
 
             modelBuilder.Entity("FeedbackSystem.API.Entities.Category", b =>
                 {
                     b.Navigation("Feedbacks");
+
+                    b.Navigation("Recognitions");
+                });
+
+            modelBuilder.Entity("FeedbackSystem.API.Entities.Department", b =>
+                {
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("FeedbackSystem.API.Entities.Feedback", b =>

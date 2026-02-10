@@ -8,8 +8,10 @@ public static class DbSeeder
 {
     public static async Task SeedAsync(AppDbContext db)
     {
+        // Ensure DB and migrations are applied
         await db.Database.MigrateAsync();
 
+        // ---------- ROLES ----------
         if (!await db.Roles.AnyAsync())
         {
             db.Roles.AddRange(
@@ -19,6 +21,7 @@ public static class DbSeeder
             );
         }
 
+        // ---------- APP SETTINGS ----------
         if (!await db.AppSettings.AnyAsync())
         {
             db.AppSettings.AddRange(
@@ -29,21 +32,64 @@ public static class DbSeeder
             );
         }
 
+        // ---------- DEPARTMENTS (NEW) ----------
+        if (!await db.Departments.AnyAsync())
+        {
+            db.Departments.AddRange(
+                new Department { DepartmentName = "Engineering", Description = "Product engineering", IsActive = true },
+                new Department { DepartmentName = "HR", Description = "Human resources", IsActive = true },
+                new Department { DepartmentName = "Sales", Description = "Revenue team", IsActive = true },
+                new Department { DepartmentName = "General", Description = "Default department", IsActive = true }
+            );
+        }
+
+        // Save inserts for Roles, AppSettings, Departments (if any)
         await db.SaveChangesAsync();
 
-        var adminRole = await db.Roles.FirstAsync(r => r.RoleName == "Admin");
-        if (!await db.Users.AnyAsync(u => u.Email == "admin@local"))
+        // Get IDs we need for relationships
+        var adminRoleId = await db.Roles
+            .Where(r => r.RoleName == "Admin")
+            .Select(r => r.RoleId)
+            .FirstAsync();
+
+        // Prefer Engineering; fall back to General if Engineering not found for some reason
+        var defaultDeptId = await db.Departments
+            .Where(d => d.DepartmentName == "Engineering")
+            .Select(d => d.DepartmentId)
+            .FirstOrDefaultAsync();
+
+        if (defaultDeptId == 0)
+        {
+            defaultDeptId = await db.Departments
+                .Where(d => d.DepartmentName == "General")
+                .Select(d => d.DepartmentId)
+                .FirstAsync();
+        }
+
+        // ---------- ADMIN USER ----------
+        var admin = await db.Users.FirstOrDefaultAsync(u => u.Email == "admin@local");
+        if (admin is null)
         {
             db.Users.Add(new User
             {
                 FullName = "System Administrator",
                 Email = "admin@local",
                 PasswordHash = PasswordHasher.Hash("Admin@123"),
-                RoleId = adminRole.RoleId,
+                RoleId = adminRoleId,
+                DepartmentId = defaultDeptId, // ✅ ensure required FK is set
                 IsActive = true,
                 CreatedAt = DateTime.UtcNow
             });
             await db.SaveChangesAsync();
+        }
+        else
+        {
+            // If DepartmentId was missing (e.g., older DB), backfill it safely
+            if (admin.DepartmentId == 0)
+            {
+                admin.DepartmentId = defaultDeptId;
+                await db.SaveChangesAsync();
+            }
         }
     }
 }

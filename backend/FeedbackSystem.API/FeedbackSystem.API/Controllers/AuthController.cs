@@ -31,4 +31,21 @@ public class AuthController : ControllerBase
         var user = await _auth.RegisterAsync(dto, ct);
         return CreatedAtAction(nameof(Register), new { id = user.UserId }, user);
     }
+
+    // ✅ Public registration endpoint - No authentication required
+    // Role is always forced to "Employee" regardless of input
+    [HttpPost("register-public")]
+    [AllowAnonymous]
+    public async Task<ActionResult<UserReadDto>> RegisterPublic([FromBody] PublicRegisterDto dto, CancellationToken ct)
+    {
+        try
+        {
+            var user = await _auth.PublicRegisterAsync(dto, ct);
+            return CreatedAtAction(nameof(Register), new { id = user.UserId }, user);
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+    }
 }

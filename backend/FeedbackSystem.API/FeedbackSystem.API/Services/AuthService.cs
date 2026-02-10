@@ -30,6 +30,8 @@ public class AuthService : IAuthService
             user.FullName,
             user.Email,
             user.Role.RoleName,
+            user.DepartmentId,
+            user.Department.DepartmentName,
             user.IsActive,
             user.CreatedAt
         );
@@ -44,12 +46,16 @@ public class AuthService : IAuthService
         var role = await _users.GetRoleByNameAsync(dto.RoleName, ct)
                    ?? throw new InvalidOperationException("Role not found.");
 
+        var department = await _users.GetDepartmentByIdAsync(dto.DepartmentId, ct)
+                        ?? throw new InvalidOperationException("Department not found or inactive.");
+
         var user = new User
         {
             FullName = dto.FullName,
             Email = dto.Email,
             PasswordHash = PasswordHasher.Hash(dto.Password),
             RoleId = role.RoleId,
+            DepartmentId = department.DepartmentId,
             IsActive = true,
             CreatedAt = DateTime.UtcNow
         };
@@ -62,6 +68,47 @@ public class AuthService : IAuthService
             user.FullName,
             user.Email,
             user.Role.RoleName,
+            user.DepartmentId,
+            user.Department.DepartmentName,
+            user.IsActive,
+            user.CreatedAt
+        );
+    }
+
+    // ✅ Public registration - Always forces role to "Employee"
+    public async Task<UserReadDto> PublicRegisterAsync(PublicRegisterDto dto, CancellationToken ct = default)
+    {
+        if (await _users.EmailExistsAsync(dto.Email, ct))
+            throw new InvalidOperationException("Email already exists.");
+
+        // Force role to Employee - ignore any role sent by client
+        var employeeRole = await _users.GetRoleByNameAsync("Employee", ct)
+                          ?? throw new InvalidOperationException("Employee role not found in system.");
+
+        var department = await _users.GetDepartmentByIdAsync(dto.DepartmentId, ct)
+                        ?? throw new InvalidOperationException("Department not found or inactive.");
+
+        var user = new User
+        {
+            FullName = dto.FullName,
+            Email = dto.Email,
+            PasswordHash = PasswordHasher.Hash(dto.Password),
+            RoleId = employeeRole.RoleId,  // Always Employee
+            DepartmentId = department.DepartmentId,
+            IsActive = true,
+            CreatedAt = DateTime.UtcNow
+        };
+
+        await _users.AddAsync(user, ct);
+
+        user = await _users.GetByIdAsync(user.UserId, ct) ?? user;
+        return new UserReadDto(
+            user.UserId,
+            user.FullName,
+            user.Email,
+            user.Role.RoleName,
+            user.DepartmentId,
+            user.Department.DepartmentName,
             user.IsActive,
             user.CreatedAt
         );
