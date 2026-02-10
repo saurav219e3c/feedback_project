@@ -1,0 +1,20 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FeedbackSystem.API.DTOs;
+
+public record UserReadDto(
+    int UserId, string FullName, string Email, string Role, bool IsActive, DateTime CreatedAt
+);
+
+public record UserCreateDto(
+    [property: Required, StringLength(50)] string FullName,
+    [property: Required, EmailAddress] string Email,
+    [property: Required, MinLength(6)] string Password,
+    [property: Required] string RoleName
+);
+
+public record UserUpdateDto(
+    [property: Required, StringLength(50)] string FullName,
+    [property: Required] string RoleName,
+    bool IsActive
+);
