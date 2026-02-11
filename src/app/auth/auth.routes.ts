@@ -9,12 +9,12 @@ export const AUTH_ROUTES: Routes = [
   
   { path: '', pathMatch: 'full', redirectTo: 'home-page' },
 
-  // /auth/home-page
-  { path: 'home-page',canMatch:[loginGuard], component: HomePageComponent },
+  // /auth/home-page - No guard, always accessible
+  { path: 'home-page', component: HomePageComponent },
 
-  // /auth/login-page?role=admin|manager|employee
-  { path: 'login-page',canMatch:[loginGuard], component: LoginPageComponent },
+  // /auth/login-page?role=admin|manager|employee - Guard prevents access if logged in
+  { path: 'login-page', component: LoginPageComponent },
 
-  // /auth/register-page
-  { path: 'register-page',canMatch:[loginGuard], component: RegisterPageComponent },
+  // /auth/register-page - Guard prevents access if logged in
+  { path: 'register-page', component: RegisterPageComponent },
 ];

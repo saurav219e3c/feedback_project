@@ -48,6 +48,12 @@ export class AuthService {
   loginWithToken(token: string): void {
     this.tokenSvc.setToken(token);
     this.hydrateUserFromToken(token);
+    
+    // IMPORTANT: Also save to localStorage after hydrating from token
+    const user = this._user$.getValue();
+    if (user) {
+      localStorage.setItem(this.USER_KEY, JSON.stringify(user));
+    }
   }
 
   /** FIXED: Now saves to Local Storage */
@@ -83,19 +89,33 @@ export class AuthService {
     const payload = this.tokenSvc.decodePayload<any>(token);
     const user: User | null = payload
       ? {
-        id: payload.sub ?? payload.userId ?? 'unknown',
-        name: payload.name ?? '',
+        id: payload.nameid ?? payload.sub ?? payload.userId ?? 'unknown',
+        name: payload.unique_name ?? payload.name ?? payload.fullName ?? '',
         email: payload.email ?? '',
-        roles: (payload.roles ?? payload['role'] ?? [])
-          .map((r: string) => normalizeRole(r))
-          .filter(Boolean) as Role[],
+        roles: this.extractRoles(payload),
       }
       : null;
     this._user$.next(user);
   }
+
+  private extractRoles(payload: any): Role[] {
+    // JWT can have role as single string or array
+    let roleValue = payload.role ?? payload.roles ?? payload[ClaimTypes_Role] ?? [];
+    
+    // Convert to array if single value
+    const roleArray = Array.isArray(roleValue) ? roleValue : [roleValue];
+    
+    return roleArray
+      .map((r: string) => normalizeRole(r))
+      .filter(Boolean) as Role[];
+  }
 }
 
+// ClaimTypes.Role constant from backend
+const ClaimTypes_Role = 'http://schemas.microsoft.com/ws/2008/06/identity/claims/role';
+
 function normalizeRole(r: string): Role | null {
+  if (!r) return null;
   const x = (r || '').trim().toLowerCase();
   if (x === 'admin') return 'Admin';
   if (x === 'manager') return 'Manager';

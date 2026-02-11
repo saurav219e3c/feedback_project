@@ -17,18 +17,18 @@
 
         <form [formGroup]="form" (ngSubmit)="onLogin()" class="login-form" novalidate>
  
-          <!-- USERNAME FEILD -->
+          <!-- EMAIL FIELD -->
           <div class="field">
-            <label>User Name</label>
+            <label>Email</label>
             <input 
-              type="text" 
-              formControlName="username" 
-              placeholder="Enter username"
-              [class.is-invalid]="f['username'].touched && f['username'].invalid" />
+              type="email" 
+              formControlName="email" 
+              placeholder="Enter your email"
+              [class.is-invalid]="f['email'].touched && f['email'].invalid" />
             
-            <div class="error-container" *ngIf="f['username'].touched && f['username'].errors">
-              <small class="error-text" *ngIf="f['username'].errors['required']">Username is required.</small>
-              <small class="error-text" *ngIf="f['username'].errors['minlength']">Must be at least 3 characters.</small>
+            <div class="error-container" *ngIf="f['email'].touched && f['email'].errors">
+              <small class="error-text" *ngIf="f['email'].errors['required']">Email is required.</small>
+              <small class="error-text" *ngIf="f['email'].errors['email']">Please enter a valid email.</small>
             </div>
           </div>
           <!-- PASSWORD FIELD -->
@@ -51,12 +51,14 @@
         </form>
         <!-- FORGOT PASS N REGISTER PAGE NAVI -->
         <div class="action-footer">
-          <ng-container *ngIf="role !== 'admin'">
+          <ng-container *ngIf="role === 'employee'">
             <button class="text-link" (click)="onForgotPassword()">Forgot Password?</button>
             <div class="line"></div>
             <button class="text-link" (click)="goToRegister()">Register</button>
           </ng-container>
-          <p class="admin-text" *ngIf="role === 'admin'">Recovery handled by IT.</p>
+          <ng-container *ngIf="role === 'admin' || role === 'manager'">
+            <p class="admin-text">Recovery handled by IT.</p>
+          </ng-container>
         </div>
       </div>
     </div>

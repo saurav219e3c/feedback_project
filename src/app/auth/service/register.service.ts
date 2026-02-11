@@ -1,27 +1,21 @@
+// src/app/auth/service/register.service.ts
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
+import { ApiService } from '../../core/services/api.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+export interface PublicRegisterDto {
+  userId: string;
+  fullName: string;
+  email: string;
+  department: string; // change to departmentId: number if backend expects numeric FK
+  password: string;
+}
+
+@Injectable({ providedIn: 'root' })
 export class RegisterService {
-  private STORAGE_KEY = 'feedback_project_users';
+  constructor(private api: ApiService) {}
 
-  getUsers(): any[] {
-    const data = localStorage.getItem(this.STORAGE_KEY);
-    return data ? JSON.parse(data) : [];
-  }
-
-  registerUser(userData: any): Observable<boolean> {
-    const users = this.getUsers();
-    
-    // Check if User ID already exists
-    if (users.find((u: any) => u.userId === userData.userId)) {
-      return of(false);
-    }
-
-    users.push(userData);
-    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(users));
-    return of(true);
+  registerPublic(dto: PublicRegisterDto): Observable<any> {
+    return this.api.post('/api/auth/register-public', dto);
   }
 }

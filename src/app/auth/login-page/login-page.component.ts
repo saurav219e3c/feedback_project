@@ -1,12 +1,9 @@
-
 // src/app/auth/login-page/login-page.component.ts
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, RouterLink } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
 import { LoginService } from '../service/login.service';
-
 import { AuthService } from '../../core/services/auth.service';
 
 @Component({
@@ -17,101 +14,75 @@ import { AuthService } from '../../core/services/auth.service';
   imports: [CommonModule, ReactiveFormsModule]
 })
 export class LoginPageComponent implements OnInit {
-
   role?: string;
   form: FormGroup;
-  admin_logged = false;
+  loading = false;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private loginService: LoginService,
-    
     private route: ActivatedRoute,
     private auth: AuthService,
   ) {
-
-    // Initialize form
     this.form = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
   ngOnInit() {
-
-    // Subscribe to query parameters to get the role
     this.route.queryParamMap.subscribe(params => {
       this.role = params.get('role') ?? undefined;
     });
   }
 
-  get f() {
-    return this.form.controls;
-  }
+  get f() { return this.form.controls; }
 
- 
-
-  // Submit handler
   onLogin() {
-    if (this.form.invalid) { //true
+    if (this.form.invalid) {
       this.form.markAllAsTouched();
-
       return;
     }
 
-    // Include the role from the URL in the login check
-    const credentials = {
-      ...this.form.value,
-      role: this.role
+    this.loading = true;
+
+    const payload = {
+      email: this.form.value.email,
+      password: this.form.value.password
     };
 
-    this.loginService.login(credentials).subscribe(user => {
-      if (user) {
+    this.loginService.login(payload).subscribe({
+      next: (res) => {
+        // Save token + hydrate user from token (keeps your guards working)
+        this.auth.loginWithToken(res.token);
 
-        //  Set auth state so guards allow access
-        // Safe fallback: if ?role is missing, use user.role or default to 'employee'
-        const r = (this.role ?? user.role ?? 'employee').toString().toLowerCase();
+        // Role normalization for redirect:
+        const r = (this.role ?? res.user?.role ?? 'employee').toString().toLowerCase();
         const normalizedRole =
           r === 'admin' ? 'Admin' :
-          r === 'manager' ? 'Manager' :
-          'Employee';
+          r === 'manager' ? 'Manager' : 'Employee';
 
-        this.auth.loginWithUser({
-          id: user.userId ?? user.id ?? 'unknown',
-          name: user.name ?? this.form.value.username,
-          email: user.email ?? '',
-          roles: [normalizedRole]
-        });
-
-
-        // ✅ Otherwise navigate based on role
         const target =
           normalizedRole === 'Admin'   ? '/admin'   :
           normalizedRole === 'Manager' ? '/manager' :
                                          '/employee';
 
         this.router.navigate([target]);
-
-        
-
-      } else {
-        alert('Invalid credentials or role. Please try again.');
-      }
+      },
+      error: () => {
+        alert('Invalid credentials or inactive user.');
+      },
+      complete: () => this.loading = false
     });
   }
- havingthis(){
-  
-      console.log(this.f['username']?.value);
-      
 
- }
   goToRegister() {
-    // Navigate 
-    this.router.navigate(['/auth/register-page']);
+    // Only employee is allowed through public registration
+    this.router.navigate(['/auth/register-page'], { queryParams: { role: 'employee' } });
   }
-   onForgotPassword() {
+
+  onForgotPassword() {
     alert('Forgot password clicked.');
   }
-
 }

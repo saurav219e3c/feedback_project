@@ -13,7 +13,8 @@ export const EMPLOYEE_ROUTES: Routes = [
   {
     path: '',
     component: EmployeeLayoutComponent,
-    canActivate:[authGuard,roleGuard],
+    canActivate: [authGuard, roleGuard],
+    data: { roles: ['Employee'] },
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, 
       { path: 'dashboard', component: EmployeeDashboardComponent },

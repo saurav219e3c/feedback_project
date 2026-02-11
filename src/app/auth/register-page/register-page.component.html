@@ -12,7 +12,8 @@
       <div class="content-wrapper">
         <div class="header-area">
           <h2>Create Account</h2>
-          <span class="role-tag" *ngIf="roleFromLogin">{{ roleFromLogin | titlecase }} Registration</span>
+          <!-- <span class="role-tag" *ngIf="roleFromLogin">{{ roleFromLogin | titlecase }} Registration</span> -->
+          <span class="role-tag" >{{ "employee"| titlecase }} Registration</span>
         </div>
 
         <form [formGroup]="form" (ngSubmit)="onSubmit()" class="register-form" novalidate>
@@ -40,7 +41,8 @@
             <div class="field">
               <label>Role</label>
               <select formControlName="role">
-                <option *ngFor="let r of roles" [value]="r">{{ r | titlecase }}</option>
+                <option>{{ "employee" | titlecase }}</option>?
+                <!-- <option *ngFor="let r of roles" [value]="r">{{ r | titlecase }}</option>? -->
               </select>
             </div>
 

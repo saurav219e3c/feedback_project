@@ -1,1 +1,76 @@
-<p>admin-reports works!</p>
+<div class="reports-container">
+  <div class="header">
+    <h2>Admin Reports</h2>
+  </div>
+
+  <div *ngIf="loading" class="state">Loading…</div>
+  <div *ngIf="error" class="state error">{{ error }}</div>
+
+  <div *ngIf="!loading" class="grid">
+    <section class="card tall">
+      <div class="card-title">Feedback Sentiment</div>
+      <div class="chart">
+        <canvas baseChart [data]="doughnutConfig.data" [type]="doughnutConfig.type" [options]="doughnutConfig.options"></canvas>
+      </div>
+    </section>
+
+    <section class="card wide">
+      <div class="card-title">Monthly Trend (Feedback vs Recognition)</div>
+      <div class="chart">
+        <canvas baseChart [data]="lineConfig.data" [type]="lineConfig.type" [options]="lineConfig.options"></canvas>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-title">Department-wise Feedback</div>
+      <div class="chart">
+        <canvas baseChart [data]="deptBarConfig.data" [type]="deptBarConfig.type" [options]="deptBarConfig.options"></canvas>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-title">Top 10 Employees by Points</div>
+      <div class="chart">
+        <canvas baseChart [data]="topEmpConfig.data" [type]="topEmpConfig.type" [options]="topEmpConfig.options"></canvas>
+      </div>
+    </section>
+
+    <section class="card wide">
+      <div class="card-title">Recognition Given vs Received (by Department)</div>
+      <div class="chart">
+        <canvas baseChart [data]="stackedDeptConfig.data" [type]="stackedDeptConfig.type" [options]="stackedDeptConfig.options"></canvas>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-title">Category-wise Avg Scores</div>
+      <div class="chart">
+        <canvas baseChart [data]="radarConfig.data" [type]="radarConfig.type" [options]="radarConfig.options"></canvas>
+      </div>
+    </section>
+
+    <section class="card wide">
+      <div class="card-title">Recent Activities</div>
+      <div class="table-wrap">
+        <table class="activities">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>User</th>
+              <th>Action</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let a of activities">
+              <td>{{ a.time }}</td>
+              <td>{{ a.user }}</td>
+              <td>{{ a.action }}</td>
+              <td>{{ a.details }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</div>

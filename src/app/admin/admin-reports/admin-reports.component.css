@@ -1,0 +1,78 @@
+.reports-container {
+  padding: 16px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.state {
+  padding: 16px;
+  border-radius: 8px;
+  background: #f1f5f9;
+  color: #0f172a;
+}
+.state.error {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+.card {
+  grid-column: span 4;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  min-height: 260px;
+}
+.card.wide { grid-column: span 8; }
+.card.tall { min-height: 340px; }
+
+.card-title {
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.chart {
+  position: relative;
+  flex: 1;
+  min-height: 200px;
+}
+
+.table-wrap {
+  overflow: auto;
+  max-height: 320px;
+}
+
+table.activities {
+  width: 100%;
+  border-collapse: collapse;
+}
+table.activities th, table.activities td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid #f1f5f9;
+}
+table.activities thead th {
+  position: sticky;
+  top: 0;
+  background: #f8fafc;
+  z-index: 1;
+}
+
+@media (max-width: 1200px) {
+  .card, .card.wide { grid-column: span 12; }
+}

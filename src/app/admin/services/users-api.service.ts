@@ -1,0 +1,67 @@
+
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ApiService } from '../../core/services/api.service';
+
+export interface UserReadDto {
+  userId: number;
+  fullName: string;
+  email: string;
+  role: 'Admin' | 'Manager' | 'Employee' | string;
+  department?: string;
+}
+
+export interface UserCreateDto {
+  userId: string;       // if you require custom ID format
+  fullName: string;
+  email: string;
+  role: 'Admin' | 'Manager' | 'Employee';
+  department?: string;
+  password?: string;    // only if admin creates with password
+}
+
+export interface UserUpdateDto {
+  fullName?: string;
+  email?: string;
+  role?: 'Admin' | 'Manager' | 'Employee';
+  department?: string;
+  active?: boolean;
+}
+
+export interface UserStatsDto {
+  total: number;
+  admins: number;
+  managers: number;
+  employees: number;
+  active: number;
+  inactive: number;
+}
+
+@Injectable({ providedIn: 'root' })
+export class UsersApiService {
+  constructor(private api: ApiService) {}
+
+  getAll(): Observable<UserReadDto[]> {
+    return this.api.get<UserReadDto[]>('/api/users');
+  }
+
+  getById(id: number): Observable<UserReadDto> {
+    return this.api.get<UserReadDto>(`/api/users/${id}`);
+  }
+
+  create(dto: UserCreateDto): Observable<UserReadDto> {
+    return this.api.post<UserReadDto>('/api/users', dto);
+  }
+
+  update(id: number, dto: UserUpdateDto): Observable<void> {
+    return this.api.put<void>(`/api/users/${id}`, dto);
+  }
+
+  delete(id: number): Observable<void> {
+    return this.api.delete<void>(`/api/users/${id}`);
+  }
+
+  getStats(): Observable<UserStatsDto> {
+    return this.api.get<UserStatsDto>('/api/users/stats');
+  }
+}

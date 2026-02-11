@@ -1,14 +1,26 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../core/services/auth.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home-page',
-  imports: [RouterLink, RouterModule],
+  standalone: true,                 // <-- ADD THIS
+  imports: [RouterLink, RouterModule, CommonModule],
   templateUrl: './home-page.component.html',
-  styleUrl: './home-page.component.css'
+  styleUrls: ['./home-page.component.css'] // <-- Also fix styleUrls
 })
 export class HomePageComponent {
+  constructor(
+    public auth: AuthService,
+    private router: Router
+  ) {}
+
+  get isLoggedIn$() {
+    return this.auth.isLoggedIn$;
+  }
+
   scrollToAbout(): void {
     const element = document.getElementById('about-anchor');
     if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -18,5 +30,9 @@ export class HomePageComponent {
     const element = document.getElementById('roles-anchor');
     if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
-}
 
+  logout(): void {
+    this.auth.logout();
+    this.router.navigate(['/auth/home-page']);
+  }
+}

@@ -2,8 +2,13 @@
   <nav class="glass-header">
     <div class="nav-logo"></div>
     <div class="nav-actions">
-      <button class="nav-btn login-btn" (click)="scrollToRoles()">Login</button>
-      <button class="nav-btn register-btn" [routerLink]="['/auth/register-page']">Register</button>
+      <ng-container *ngIf="!(isLoggedIn$ | async); else loggedInButtons">
+        <button class="nav-btn login-btn" (click)="scrollToRoles()">Login</button>
+        <button class="nav-btn register-btn" [routerLink]="['/auth/register-page']">Register</button>
+      </ng-container>
+      <ng-template #loggedInButtons>
+        <button class="nav-btn login-btn" (click)="logout()">Logout</button>
+      </ng-template>
     </div>
   </nav>
 
@@ -52,17 +57,17 @@
       <p>Please choose your specialized role to begin your journey.</p>
     </div>
     <div class="cards-grid">
-      <a class="glass-card" [routerLink]="['/auth/login-page']" [queryParams]="{ role: 'admin' }">
+      <a class="glass-card" [routerLink]="['/auth/login-page']" [queryParams]="{role: 'admin'}" style="cursor: pointer;">
         <div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Admin"></div>
         <h3>Administrator</h3>
         <span class="portal-link">Access Portal →</span>
       </a>
-      <a class="glass-card" [routerLink]="['/auth/login-page']" [queryParams]="{ role: 'manager' }">
+      <a class="glass-card" [routerLink]="['/auth/login-page']" [queryParams]="{role: 'manager'}" style="cursor: pointer;">
         <div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/912/912318.png" alt="Manager"></div>
         <h3>Manager</h3>
         <span class="portal-link">Access Portal →</span>
       </a>
-      <a class="glass-card" [routerLink]="['/auth/login-page']" [queryParams]="{ role: 'employee' }">
+      <a class="glass-card" [routerLink]="['/auth/login-page']" [queryParams]="{role: 'employee'}" style="cursor: pointer;">
         <div class="icon-box"><img src="https://cdn-icons-png.flaticon.com/512/1256/1256650.png" alt="Employee"></div>
         <h3>Employee</h3>
         <span class="portal-link">Access Portal →</span>

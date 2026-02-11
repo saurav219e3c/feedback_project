@@ -1,11 +1,15 @@
-// src/app/auth/register-page/register-page.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, Validators, FormGroup, ReactiveFormsModule, AbstractControl, ValidationErrors } from '@angular/forms';
-import { Router, ActivatedRoute, RouterLink } from '@angular/router';
+import {
+  FormBuilder,
+  Validators,
+  FormGroup,
+  ReactiveFormsModule,
+  AbstractControl,
+  ValidationErrors,
+} from '@angular/forms';
+import { Router } from '@angular/router';
 import { RegisterService } from '../service/register.service';
-
-type Role = 'manager' | 'employee'; // union
 
 @Component({
   selector: 'app-register-page',
@@ -15,51 +19,62 @@ type Role = 'manager' | 'employee'; // union
   styleUrls: ['./register-page.component.css'],
 })
 export class RegisterPageComponent implements OnInit {
-  
   form!: FormGroup;
-  roleFromLogin?: Role;
+  loading = false;
 
-  roles: Role[] = ['manager', 'employee'];
   departments: string[] = [
-    'Engineering', 'Human Resources', 'Finance', 'Operations', 
-    'Sales', 'Marketing', 'IT Support', 'Product'
+    'Engineering',
+    'Human Resources',
+    'Finance',
+    'Operations',
+    'Sales',
+    'Marketing',
+    'IT Support',
+    'Product',
   ];
 
-  // Patterns
-  // 3 letters followed by 4 digits
-  userIdPattern = /^[a-z]{3}[0-9]{4}$/; 
-  // Min 6 chars, 1 Uppercase, 1 Digit, 1 Special Char
-  passwordPattern = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{6,}$/;
-
+  userIdPattern = /^[a-z]{3}[0-9]{4}$/;
+  passwordPattern =
+    /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{6,}$/;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private registerService: RegisterService,
-    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.route.queryParamMap.subscribe(params => {
-      const role = params.get('role') as Role | null;
-      this.roleFromLogin = role ?? undefined;
-    });
-
     this.form = this.fb.group(
       {
-        userId: ['', [Validators.required, Validators.pattern(this.userIdPattern)]],
-        name: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(80)]],
-        role: [this.roleFromLogin ?? 'employee', [Validators.required]],
+        userId: [
+          '',
+          [Validators.required, Validators.pattern(this.userIdPattern)],
+        ],
+        name: [
+          '',
+          [
+            Validators.required,
+            Validators.minLength(8),
+            Validators.maxLength(80),
+          ],
+        ],
+        // 🔒 UI lock: role fixed to employee
+        role: [{ value: 'employee', disabled: true }],
         email: ['', [Validators.required, Validators.email]],
         department: ['', [Validators.required]],
-        password: ['', [Validators.required, Validators.pattern(this.passwordPattern)]],
+        password: [
+          '',
+          [Validators.required, Validators.pattern(this.passwordPattern)],
+        ],
         confirmPassword: ['', [Validators.required]],
       },
-      { validators: this.passwordsMatchValidator }
+      { validators: this.passwordsMatchValidator },
     );
   }
 
-  private passwordsMatchValidator(group: AbstractControl): ValidationErrors | null {
+  private passwordsMatchValidator(
+    group: AbstractControl,
+  ): ValidationErrors | null {
     const password = group.get('password')?.value;
     const confirm = group.get('confirmPassword')?.value;
     if (!password || !confirm) return null;
@@ -76,21 +91,34 @@ export class RegisterPageComponent implements OnInit {
       return;
     }
 
-    this.registerService.registerUser(this.form.value).subscribe(success => {
-      if (success) {
-        alert('Registration successful!');
+    this.loading = true;
+
+    const payload = {
+      userId: this.form.getRawValue().userId,
+      fullName: this.form.getRawValue().name, // adjust if backend expects 'FullName'
+      email: this.form.getRawValue().email,
+      department: this.form.getRawValue().department, // change to departmentId if API expects number
+      password: this.form.getRawValue().password,
+    };
+
+    this.registerService.registerPublic(payload).subscribe({
+      next: () => {
+        alert('Registration successful! You can now log in.');
         this.router.navigate(['/auth/login-page'], {
-          queryParams: { role: this.form.value.role },
+          queryParams: { role: 'employee' },
         });
-      } else {
-        alert('User ID already exists. Please use a different one.');
-      }
+      },
+      error: (err) => {
+        const msg = err?.error?.message || 'Registration failed.';
+        alert(msg);
+      },
+      complete: () => (this.loading = false),
     });
   }
 
   goToLogin(): void {
-    this.router.navigate(['/auth/home-page'], {
-      queryParams: this.roleFromLogin ? { role: this.roleFromLogin } : undefined,
+    this.router.navigate(['/auth/login-page'], {
+      queryParams: { role: 'employee' },
     });
   }
 }

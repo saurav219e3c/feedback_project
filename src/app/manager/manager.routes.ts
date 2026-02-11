@@ -14,7 +14,8 @@ export const managerRoutes :Routes = [{
   
     path:'',
     component:ManagerLayoutComponent,
-    canActivate:[authGuard,roleGuard],
+    canActivate: [authGuard, roleGuard],
+    data: { roles: ['Manager', 'Admin'] },
     children:[{
 
         path:'',
