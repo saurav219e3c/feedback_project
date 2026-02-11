@@ -3,21 +3,22 @@
 namespace FeedbackSystem.API.DTOs;
 
 public record UserReadDto(
-    int UserId, string FullName, string Email, string Role, int DepartmentId, string DepartmentName, bool IsActive, DateTime CreatedAt
+    string UserId, string FullName, string Email, string Role, string DepartmentId, string DepartmentName, bool IsActive, DateTime CreatedAt
 );
 
 public record UserCreateDto(
+    [Required, StringLength(20)] string UserId,
     [Required, StringLength(50)] string FullName,
     [Required, EmailAddress] string Email,
     [Required, MinLength(6)] string Password,
     [Required] string RoleName,
-    [Required] int DepartmentId
+    [Required] string DepartmentId
 );
 
 public record UserUpdateDto(
     [Required, StringLength(50)] string FullName,
     [Required] string RoleName,
-    [Required] int DepartmentId,
+    [Required] string DepartmentId,
     bool IsActive
 );
 

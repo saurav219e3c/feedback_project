@@ -41,6 +41,7 @@ public class AppDbContext : DbContext
             e.ToTable("Departments");
             e.HasKey(x => x.DepartmentId);
 
+            e.Property(x => x.DepartmentId).IsRequired().HasMaxLength(20);
             e.Property(x => x.DepartmentName).IsRequired().HasMaxLength(100);
             e.Property(x => x.Description).HasMaxLength(225);
             e.Property(x => x.IsActive).HasDefaultValue(true);
@@ -54,9 +55,11 @@ public class AppDbContext : DbContext
         {
             e.ToTable("Users");
             e.HasKey(x => x.UserId);
+            e.Property(x => x.UserId).IsRequired().HasMaxLength(20);
             e.Property(x => x.FullName).IsRequired().HasMaxLength(50);
             e.Property(x => x.Email).IsRequired().HasMaxLength(100);
             e.Property(x => x.PasswordHash).IsRequired().HasMaxLength(225);
+            e.Property(x => x.DepartmentId).IsRequired().HasMaxLength(20);
             e.Property(x => x.IsActive).HasDefaultValue(true);
             e.Property(x => x.CreatedAt).HasDefaultValueSql("GETDATE()");
             e.HasIndex(x => x.Email).IsUnique();
@@ -83,6 +86,7 @@ public class AppDbContext : DbContext
         {
             e.ToTable("Categories");
             e.HasKey(x => x.CategoryId);
+            e.Property(x => x.CategoryId).IsRequired().HasMaxLength(20);
             e.Property(x => x.CategoryName).IsRequired().HasMaxLength(100);
             e.Property(x => x.Description).HasMaxLength(225);
             e.Property(x => x.IsActive).HasDefaultValue(true);
@@ -127,6 +131,7 @@ public class AppDbContext : DbContext
         {
             e.ToTable("FeedbackReview");
             e.HasKey(x => x.ReviewId);
+            e.Property(x => x.ReviewedBy).HasMaxLength(20);
             e.Property(x => x.Status).IsRequired().HasMaxLength(20);
             e.Property(x => x.Remarks).HasMaxLength(225);
             e.Property(x => x.ReviewedAt).HasDefaultValueSql("GETDATE()");

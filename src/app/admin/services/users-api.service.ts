@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { ApiService } from '../../core/services/api.service';
 
 export interface UserReadDto {
-  userId: number;
+  userId: string;
   fullName: string;
   email: string;
   role: 'Admin' | 'Manager' | 'Employee' | string;
@@ -45,7 +45,7 @@ export class UsersApiService {
     return this.api.get<UserReadDto[]>('/api/users');
   }
 
-  getById(id: number): Observable<UserReadDto> {
+  getById(id: string): Observable<UserReadDto> {
     return this.api.get<UserReadDto>(`/api/users/${id}`);
   }
 
@@ -53,11 +53,11 @@ export class UsersApiService {
     return this.api.post<UserReadDto>('/api/users', dto);
   }
 
-  update(id: number, dto: UserUpdateDto): Observable<void> {
+  update(id: string, dto: UserUpdateDto): Observable<void> {
     return this.api.put<void>(`/api/users/${id}`, dto);
   }
 
-  delete(id: number): Observable<void> {
+  delete(id: string): Observable<void> {
     return this.api.delete<void>(`/api/users/${id}`);
   }
 

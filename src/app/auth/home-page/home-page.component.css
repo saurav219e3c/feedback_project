@@ -71,6 +71,17 @@
   transform: translateY(-2px);
 }
 
+/* Fade orange style for 2nd viewport */
+.nav-btn.fade-orange {
+  background: rgba(255, 138, 76, 0.15);
+  color: #ff8a4c;
+  border: 1px solid rgba(255, 138, 76, 0.5);
+}
+
+.nav-btn.fade-orange:hover {
+  background: rgba(255, 138, 76, 0.25);
+}
+
 /* --- HERO SECTION --- */
 .hero-section {
   height: 100vh;

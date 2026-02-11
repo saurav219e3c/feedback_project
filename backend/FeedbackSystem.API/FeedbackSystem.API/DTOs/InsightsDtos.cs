@@ -13,11 +13,11 @@ namespace FeedbackSystem.API.DTOs
     // Flat list item for Feedback
     public record FeedbackItemDto(
         int FeedbackId,
-        int FromUserId,
+        string FromUserId,
         string FromUserName,
-        int ToUserId,
+        string ToUserId,
         string ToUserName,
-        int CategoryId,
+        string CategoryId,
         string CategoryName,
         string Comments,
         bool IsAnonymous,
@@ -28,11 +28,11 @@ namespace FeedbackSystem.API.DTOs
     // Uses Category table (same as Feedback)
     public record RecognitionItemDto(
         int RecognitionId,
-        int FromUserId,
+        string FromUserId,
         string FromUserName,
-        int ToUserId,
+        string ToUserId,
         string ToUserName,
-        int CategoryId,
+        string CategoryId,
         string CategoryName,
         int Points,
         string Message,
@@ -41,7 +41,7 @@ namespace FeedbackSystem.API.DTOs
 
     // Compact numbers for dashboards (per user)
     public record UserInsightSummaryDto(
-        int UserId,
+        string UserId,
         int FeedbackGivenCount,
         int FeedbackReceivedCount,
         int RecognitionGivenCount,
@@ -56,11 +56,11 @@ namespace FeedbackSystem.API.DTOs
     public record FeedbackAllFilter(
         DateTime? From,
         DateTime? To,
-        int? CategoryId,
+        string? CategoryId,
         string? Search,
-        int? DepartmentId,  // Admin can use any; Manager is auto-scoped to their dept
-        int? FromUserId,    // optional
-        int? ToUserId,      // optional
+        string? DepartmentId,  // Admin can use any; Manager is auto-scoped to their dept
+        string? FromUserId,    // optional
+        string? ToUserId,      // optional
         int Page = 1,
         int PageSize = 20
     );
@@ -69,9 +69,9 @@ namespace FeedbackSystem.API.DTOs
         DateTime? From,
         DateTime? To,
         string? Search,
-        int? DepartmentId,  // Admin can use any; Manager is auto-scoped to their dept
-        int? FromUserId,    // optional
-        int? ToUserId,      // optional
+        string? DepartmentId,  // Admin can use any; Manager is auto-scoped to their dept
+        string? FromUserId,    // optional
+        string? ToUserId,      // optional
         int Page = 1,
         int PageSize = 20
     );
@@ -81,14 +81,14 @@ namespace FeedbackSystem.API.DTOs
 
     // ✅ Category-based statistics
     public record CategoryStatsDto(
-        int CategoryId,
+        string CategoryId,
         string CategoryName,
         int FeedbackCount,
         DateTime? LatestFeedbackAt
     );
 
     public record RecognitionCategoryStatsDto(
-        int CategoryId,
+        string CategoryId,
         string CategoryName,
         int RecognitionCount,
         DateTime? LatestRecognitionAt
@@ -98,7 +98,7 @@ namespace FeedbackSystem.API.DTOs
     public record CategoryStatsFilter(
         DateTime? From,
         DateTime? To,
-        int? DepartmentId,
-        int? UserId  // Optional: filter by specific user (giver or receiver)
+        string? DepartmentId,
+        string? UserId  // Optional: filter by specific user (giver or receiver)
     );
 }

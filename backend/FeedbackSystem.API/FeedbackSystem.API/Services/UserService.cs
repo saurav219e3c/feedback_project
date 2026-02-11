@@ -33,7 +33,7 @@ public class UserService : IUserService
         )).ToList();
     }
 
-    public async Task<UserReadDto?> GetByIdAsync(int id, CancellationToken ct = default)
+    public async Task<UserReadDto?> GetByIdAsync(string id, CancellationToken ct = default)
     {
         var user = await _repo.GetByIdAsync(id, ct);
         if (user is null) return null;
@@ -63,11 +63,12 @@ public class UserService : IUserService
 
         var entity = new User
         {
+            UserId = dto.UserId,
             FullName = dto.FullName,
             Email = dto.Email,
             PasswordHash = PasswordHasher.Hash(dto.Password),
             RoleId = role.RoleId,
-            DepartmentId = department.DepartmentId,
+            DepartmentId = dto.DepartmentId,
             IsActive = true,
             CreatedAt = DateTime.UtcNow
         };
@@ -87,7 +88,7 @@ public class UserService : IUserService
         );
     }
 
-    public async Task<bool> UpdateAsync(int id, UserUpdateDto dto, CancellationToken ct = default)
+    public async Task<bool> UpdateAsync(string id, UserUpdateDto dto, CancellationToken ct = default)
     {
         var user = await _repo.GetByIdAsync(id, ct);
         if (user is null) return false;
@@ -107,7 +108,7 @@ public class UserService : IUserService
         return true;
     }
 
-    public async Task<bool> DeleteAsync(int id, CancellationToken ct = default)
+    public async Task<bool> DeleteAsync(string id, CancellationToken ct = default)
     {
         var user = await _repo.GetByIdAsync(id, ct);
         if (user is null) return false;

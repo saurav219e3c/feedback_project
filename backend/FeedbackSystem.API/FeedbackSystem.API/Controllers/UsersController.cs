@@ -17,8 +17,8 @@ public class UsersController : ControllerBase
     public async Task<ActionResult<List<UserReadDto>>> GetAll(CancellationToken ct)
         => Ok(await _service.GetAllAsync(ct));
 
-    [HttpGet("{id:int}")]
-    public async Task<ActionResult<UserReadDto>> Get(int id, CancellationToken ct)
+    [HttpGet("{id}")]
+    public async Task<ActionResult<UserReadDto>> Get(string id, CancellationToken ct)
     {
         var user = await _service.GetByIdAsync(id, ct);
         return user is null ? NotFound() : Ok(user);
@@ -31,12 +31,12 @@ public class UsersController : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = created.UserId }, created);
     }
 
-    [HttpPut("{id:int}")]
-    public async Task<IActionResult> Update(int id, UserUpdateDto dto, CancellationToken ct)
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(string id, UserUpdateDto dto, CancellationToken ct)
         => await _service.UpdateAsync(id, dto, ct) ? NoContent() : NotFound();
 
-    [HttpDelete("{id:int}")]
-    public async Task<IActionResult> Delete(int id, CancellationToken ct)
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(string id, CancellationToken ct)
         => await _service.DeleteAsync(id, ct) ? NoContent() : NotFound();
 
     // ✅ Statistics endpoint

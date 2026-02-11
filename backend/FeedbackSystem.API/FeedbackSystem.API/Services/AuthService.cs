@@ -51,11 +51,12 @@ public class AuthService : IAuthService
 
         var user = new User
         {
+            UserId = dto.UserId,
             FullName = dto.FullName,
             Email = dto.Email,
             PasswordHash = PasswordHasher.Hash(dto.Password),
             RoleId = role.RoleId,
-            DepartmentId = department.DepartmentId,
+            DepartmentId = dto.DepartmentId,
             IsActive = true,
             CreatedAt = DateTime.UtcNow
         };
@@ -90,11 +91,12 @@ public class AuthService : IAuthService
 
         var user = new User
         {
+            UserId = dto.UserId,
             FullName = dto.FullName,
             Email = dto.Email,
             PasswordHash = PasswordHasher.Hash(dto.Password),
             RoleId = employeeRole.RoleId,  // Always Employee
-            DepartmentId = department.DepartmentId,
+            DepartmentId = dto.DepartmentId,
             IsActive = true,
             CreatedAt = DateTime.UtcNow
         };

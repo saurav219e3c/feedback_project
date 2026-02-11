@@ -36,10 +36,10 @@ public static class DbSeeder
         if (!await db.Departments.AnyAsync())
         {
             db.Departments.AddRange(
-                new Department { DepartmentName = "Engineering", Description = "Product engineering", IsActive = true },
-                new Department { DepartmentName = "HR", Description = "Human resources", IsActive = true },
-                new Department { DepartmentName = "Sales", Description = "Revenue team", IsActive = true },
-                new Department { DepartmentName = "General", Description = "Default department", IsActive = true }
+                new Department { DepartmentId = "dept001", DepartmentName = "Engineering", Description = "Product engineering", IsActive = true },
+                new Department { DepartmentId = "dept002", DepartmentName = "HR", Description = "Human resources", IsActive = true },
+                new Department { DepartmentId = "dept003", DepartmentName = "Sales", Description = "Revenue team", IsActive = true },
+                new Department { DepartmentId = "dept004", DepartmentName = "General", Description = "Default department", IsActive = true }
             );
         }
 
@@ -58,7 +58,7 @@ public static class DbSeeder
             .Select(d => d.DepartmentId)
             .FirstOrDefaultAsync();
 
-        if (defaultDeptId == 0)
+        if (string.IsNullOrEmpty(defaultDeptId))
         {
             defaultDeptId = await db.Departments
                 .Where(d => d.DepartmentName == "General")
@@ -72,6 +72,7 @@ public static class DbSeeder
         {
             db.Users.Add(new User
             {
+                UserId = "admin001",
                 FullName = "System Administrator",
                 Email = "admin@local",
                 PasswordHash = PasswordHasher.Hash("Admin@123"),
@@ -85,7 +86,7 @@ public static class DbSeeder
         else
         {
             // If DepartmentId was missing (e.g., older DB), backfill it safely
-            if (admin.DepartmentId == 0)
+            if (string.IsNullOrEmpty(admin.DepartmentId))
             {
                 admin.DepartmentId = defaultDeptId;
                 await db.SaveChangesAsync();
