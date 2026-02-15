@@ -138,14 +138,6 @@
   align-items: center;
   gap: 15px;
 }
-<<<<<<< HEAD
- .glass-card:hover {
-  background: rgba(255, 255, 255, 0.24);
-  transform: translateY(-6px);
-  border-color: #2563eb; /* Mustard se Blue kar diya */
-  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
-  
-=======
 
 .philosophy-text {
   color: #ffffff !important;
@@ -255,7 +247,6 @@
 .glass-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
->>>>>>> 3014ab215fe38c5f69651cdefd46aa1a9edc69a8
 }
 
 .icon-box {
