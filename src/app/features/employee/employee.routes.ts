@@ -8,6 +8,7 @@ import { EmployeeLayoutComponent } from "./layout/employee-layout/employee-layou
 import { ReceivedRecognitionComponent } from "./pages/received-recognition/received-recognition.component";
 import { authGuard } from "../../core/guards/auth.guard";
 import { roleGuard } from "../../core/guards/role.guard";
+import { EmployeeProfileComponent } from "./pages/employee-profile/employee-profile.component";
 
 export const EMPLOYEE_ROUTES: Routes = [
   {
@@ -21,6 +22,7 @@ export const EMPLOYEE_ROUTES: Routes = [
       { path: 'notifications', component: EmployeeNotificationComponent },
       { path: 'recognition', component: EmployeeRecognitionComponent },
       {path: 'received-recognition',component:ReceivedRecognitionComponent},
+      { path: 'profile', component: EmployeeProfileComponent },
       {path: 'recivedfeedback',component:EmployeeFeedbackComponent},
       {path:'**', redirectTo:'dashboard', pathMatch:'full'}
     ]

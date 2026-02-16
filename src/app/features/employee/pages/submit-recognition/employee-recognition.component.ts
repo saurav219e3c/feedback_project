@@ -3,6 +3,7 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { EmployeeService, Recognition } from '../../services/employee.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-employee-recognition',
@@ -99,7 +100,14 @@ export class EmployeeRecognitionComponent implements OnInit {
       this.empService.saveRecognition(recognitionData);
 
       console.log('Saved to DB:', recognitionData);
-      alert(`🎉 Recognition Sent to ${this.selectedEmp().name}!`);
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Recognition Sent',
+        text: `Great job! Your recognition was sent to ${this.selectedEmp().name}.`,
+        timer: 2000,
+        showConfirmButton: false
+      });
       
       this.recognitionForm.reset({
         points: 5,

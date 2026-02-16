@@ -1,19 +1,103 @@
 .extra-small { font-size: 0.7rem; }
 .x-small { font-size: 0.8rem; }
 
-.icon-circle {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
+.recognition-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.recognition-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #2563eb, #38bdf8, #22c55e);
+}
+
+.recognition-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 20px;
+}
+
+.header-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: #eff6ff;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #2563eb;
+  font-size: 1.6rem;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.header-subtitle {
+  margin: 4px 0 0;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.section-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 18px 0 10px;
+}
+
+.form-label {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.input-group-text {
+  color: #334155;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.form-select,
+.form-control {
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.input-group .form-control,
+.input-group .form-select {
+  border-left: 0;
+}
+
+.form-select:focus,
+.form-control:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.08);
 }
 
 .avatar-xs {
   width: 32px;
   height: 32px;
-  background: #0d6efd;
+  background: #2563eb;
   color: white;
   border-radius: 8px;
   display: flex;
@@ -23,8 +107,33 @@
   font-size: 0.8rem;
 }
 
+.score-card {
+  margin-top: 8px;
+  padding: 14px 16px;
+  border: 1px dashed #e2e8f0;
+  border-radius: 12px;
+  background: #f8fafc;
+}
+
 .form-range::-webkit-slider-thumb {
-  background: #0d6efd;
+  background: #2563eb;
+}
+
+.form-actions {
+  margin-top: 20px;
+}
+
+.btn-primary {
+  padding: 12px 18px;
+  font-weight: 600;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.2);
+}
+
+.required-asterisk {
+  color: #dc2626;
+  margin-left: 4px;
+  font-weight: 700;
 }
 
 .cursor-pointer { cursor: pointer; }

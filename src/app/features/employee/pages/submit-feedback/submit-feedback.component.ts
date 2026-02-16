@@ -2,7 +2,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { EmployeeService, Feedback } from '../../services/employee.service';
+import Swal from 'sweetalert2';
+import { EmployeeService, Feedback, Employee } from '../../services/employee.service';
 import { CategoryManagementComponent } from '../../../admin/category-management/category-management.component';
 
 
@@ -19,7 +20,8 @@ export class SubmitFeedbackComponent implements OnInit {
 
   feedbackForm!: FormGroup;
 
-  employees: any[] = [];
+  employees: Employee[] = [];
+  filteredEmployees: Employee[] = [];
 
   categories = this.catagory_inj.categories;
 
@@ -37,14 +39,41 @@ export class SubmitFeedbackComponent implements OnInit {
       submissionDate: [new Date().toISOString().substring(0, 10), Validators.required]
     });
 
-    // AUTO-FILL LOGIC
-    this.feedbackForm.get('searchEmployee')?.valueChanges.subscribe(name => {
-      const selected = this.employees.find(e => e.name === name);
+    this.feedbackForm.get('searchEmployee')?.valueChanges.subscribe(value => {
+      const term = (value ?? '').toString().trim().toLowerCase();
+      this.updateFilteredEmployees(term);
+
+      const selected = this.employees.find(e =>
+        e.name.toLowerCase() === term || e.id.toLowerCase() === term
+      );
       if (selected) {
         this.feedbackForm.get('employeeId')?.setValue(selected.id);
+      } else {
+        this.feedbackForm.get('employeeId')?.setValue('');
       }
     });
 
+  }
+
+  onSearchChange(event: Event): void {
+    const term = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    this.updateFilteredEmployees(term);
+  }
+
+  selectEmployee(emp: Employee): void {
+    this.feedbackForm.get('searchEmployee')?.setValue(emp.name, { emitEvent: true });
+    this.feedbackForm.get('employeeId')?.setValue(emp.id);
+    this.filteredEmployees = [];
+  }
+
+  private updateFilteredEmployees(term: string): void {
+    if (!term) {
+      this.filteredEmployees = [];
+      return;
+    }
+    this.filteredEmployees = this.employees
+      .filter(e => e.name.toLowerCase().includes(term) || e.id.toLowerCase().includes(term))
+      .slice(0, 6);
   }
 
   onSubmit(): void {
@@ -70,7 +99,13 @@ export class SubmitFeedbackComponent implements OnInit {
 
       console.log('final Data Saved', finalData);
 
-      alert('successs');
+      Swal.fire({
+        icon: 'success',
+        title: 'Feedback Sent',
+        text: 'Thanks for sharing your feedback.',
+        timer: 2000,
+        showConfirmButton: false
+      });
 
       this.feedbackForm.reset({
         submissionDate: new Date().toISOString().substring(0, 10),
