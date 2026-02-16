@@ -5,18 +5,24 @@
 namespace FeedbackSystem.API.Migrations
 {
     /// <inheritdoc />
-    public partial class Fixed_ColumnName : Migration
+    public partial class AddPhoneToUser : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-
+            migrationBuilder.AddColumn<string>(
+                name: "Phone",
+                table: "Users",
+                type: "nvarchar(max)",
+                nullable: true);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-
+            migrationBuilder.DropColumn(
+                name: "Phone",
+                table: "Users");
         }
     }
 }
