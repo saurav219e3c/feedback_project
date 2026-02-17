@@ -25,6 +25,7 @@ public class UserService : IUserService
             u.UserId,
             u.FullName,
             u.Email,
+            u.Phone,
             u.Role.RoleName,
             u.DepartmentId,
             u.Department.DepartmentName,
@@ -42,6 +43,7 @@ public class UserService : IUserService
             user.UserId,
             user.FullName,
             user.Email,
+            user.Phone,
             user.Role.RoleName,
             user.DepartmentId,
             user.Department.DepartmentName,
@@ -80,6 +82,7 @@ public class UserService : IUserService
             entity.UserId,
             entity.FullName,
             entity.Email,
+            entity.Phone,
             entity.Role.RoleName,
             entity.DepartmentId,
             entity.Department.DepartmentName,
@@ -128,5 +131,41 @@ public class UserService : IUserService
         var totalRecognitions = await _recognitionRepo.GetTotalCountAsync(ct);
 
         return new UserStatsDto(totalUsers, activeUsers, inactiveUsers, totalFeedbacks, totalRecognitions);
+    }
+
+    // ✅ Profile - Get current user's profile
+    public async Task<ProfileReadDto?> GetProfileAsync(string userId, CancellationToken ct = default)
+    {
+        var user = await _repo.GetByIdAsync(userId, ct);
+        if (user is null) return null;
+
+        return new ProfileReadDto(
+            user.UserId,
+            user.FullName,
+            user.Email,
+            user.Phone,
+            user.Role.RoleName,
+            user.DepartmentId,
+            user.Department.DepartmentName,
+            user.CreatedAt
+        );
+    }
+
+    // ✅ Profile - Update current user's profile
+    public async Task<bool> UpdateProfileAsync(string userId, ProfileUpdateDto dto, CancellationToken ct = default)
+    {
+        var user = await _repo.GetByIdAsync(userId, ct);
+        if (user is null) return false;
+
+        // Check if email is being changed and if it already exists
+        if (user.Email != dto.Email && await _repo.EmailExistsAsync(dto.Email, ct))
+            throw new InvalidOperationException("Email already exists.");
+
+        user.FullName = dto.FullName;
+        user.Email = dto.Email;
+        user.Phone = dto.Phone;
+
+        await _repo.UpdateAsync(user, ct);
+        return true;
     }
 }

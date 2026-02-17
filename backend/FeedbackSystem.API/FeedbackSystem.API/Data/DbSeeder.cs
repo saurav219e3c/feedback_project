@@ -92,5 +92,51 @@ public static class DbSeeder
                 await db.SaveChangesAsync();
             }
         }
+
+        // ---------- MANAGER USER ----------
+        var managerRoleId = await db.Roles
+            .Where(r => r.RoleName == "Manager")
+            .Select(r => r.RoleId)
+            .FirstAsync();
+
+        var manager = await db.Users.FirstOrDefaultAsync(u => u.Email == "manager@local");
+        if (manager is null)
+        {
+            db.Users.Add(new User
+            {
+                UserId = "mgr001",
+                FullName = "Test Manager",
+                Email = "manager@local",
+                PasswordHash = PasswordHasher.Hash("Manager@123"),
+                RoleId = managerRoleId,
+                DepartmentId = defaultDeptId,
+                IsActive = true,
+                CreatedAt = DateTime.UtcNow
+            });
+            await db.SaveChangesAsync();
+        }
+
+        // ---------- EMPLOYEE USER ----------
+        var employeeRoleId = await db.Roles
+            .Where(r => r.RoleName == "Employee")
+            .Select(r => r.RoleId)
+            .FirstAsync();
+
+        var employee = await db.Users.FirstOrDefaultAsync(u => u.Email == "employee@local");
+        if (employee is null)
+        {
+            db.Users.Add(new User
+            {
+                UserId = "emp001",
+                FullName = "Test Employee",
+                Email = "employee@local",
+                PasswordHash = PasswordHasher.Hash("Employee@123"),
+                RoleId = employeeRoleId,
+                DepartmentId = defaultDeptId,
+                IsActive = true,
+                CreatedAt = DateTime.UtcNow
+            });
+            await db.SaveChangesAsync();
+        }
     }
 }
