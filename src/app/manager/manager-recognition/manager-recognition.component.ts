@@ -28,10 +28,6 @@ export class ManagerRecognitionComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-<<<<<<< HEAD
-  getBadgeTheme(badge: string | undefined, points: number) {
-    const badgeName = badge || 'Default';
-=======
   loadData(): void {
     this.isLoading = true;
     this.errorMessage = null;
@@ -54,7 +50,6 @@ export class ManagerRecognitionComponent implements OnInit, OnDestroy {
   }
 
   getBadgeTheme(categoryName: string, points: number) {
->>>>>>> 3fe9f7803dbbd63808fef403e6923b2697672c72
     const icons: Record<string, string> = {
       'Leader': 'bi-rocket-takeoff-fill',
       'Team Player': 'bi-people-fill',
@@ -73,11 +68,7 @@ export class ManagerRecognitionComponent implements OnInit, OnDestroy {
 
     return {
       color: themeColor,
-<<<<<<< HEAD
-      icon: icons[badgeName] || 'bi-award-fill'
-=======
       icon: icons[categoryName] || 'bi-award-fill'
->>>>>>> 3fe9f7803dbbd63808fef403e6923b2697672c72
     };
   }
 }
