@@ -164,7 +164,7 @@ namespace FeedbackSystem.API.Services
             return await _feedbackRepo.GetByCategoryAsync(filter.From, filter.To, targetDept, filter.UserId, ct);
         }
 
-        public async Task<IReadOnlyList<RecognitionCategoryStatsDto>> GetRecognitionsByCategoryAsync(
+        public async Task<IReadOnlyList<RecognitionBadgeStatsDto>> GetRecognitionsByBadgeAsync(
             string requesterUserId, bool isAdmin, CategoryStatsFilter filter, CancellationToken ct)
         {
             string? deptScope = null;
@@ -172,7 +172,7 @@ namespace FeedbackSystem.API.Services
                 deptScope = await _userRepo.GetDepartmentIdAsync(requesterUserId, ct);
 
             var targetDept = filter.DepartmentId ?? deptScope;
-            return await _recognitionRepo.GetByCategoryAsync(filter.From, filter.To, targetDept, filter.UserId, ct);
+            return await _recognitionRepo.GetByBadgeAsync(filter.From, filter.To, targetDept, filter.UserId, ct);
         }
 
         // ✅ Parameterless by-category (all data, no filters)
@@ -181,9 +181,9 @@ namespace FeedbackSystem.API.Services
             return await _feedbackRepo.GetByCategoryAsync(null, null, null, null, ct);
         }
 
-        public async Task<IReadOnlyList<RecognitionCategoryStatsDto>> GetRecognitionsByCategoryAsync(CancellationToken ct)
+        public async Task<IReadOnlyList<RecognitionBadgeStatsDto>> GetRecognitionsByBadgeAsync(CancellationToken ct)
         {
-            return await _recognitionRepo.GetByCategoryAsync(null, null, null, null, ct);
+            return await _recognitionRepo.GetByBadgeAsync(null, null, null, null, ct);
         }
 
         // -------------- helpers --------------

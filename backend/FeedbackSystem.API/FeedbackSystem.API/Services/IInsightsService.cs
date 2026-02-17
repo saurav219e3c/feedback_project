@@ -42,11 +42,11 @@ namespace FeedbackSystem.API.Services
         Task<IReadOnlyList<CategoryStatsDto>> GetFeedbackByCategoryAsync(
             string requesterUserId, bool isAdmin, CategoryStatsFilter filter, CancellationToken ct);
 
-        Task<IReadOnlyList<RecognitionCategoryStatsDto>> GetRecognitionsByCategoryAsync(
+        Task<IReadOnlyList<RecognitionBadgeStatsDto>> GetRecognitionsByBadgeAsync(
             string requesterUserId, bool isAdmin, CategoryStatsFilter filter, CancellationToken ct);
 
         // ✅ Parameterless by-category (all data, no filters)
         Task<IReadOnlyList<CategoryStatsDto>> GetFeedbackByCategoryAsync(CancellationToken ct);
-        Task<IReadOnlyList<RecognitionCategoryStatsDto>> GetRecognitionsByCategoryAsync(CancellationToken ct);
+        Task<IReadOnlyList<RecognitionBadgeStatsDto>> GetRecognitionsByBadgeAsync(CancellationToken ct);
     }
 }

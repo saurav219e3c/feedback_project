@@ -10,7 +10,7 @@ public class DepartmentRepository : IDepartmentRepository
     public DepartmentRepository(AppDbContext db) => _db = db;
 
     public Task<Department?> GetByIdAsync(string id, CancellationToken ct = default) =>
-        _db.Departments.FirstOrDefaultAsync(d => d.DepartmentId == id, ct);
+        _db.Departments.Include(d => d.Users).FirstOrDefaultAsync(d => d.DepartmentId == id, ct);
 
     public Task<List<Department>> GetAllAsync(CancellationToken ct = default) =>
         _db.Departments.OrderBy(d => d.DepartmentName).ToListAsync(ct);

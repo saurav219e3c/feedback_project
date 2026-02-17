@@ -12,8 +12,13 @@ namespace FeedbackSystem.API.Controllers
     public class AdminInsightsController : ControllerBase
     {
         private readonly IInsightsService _service;
+        private readonly ISentimentService _sentimentService;
 
-        public AdminInsightsController(IInsightsService service) => _service = service;
+        public AdminInsightsController(IInsightsService service, ISentimentService sentimentService)
+        {
+            _service = service;
+            _sentimentService = sentimentService;
+        }
 
         // Helpers to read requester identity
         private string GetRequesterUserId()
@@ -159,13 +164,39 @@ namespace FeedbackSystem.API.Controllers
             return Ok(result);
         }
 
-        // GET /api/insight/recognitions/by-category
-        [HttpGet("recognitions/by-category")]
-        public async Task<ActionResult<IReadOnlyList<RecognitionCategoryStatsDto>>> GetRecognitionsByCategory(
+        // GET /api/insight/recognitions/by-badge
+        [HttpGet("recognitions/by-badge")]
+        public async Task<ActionResult<IReadOnlyList<RecognitionBadgeStatsDto>>> GetRecognitionsByBadge(
             CancellationToken ct = default)
         {
-            var result = await _service.GetRecognitionsByCategoryAsync(ct);
+            var result = await _service.GetRecognitionsByBadgeAsync(ct);
+            return Ok(result);
+        }
+
+        // ---------------- SENTIMENT ANALYSIS ----------------
+
+        // GET /api/insight/sentiment/stats?from=&to=&departmentId=
+        [HttpGet("sentiment/stats")]
+        public async Task<ActionResult<SentimentStatsDto>> GetSentimentStats(
+            [FromQuery] DateTime? from, [FromQuery] DateTime? to, 
+            [FromQuery] string? departmentId, CancellationToken ct = default)
+        {
+            var result = await _sentimentService.GetSentimentStatsAsync(from, to, departmentId, ct);
+            return Ok(result);
+        }
+
+        // GET /api/insight/sentiment/feedback?from=&to=&categoryId=&departmentId=&sentiment=&page=&pageSize=
+        [HttpGet("sentiment/feedback")]
+        public async Task<ActionResult<PagedResult<FeedbackWithSentimentDto>>> GetFeedbackWithSentiment(
+            [FromQuery] DateTime? from, [FromQuery] DateTime? to,
+            [FromQuery] string? categoryId, [FromQuery] string? departmentId,
+            [FromQuery] string? sentiment, [FromQuery] int page = 1, [FromQuery] int pageSize = 20,
+            CancellationToken ct = default)
+        {
+            var result = await _sentimentService.GetFeedbackWithSentimentAsync(
+                from, to, categoryId, departmentId, sentiment, page, pageSize, ct);
             return Ok(result);
         }
     }
 }
+

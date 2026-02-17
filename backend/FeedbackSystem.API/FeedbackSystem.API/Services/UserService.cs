@@ -129,4 +129,20 @@ public class UserService : IUserService
 
         return new UserStatsDto(totalUsers, activeUsers, inactiveUsers, totalFeedbacks, totalRecognitions);
     }
+
+    // ✅ Search
+    public async Task<List<UserReadDto>> SearchAsync(string query, CancellationToken ct = default)
+    {
+        var users = await _repo.SearchAsync(query, ct);
+        return users.Select(u => new UserReadDto(
+            u.UserId,
+            u.FullName,
+            u.Email,
+            u.Role.RoleName,
+            u.DepartmentId,
+            u.Department.DepartmentName,
+            u.IsActive,
+            u.CreatedAt
+        )).ToList();
+    }
 }

@@ -32,8 +32,8 @@ namespace FeedbackSystem.API.Repositories
                     r.FromUser.FullName,
                     r.ToUserId,
                     r.ToUser.FullName,
-                    r.CategoryId,
-                    r.Category.CategoryName,
+                    r.BadgeId,
+                    r.Badge.BadgeName,
                     r.Points,
                     r.Message,
                     r.CreatedAt
@@ -63,8 +63,8 @@ namespace FeedbackSystem.API.Repositories
                     r.FromUser.FullName,
                     r.ToUserId,
                     r.ToUser.FullName,
-                    r.CategoryId,
-                    r.Category.CategoryName,
+                    r.BadgeId,
+                    r.Badge.BadgeName,
                     r.Points,
                     r.Message,
                     r.CreatedAt
@@ -91,8 +91,8 @@ namespace FeedbackSystem.API.Repositories
                     r.FromUser.FullName,
                     r.ToUserId,
                     r.ToUser.FullName,
-                    r.CategoryId,
-                    r.Category.CategoryName,
+                    r.BadgeId,
+                    r.Badge.BadgeName,
                     r.Points,
                     r.Message,
                     r.CreatedAt
@@ -157,7 +157,7 @@ namespace FeedbackSystem.API.Repositories
         }
 
         // ✅ Category statistics
-        public async Task<IReadOnlyList<RecognitionCategoryStatsDto>> GetByCategoryAsync(
+        public async Task<IReadOnlyList<RecognitionBadgeStatsDto>> GetByBadgeAsync(
             DateTime? from, DateTime? to, string? departmentScopeId, string? userId, CancellationToken ct)
         {
             var q = _db.Recognitions.AsNoTracking().AsQueryable();
@@ -175,10 +175,10 @@ namespace FeedbackSystem.API.Repositories
                 q = q.Where(r => r.FromUserId == userId || r.ToUserId == userId);
 
             return await q
-                .GroupBy(r => new { r.CategoryId, r.Category.CategoryName })
-                .Select(g => new RecognitionCategoryStatsDto(
-                    g.Key.CategoryId,
-                    g.Key.CategoryName,
+                .GroupBy(r => new { r.BadgeId, r.Badge.BadgeName })
+                .Select(g => new RecognitionBadgeStatsDto(
+                    g.Key.BadgeId,
+                    g.Key.BadgeName,
                     g.Count(),
                     g.Max(r => (DateTime?)r.CreatedAt)
                 ))

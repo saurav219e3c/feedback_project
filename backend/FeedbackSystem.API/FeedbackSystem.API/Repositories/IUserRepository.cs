@@ -21,4 +21,7 @@ public interface IUserRepository
     // ✅ Helpers for InsightsService
     Task<bool> UserExistsAsync(string userId, CancellationToken ct = default);
     Task<string> GetDepartmentIdAsync(string userId, CancellationToken ct = default);
+    
+    // ✅ Search
+    Task<List<User>> SearchAsync(string query, CancellationToken ct = default);
 }

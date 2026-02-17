@@ -43,4 +43,20 @@ public class UsersController : ControllerBase
     [HttpGet("stats")]
     public async Task<ActionResult<UserStatsDto>> GetStats(CancellationToken ct)
         => Ok(await _service.GetStatsAsync(ct));
+
+    /// <summary>
+    /// GET /api/users/search?query={searchTerm}
+    /// Search for users by name or email (accessible to all authenticated users)
+    /// </summary>
+    [HttpGet("search")]
+    [AllowAnonymous] // Override the controller-level [Authorize(Roles = "Admin")]
+    [Authorize] // But still require authentication (any role)
+    public async Task<ActionResult<List<UserReadDto>>> Search([FromQuery] string search, CancellationToken ct)
+    {
+        if (string.IsNullOrWhiteSpace(search) || search.Length < 2)
+            return Ok(new List<UserReadDto>());
+
+        var results = await _service.SearchAsync(search, ct);
+        return Ok(results);
+    }
 }

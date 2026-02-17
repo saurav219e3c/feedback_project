@@ -25,15 +25,14 @@ namespace FeedbackSystem.API.DTOs
     );
 
     // Flat list item for Recognition
-    // Uses Category table (same as Feedback)
     public record RecognitionItemDto(
         int RecognitionId,
         string FromUserId,
         string FromUserName,
         string ToUserId,
         string ToUserName,
-        string CategoryId,
-        string CategoryName,
+        string BadgeId,
+        string BadgeName,
         int Points,
         string Message,
         DateTime CreatedAt
@@ -58,9 +57,9 @@ namespace FeedbackSystem.API.DTOs
         DateTime? To,
         string? CategoryId,
         string? Search,
-        string? DepartmentId,  // Admin can use any; Manager is auto-scoped to their dept
-        string? FromUserId,    // optional
-        string? ToUserId,      // optional
+        string? DepartmentId,
+        string? FromUserId,
+        string? ToUserId,
         int Page = 1,
         int PageSize = 20
     );
@@ -69,17 +68,17 @@ namespace FeedbackSystem.API.DTOs
         DateTime? From,
         DateTime? To,
         string? Search,
-        string? DepartmentId,  // Admin can use any; Manager is auto-scoped to their dept
-        string? FromUserId,    // optional
-        string? ToUserId,      // optional
+        string? DepartmentId,
+        string? FromUserId,
+        string? ToUserId,
         int Page = 1,
         int PageSize = 20
     );
 
-    // ✅ For standalone count endpoints
+    // For standalone count endpoints
     public record CountResultDto(int TotalCount);
 
-    // ✅ Category-based statistics
+    // Category-based statistics
     public record CategoryStatsDto(
         string CategoryId,
         string CategoryName,
@@ -87,9 +86,9 @@ namespace FeedbackSystem.API.DTOs
         DateTime? LatestFeedbackAt
     );
 
-    public record RecognitionCategoryStatsDto(
-        string CategoryId,
-        string CategoryName,
+    public record RecognitionBadgeStatsDto(
+        string BadgeId,
+        string BadgeName,
         int RecognitionCount,
         DateTime? LatestRecognitionAt
     );
@@ -99,6 +98,31 @@ namespace FeedbackSystem.API.DTOs
         DateTime? From,
         DateTime? To,
         string? DepartmentId,
-        string? UserId  // Optional: filter by specific user (giver or receiver)
+        string? UserId
+    );
+
+    // Sentiment analysis DTOs
+    public record SentimentStatsDto(
+        int PositiveCount,
+        int NegativeCount,
+        int NeutralCount,
+        int TotalCount,
+        double PositivePercentage,
+        double NegativePercentage,
+        double NeutralPercentage
+    );
+
+    public record FeedbackWithSentimentDto(
+        int FeedbackId,
+        string FromUserId,
+        string FromUserName,
+        string ToUserId,
+        string ToUserName,
+        string CategoryId,
+        string CategoryName,
+        string Comments,
+        bool IsAnonymous,
+        DateTime CreatedAt,
+        string Sentiment
     );
 }

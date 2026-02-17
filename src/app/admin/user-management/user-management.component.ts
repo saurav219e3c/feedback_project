@@ -11,10 +11,11 @@ export interface User {
   role: string;
   feedback: number;
   recognition: number;
-  status?: 'Active' | 'Disabled';
-  email?: string;
-  department?: string;
-  joiningDate?: string;
+  isActive: boolean;
+  email: string;
+  departmentId: string;
+  departmentName?: string;
+  createdAt: string;
 }
 
 @Component({
@@ -48,11 +49,12 @@ export class UserManagementComponent implements OnInit {
           name: dto.fullName,
           role: dto.role,
           email: dto.email,
-          department: dto.department,
+          departmentId: dto.departmentId,
+          departmentName: dto.departmentName,
           feedback: 0,
           recognition: 0,
-          status: 'Active',
-          joiningDate: new Date().toISOString().split('T')[0]
+          isActive: dto.isActive,
+          createdAt: dto.createdAt
         }));
         this.loading = false;
       },
@@ -104,12 +106,17 @@ export class UserManagementComponent implements OnInit {
     const idx = this.users.findIndex(u => u.id === userId);
     if (idx >= 0) {
       const current = this.users[idx];
-      const newStatus = current.status === 'Active' ? 'Disabled' : 'Active';
+      const newStatus = !current.isActive;
       
-      // Update via API
-      this.usersApiService.update(userId, { active: newStatus === 'Active' }).subscribe({
+      // Update via API - backend requires all fields
+      this.usersApiService.update(userId, {
+        fullName: current.name,
+        roleName: current.role,
+        departmentId: current.departmentId,
+        isActive: newStatus
+      }).subscribe({
         next: () => {
-          const next: User = { ...current, status: newStatus };
+          const next: User = { ...current, isActive: newStatus };
           this.users[idx] = next;
           if (this.selectedUser && this.selectedUser.id === userId) {
             this.selectedUser = next;

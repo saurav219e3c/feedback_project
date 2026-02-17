@@ -9,6 +9,5 @@
         public DateTime CreatedAt { get; set; }
 
         public ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
-        public ICollection<Recognition> Recognitions { get; set; } = new List<Recognition>();
     }
 }

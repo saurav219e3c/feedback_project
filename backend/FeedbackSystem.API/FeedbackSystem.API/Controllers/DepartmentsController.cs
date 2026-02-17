@@ -63,8 +63,15 @@ public class DepartmentsController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(string id, CancellationToken ct)
     {
-        var deleted = await _service.DeleteAsync(id, ct);
-        if (!deleted) return NotFound(new { message = "Department not found." });
-        return NoContent();
+        try
+        {
+            var deleted = await _service.DeleteAsync(id, ct);
+            if (!deleted) return NotFound(new { message = "Department not found." });
+            return NoContent();
+        }
+        catch (InvalidOperationException ex)
+        {
+            return Conflict(new { message = ex.Message });
+        }
     }
 }

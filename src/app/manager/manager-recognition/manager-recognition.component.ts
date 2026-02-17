@@ -26,7 +26,8 @@ export class ManagerRecognitionComponent implements OnInit {
     this.recognitions.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   }
 
-  getBadgeTheme(badge: string, points: number) {
+  getBadgeTheme(badge: string | undefined, points: number) {
+    const badgeName = badge || 'Default';
     const icons: Record<string, string> = {
       'Leader': 'bi-rocket-takeoff-fill',
       'Team Player': 'bi-people-fill',
@@ -41,7 +42,7 @@ export class ManagerRecognitionComponent implements OnInit {
 
     return {
       color: themeColor,
-      icon: icons[badge] || 'bi-award-fill'
+      icon: icons[badgeName] || 'bi-award-fill'
     };
   }
 }

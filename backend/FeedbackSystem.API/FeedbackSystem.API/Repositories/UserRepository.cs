@@ -67,4 +67,20 @@ public class UserRepository : IUserRepository
         if (string.IsNullOrEmpty(depId)) throw new InvalidOperationException("Requester has no department assigned.");
         return depId;
     }
+
+    // ✅ Search
+    public Task<List<User>> SearchAsync(string query, CancellationToken ct = default)
+    {
+        var lowerQuery = query.ToLower();
+        return _db.Users
+            .Include(u => u.Role)
+            .Include(u => u.Department)
+            .Where(u => u.IsActive && 
+                       (u.FullName.ToLower().Contains(lowerQuery) || 
+                        u.Email.ToLower().Contains(lowerQuery) ||
+                        u.UserId.ToLower().Contains(lowerQuery)))
+            .OrderBy(u => u.FullName)
+            .Take(20)
+            .ToListAsync(ct);
+    }
 }

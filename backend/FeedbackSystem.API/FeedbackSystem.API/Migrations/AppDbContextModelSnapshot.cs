@@ -82,6 +82,43 @@ namespace FeedbackSystem.API.Migrations
                     b.ToTable("AppSettings", (string)null);
                 });
 
+            modelBuilder.Entity("FeedbackSystem.API.Entities.Badge", b =>
+                {
+                    b.Property<string>("BadgeId")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("BadgeName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(225)
+                        .HasColumnType("nvarchar(225)");
+
+                    b.Property<string>("IconClass")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
+                    b.HasKey("BadgeId");
+
+                    b.HasIndex("BadgeName")
+                        .IsUnique();
+
+                    b.ToTable("Badges", (string)null);
+                });
+
             modelBuilder.Entity("FeedbackSystem.API.Entities.Category", b =>
                 {
                     b.Property<string>("CategoryId")
@@ -221,6 +258,9 @@ namespace FeedbackSystem.API.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<string>("ReviewerUserId")
+                        .HasColumnType("nvarchar(20)");
+
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasMaxLength(20)
@@ -230,7 +270,7 @@ namespace FeedbackSystem.API.Migrations
 
                     b.HasIndex("FeedbackId");
 
-                    b.HasIndex("ReviewedBy");
+                    b.HasIndex("ReviewerUserId");
 
                     b.ToTable("FeedbackReview", (string)null);
                 });
@@ -280,7 +320,7 @@ namespace FeedbackSystem.API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RecognitionId"));
 
-                    b.Property<string>("CategoryId")
+                    b.Property<string>("BadgeId")
                         .IsRequired()
                         .HasColumnType("nvarchar(20)");
 
@@ -307,8 +347,8 @@ namespace FeedbackSystem.API.Migrations
 
                     b.HasKey("RecognitionId");
 
-                    b.HasIndex("CategoryId")
-                        .HasDatabaseName("IX_Recognition_CategoryId");
+                    b.HasIndex("BadgeId")
+                        .HasDatabaseName("IX_Recognition_BadgeId");
 
                     b.HasIndex("FromUserId");
 
@@ -451,16 +491,12 @@ namespace FeedbackSystem.API.Migrations
                     b.HasOne("FeedbackSystem.API.Entities.Feedback", "Feedback")
                         .WithMany("Reviews")
                         .HasForeignKey("FeedbackId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired()
-                        .HasConstraintName("FK_FeedbackReview_Feedback");
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("FeedbackSystem.API.Entities.User", "Reviewer")
                         .WithMany("ReviewsDone")
-                        .HasForeignKey("ReviewedBy")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired()
-                        .HasConstraintName("FK_FeedbackReview_User");
+                        .HasForeignKey("ReviewerUserId");
 
                     b.Navigation("Feedback");
 
@@ -481,12 +517,12 @@ namespace FeedbackSystem.API.Migrations
 
             modelBuilder.Entity("FeedbackSystem.API.Entities.Recognition", b =>
                 {
-                    b.HasOne("FeedbackSystem.API.Entities.Category", "Category")
+                    b.HasOne("FeedbackSystem.API.Entities.Badge", "Badge")
                         .WithMany("Recognitions")
-                        .HasForeignKey("CategoryId")
+                        .HasForeignKey("BadgeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired()
-                        .HasConstraintName("FK_Recognition_Category");
+                        .HasConstraintName("FK_Recognition_Badge");
 
                     b.HasOne("FeedbackSystem.API.Entities.User", "FromUser")
                         .WithMany("RecognitionsFrom")
@@ -502,7 +538,7 @@ namespace FeedbackSystem.API.Migrations
                         .IsRequired()
                         .HasConstraintName("FK_Recognition_ToUser");
 
-                    b.Navigation("Category");
+                    b.Navigation("Badge");
 
                     b.Navigation("FromUser");
 
@@ -530,11 +566,14 @@ namespace FeedbackSystem.API.Migrations
                     b.Navigation("Role");
                 });
 
+            modelBuilder.Entity("FeedbackSystem.API.Entities.Badge", b =>
+                {
+                    b.Navigation("Recognitions");
+                });
+
             modelBuilder.Entity("FeedbackSystem.API.Entities.Category", b =>
                 {
                     b.Navigation("Feedbacks");
-
-                    b.Navigation("Recognitions");
                 });
 
             modelBuilder.Entity("FeedbackSystem.API.Entities.Department", b =>

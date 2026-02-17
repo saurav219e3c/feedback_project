@@ -82,6 +82,10 @@ public class DepartmentService : IDepartmentService
         var dept = await _repo.GetByIdAsync(id, ct);
         if (dept is null) return false;
 
+        // Check if department has users
+        if (dept.Users != null && dept.Users.Any())
+            throw new InvalidOperationException("Cannot delete department with existing users. Please reassign or remove users first.");
+
         await _repo.DeleteAsync(dept, ct);
         return true;
     }

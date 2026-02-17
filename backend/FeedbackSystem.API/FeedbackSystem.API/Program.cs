@@ -143,10 +143,19 @@ builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddScoped<IFeedbackRepository, FeedbackRepository>();
 builder.Services.AddScoped<IRecognitionRepository, RecognitionRepository>();
+builder.Services.AddScoped<IBadgeRepository, BadgeRepository>();
+builder.Services.AddScoped<IBadgeService, BadgeService>();
 builder.Services.AddScoped<IInsightsService, InsightsService>();
+builder.Services.AddScoped<ISentimentService, SentimentService>();
+builder.Services.AddScoped<IDashboardService, DashboardService>();
 
 builder.Services.AddScoped<IActivityRepository, ActivityRepository>();
 builder.Services.AddScoped<IActivityService, ActivityService>();
+
+builder.Services.AddScoped<ISettingsRepository, SettingsRepository>();
+builder.Services.AddScoped<ISettingsService, SettingsService>();
+
+builder.Services.AddScoped<IMyDataService, MyDataService>();
 
 
 // --------------------------------------------------

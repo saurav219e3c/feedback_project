@@ -89,7 +89,7 @@ export class AuthService {
     const payload = this.tokenSvc.decodePayload<any>(token);
     const user: User | null = payload
       ? {
-        id: payload.nameid ?? payload.sub ?? payload.userId ?? 'unknown',
+        id: payload.userId ?? payload.nameid ?? payload.sub ?? 'unknown',  // Priority: explicit userId, then nameid, then sub
         name: payload.unique_name ?? payload.name ?? payload.fullName ?? '',
         email: payload.email ?? '',
         roles: this.extractRoles(payload),

@@ -8,7 +8,10 @@ export interface UserReadDto {
   fullName: string;
   email: string;
   role: 'Admin' | 'Manager' | 'Employee' | string;
-  department?: string;
+  departmentId: string;
+  departmentName?: string;
+  isActive: boolean;
+  createdAt: string;
 }
 
 export interface UserCreateDto {
@@ -16,16 +19,15 @@ export interface UserCreateDto {
   fullName: string;
   email: string;
   role: 'Admin' | 'Manager' | 'Employee';
-  department?: string;
+  departmentName?: string;
   password?: string;    // only if admin creates with password
 }
 
 export interface UserUpdateDto {
-  fullName?: string;
-  email?: string;
-  role?: 'Admin' | 'Manager' | 'Employee';
-  department?: string;
-  active?: boolean;
+  fullName: string;
+  roleName: string;
+  departmentId: string;
+  isActive: boolean;
 }
 
 export interface UserStatsDto {

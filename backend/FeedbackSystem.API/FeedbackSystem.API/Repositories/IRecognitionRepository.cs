@@ -26,8 +26,8 @@ namespace FeedbackSystem.API.Repositories
         // ✅ Total count across entire system
         Task<int> GetTotalCountAsync(CancellationToken ct);
 
-        // ✅ Category statistics
-        Task<IReadOnlyList<RecognitionCategoryStatsDto>> GetByCategoryAsync(
+        // ✅ Badge statistics
+        Task<IReadOnlyList<RecognitionBadgeStatsDto>> GetByBadgeAsync(
             DateTime? from, DateTime? to, string? departmentScopeId, string? userId, CancellationToken ct);
     }
 }

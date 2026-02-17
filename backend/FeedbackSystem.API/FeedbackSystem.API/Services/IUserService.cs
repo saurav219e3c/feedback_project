@@ -12,4 +12,7 @@ public interface IUserService
     
     // ✅ Statistics
     Task<UserStatsDto> GetStatsAsync(CancellationToken ct = default);
+    
+    // ✅ Search
+    Task<List<UserReadDto>> SearchAsync(string query, CancellationToken ct = default);
 }
