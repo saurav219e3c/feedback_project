@@ -6,15 +6,15 @@ const ACCESS_TOKEN_KEY = 'access_token';
 @Injectable({ providedIn: 'root' })
 export class TokenService {
   setToken(token: string): void {
-    localStorage.setItem(ACCESS_TOKEN_KEY, token);
+    sessionStorage.setItem(ACCESS_TOKEN_KEY, token);
   }
 
   getToken(): string | null {
-    return localStorage.getItem(ACCESS_TOKEN_KEY);
+    return sessionStorage.getItem(ACCESS_TOKEN_KEY);
   }
 
   clearToken(): void {
-    localStorage.removeItem(ACCESS_TOKEN_KEY);
+    sessionStorage.removeItem(ACCESS_TOKEN_KEY);
   }
 
   // Basic JWT payload decode (no signature verification). Replace with jwt-decode later.

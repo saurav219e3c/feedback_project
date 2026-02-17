@@ -136,17 +136,12 @@ export class ManagerProfileComponent implements OnInit {
   }
 
   saveChanges() {
-    // Run all validations
-    this.validateName();
-    this.validateEmail();
+    // Only phone validation needed now
+    this.phoneError = '';
     
-    // Phone validation
+    // Phone validation - only if provided, must be exactly 10 digits
     if (this.manager.phone && this.manager.phone.length !== 10) {
       this.phoneError = 'Phone number must be exactly 10 digits';
-    }
-
-    // Check if any errors exist
-    if (this.nameError || this.emailError || this.phoneError) {
       this.errorMessage = 'Please fix the validation errors';
       return;
     }
@@ -155,6 +150,7 @@ export class ManagerProfileComponent implements OnInit {
     this.errorMessage = '';
     this.successMessage = '';
 
+    // Only send phone update (name and email unchanged)
     const updatePayload = {
       fullName: this.manager.name,
       email: this.manager.email,
@@ -164,14 +160,8 @@ export class ManagerProfileComponent implements OnInit {
     this.apiService.put('/api/users/profile', updatePayload).subscribe({
       next: () => {
         this.isSaving = false;
-        this.isEditing = false;
-        this.successMessage = 'Profile updated successfully!';
-        
-        // Save location to localStorage (not in database)
-        localStorage.setItem(`user_location_${this.manager.id}`, this.manager.location);
-        
-        // Update auth service with new name
-        this.authService.updateUserName(this.manager.name);
+        this.isEditing = false; // Return to view mode after save
+        this.successMessage = 'Phone number updated successfully!';
         
         // Clear success message after 3 seconds
         setTimeout(() => this.successMessage = '', 3000);

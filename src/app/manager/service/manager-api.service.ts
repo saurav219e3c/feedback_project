@@ -142,6 +142,15 @@ export class ManagerApiService {
     );
   }
 
+  /**
+   * Delete a notification
+   */
+  deleteNotification(notificationId: number): Observable<void> {
+    return this.api.delete<void>(`/api/notifications/${notificationId}`).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   // ============ ERROR HANDLING ============
 
   private handleError(error: any) {

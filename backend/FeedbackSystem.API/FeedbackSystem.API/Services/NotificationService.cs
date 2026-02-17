@@ -40,4 +40,9 @@ public class NotificationService : INotificationService
     {
         return _repo.CreateAsync(userId, title, message, ct);
     }
+
+    public Task<bool> DeleteNotificationAsync(int notificationId, string userId, CancellationToken ct)
+    {
+        return _repo.DeleteAsync(notificationId, userId, ct);
+    }
 }

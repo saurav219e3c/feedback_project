@@ -52,7 +52,7 @@
           <!-- Notification Items -->
           <div 
             *ngFor="let notification of notifications"
-            (click)="markAsRead(notification)"
+            (click)="deleteNotification(notification)"
             class="notification-item p-3 border-bottom cursor-pointer"
             [class.unread]="!notification.isRead">
             <div class="d-flex justify-content-between align-items-start">

@@ -91,4 +91,16 @@ public class NotificationRepository : INotificationRepository
         _db.Notifications.Add(notification);
         await _db.SaveChangesAsync(ct);
     }
+
+    public async Task<bool> DeleteAsync(int notificationId, string userId, CancellationToken ct)
+    {
+        var notification = await _db.Notifications
+            .FirstOrDefaultAsync(n => n.NotificationId == notificationId && n.UserId == userId, ct);
+
+        if (notification == null) return false;
+
+        _db.Notifications.Remove(notification);
+        await _db.SaveChangesAsync(ct);
+        return true;
+    }
 }

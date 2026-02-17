@@ -43,6 +43,7 @@ export class ManagerDashboardComponent implements OnInit, OnDestroy {
   errorMessage: string | null = null;
 
   private timer: any;
+  private activityTimer: any; // Timer for real-time activity updates
   activities: (RecentActivity & { time: string; colorClass: string })[] = [];
   categoryData: { name: string; count: number; percent: number; colorClass: string }[] = [];
 
@@ -50,12 +51,33 @@ export class ManagerDashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loadDashboardData();
+    this.startActivityTimer();
   }
 
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
     if (this.timer) clearInterval(this.timer);
+    if (this.activityTimer) clearInterval(this.activityTimer);
+  }
+
+  /**
+   * Start real-time timer to update activity timestamps every minute
+   */
+  private startActivityTimer(): void {
+    this.activityTimer = setInterval(() => {
+      this.updateActivityTimes();
+    }, 60000); // Update every 60 seconds (1 minute)
+  }
+
+  /**
+   * Update the 'time' property for all activities based on current time
+   */
+  private updateActivityTimes(): void {
+    this.activities = this.activities.map(a => ({
+      ...a,
+      time: this.calculateTimeAgo(a.createdAt)
+    }));
   }
 
   /**

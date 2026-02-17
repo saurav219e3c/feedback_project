@@ -9,4 +9,5 @@ public interface INotificationService
     Task<bool> MarkAsReadAsync(int notificationId, string userId, CancellationToken ct);
     Task<bool> MarkAllAsReadAsync(string userId, CancellationToken ct);
     Task CreateNotificationAsync(string userId, string title, string message, CancellationToken ct);
+    Task<bool> DeleteNotificationAsync(int notificationId, string userId, CancellationToken ct);
 }

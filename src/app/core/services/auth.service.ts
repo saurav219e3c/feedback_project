@@ -19,8 +19,8 @@ export class AuthService {
   readonly roles$ = this.user$.pipe(map(u => u?.roles ?? []));
 
   constructor(private tokenSvc: TokenService) {
-    // 1. TRY TO LOAD FROM LOCAL STORAGE (For Mock/Local Dev)
-    const savedUser = localStorage.getItem(this.USER_KEY);
+    // 1. TRY TO LOAD FROM SESSION STORAGE (session ends when browser closes)
+    const savedUser = sessionStorage.getItem(this.USER_KEY);
     if (savedUser) {
       this._user$.next(JSON.parse(savedUser));
     } 
@@ -49,20 +49,20 @@ export class AuthService {
     this.tokenSvc.setToken(token);
     this.hydrateUserFromToken(token);
     
-    // IMPORTANT: Also save to localStorage after hydrating from token
+    // IMPORTANT: Also save to sessionStorage after hydrating from token
     const user = this._user$.getValue();
     if (user) {
-      localStorage.setItem(this.USER_KEY, JSON.stringify(user));
+      sessionStorage.setItem(this.USER_KEY, JSON.stringify(user));
     }
   }
 
-  /** FIXED: Now saves to Local Storage */
+  /** FIXED: Now saves to Session Storage */
   loginWithUser(user: User): void {
     // 1. Update the in-memory variable
     this._user$.next(user);
     
-    // 2. SAVE to Local Storage (This fixes the refresh issue!)
-    localStorage.setItem(this.USER_KEY, JSON.stringify(user));
+    // 2. SAVE to Session Storage (session ends when browser closes)
+    sessionStorage.setItem(this.USER_KEY, JSON.stringify(user));
   }
 
   /** Update user's name (for profile updates) */
@@ -71,14 +71,14 @@ export class AuthService {
     if (currentUser) {
       const updatedUser = { ...currentUser, name };
       this._user$.next(updatedUser);
-      localStorage.setItem(this.USER_KEY, JSON.stringify(updatedUser));
+      sessionStorage.setItem(this.USER_KEY, JSON.stringify(updatedUser));
     }
   }
 
-  /** FIXED: Clears Local Storage on logout */
+  /** FIXED: Clears Session Storage on logout */
   logout(): void {
     this.tokenSvc.clearToken();
-    localStorage.removeItem(this.USER_KEY); // Clear the saved user
+    sessionStorage.removeItem(this.USER_KEY); // Clear the saved user
     this._user$.next(null);
   }
 

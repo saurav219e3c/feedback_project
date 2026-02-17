@@ -59,4 +59,13 @@ public class NotificationsController : ControllerBase
         await _service.MarkAllAsReadAsync(GetUserId(), ct);
         return NoContent();
     }
+
+    // DELETE /api/notifications/{id}
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete(int id, CancellationToken ct)
+    {
+        var success = await _service.DeleteNotificationAsync(id, GetUserId(), ct);
+        if (!success) return NotFound(new { message = "Notification not found." });
+        return NoContent();
+    }
 }

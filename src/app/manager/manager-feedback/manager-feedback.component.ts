@@ -20,6 +20,10 @@ export class ManagerFeedbackComponent implements OnInit {
   searchText = '';
   isLoading = false;
   errorMessage: string | null = null;
+  
+  // Modal state
+  showModal = false;
+  selectedFeedback: ManagerFeedbackItem | null = null;
 
   constructor(private managerService: ManagerService) {}
 
@@ -109,7 +113,22 @@ export class ManagerFeedbackComponent implements OnInit {
   viewFeedback(id: number): void {
     const item = this.feedbackList.find(f => f.feedbackId === id);
     if (item) {
-      alert(`Feedback Details:\n${item.comments}`);
+      this.selectedFeedback = item;
+      this.showModal = true;
+    }
+  }
+
+  closeModal(): void {
+    this.showModal = false;
+    this.selectedFeedback = null;
+  }
+
+  getStatusColor(status: string): string {
+    switch (status) {
+      case 'Pending': return 'bg-yellow-100 text-yellow-800 border-yellow-300';
+      case 'Acknowledged': return 'bg-sky-100 text-sky-800 border-sky-300';
+      case 'Resolved': return 'bg-green-100 text-green-800 border-green-300';
+      default: return 'bg-gray-100 text-gray-800 border-gray-300';
     }
   }
 

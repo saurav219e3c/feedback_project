@@ -18,6 +18,84 @@ public class MyDataService : IMyDataService
         _logger = logger;
     }
 
+    /// <summary>
+    /// Creates notifications for all managers in the same department as the sender or target user
+    /// </summary>
+    private async Task NotifyManagersAsync(
+        string fromUserId,
+        string toUserId,
+        string notificationType,
+        string categoryOrBadgeName,
+        CancellationToken ct)
+    {
+        try
+        {
+            // Get both users to find their departments
+            var fromUser = await _db.Users
+                .AsNoTracking()
+                .FirstOrDefaultAsync(u => u.UserId == fromUserId, ct);
+
+            var targetUser = await _db.Users
+                .AsNoTracking()
+                .FirstOrDefaultAsync(u => u.UserId == toUserId, ct);
+
+            if (fromUser == null || targetUser == null) return;
+
+            var fromUserName = fromUser.FullName ?? "An employee";
+
+            // Get the manager role ID
+            var managerRoleId = await _db.Roles
+                .Where(r => r.RoleName == "Manager")
+                .Select(r => r.RoleId)
+                .FirstOrDefaultAsync(ct);
+
+            if (managerRoleId == 0) return;
+
+            // Collect department IDs (both sender's and target's departments)
+            var departmentIds = new HashSet<string> { fromUser.DepartmentId, targetUser.DepartmentId };
+
+            // Find all managers in either department (sender's or target's)
+            var managersInDepartments = await _db.Users
+                .Where(u => u.RoleId == managerRoleId 
+                         && departmentIds.Contains(u.DepartmentId)
+                         && u.IsActive
+                         && u.UserId != fromUserId) // Don't notify the sender if they are a manager
+                .ToListAsync(ct);
+
+            if (!managersInDepartments.Any()) return;
+
+            // Create notification for each manager
+            var title = notificationType == "Feedback" 
+                ? "New Feedback Submitted" 
+                : "New Recognition Given";
+
+            var message = notificationType == "Feedback"
+                ? $"{fromUserName} submitted feedback for {targetUser.FullName} in category '{categoryOrBadgeName}'"
+                : $"{fromUserName} gave recognition to {targetUser.FullName} with badge '{categoryOrBadgeName}'";
+
+            var notifications = managersInDepartments.Select(manager => new Notification
+            {
+                UserId = manager.UserId,
+                Title = title,
+                Message = message,
+                IsRead = false,
+                CreatedAt = DateTime.UtcNow
+            }).ToList();
+
+            _db.Notifications.AddRange(notifications);
+            await _db.SaveChangesAsync(ct);
+
+            _logger.LogInformation(
+                "Created {Count} notifications for {Type} from {From} to {To}",
+                notifications.Count, notificationType, fromUserId, toUserId);
+        }
+        catch (Exception ex)
+        {
+            // Log but don't fail the main operation
+            _logger.LogError(ex, "Failed to create manager notifications for {Type}", notificationType);
+        }
+    }
+
     public async Task<MyFeedbackSubmitResultDto> SubmitMyFeedbackAsync(
         string userId, 
         MyFeedbackSubmitDto dto, 
@@ -46,6 +124,9 @@ public class MyDataService : IMyDataService
 
         _db.Feedbacks.Add(feedback);
         await _db.SaveChangesAsync(ct);
+
+        // Notify managers in the target user's department
+        await NotifyManagersAsync(userId, dto.ToUserId, "Feedback", category.CategoryName, ct);
 
         return new MyFeedbackSubmitResultDto(
             feedback.FeedbackId,
@@ -120,6 +201,9 @@ public class MyDataService : IMyDataService
 
         _db.Recognitions.Add(recognition);
         await _db.SaveChangesAsync(ct);
+
+        // Notify managers in the target user's department
+        await NotifyManagersAsync(userId, dto.ToUserId, "Recognition", badge.BadgeName, ct);
 
         return new MyRecognitionSubmitResultDto(
             recognition.RecognitionId,

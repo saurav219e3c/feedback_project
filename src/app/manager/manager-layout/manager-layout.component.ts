@@ -93,7 +93,8 @@ export class ManagerLayoutComponent implements OnInit, OnDestroy {
     this.isNotificationOpen = !this.isNotificationOpen;
     this.isProfileOpen = false; // Close profile popup
     
-    if (this.isNotificationOpen && this.notifications.length === 0) {
+    // Always reload notifications when opening
+    if (this.isNotificationOpen) {
       this.loadNotifications();
     }
   }
@@ -109,6 +110,20 @@ export class ManagerLayoutComponent implements OnInit, OnDestroy {
         console.error('Failed to load notifications:', err);
         this.isLoadingNotifications = false;
       }
+    });
+  }
+
+  deleteNotification(notification: NotificationItem): void {
+    this.apiService.deleteNotification(notification.notificationId).subscribe({
+      next: () => {
+        // Remove from list
+        this.notifications = this.notifications.filter(n => n.notificationId !== notification.notificationId);
+        // Decrease count if it was unread
+        if (!notification.isRead) {
+          this.notificationCount = Math.max(0, this.notificationCount - 1);
+        }
+      },
+      error: (err) => console.error('Failed to delete notification:', err)
     });
   }
 
