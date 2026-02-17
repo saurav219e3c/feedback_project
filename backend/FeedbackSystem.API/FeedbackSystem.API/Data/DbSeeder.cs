@@ -55,7 +55,21 @@ public static class DbSeeder
             );
         }
 
-        // Save inserts for Roles, AppSettings, Departments, Badges (if any)
+        // ---------- CATEGORIES (Feedback Categories) ----------
+        if (!await db.Categories.AnyAsync())
+        {
+            db.Categories.AddRange(
+                new Category { CategoryId = "CAT-001", CategoryName = "Communication Skills", Description = "Feedback related to communication abilities", IsActive = true },
+                new Category { CategoryId = "CAT-002", CategoryName = "Technical Skills", Description = "Feedback on technical competencies", IsActive = true },
+                new Category { CategoryId = "CAT-003", CategoryName = "Teamwork", Description = "Collaboration and team contribution feedback", IsActive = true },
+                new Category { CategoryId = "CAT-004", CategoryName = "Leadership", Description = "Leadership qualities and management skills", IsActive = true },
+                new Category { CategoryId = "CAT-005", CategoryName = "Problem Solving", Description = "Analytical and problem-solving abilities", IsActive = true },
+                new Category { CategoryId = "CAT-006", CategoryName = "Time Management", Description = "Punctuality and deadline management", IsActive = true },
+                new Category { CategoryId = "CAT-007", CategoryName = "Work Quality", Description = "Quality of deliverables and attention to detail", IsActive = true }
+            );
+        }
+
+        // Save inserts for Roles, AppSettings, Departments, Badges, Categories (if any)
         await db.SaveChangesAsync();
 
         // Get IDs we need for relationships
@@ -114,6 +128,40 @@ public static class DbSeeder
             .Where(r => r.RoleName == "Manager")
             .FirstOrDefaultAsync();
 
+        // ========== EASY TEST USERS (manager@local, employee@local) ==========
+        if (managerRole != null && !await db.Users.AnyAsync(u => u.Email == "manager@local"))
+        {
+            db.Users.Add(new User
+            {
+                UserId = "mgr000",
+                FullName = "Test Manager",
+                Email = "manager@local",
+                PasswordHash = PasswordHasher.Hash("Manager@123"),
+                RoleId = managerRole.RoleId,
+                DepartmentId = defaultDeptId,
+                IsActive = true,
+                CreatedAt = DateTime.UtcNow
+            });
+            await db.SaveChangesAsync();
+        }
+
+        if (employeeRole != null && !await db.Users.AnyAsync(u => u.Email == "employee@local"))
+        {
+            db.Users.Add(new User
+            {
+                UserId = "emp000",
+                FullName = "Test Employee",
+                Email = "employee@local",
+                PasswordHash = PasswordHasher.Hash("Employee@123"),
+                RoleId = employeeRole.RoleId,
+                DepartmentId = defaultDeptId,
+                IsActive = true,
+                CreatedAt = DateTime.UtcNow
+            });
+            await db.SaveChangesAsync();
+        }
+
+        // ========== ADDITIONAL SAMPLE USERS ==========
         if (employeeRole != null && !await db.Users.AnyAsync(u => u.UserId == "emp001"))
         {
             var salesDept = await db.Departments.Where(d => d.DepartmentName == "Sales").Select(d => d.DepartmentId).FirstOrDefaultAsync() ?? defaultDeptId;

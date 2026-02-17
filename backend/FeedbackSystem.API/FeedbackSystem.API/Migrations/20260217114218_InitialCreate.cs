@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FeedbackSystem.API.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -22,6 +22,22 @@ namespace FeedbackSystem.API.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AppSettings", x => x.SettingKey);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Badges",
+                columns: table => new
+                {
+                    BadgeId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    BadgeName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(225)", maxLength: 225, nullable: true),
+                    IconClass = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Badges", x => x.BadgeId);
                 });
 
             migrationBuilder.CreateTable(
@@ -77,6 +93,7 @@ namespace FeedbackSystem.API.Migrations
                     FullName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     PasswordHash = table.Column<string>(type: "nvarchar(225)", maxLength: 225, nullable: false),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RoleId = table.Column<int>(type: "int", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
@@ -189,7 +206,7 @@ namespace FeedbackSystem.API.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FromUserId = table.Column<string>(type: "nvarchar(20)", nullable: false),
                     ToUserId = table.Column<string>(type: "nvarchar(20)", nullable: false),
-                    CategoryId = table.Column<string>(type: "nvarchar(20)", nullable: false),
+                    BadgeId = table.Column<string>(type: "nvarchar(20)", nullable: false),
                     Points = table.Column<int>(type: "int", nullable: false),
                     Message = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()")
@@ -199,10 +216,10 @@ namespace FeedbackSystem.API.Migrations
                     table.PrimaryKey("PK_Recognition", x => x.RecognitionId);
                     table.CheckConstraint("CK_Recognition_Points_Range", "[Points] BETWEEN 1 AND 10");
                     table.ForeignKey(
-                        name: "FK_Recognition_Category",
-                        column: x => x.CategoryId,
-                        principalTable: "Categories",
-                        principalColumn: "CategoryId",
+                        name: "FK_Recognition_Badge",
+                        column: x => x.BadgeId,
+                        principalTable: "Badges",
+                        principalColumn: "BadgeId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Recognition_FromUser",
@@ -228,23 +245,23 @@ namespace FeedbackSystem.API.Migrations
                     ReviewedBy = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Remarks = table.Column<string>(type: "nvarchar(225)", maxLength: 225, nullable: true),
-                    ReviewedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()")
+                    ReviewedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
+                    ReviewerUserId = table.Column<string>(type: "nvarchar(20)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_FeedbackReview", x => x.ReviewId);
                     table.ForeignKey(
-                        name: "FK_FeedbackReview_Feedback",
+                        name: "FK_FeedbackReview_Feedback_FeedbackId",
                         column: x => x.FeedbackId,
                         principalTable: "Feedback",
                         principalColumn: "FeedbackId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_FeedbackReview_User",
-                        column: x => x.ReviewedBy,
+                        name: "FK_FeedbackReview_Users_ReviewerUserId",
+                        column: x => x.ReviewerUserId,
                         principalTable: "Users",
-                        principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "UserId");
                 });
 
             migrationBuilder.CreateIndex(
@@ -256,6 +273,12 @@ namespace FeedbackSystem.API.Migrations
                 name: "IX_ActivityLog_UserId",
                 table: "ActivityLog",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Badges_BadgeName",
+                table: "Badges",
+                column: "BadgeName",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Categories_CategoryName",
@@ -290,9 +313,9 @@ namespace FeedbackSystem.API.Migrations
                 column: "FeedbackId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FeedbackReview_ReviewedBy",
+                name: "IX_FeedbackReview_ReviewerUserId",
                 table: "FeedbackReview",
-                column: "ReviewedBy");
+                column: "ReviewerUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Notifications_UserId",
@@ -300,9 +323,9 @@ namespace FeedbackSystem.API.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Recognition_CategoryId",
+                name: "IX_Recognition_BadgeId",
                 table: "Recognition",
-                column: "CategoryId");
+                column: "BadgeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Recognition_FromUserId",
@@ -357,6 +380,9 @@ namespace FeedbackSystem.API.Migrations
 
             migrationBuilder.DropTable(
                 name: "Feedback");
+
+            migrationBuilder.DropTable(
+                name: "Badges");
 
             migrationBuilder.DropTable(
                 name: "Categories");

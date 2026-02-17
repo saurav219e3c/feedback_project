@@ -223,7 +223,7 @@ public class ManagerService : IManagerService
         // Get recent recognitions
         var recentRecognitions = await _db.Recognitions
             .Include(r => r.FromUser)
-            .Include(r => r.Category)
+            .Include(r => r.Badge)
             .Where(r => r.FromUser.DepartmentId == deptId || r.ToUser.DepartmentId == deptId)
             .OrderByDescending(r => r.CreatedAt)
             .Take(count)
@@ -232,7 +232,7 @@ public class ManagerService : IManagerService
                 "Recognition",
                 "Recognition Sent",
                 r.FromUser.FullName,
-                r.Category.CategoryName,
+                r.Badge.BadgeName,
                 r.CreatedAt,
                 "Completed"
             ))

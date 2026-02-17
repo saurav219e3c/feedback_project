@@ -120,6 +120,27 @@ export class CategoryManagementComponent implements OnInit {
     });
   }
 
+  /** Delete a category */
+  deleteCategory(index: number): void {
+    const cat = this.categories[index];
+    
+    if (!confirm(`Are you sure you want to delete "${cat.name}"? This action cannot be undone.`)) {
+      return;
+    }
+
+    this.categoryService.delete(cat.id).subscribe({
+      next: () => {
+        this.categories = this.categories.filter((_, i) => i !== index);
+      },
+      error: (err) => {
+        const msg = err?.error?.message || 'Failed to delete category. It may be in use.';
+        this.error = msg;
+        alert(msg);
+        console.error(err);
+      }
+    });
+  }
+
   /** Save new or updated category */
   saveCategory(): void {
     const name = (this.formModel.name || '').trim();

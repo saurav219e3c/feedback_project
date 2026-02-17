@@ -79,15 +79,15 @@
 
     <div class="profile-container position-relative">
       <div (click)="toggleProfile()" class="profile-icon">
-        {{ getInitials(currentUser?.name) }}
+        {{ getInitials(userName) }}
       </div>
 
       <div *ngIf="isProfileOpen" class="profile-popup shadow-lg border rounded-lg">
         <div class="popup-header p-3 border-bottom bg-light">
-          <p class="name fw-bold mb-0 text-dark">{{ currentUser?.name || 'User' }}</p>
-          <p class="email text-muted small mb-2">{{ currentUser?.email }}</p>
+          <p class="name fw-bold mb-0 text-dark">{{ userName }}</p>
+          <p class="email text-muted small mb-2">{{ userEmail }}</p>
           <small class="text-uppercase fw-bold text-primary" style="font-size: 10px;">
-            ID: {{ currentUser?.id }}
+            ID: {{ userId }}
           </small>
         </div>
         

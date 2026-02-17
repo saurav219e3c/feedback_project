@@ -133,7 +133,6 @@ public class UserService : IUserService
         return new UserStatsDto(totalUsers, activeUsers, inactiveUsers, totalFeedbacks, totalRecognitions);
     }
 
-<<<<<<< HEAD
     // ✅ Search
     public async Task<List<UserReadDto>> SearchAsync(string query, CancellationToken ct = default)
     {
@@ -142,13 +141,15 @@ public class UserService : IUserService
             u.UserId,
             u.FullName,
             u.Email,
+            u.Phone,
             u.Role.RoleName,
             u.DepartmentId,
             u.Department.DepartmentName,
             u.IsActive,
             u.CreatedAt
         )).ToList();
-=======
+    }
+
     // ✅ Profile - Get current user's profile
     public async Task<ProfileReadDto?> GetProfileAsync(string userId, CancellationToken ct = default)
     {
@@ -183,6 +184,5 @@ public class UserService : IUserService
 
         await _repo.UpdateAsync(user, ct);
         return true;
->>>>>>> 3fe9f7803dbbd63808fef403e6923b2697672c72
     }
 }

@@ -31,7 +31,23 @@ export class ManagerLayoutComponent implements OnInit, OnDestroy {
   notificationCount = 0;
   notifications: NotificationItem[] = [];
   isLoadingNotifications = false;
-  currentUser: User | null = null;
+  
+  // Use getters to always get latest value from authService
+  get currentUser(): User | null {
+    return (this.authService as any)._user$?.getValue?.() ?? null;
+  }
+
+  get userName(): string {
+    return this.currentUser?.name || 'User';
+  }
+
+  get userEmail(): string {
+    return this.currentUser?.email || '';
+  }
+
+  get userId(): string {
+    return this.currentUser?.id || '';
+  }
 
   constructor() {
     // Auto-close sidebar/popup on navigation
@@ -47,11 +63,10 @@ export class ManagerLayoutComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // Reactively update user details (Name, Email, ID) from the Service/Token
+    // Subscribe to user changes for redirect on logout
     this.sub.add(
       this.authService.user$.subscribe(user => {
-        this.currentUser = user;
-        // Optional: Redirect to login if user becomes null (token expires/logout)
+        // Redirect to login if user becomes null (token expires/logout)
         if (!user) {
           this.router.navigate(['/login']);
         }
