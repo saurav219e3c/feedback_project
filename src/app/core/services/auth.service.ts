@@ -65,6 +65,16 @@ export class AuthService {
     localStorage.setItem(this.USER_KEY, JSON.stringify(user));
   }
 
+  /** Update user's name (for profile updates) */
+  updateUserName(name: string): void {
+    const currentUser = this._user$.getValue();
+    if (currentUser) {
+      const updatedUser = { ...currentUser, name };
+      this._user$.next(updatedUser);
+      localStorage.setItem(this.USER_KEY, JSON.stringify(updatedUser));
+    }
+  }
+
   /** FIXED: Clears Local Storage on logout */
   logout(): void {
     this.tokenSvc.clearToken();

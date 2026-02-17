@@ -12,8 +12,13 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FeedbackSystem.API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260211095326_ChangeIdsToString")]
-    partial class ChangeIdsToString
+<<<<<<<< HEAD:backend/FeedbackSystem.API/FeedbackSystem.API/Migrations/20260213082659_InitCreate.Designer.cs
+    [Migration("20260213082659_InitCreate")]
+    partial class InitCreate
+========
+    [Migration("20260216085949_AddPhoneToUser")]
+    partial class AddPhoneToUser
+>>>>>>>> 067218bfd231463a3f5cd4d68163708b50793ef7:backend/FeedbackSystem.API/FeedbackSystem.API/Migrations/20260216085949_AddPhoneToUser.Designer.cs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -390,6 +395,9 @@ namespace FeedbackSystem.API.Migrations
                         .IsRequired()
                         .HasMaxLength(225)
                         .HasColumnType("nvarchar(225)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("RoleId")
                         .HasColumnType("int");

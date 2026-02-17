@@ -12,7 +12,14 @@ public interface IUserService
     
     // ✅ Statistics
     Task<UserStatsDto> GetStatsAsync(CancellationToken ct = default);
+<<<<<<< HEAD
     
     // ✅ Search
     Task<List<UserReadDto>> SearchAsync(string query, CancellationToken ct = default);
+=======
+
+    // ✅ Profile
+    Task<ProfileReadDto?> GetProfileAsync(string userId, CancellationToken ct = default);
+    Task<bool> UpdateProfileAsync(string userId, ProfileUpdateDto dto, CancellationToken ct = default);
+>>>>>>> 3fe9f7803dbbd63808fef403e6923b2697672c72
 }
