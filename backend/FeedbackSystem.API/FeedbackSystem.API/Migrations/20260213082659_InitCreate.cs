@@ -5,7 +5,7 @@
 namespace FeedbackSystem.API.Migrations
 {
     /// <inheritdoc />
-    public partial class Fixed_ColumnName : Migration
+    public partial class InitCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
