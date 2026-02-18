@@ -2,9 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\FeedbackSystem.API",
-    "\\FeedbackSystem.API\\bin\\Release",
-    "\\FeedbackSystem.API\\obj\\Release"
+    "\\FeedbackSystem.API\\Controllers"
   ],
-  "SelectedNode": "\\FeedbackSystem.API",
+  "SelectedNode": "\\FeedbackSystem.API\\Controllers\\ActivityController.cs",
   "PreviewInSolutionExplorer": false
 }
