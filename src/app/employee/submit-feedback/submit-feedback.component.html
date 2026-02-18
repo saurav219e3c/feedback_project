@@ -1,120 +1,140 @@
-<div class="container py-5">
+<div class="container py-4">
   <div class="row justify-content-center">
-    <div class="col-md-8 col-lg-6">
-      <div class="card shadow-sm border-0 border-top border-primary border-4">
-        <div class="card-body p-4">
+    <div class="col-lg-9 col-xl-8">
 
-          <div class="text-center mb-4">
-            <i class="bi bi-chat-left-heart text-primary display-4"></i>
-            <h3 class="fw-bold mt-2">Employee Feedback</h3>
-            <p class="text-muted">Your voice helps us build a better workplace.</p>
+      <!-- Main Card with header inside -->
+      <div class="feedback-card">
+
+        <!-- Header Section inside card -->
+        <div class="text-center mb-4">
+          <div class="icon-wrapper mx-auto mb-3">
+            <i class="bi bi-chat-left-heart"></i>
+          </div>
+          <h3 class="fw-bold mt-2">Employee Feedback</h3>
+          <p class="text-muted">Your voice helps us build a better workplace.</p>
+        </div>
+
+        <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+
+          <!-- Employee Name -->
+          <div class="form-section">
+            <label class="form-label">
+              <i class="bi bi-person-fill me-1 text-primary"></i>
+              Employee Name <span class="text-danger">*</span>
+            </label>
+            <input type="text" formControlName="employeeName" class="form-control modern-input"
+              placeholder="Start typing employee name..." (input)="onNameChange($event)"
+              [class.is-invalid]="feedbackForm.get('employeeName')?.touched && feedbackForm.get('employeeName')?.invalid">
+            <small class="helper-text"><i class="bi bi-info-circle me-1"></i>Start typing to see suggestions</small>
+            <div *ngIf="feedbackForm.get('employeeName')?.touched && feedbackForm.get('employeeName')?.invalid"
+                 class="error-text">
+              <i class="bi bi-exclamation-circle me-1"></i>Employee name is required
+            </div>
+
+            <!-- Autocomplete Dropdown -->
+            @if (filteredEmployees().length > 0) {
+            <ul class="autocomplete-dropdown">
+              @for (emp of filteredEmployees(); track emp.id) {
+              <li class="autocomplete-item" (click)="selectEmployee(emp)">
+                <div class="d-flex align-items-center">
+                  <div class="avatar-circle me-3">
+                    {{ emp.name.charAt(0).toUpperCase() }}
+                  </div>
+                  <div>
+                    <div class="fw-semibold">{{ emp.name }} <span class="text-muted small">({{ emp.id }})</span></div>
+                    <div class="text-muted small">{{ emp.email }}</div>
+                  </div>
+                </div>
+              </li>
+              }
+            </ul>
+            }
           </div>
 
-          <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
-
-            <div class="mb-3 position-relative">
-              <label class="form-label fw-bold">Employee Name <span class="text-danger">*</span></label>
-              <div class="input-group">
-                <span class="input-group-text bg-white"><i class="bi bi-person-fill"></i></span>
-                <input type="text" formControlName="employeeName" class="form-control"
-                  placeholder="Type employee name..." (input)="onNameChange($event)"
-                  [class.is-invalid]="feedbackForm.get('employeeName')?.touched && feedbackForm.get('employeeName')?.invalid">
-              </div>
-              <small class="text-muted">Start typing to see suggestions</small>
-              <div *ngIf="feedbackForm.get('employeeName')?.touched && feedbackForm.get('employeeName')?.invalid"
-                   class="text-danger small mt-1">
-                Employee name is required
-              </div>
-              
-              @if (filteredEmployees().length > 0) {
-              <ul class="list-group position-absolute w-100 z-3 shadow-lg mt-1" style="max-height: 200px; overflow-y: auto;">
-                @for (emp of filteredEmployees(); track emp.id) {
-                <li class="list-group-item list-group-item-action border-0 py-2 cursor-pointer" (click)="selectEmployee(emp)">
-                  <div class="d-flex align-items-center">
-                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-2" 
-                         style="width: 32px; height: 32px; font-size: 14px; font-weight: bold;">
-                      {{ emp.name.charAt(0).toUpperCase() }}
-                    </div>
-                    <div>
-                      <div class="fw-bold">{{ emp.name }} <span class="text-muted">({{ emp.id }})</span></div>
-                      <div class="text-muted small">{{ emp.email }}</div>
-                    </div>
-                  </div>
-                </li>
-                }
-              </ul>
-              }
-            </div>
-
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label class="form-label fw-bold">Employee ID <span class="text-danger">*</span></label>
-                <div class="input-group">
-                  <span class="input-group-text bg-light"><i class="bi bi-person-badge"></i></span>
-                  <input type="text" formControlName="employeeId" class="form-control" 
-                         placeholder="Auto-filled or type ID..." (input)="onEmployeeIdChange($event)"
-                         [class.is-invalid]="feedbackForm.get('employeeId')?.touched && feedbackForm.get('employeeId')?.invalid">
-                </div>
-                <small class="text-muted">Auto-fills when name is selected</small>
-                <div *ngIf="feedbackForm.get('employeeId')?.touched && feedbackForm.get('employeeId')?.invalid"
-                     class="text-danger small mt-1">
-                  Employee ID is required
-                </div>
-              </div>
-
-              <div class="col-md-6 mb-3">
-                <label class="form-label fw-bold">Category</label>
-                <div class="input-group">
-                  <span class="input-group-text bg-light"><i class="bi bi-tag"></i></span>
-                  <select formControlName="category" class="form-select">
-                    <option value="" disabled>Select...</option>
-                    <option *ngFor="let cat of categories" [value]="cat.categoryId">{{cat.categoryName}}</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <div class="mb-3">
-              <label class="form-label fw-bold">Submission Date</label>
-              <div class="input-group">
-                <span class="input-group-text bg-light"><i class="bi bi-calendar3"></i></span>
-                <input type="date" formControlName="submissionDate" class="form-control">
-              </div>
-            </div>
-
-            <div class="mb-3">
-              <label class="form-label fw-bold">Your Comments</label>
-              <textarea formControlName="comments" class="form-control" rows="4"
-                placeholder="Tell us what's on your mind..."></textarea>
-              <div *ngIf="feedbackForm.get('comments')?.touched && feedbackForm.get('comments')?.invalid"
-                class="text-danger small mt-1">
-                Comment must be at least 10 characters.
-              </div>
-            </div>
-
-            <div class="p-3 mb-4 rounded border"
-              [ngClass]="feedbackForm.get('isAnonymous')?.value ? 'bg-warning-subtle border-warning' : 'bg-light'">
-              <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="anonSwitch" formControlName="isAnonymous">
-                <label class="form-check-label fw-bold" for="anonSwitch">
-                  Submit Anonymously
+          <!-- Employee ID & Category Row -->
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="form-section">
+                <label class="form-label">
+                  <i class="bi bi-person-badge me-1 text-primary"></i>
+                  Employee ID <span class="text-danger">*</span>
                 </label>
+                <input type="text" formControlName="employeeId" class="form-control modern-input"
+                       placeholder="Auto-filled or type ID..." (input)="onEmployeeIdChange($event)"
+                       [class.is-invalid]="feedbackForm.get('employeeId')?.touched && feedbackForm.get('employeeId')?.invalid">
+                <small class="helper-text"><i class="bi bi-magic me-1"></i>Auto-fills when name is selected</small>
+                <div *ngIf="feedbackForm.get('employeeId')?.touched && feedbackForm.get('employeeId')?.invalid"
+                     class="error-text">
+                  <i class="bi bi-exclamation-circle me-1"></i>Employee ID is required
+                </div>
               </div>
-              <small class="text-muted d-block mt-1">
-                <i class="bi bi-shield-lock-fill me-1"></i>
-                Identity will be hidden from administrators.
-              </small>
             </div>
 
-            <div class="d-grid">
-              <button type="submit" class="btn btn-primary btn-lg rounded-pill" [disabled]="feedbackForm.invalid || !selectedEmp()">
-                <i class="bi bi-send me-2"></i> Submit Feedback
-              </button>
+            <div class="col-md-6">
+              <div class="form-section">
+                <label class="form-label">
+                  <i class="bi bi-tag-fill me-1 text-primary"></i>
+                  Category
+                </label>
+                <select formControlName="category" class="form-select modern-input">
+                  <option value="" disabled>Select category...</option>
+                  <option *ngFor="let cat of categories" [value]="cat.categoryId">{{ cat.categoryName }}</option>
+                </select>
+              </div>
             </div>
-          </form>
+          </div>
 
-        </div>
+          <!-- Date -->
+          <div class="form-section">
+            <label class="form-label">
+              <i class="bi bi-calendar3 me-1 text-primary"></i>
+              Submission Date
+            </label>
+            <input type="date" formControlName="submissionDate" class="form-control modern-input">
+          </div>
+
+          <!-- Comments -->
+          <div class="form-section">
+            <label class="form-label">
+              <i class="bi bi-chat-dots-fill me-1 text-primary"></i>
+              Your Comments
+            </label>
+            <textarea formControlName="comments" class="form-control modern-input modern-textarea" rows="4"
+              placeholder="Tell us what's on your mind... Share your thoughts, suggestions, or feedback."></textarea>
+            <div *ngIf="feedbackForm.get('comments')?.touched && feedbackForm.get('comments')?.invalid"
+              class="error-text">
+              <i class="bi bi-exclamation-circle me-1"></i>Comment must be at least 10 characters.
+            </div>
+          </div>
+
+          <!-- Anonymous Toggle -->
+          <div class="anonymous-section" [class.active]="feedbackForm.get('isAnonymous')?.value">
+            <div class="d-flex align-items-center justify-content-between">
+              <div class="d-flex align-items-center">
+                <div class="anon-icon me-3">
+                  <i class="bi" [ngClass]="feedbackForm.get('isAnonymous')?.value ? 'bi-shield-lock-fill' : 'bi-shield'"></i>
+                </div>
+                <div>
+                  <div class="fw-bold">Submit Anonymously</div>
+                  <small class="text-muted">Your identity will be hidden from administrators.</small>
+                </div>
+              </div>
+              <div class="form-check form-switch ms-3">
+                <input class="form-check-input modern-switch" type="checkbox" id="anonSwitch" formControlName="isAnonymous">
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="d-grid mt-4">
+            <button type="submit" class="btn submit-btn" [disabled]="feedbackForm.invalid || !selectedEmp()">
+              <i class="bi bi-send-fill me-2"></i> Submit Feedback
+            </button>
+          </div>
+
+        </form>
       </div>
+
     </div>
   </div>
 </div>
