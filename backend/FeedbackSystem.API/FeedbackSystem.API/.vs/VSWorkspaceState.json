@@ -1,6 +1,5 @@
 {
   "ExpandedNodes": [
-    "",
     "\\Controllers",
     "\\DTOs",
     "\\Migrations",
@@ -11,6 +10,5 @@
     "\\Security",
     "\\Services"
   ],
-  "SelectedNode": "\\Services\\AuthService.cs",
   "PreviewInSolutionExplorer": false
 }
