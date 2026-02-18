@@ -260,10 +260,9 @@
                        placeholder="Enter 10 digit phone number"
                        class="w-full pl-16 pr-4 py-4 rounded-2xl bg-slate-700/50 border-2 text-white font-medium placeholder-slate-500 focus:outline-none focus:ring-2 transition-all"
                        [class.border-red-500]="phoneError"
-                       [class.focus:ring-red-500]="phoneError"
-                       [class.border-white/20]="!phoneError"
-                       [class.focus:ring-blue-500]="!phoneError"
-                       [class.focus:border-blue-500]="!phoneError">
+                       [class.border-white]="!phoneError"
+                       [class.border-opacity-20]="!phoneError"
+                       [ngClass]="{'focus:ring-red-500': phoneError, 'focus:ring-blue-500': !phoneError, 'focus:border-blue-500': !phoneError}" />
               </div>
               <p *ngIf="phoneError && isEditing" class="text-red-400 text-sm flex items-center gap-2 mt-1">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

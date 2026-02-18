@@ -8,8 +8,9 @@ public static class DbSeeder
 {
     public static async Task SeedAsync(AppDbContext db)
     {
-        // Ensure DB and migrations are applied
-        await db.Database.MigrateAsync();
+        // Database already exists with tables - skip migration
+        // If you need to apply migrations in the future, run: dotnet ef database update
+        // await db.Database.MigrateAsync();
 
         // ---------- ROLES ----------
         if (!await db.Roles.AnyAsync())
