@@ -1,108 +1,135 @@
-<div class="container py-5">
+<div class="container py-4">
   <div class="row justify-content-center">
-    <div class="col-md-6 col-lg-5">
-      <div class="card shadow-lg border-0 border-top border-primary border-4 rounded-4 position-relative">
+    <div class="col-lg-9 col-xl-8">
 
-        <div class="text-center py-4 rounded-top-4 bg-white">
-          <div class="icon-circle bg-primary-subtle mx-auto mb-2">
-            <i class="bi bi-stars text-primary fs-2"></i>
+      <!-- Main Card -->
+      <div class="recognition-card">
+
+        <!-- Header inside card -->
+        <div class="text-center mb-4">
+          <div class="icon-wrapper mx-auto mb-3">
+            <i class="bi bi-stars"></i>
           </div>
-          <h3 class="fw-bold mb-0">Give Recognition</h3>
-          <p class="text-muted small">Spread positivity across the team!</p>
+          <h3 class="fw-bold mt-2">Give Recognition</h3>
+          <p class="text-muted">Spread positivity across the team!</p>
         </div>
 
-        <div class="card-body p-4 pt-0">
-          <form [formGroup]="recognitionForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="recognitionForm" (ngSubmit)="onSubmit()">
 
-            <div class="mb-3 position-relative">
-              <label class="form-label fw-semibold small">Employee Name <span class="text-danger">*</span></label>
-              <div class="input-group">
-                <span class="input-group-text bg-light border-0"><i class="bi bi-person-fill"></i></span>
-                <input type="text" class="form-control bg-light border-0 shadow-none" placeholder="Type name..."
-                  formControlName="employeeName" (input)="onNameChange($event)"
-                  [class.is-invalid]="recognitionForm.get('employeeName')?.touched && recognitionForm.get('employeeName')?.invalid">
-              </div>
-              <small class="text-muted extra-small">Start typing to see suggestions</small>
-              <div *ngIf="recognitionForm.get('employeeName')?.touched && recognitionForm.get('employeeName')?.invalid"
-                   class="text-danger extra-small mt-1">
-                Employee name is required
-              </div>
+          <!-- Employee Name -->
+          <div class="form-section">
+            <label class="form-label">
+              <i class="bi bi-person-fill me-1 text-primary"></i>
+              Employee Name <span class="text-danger">*</span>
+            </label>
+            <input type="text" formControlName="employeeName" class="form-control modern-input"
+              placeholder="Start typing employee name..." (input)="onNameChange($event)"
+              [class.is-invalid]="recognitionForm.get('employeeName')?.touched && recognitionForm.get('employeeName')?.invalid">
+            <small class="helper-text"><i class="bi bi-info-circle me-1"></i>Start typing to see suggestions</small>
+            <div *ngIf="recognitionForm.get('employeeName')?.touched && recognitionForm.get('employeeName')?.invalid"
+                 class="error-text">
+              <i class="bi bi-exclamation-circle me-1"></i>Employee name is required
+            </div>
 
-              @if (filteredEmployees().length > 0) {
-              <ul class="list-group position-absolute w-100 z-3 shadow-lg mt-1" style="max-height: 200px; overflow-y: auto;">
-                @for (emp of filteredEmployees(); track emp.id) {
-                <li class="list-group-item list-group-item-action border-0 py-2" (click)="selectEmployee(emp)">
-                  <div class="d-flex align-items-center">
-                    <div class="avatar-xs me-2">{{ emp.name.charAt(0) }}</div>
-                    <div>
-                      <div class="fw-bold small">{{ emp.name }} <span class="text-muted">({{ emp.id }})</span></div>
-                      <div class="text-muted extra-small">{{ emp.email }}</div>
-                    </div>
+            <!-- Autocomplete Dropdown -->
+            @if (filteredEmployees().length > 0) {
+            <ul class="autocomplete-dropdown">
+              @for (emp of filteredEmployees(); track emp.id) {
+              <li class="autocomplete-item" (click)="selectEmployee(emp)">
+                <div class="d-flex align-items-center">
+                  <div class="avatar-circle me-3">
+                    {{ emp.name.charAt(0).toUpperCase() }}
                   </div>
-                </li>
-                }
-              </ul>
+                  <div>
+                    <div class="fw-semibold">{{ emp.name }} <span class="text-muted small">({{ emp.id }})</span></div>
+                    <div class="text-muted small">{{ emp.email }}</div>
+                  </div>
+                </div>
+              </li>
               }
-            </div>
+            </ul>
+            }
+          </div>
 
-            <div class="mb-3">
-              <label class="form-label fw-semibold small">Employee ID <span class="text-danger">*</span></label>
-              <input type="text" class="form-control bg-light border-0 text-center fw-bold text-primary shadow-none"
-                formControlName="employeeId" placeholder="Auto-filled or type ID..." (input)="onEmployeeIdChange($event)"
-                [class.is-invalid]="recognitionForm.get('employeeId')?.touched && recognitionForm.get('employeeId')?.invalid">
-              <small class="text-muted extra-small">Auto-fills when name is selected</small>
-              <div *ngIf="recognitionForm.get('employeeId')?.touched && recognitionForm.get('employeeId')?.invalid"
-                   class="text-danger extra-small mt-1">
-                Required
-              </div>
-            </div>
-
-            <hr class="my-3 opacity-25">
-
-            <div class="mb-3">
-              <label class="form-label fw-semibold small">Award Badge</label>
-              <div class="row g-2">
-                <div class="col-12">
-                  <select class="form-select border-2" formControlName="badgeType" [ngClass]="getBadgeTheme()">
-                    <option value="" disabled>Choose a badge...</option>
-                    @for (badge of badges; track badge.badgeId) {
-                      <option [value]="badge.badgeId">
-                        {{ badge.iconClass || '🏆' }} {{ badge.badgeName }}
-                      </option>
-                    }
-                  </select>
+          <!-- Employee ID & Badge Row -->
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="form-section">
+                <label class="form-label">
+                  <i class="bi bi-person-badge me-1 text-primary"></i>
+                  Employee ID <span class="text-danger">*</span>
+                </label>
+                <input type="text" formControlName="employeeId" class="form-control modern-input"
+                       placeholder="Auto-filled or type ID..." (input)="onEmployeeIdChange($event)"
+                       [class.is-invalid]="recognitionForm.get('employeeId')?.touched && recognitionForm.get('employeeId')?.invalid">
+                <small class="helper-text"><i class="bi bi-magic me-1"></i>Auto-fills when name is selected</small>
+                <div *ngIf="recognitionForm.get('employeeId')?.touched && recognitionForm.get('employeeId')?.invalid"
+                     class="error-text">
+                  <i class="bi bi-exclamation-circle me-1"></i>Employee ID is required
                 </div>
               </div>
             </div>
 
-            <div class="mb-3 bg-light p-3 rounded-3">
-              <div class="d-flex justify-content-between align-items-center mb-1">
-                <label class="form-label fw-semibold small mb-0">Impact Score</label>
-                <span class="badge bg-primary rounded-pill">{{ recognitionForm.get('points')?.value }} Points</span>
+            <div class="col-md-6">
+              <div class="form-section">
+                <label class="form-label">
+                  <i class="bi bi-award-fill me-1 text-primary"></i>
+                  Award Badge <span class="text-danger">*</span>
+                </label>
+                <select formControlName="badgeType" class="form-select modern-input" [ngClass]="getBadgeTheme()">
+                  <option value="" disabled>Choose a badge...</option>
+                  @for (badge of badges; track badge.badgeId) {
+                    <option [value]="badge.badgeId">
+                      {{ badge.iconClass || '🏆' }} {{ badge.badgeName }}
+                    </option>
+                  }
+                </select>
               </div>
-              <input type="range" class="form-range" min="1" max="10" step="1" formControlName="points">
-              <div class="d-flex justify-content-between x-small text-muted">
-                <span>Good</span>
-                <span>Exceptional</span>
+            </div>
+          </div>
+
+          <!-- Impact Score -->
+          <div class="form-section">
+            <div class="points-section">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <label class="form-label mb-0">
+                  <i class="bi bi-lightning-fill me-1 text-primary"></i>
+                  Impact Score
+                </label>
+                <span class="points-badge">{{ recognitionForm.get('points')?.value }} Points</span>
+              </div>
+              <input type="range" class="form-range custom-range" min="1" [max]="maxPoints" step="1" formControlName="points">
+              <div class="d-flex justify-content-between">
+                <small class="helper-text">Good</small>
+                <small class="helper-text">Exceptional</small>
               </div>
             </div>
+          </div>
 
-            <div class="mb-4">
-              <label class="form-label fw-semibold small">Appreciation Note</label>
-              <textarea class="form-control border-2" rows="3" placeholder="What made their work stand out?"
-                formControlName="comment"></textarea>
+          <!-- Appreciation Note -->
+          <div class="form-section">
+            <label class="form-label">
+              <i class="bi bi-chat-dots-fill me-1 text-primary"></i>
+              Appreciation Note <span class="text-danger">*</span>
+            </label>
+            <textarea formControlName="comment" class="form-control modern-input modern-textarea" rows="4"
+              placeholder="What made their work stand out? Share your appreciation..."></textarea>
+            <div *ngIf="recognitionForm.get('comment')?.touched && recognitionForm.get('comment')?.invalid"
+              class="error-text">
+              <i class="bi bi-exclamation-circle me-1"></i>Comment must be at least 5 characters.
             </div>
+          </div>
 
-            <div class="d-grid">
-              <button type="submit" [disabled]="recognitionForm.invalid"
-                class="btn btn-primary btn-lg rounded-pill shadow py-3 fw-bold">
-                <i class="bi bi-send-fill me-2"></i>Confirm & Send
-              </button>
-            </div>
+          <!-- Submit Button -->
+          <div class="d-grid mt-4">
+            <button type="submit" class="btn submit-btn" [disabled]="recognitionForm.invalid || !selectedEmp()">
+              <i class="bi bi-send-fill me-2"></i> Confirm & Send
+            </button>
+          </div>
 
-          </form>
-        </div>
+        </form>
       </div>
+
     </div>
   </div>
 </div>
