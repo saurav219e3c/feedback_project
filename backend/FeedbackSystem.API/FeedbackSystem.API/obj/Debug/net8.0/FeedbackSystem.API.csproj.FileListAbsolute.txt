@@ -292,10 +292,10 @@ C:\Project\feedback_project\backend\FeedbackSystem.API\FeedbackSystem.API\obj\De
 C:\Project\feedback_project\backend\FeedbackSystem.API\FeedbackSystem.API\obj\Debug\net8.0\staticwebassets.development.json
 C:\Project\feedback_project\backend\FeedbackSystem.API\FeedbackSystem.API\obj\Debug\net8.0\staticwebassets.build.endpoints.json
 C:\Project\feedback_project\backend\FeedbackSystem.API\FeedbackSystem.API\obj\Debug\net8.0\swae.build.ex.cache
-C:\Project\feedback_project\backend\FeedbackSystem.API\FeedbackSystem.API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Project\feedback_project\backend\FeedbackSystem.API\FeedbackSystem.API\obj\Debug\net8.0\Feedback.C2537482.Up2Date
 C:\Project\feedback_project\backend\FeedbackSystem.API\FeedbackSystem.API\obj\Debug\net8.0\FeedbackSystem.API.dll
 C:\Project\feedback_project\backend\FeedbackSystem.API\FeedbackSystem.API\obj\Debug\net8.0\refint\FeedbackSystem.API.dll
 C:\Project\feedback_project\backend\FeedbackSystem.API\FeedbackSystem.API\obj\Debug\net8.0\FeedbackSystem.API.pdb
 C:\Project\feedback_project\backend\FeedbackSystem.API\FeedbackSystem.API\obj\Debug\net8.0\FeedbackSystem.API.genruntimeconfig.cache
 C:\Project\feedback_project\backend\FeedbackSystem.API\FeedbackSystem.API\obj\Debug\net8.0\ref\FeedbackSystem.API.dll
+C:\Project\feedback_project\backend\FeedbackSystem.API\FeedbackSystem.API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

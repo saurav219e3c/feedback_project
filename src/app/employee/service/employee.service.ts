@@ -7,29 +7,41 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { environment } from "../../../environments/environment";
 
 
+// export interface Feedback {
+//   id?: number;
+//   feedbackId?: string;
+//   submittedByUserId: string;
+//   targetUserId: string;
+//   searchEmployee?: string;
+//   category: string;
+//   comments: string;
+//   isAnonymous: boolean;
+//   submissionDate: string;
+// }
+// 1. Ensure this perfectly matches your C# record (converted to camelCase)
 export interface Feedback {
-  id?: number;
-  feedbackId?: string;
-  submittedByUserId: string;
-  targetUserId: string;
-  searchEmployee?: string;
-  category: string;
+  feedbackId: number;
+  fromUserId: string; 
+  fromUserName: string;
+  toUserId: string;
+  categoryId: string;
+  categoryName: string;
   comments: string;
   isAnonymous: boolean;
-  submissionDate: string;
+  createdAt: string;
 }
 
 export interface Recognition {
-  id?: number;
-  recognitionId?: string;
+  recognitionId: number;
   fromUserId: string;
+  fromUserName: string;
   toUserId: string;
+  toUserName: string;
   badgeId: string;
-  BadgeType?: string;
+  badgeName: string;
   points: number;
-  date: string;
-  comment?: string;
-  message?: string;
+  message: string;
+  createdAt: string;
 }
 
 

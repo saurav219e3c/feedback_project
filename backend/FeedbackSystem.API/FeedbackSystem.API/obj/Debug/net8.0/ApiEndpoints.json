@@ -1458,13 +1458,13 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "FeedbackSystem.API.DTOs.MyRecognitionSubmitDto",
+        "Type": "FeedbackSystem.API.DTOs.MyRecognitionsubmitDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.MyRecognitionSubmitResultDto",
+        "Type": "FeedbackSystem.API.DTOs.MyRecognitionrResponseDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1490,7 +1490,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[FeedbackSystem.API.DTOs.MyRecognitionDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[FeedbackSystem.API.DTOs.MyAllRecognitionItemDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

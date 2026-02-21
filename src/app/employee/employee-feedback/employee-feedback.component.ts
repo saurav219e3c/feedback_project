@@ -26,7 +26,7 @@ export class EmployeeFeedbackComponent implements OnInit {
     return raw.map(item =>({
       ...item,//keeps orignal data
 
-      senderName: item.isAnonymous ? 'Anonymous Colleage' : this.empService.getEmployeeName(item.submittedByUserId)
+     senderName: item.isAnonymous ? 'Anonymous Colleague' : this.empService.getEmployeeName(item.fromUserId)
     }));
   });
 
@@ -36,15 +36,14 @@ export class EmployeeFeedbackComponent implements OnInit {
     this.currentUser=this.empService.getCurrentUser();
     //this.feedbackList = this.empService.getMyReceivedFeedback();
     //load data into signal
+    // Subscribe to the new service method
     this.empService.getMyReceivedFeedback().subscribe({
       next: (response) => {
-        const data = response.items || response || [];
-        this.rawFeedback.set(data);
-      },
-      error: (error) => {
-        console.error('Error loading feedback:', error);
-        this.rawFeedback.set([]);
+        // Extract the array from the 'items' property your map() created!
+        this.rawFeedback.set(response.items || []);
       }
+      // Note: We don't need an 'error' block here anymore because your 
+      // service's catchError already catches it and returns { items: [] } !
     });
 
   }

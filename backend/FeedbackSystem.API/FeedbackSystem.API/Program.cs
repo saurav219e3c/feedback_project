@@ -4,6 +4,7 @@ using FeedbackSystem.API.Middleware;
 using FeedbackSystem.API.Options;
 using FeedbackSystem.API.Repositories;
 using FeedbackSystem.API.Services;
+using FeedbackSystem.API.Services.interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -125,7 +126,13 @@ builder.Services.AddSwaggerGen(c =>
 // --------------------------------------------------
 // AutoMapper
 // --------------------------------------------------
-builder.Services.AddAutoMapper(typeof(MappingProfile));
+builder.Services.AddAutoMapper(cfg =>
+{
+  // This tells AutoMapper to stop scanning for extension methods,
+  // which completely bypasses the generic constraint bug.
+  cfg.ShouldMapMethod = (m) => false;
+
+}, typeof(MappingProfile).Assembly);
 
 // --------------------------------------------------
 // Dependency Injection: Repositories & Services
@@ -155,8 +162,8 @@ builder.Services.AddScoped<IActivityService, ActivityService>();
 
 builder.Services.AddScoped<ISettingsRepository, SettingsRepository>();
 builder.Services.AddScoped<ISettingsService, SettingsService>();
-
-builder.Services.AddScoped<IMyDataService, MyDataService>();
+builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
 
@@ -164,7 +171,12 @@ builder.Services.AddScoped<INotificationService, NotificationService>();
 // --------------------------------------------------
 // Build the Application
 // --------------------------------------------------
+// ADD THESE TWO LINES HERE:
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
 var app = builder.Build();
+
+app.UseExceptionHandler();
 
 // --------------------------------------------------
 // Run DB Seeder (Runs only once)
@@ -179,15 +191,15 @@ using (var scope = app.Services.CreateScope())
 // Middleware Pipeline
 // --------------------------------------------------
 
-// Error handling must be FIRST to catch all downstream exceptions
-if (app.Environment.IsDevelopment())
-{
-    app.UseDeveloperExceptionPage();  // show full stack traces in dev
-}
-else
-{
-    app.UseMiddleware<ErrorHandlerMiddleware>();  // production error handler
-}
+//// Error handling must be FIRST to catch all downstream exceptions
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseDeveloperExceptionPage();  // show full stack traces in dev
+//}
+//else
+//{
+//    app.UseMiddleware<ErrorHandlerMiddleware>();  // production error handler
+//}
 
 if (app.Environment.IsDevelopment())
 {

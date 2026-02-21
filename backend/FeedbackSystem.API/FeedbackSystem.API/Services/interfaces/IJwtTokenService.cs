@@ -1,6 +1,6 @@
-﻿using FeedbackSystem.API.Entities;
+using FeedbackSystem.API.Entities;
 
-namespace FeedbackSystem.API.Services;
+namespace FeedbackSystem.API.Services.interfaces;
 
 
 public interface IJwtTokenService

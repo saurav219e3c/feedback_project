@@ -1,6 +1,6 @@
 using FeedbackSystem.API.DTOs;
 
-namespace FeedbackSystem.API.Services
+namespace FeedbackSystem.API.Services.interfaces
 {
     public interface IBadgeService
     {

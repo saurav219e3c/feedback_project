@@ -24,8 +24,8 @@ namespace FeedbackSystem.API.DTOs
         DateTime CreatedAt
     );
 
-    // Flat list item for Recognition
-    public record RecognitionItemDto(
+  // get the recognition item for the list of recognition for the user
+  public record RecognitionItemDto(
         int RecognitionId,
         string FromUserId,
         string FromUserName,

@@ -1,4 +1,4 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using FeedbackSystem.API.Entities;
@@ -6,7 +6,7 @@ using FeedbackSystem.API.Options;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
-namespace FeedbackSystem.API.Services
+namespace FeedbackSystem.API.Services.interfaces
 {
     public class JwtTokenService : IJwtTokenService
     {
