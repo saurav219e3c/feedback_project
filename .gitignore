@@ -40,3 +40,20 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# --- .NET / Visual Studio ---
+# User-specific files (contains window layouts, open tabs, etc.)
+.vs/
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+
+# Build results
+[Bb]in/
+[Oo]bj/
+
+# Project evaluation and internal caches
+.ProjectEvaluation/
+*.vsidx
+*.sqlite
