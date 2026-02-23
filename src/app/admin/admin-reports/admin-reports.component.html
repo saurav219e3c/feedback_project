@@ -15,7 +15,16 @@
     </section>
 
     <section class="card wide">
-      <div class="card-title">Monthly Trend (Feedback vs Recognition)</div>
+      <div class="card-title-row">
+        <div class="card-title">Weekly Trend (Feedback vs Recognition)</div>
+        <div class="date-selectors">
+          <select [value]="selectedMonth" (change)="onMonthChange($event)" class="month-select">
+            <option *ngFor="let m of months" [value]="m.value">{{ m.name }}</option>
+          </select>
+          <input type="number" [value]="selectedYear" (change)="onYearChange($event)" 
+                 class="year-select" min="2020" max="2030" style="width: 80px;">
+        </div>
+      </div>
       <div class="chart">
         <canvas baseChart [data]="lineConfig.data" [type]="lineConfig.type" [options]="lineConfig.options"></canvas>
       </div>

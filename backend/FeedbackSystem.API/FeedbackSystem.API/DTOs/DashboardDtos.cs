@@ -8,11 +8,13 @@ namespace FeedbackSystem.API.DTOs
         int TotalRecognition
     );
 
-    // Monthly trend data
-    public record MonthlyTrendDto(
-        string[] Labels,
-        int[] FeedbackCounts,
-        int[] RecognitionCounts
+    // Weekly trend data for a specific month
+    public record WeeklyTrendDto(
+        string[] Labels,           // e.g., ["Week 1", "Week 2", "Week 3", "Week 4"]
+        int[] FeedbackCounts,      // Feedback counts per week
+        int[] RecognitionCounts,   // Recognition counts per week
+        int Year,                  // Year of the data
+        int Month                  // Month of the data (1-12)
     );
 
     // Department feedback/recognition counts

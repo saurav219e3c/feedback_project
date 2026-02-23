@@ -67,20 +67,29 @@ namespace FeedbackSystem.API.Controllers
             }
         }
 
-        // GET /api/dashboard/monthly-trends?months=6
-        [HttpGet("monthly-trends")]
-        public async Task<IActionResult> GetMonthlyTrends(
-            [FromQuery] int months = 6, CancellationToken ct = default)
+        // GET /api/dashboard/weekly-trends?year=2026&month=2
+        [HttpGet("weekly-trends")]
+        public async Task<IActionResult> GetWeeklyTrends(
+            [FromQuery] int? year, [FromQuery] int? month, CancellationToken ct = default)
         {
             try
             {
-                var result = await _service.GetMonthlyTrendsAsync(months, ct);
+                // Default to current month/year if not provided
+                var targetYear = year ?? DateTime.UtcNow.Year;
+                var targetMonth = month ?? DateTime.UtcNow.Month;
+
+                var result = await _service.GetWeeklyTrendsAsync(targetYear, targetMonth, ct);
                 return Ok(result);
+            }
+            catch (ArgumentException ex)
+            {
+                _logger.LogWarning(ex, "Invalid parameters for weekly trends");
+                return BadRequest(new { error = ex.Message });
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error fetching monthly trends");
-                return StatusCode(500, new { error = "Failed to load monthly trends", detail = ex.Message });
+                _logger.LogError(ex, "Error fetching weekly trends");
+                return StatusCode(500, new { error = "Failed to load weekly trends", detail = ex.Message });
             }
         }
 

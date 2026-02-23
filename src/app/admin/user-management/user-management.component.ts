@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UserProfileComponent } from '../user-profile/user-profile.component';
 import { UsersApiService, UserReadDto } from '../services/users-api.service';
+import { ApiService } from '../../core/services/api.service';
 
 export interface User {
   id: string;
@@ -32,8 +33,15 @@ export class UserManagementComponent implements OnInit {
 
   searchTerm = '';
   selectedUser: User | null = null;
+  loadingUserActivity = false;
 
-  constructor(private usersApiService: UsersApiService) {}
+  ufeedback = 0;
+  urecognition = 0;
+
+  constructor(
+    private usersApiService: UsersApiService,
+    private apiService: ApiService
+  ) {}
 
   ngOnInit(): void {
     this.loadUsers();
@@ -88,7 +96,58 @@ export class UserManagementComponent implements OnInit {
 
   // Open profile from card click
   openProfile(user: User) {
-    this.selectedUser = user;
+    console.log('Opening profile for user:', user);
+    // Set loading state immediately
+    this.selectedUser = { 
+      ...user,
+      feedback: -1,  // Use -1 as loading indicator
+      recognition: -1
+    };
+    console.log('Selected user set:', this.selectedUser);
+    this.loadUserActivity(user.id);
+  }
+
+  // Load user activity data
+  loadUserActivity(userId: string): void {
+    this.loadingUserActivity = true;
+    console.log('Fetching activity for user:', userId);
+    this.apiService.get<{
+      userId: string;
+      feedbackGivenCount: number;
+      feedbackReceivedCount: number;
+      recognitionGivenCount: number;
+      recognitionReceivedCount: number;
+    }>(`/api/insight/users/${userId}/insights/summary`).subscribe({
+      next: (data) => {
+        console.log('User activity data received:', data);
+        const totalFeedback = (data.feedbackGivenCount || 0) + (data.feedbackReceivedCount || 0);
+        const totalRecognition = (data.recognitionGivenCount || 0) + (data.recognitionReceivedCount || 0);
+        console.log('Calculated totals:', { totalFeedback, totalRecognition });
+        
+        if (this.selectedUser && this.selectedUser.id === userId) {
+          // Create completely new object to ensure change detection
+          this.selectedUser = {
+            ...this.selectedUser,
+            feedback: totalFeedback,
+            recognition: totalRecognition
+          };
+          console.log('Updated selectedUser:', this.selectedUser);
+        }
+        this.loadingUserActivity = false;
+      },
+      error: (err) => {
+        console.error('Failed to load user activity:', err);
+        // Set to 0 if error
+        if (this.selectedUser && this.selectedUser.id === userId) {
+          this.selectedUser = {
+            ...this.selectedUser,
+            feedback: 0,
+            recognition: 0
+          };
+        }
+        this.loadingUserActivity = false;
+      }
+    });
   }
 
   // Close popup

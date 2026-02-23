@@ -75,12 +75,8 @@ namespace FeedbackSystem.API.Services
             var managerDeptId = isAdmin ? null : await GetDepartmentId(requesterUserId, ct);
             if (!isAdmin) await EnsureManagerCanSeeUser(managerDeptId, userId, ct);
 
-            var fbTask = _feedbackRepo.GetSummaryAsync(userId, ct);
-            var rcTask = _recognitionRepo.GetSummaryAsync(userId, ct);
-            await Task.WhenAll(fbTask, rcTask);
-
-            var fb = fbTask.Result;
-            var rc = rcTask.Result;
+            var fb = await _feedbackRepo.GetSummaryAsync(userId, ct);
+            var rc = await _recognitionRepo.GetSummaryAsync(userId, ct);
 
             return new UserInsightSummaryDto(
                 userId,
