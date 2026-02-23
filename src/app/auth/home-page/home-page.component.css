@@ -66,6 +66,38 @@
   text-align: center;
 }
 
+/* --- BADGE STYLING --- */
+.badge-container {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: #ffffff;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  animation: badgeGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes badgeGlow {
+  0% {
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  }
+  100% {
+    box-shadow: 0 6px 25px rgba(59, 130, 246, 0.5);
+  }
+}
+
 .project-name { font-size: clamp(3.5rem, 10vw, 6.5rem); font-weight: 900; }
 .project-name span { display: inline-block; opacity: 0; transform: translateY(30px); animation: wordFadeIn 0.8s forwards ease-out; }
 .project-name span:nth-child(2) { animation-delay: 0.3s; }
@@ -163,4 +195,32 @@
   font-weight: 700;
   letter-spacing: 1px;
   opacity: 0.7;
+}
+/* --- TYPING ANIMATION --- */
+.typing-text {
+  display: inline-block;
+  position: relative;
+}
+
+.cursor {
+  display: inline-block;
+  animation: blink 1s infinite;
+  color: #64ffda;
+  font-weight: normal;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Make cursor disappear after typing is complete */
+.typing-complete .cursor {
+  animation: none;
+  opacity: 0;
 }
