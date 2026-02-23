@@ -5,6 +5,7 @@ import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angula
 import { CommonModule } from '@angular/common';
 import { LoginService } from '../service/login.service';
 import { AuthService } from '../../core/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login-page',
@@ -76,7 +77,15 @@ export class LoginPageComponent implements OnInit {
         this.router.navigate([target]);
       },
       error: () => {
-        alert('Invalid credentials or inactive user.');
+        Swal.fire({
+          title: 'Login Failed',
+          text: 'Invalid credentials or inactive user.',
+          icon: 'error',
+          confirmButtonText: 'Try Again',
+          confirmButtonColor: '#ef4444',
+          background: '#ffffff',
+          color: '#1f2937'
+        });
       },
       complete: () => this.loading = false
     });
@@ -88,6 +97,14 @@ export class LoginPageComponent implements OnInit {
   }
 
   onForgotPassword() {
-    alert('Forgot password clicked.');
+    Swal.fire({
+      title: 'Forgot Password',
+      text: 'Password reset functionality will be implemented soon.',
+      icon: 'info',
+      confirmButtonText: 'OK',
+      confirmButtonColor: '#3b82f6',
+      background: '#ffffff',
+      color: '#1f2937'
+    });
   }
 }
