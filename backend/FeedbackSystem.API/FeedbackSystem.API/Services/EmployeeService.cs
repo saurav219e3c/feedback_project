@@ -1,8 +1,8 @@
 using AutoMapper;
 using FeedbackSystem.API.Data;
-using FeedbackSystem.API.DTOs;
+using FeedbackSystem.API.DTOs.Employee;
 using FeedbackSystem.API.Entities;
-using FeedbackSystem.API.Repositories;
+using FeedbackSystem.API.Repositories.Interfaces;
 using FeedbackSystem.API.Services.interfaces;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
@@ -161,11 +161,9 @@ public class EmployeeService : IEmployeeService
 
     for (int i = 0; i < dtos.Count; i++)
     {
-      // Business Rule: Hide sender ID if the user received it and it is anonymous
+      // Business Rule: Hide sender ID if the user received it and it is anonomous
       if (dtos[i].ToUserId == userId && dtos[i].IsAnonymous)
       {
-        // Safely creates a new copy of the record with the modified value
-
         dtos[i] = dtos[i] with { FromUserName = "Anonymous Colleague", FromUserId = "Anonymous" };
       }
     }

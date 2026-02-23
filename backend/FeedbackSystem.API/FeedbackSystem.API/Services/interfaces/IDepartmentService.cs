@@ -1,4 +1,4 @@
-using FeedbackSystem.API.DTOs;
+using FeedbackSystem.API.DTOs.admin;
 
 namespace FeedbackSystem.API.Services.interfaces;
 

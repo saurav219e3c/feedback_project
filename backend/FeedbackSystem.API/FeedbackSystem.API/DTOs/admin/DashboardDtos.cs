@@ -1,4 +1,4 @@
-namespace FeedbackSystem.API.DTOs
+namespace FeedbackSystem.API.DTOs.admin
 {
     // Dashboard summary statistics
     public record DashboardSummaryDto(

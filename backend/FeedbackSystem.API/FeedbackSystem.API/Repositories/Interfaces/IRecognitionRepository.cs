@@ -1,18 +1,21 @@
-using FeedbackSystem.API.DTOs;
+using FeedbackSystem.API.DTOs.admin;
 using FeedbackSystem.API.Entities;
 
-namespace FeedbackSystem.API.Repositories
+namespace FeedbackSystem.API.Repositories.Interfaces
 {
   public interface IRecognitionRepository
   {
 
+    //employee module service calls
     Task<bool> UserExistsAsync(string userId, CancellationToken ct);
     Task<string> GetBadgeNameAsync(string badgeId, CancellationToken ct);
     Task AddRecognitionAsync(Recognition recognition, CancellationToken ct);
 
     Task<List<Recognition>> GetUserRecognitionsAsync(string userId, string? direction, CancellationToken ct);
-
     Task<(int Given, int Received, int PointsGiven, int PointsReceived, DateTime? LastActivity)> GetRecognitionSummaryStatsAsync(string userId, CancellationToken ct);
+
+
+    //these are for admin/manager insights
     Task<(IReadOnlyList<RecognitionItemDto> Items, int Total)> GetGivenAsync(
             string userId, DateTime? from, DateTime? to, string? search, int page, int pageSize, CancellationToken ct);
 

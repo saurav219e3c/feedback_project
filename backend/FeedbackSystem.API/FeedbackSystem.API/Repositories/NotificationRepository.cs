@@ -1,6 +1,7 @@
 using FeedbackSystem.API.Data;
-using FeedbackSystem.API.DTOs;
+using FeedbackSystem.API.DTOs.Manager;
 using FeedbackSystem.API.Entities;
+using FeedbackSystem.API.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace FeedbackSystem.API.Repositories;

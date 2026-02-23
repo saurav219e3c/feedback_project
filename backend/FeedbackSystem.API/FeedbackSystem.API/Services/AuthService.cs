@@ -1,6 +1,7 @@
+using AutoMapper;
 using FeedbackSystem.API.DTOs;
 using FeedbackSystem.API.Entities;
-using FeedbackSystem.API.Repositories;
+using FeedbackSystem.API.Repositories.Interfaces;
 using FeedbackSystem.API.Security;
 using FeedbackSystem.API.Services.interfaces;
 
@@ -10,12 +11,14 @@ public class AuthService : IAuthService
 {
     private readonly IUserRepository _users;
     private readonly IJwtTokenService _jwt;
+  private readonly IMapper mapper;
 
-    public AuthService(IUserRepository users, IJwtTokenService jwt)
+  public AuthService(IUserRepository users, IJwtTokenService jwt,IMapper mapper)
     {
         _users = users;
         _jwt = jwt;
-    }
+    this.mapper = mapper;
+  }
 
     public async Task<AuthResponseDto?> LoginAsync(LoginRequestDto dto, CancellationToken ct = default)
     {
@@ -25,7 +28,8 @@ public class AuthService : IAuthService
         if (!PasswordHasher.Verify(dto.Password, user.PasswordHash))
             return null;
 
-        var (token, expires) = _jwt.CreateToken(user);
+        var (token, expires) = _jwt.CreateToken(user);//call to jwt
+
         var authUser = new AuthUserDto(
             user.UserId,
             user.FullName,
@@ -34,7 +38,8 @@ public class AuthService : IAuthService
             user.DepartmentId,
             user.Department.DepartmentName,
             user.IsActive,
-            user.CreatedAt
+            user.CreatedAt,
+            user.PasswordHash
         );
         return new AuthResponseDto(token, expires, authUser);
     }
@@ -50,33 +55,39 @@ public class AuthService : IAuthService
         var department = await _users.GetDepartmentByIdAsync(dto.DepartmentId, ct)
                         ?? throw new InvalidOperationException("Department not found or inactive.");
 
-        var user = new User
-        {
-            UserId = dto.UserId,
-            FullName = dto.FullName,
-            Email = dto.Email,
-            PasswordHash = PasswordHasher.Hash(dto.Password),
-            RoleId = role.RoleId,
-            DepartmentId = dto.DepartmentId,
-            IsActive = true,
-            CreatedAt = DateTime.UtcNow
-        };
+       // var user = new User
+        //{
+            //UserId = dto.UserId,
+            //FullName = dto.FullName,
+            //Email = dto.Email,
+            //PasswordHash = PasswordHasher.Hash(dto.Password),
+            //RoleId = role.RoleId,
+            //DepartmentId = dto.DepartmentId,
+            //IsActive = true,
+            //CreatedAt = DateTime.UtcNow
 
-        await _users.AddAsync(user, ct);
 
-        user = await _users.GetByIdAsync(user.UserId, ct) ?? user;
-        return new UserReadDto(
-            user.UserId,
-            user.FullName,
-            user.Email,
-            user.Phone,
-            user.Role.RoleName,
-            user.DepartmentId,
-            user.Department.DepartmentName,
-            user.IsActive,
-            user.CreatedAt
-        );
-    }
+       // };
+
+      var user = mapper.Map<User>(dto);
+      user.PasswordHash = PasswordHasher.Hash(dto.Password);
+      user.RoleId = role.RoleId;
+      user = await _users.AddAsync(user, ct);
+
+        //user = await _users.GetByIdAsync(user.UserId, ct) ?? user;
+        //return new UserReadDto(
+        //    user.UserId,
+        //    user.FullName,
+        //    user.Email,
+        //    user.Phone,
+        //    user.Role.RoleName,
+        //    user.DepartmentId,
+        //    user.Department.DepartmentName,
+        //    user.IsActive,
+        //    user.CreatedAt
+        //);
+        return mapper.Map<UserReadDto>(user);
+  }
 
     // ✅ Public registration - Always forces role to "Employee"
     public async Task<UserReadDto> PublicRegisterAsync(PublicRegisterDto dto, CancellationToken ct = default)

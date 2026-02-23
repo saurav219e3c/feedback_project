@@ -9,7 +9,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[FeedbackSystem.API.DTOs.ActivityItemDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[FeedbackSystem.API.DTOs.admin.ActivityItemDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -128,7 +128,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.PagedBadgeResult",
+        "Type": "FeedbackSystem.API.DTOs.admin.PagedBadgeResult",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -148,13 +148,13 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "FeedbackSystem.API.DTOs.CreateBadgeDto",
+        "Type": "FeedbackSystem.API.DTOs.admin.CreateBadgeDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.BadgeDto",
+        "Type": "FeedbackSystem.API.DTOs.admin.BadgeDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -180,7 +180,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.BadgeDto",
+        "Type": "FeedbackSystem.API.DTOs.admin.BadgeDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -205,13 +205,13 @@
       },
       {
         "Name": "dto",
-        "Type": "FeedbackSystem.API.DTOs.UpdateBadgeDto",
+        "Type": "FeedbackSystem.API.DTOs.admin.UpdateBadgeDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.BadgeDto",
+        "Type": "FeedbackSystem.API.DTOs.admin.BadgeDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -267,7 +267,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[FeedbackSystem.API.DTOs.CategoryReadDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[FeedbackSystem.API.DTOs.admin.CategoryReadDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -287,13 +287,13 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "FeedbackSystem.API.DTOs.CategoryCreateDto",
+        "Type": "FeedbackSystem.API.DTOs.admin.CategoryCreateDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.CategoryReadDto",
+        "Type": "FeedbackSystem.API.DTOs.admin.CategoryReadDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -319,7 +319,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.CategoryReadDto",
+        "Type": "FeedbackSystem.API.DTOs.admin.CategoryReadDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -344,7 +344,7 @@
       },
       {
         "Name": "dto",
-        "Type": "FeedbackSystem.API.DTOs.CategoryUpdateDto",
+        "Type": "FeedbackSystem.API.DTOs.admin.CategoryUpdateDto",
         "IsRequired": true
       }
     ],
@@ -511,7 +511,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[FeedbackSystem.API.DTOs.DepartmentReadDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[FeedbackSystem.API.DTOs.admin.DepartmentReadDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -531,13 +531,13 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "FeedbackSystem.API.DTOs.DepartmentCreateDto",
+        "Type": "FeedbackSystem.API.DTOs.admin.DepartmentCreateDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.DepartmentReadDto",
+        "Type": "FeedbackSystem.API.DTOs.admin.DepartmentReadDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -563,7 +563,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.DepartmentReadDto",
+        "Type": "FeedbackSystem.API.DTOs.admin.DepartmentReadDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -588,7 +588,7 @@
       },
       {
         "Name": "dto",
-        "Type": "FeedbackSystem.API.DTOs.DepartmentUpdateDto",
+        "Type": "FeedbackSystem.API.DTOs.admin.DepartmentUpdateDto",
         "IsRequired": true
       }
     ],
@@ -666,7 +666,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.PagedResult\u00601[[FeedbackSystem.API.DTOs.FeedbackItemDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "FeedbackSystem.API.DTOs.admin.PagedResult\u00601[[FeedbackSystem.API.DTOs.admin.FeedbackItemDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -686,7 +686,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IReadOnlyList\u00601[[FeedbackSystem.API.DTOs.CategoryStatsDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IReadOnlyList\u00601[[FeedbackSystem.API.DTOs.admin.CategoryStatsDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -742,7 +742,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.CountResultDto",
+        "Type": "FeedbackSystem.API.DTOs.admin.CountResultDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -803,7 +803,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.PagedResult\u00601[[FeedbackSystem.API.DTOs.RecognitionItemDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "FeedbackSystem.API.DTOs.admin.PagedResult\u00601[[FeedbackSystem.API.DTOs.admin.RecognitionItemDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -823,7 +823,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IReadOnlyList\u00601[[FeedbackSystem.API.DTOs.RecognitionBadgeStatsDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IReadOnlyList\u00601[[FeedbackSystem.API.DTOs.admin.RecognitionBadgeStatsDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -874,7 +874,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.CountResultDto",
+        "Type": "FeedbackSystem.API.DTOs.admin.CountResultDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -930,7 +930,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.PagedResult\u00601[[FeedbackSystem.API.DTOs.FeedbackWithSentimentDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "FeedbackSystem.API.DTOs.admin.PagedResult\u00601[[FeedbackSystem.API.DTOs.admin.FeedbackWithSentimentDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -966,7 +966,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.SentimentStatsDto",
+        "Type": "FeedbackSystem.API.DTOs.admin.SentimentStatsDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1022,7 +1022,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.PagedResult\u00601[[FeedbackSystem.API.DTOs.FeedbackItemDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "FeedbackSystem.API.DTOs.admin.PagedResult\u00601[[FeedbackSystem.API.DTOs.admin.FeedbackItemDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1078,7 +1078,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.PagedResult\u00601[[FeedbackSystem.API.DTOs.FeedbackItemDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "FeedbackSystem.API.DTOs.admin.PagedResult\u00601[[FeedbackSystem.API.DTOs.admin.FeedbackItemDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1104,7 +1104,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.UserInsightSummaryDto",
+        "Type": "FeedbackSystem.API.DTOs.admin.UserInsightSummaryDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1155,7 +1155,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.PagedResult\u00601[[FeedbackSystem.API.DTOs.RecognitionItemDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "FeedbackSystem.API.DTOs.admin.PagedResult\u00601[[FeedbackSystem.API.DTOs.admin.RecognitionItemDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1206,7 +1206,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.PagedResult\u00601[[FeedbackSystem.API.DTOs.RecognitionItemDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "FeedbackSystem.API.DTOs.admin.PagedResult\u00601[[FeedbackSystem.API.DTOs.admin.RecognitionItemDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1232,7 +1232,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IReadOnlyList\u00601[[FeedbackSystem.API.DTOs.RecentActivityDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IReadOnlyList\u00601[[FeedbackSystem.API.DTOs.Manager.RecentActivityDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1258,7 +1258,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IReadOnlyList\u00601[[FeedbackSystem.API.DTOs.CategoryStatsDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IReadOnlyList\u00601[[FeedbackSystem.API.DTOs.admin.CategoryStatsDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1278,7 +1278,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.ManagerDashboardDto",
+        "Type": "FeedbackSystem.API.DTOs.Manager.ManagerDashboardDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1324,7 +1324,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.PagedResult\u00601[[FeedbackSystem.API.DTOs.ManagerFeedbackItemDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "FeedbackSystem.API.DTOs.admin.PagedResult\u00601[[FeedbackSystem.API.DTOs.Manager.ManagerFeedbackItemDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1349,7 +1349,7 @@
       },
       {
         "Name": "dto",
-        "Type": "FeedbackSystem.API.DTOs.UpdateFeedbackStatusDto",
+        "Type": "FeedbackSystem.API.DTOs.Manager.UpdateFeedbackStatusDto",
         "IsRequired": true
       },
       {
@@ -1386,7 +1386,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.PagedResult\u00601[[FeedbackSystem.API.DTOs.RecognitionItemDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "FeedbackSystem.API.DTOs.admin.PagedResult\u00601[[FeedbackSystem.API.DTOs.admin.RecognitionItemDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1406,13 +1406,13 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "FeedbackSystem.API.DTOs.MyFeedbackSubmitDto",
+        "Type": "FeedbackSystem.API.DTOs.Employee.MyFeedbackSubmitDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.MyFeedbackSubmitResultDto",
+        "Type": "FeedbackSystem.API.DTOs.Employee.MyFeedbackSubmitResultDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1438,7 +1438,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[FeedbackSystem.API.DTOs.MyFeedbackDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[FeedbackSystem.API.DTOs.Employee.MyFeedbackDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1458,13 +1458,13 @@
     "Parameters": [
       {
         "Name": "dto",
-        "Type": "FeedbackSystem.API.DTOs.MyRecognitionsubmitDto",
+        "Type": "FeedbackSystem.API.DTOs.Employee.MyRecognitionsubmitDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.MyRecognitionrResponseDto",
+        "Type": "FeedbackSystem.API.DTOs.Employee.MyRecognitionrResponseDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1490,7 +1490,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[FeedbackSystem.API.DTOs.MyAllRecognitionItemDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[FeedbackSystem.API.DTOs.Employee.MyAllRecognitionItemDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1510,7 +1510,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.MySummaryDto",
+        "Type": "FeedbackSystem.API.DTOs.Employee.MySummaryDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1546,7 +1546,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IReadOnlyList\u00601[[FeedbackSystem.API.DTOs.NotificationReadDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IReadOnlyList\u00601[[FeedbackSystem.API.DTOs.Manager.NotificationReadDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1598,7 +1598,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.NotificationCountDto",
+        "Type": "FeedbackSystem.API.DTOs.Manager.NotificationCountDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1638,7 +1638,7 @@
     "Parameters": [
       {
         "Name": "settings",
-        "Type": "FeedbackSystem.API.DTOs.AppSettingsDto",
+        "Type": "FeedbackSystem.API.DTOs.admin.AppSettingsDto",
         "IsRequired": true
       }
     ],

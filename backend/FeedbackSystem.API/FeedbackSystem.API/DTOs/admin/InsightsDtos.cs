@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace FeedbackSystem.API.DTOs
+namespace FeedbackSystem.API.DTOs.admin
 {
     // Generic paged wrapper
     public record PagedResult<T>(

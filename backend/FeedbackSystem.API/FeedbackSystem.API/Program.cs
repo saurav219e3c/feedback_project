@@ -3,6 +3,7 @@ using FeedbackSystem.API.Mapping;
 using FeedbackSystem.API.Middleware;
 using FeedbackSystem.API.Options;
 using FeedbackSystem.API.Repositories;
+using FeedbackSystem.API.Repositories.Interfaces;
 using FeedbackSystem.API.Services;
 using FeedbackSystem.API.Services.interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace FeedbackSystem.API.DTOs;
+namespace FeedbackSystem.API.DTOs.Manager;
 
 public record NotificationReadDto(
     int NotificationId,

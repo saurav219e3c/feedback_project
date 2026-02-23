@@ -1,6 +1,6 @@
-using FeedbackSystem.API.DTOs;
+using FeedbackSystem.API.DTOs.admin;
 
-namespace FeedbackSystem.API.Repositories
+namespace FeedbackSystem.API.Repositories.Interfaces
 {
     public interface IFeedbackRepository
     {

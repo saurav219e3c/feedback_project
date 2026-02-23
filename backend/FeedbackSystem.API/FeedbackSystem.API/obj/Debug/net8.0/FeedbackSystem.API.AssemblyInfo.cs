@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FeedbackSystem.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2423977407e9b9eb1385802482053fd57316e2d6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e86f58a09712ed3aae4c510adca6ca851723cd57")]
 [assembly: System.Reflection.AssemblyProductAttribute("FeedbackSystem.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FeedbackSystem.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

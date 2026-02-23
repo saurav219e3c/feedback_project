@@ -16,10 +16,10 @@ export const appConfig: ApplicationConfig = {
     { provide: API_BASE_URL, useValue: 'http://localhost:5001' },
 
     // HttpClient + interceptors
-    provideHttpClient(
+    provideHttpClient(                                                        
       withInterceptors([
         authInterceptor,
-        errorInterceptor, // remove this if you didn't add the error interceptor
+        errorInterceptor, 
       ])
     ),
   ],

@@ -1,4 +1,4 @@
-using FeedbackSystem.API.DTOs;
+using FeedbackSystem.API.DTOs.admin;
 using FeedbackSystem.API.Services.interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

@@ -1,5 +1,7 @@
 using AutoMapper;
 using FeedbackSystem.API.DTOs;
+using FeedbackSystem.API.DTOs.admin;
+using FeedbackSystem.API.DTOs.Employee;
 using FeedbackSystem.API.Entities;
 
 namespace FeedbackSystem.API.Mapping;
@@ -8,24 +10,29 @@ public class MappingProfile : Profile
 {
   public MappingProfile()
   {
+
+
     CreateMap<Category, CategoryReadDto>()
         .ForSourceMember(s => s.Feedbacks, opt => opt.DoNotValidate());
-   // CreateMap<Feedback, MyFeedbackSubmitDto>().ReverseMap();
+  
 
+
+    //employee module Mapping :
+    
+    //submit fb => entity
     CreateMap<MyFeedbackSubmitDto, Feedback>()
-        // Tell it how to handle the nullable boolean
         .ForMember(dest => dest.IsAnonymous, opt => opt.MapFrom(src => src.IsAnonymous ?? false))
-        // Ignore these fields because the DTO doesn't have them (we set them manually)
         .ForMember(dest => dest.FromUserId, opt => opt.Ignore())
         .ForMember(dest => dest.CreatedAt, opt => opt.Ignore());
 
+    // entity => show fb for employee
     CreateMap<Feedback, MyFeedbackDto>()
-                .ForMember(dest => dest.CategoryName,
-                           opt => opt.MapFrom(src => src.Category != null ? src.Category.CategoryName : string.Empty))
-                .ForMember(dest => dest.FromUserName,
-                       opt => opt.MapFrom(src => src.FromUser != null ? src.FromUser.FullName : string.Empty));
+         .ForMember(dest => dest.CategoryName,opt => opt.MapFrom(src => src.Category != null ? src.Category.CategoryName : string.Empty))
+         .ForMember(dest => dest.FromUserName, opt => opt.MapFrom(src => src.FromUser != null ? src.FromUser.FullName : string.Empty));
 
-    // Ignore fields that will be set manually in the service
+    // Recognition mapping
+
+    // submit reco to entity 
     CreateMap<MyRecognitionsubmitDto, Recognition>()
         .ForMember(dest => dest.RecognitionId, opt => opt.Ignore())
         .ForMember(dest => dest.FromUserId, opt => opt.Ignore())
@@ -34,14 +41,13 @@ public class MappingProfile : Profile
         .ForMember(dest => dest.ToUser, opt => opt.Ignore())
         .ForMember(dest => dest.Badge, opt => opt.Ignore());
 
-    // Maps the C# Entity to the Angular Response DTO
+    // entity to show reco 
     CreateMap<Recognition, MyAllRecognitionItemDto>()
-        // Since we used .Include() in the repository, AutoMapper can extract the names here:
         .ForMember(dest => dest.FromUserName, opt => opt.MapFrom(src => src.FromUser.FullName))
         .ForMember(dest => dest.ToUserName, opt => opt.MapFrom(src => src.ToUser.FullName))
         .ForMember(dest => dest.BadgeName, opt => opt.MapFrom(src => src.Badge.BadgeName));
 
-
+    //admin module Mapping :
     CreateMap<CategoryCreateDto, Category>()
               .ForMember(d => d.CategoryId, m => m.Ignore())
               .ForMember(d => d.IsActive, m => m.Ignore())
@@ -65,8 +71,29 @@ public class MappingProfile : Profile
         .ForSourceMember(s => s.Notifications, opt => opt.DoNotValidate())
         .ForSourceMember(s => s.ActivityLogs, opt => opt.DoNotValidate());
 
-    CreateMap<User, AuthUserDto>()
-        .ForMember(d => d.Role, m => m.MapFrom(s => s.Role.RoleName))
+    CreateMap<RegisterUserDto, User>()
+            // Map default system values
+            .ForMember(dest => dest.IsActive, opt => opt.MapFrom(src => true))
+            .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(src => DateTime.UtcNow))
+
+            // Ignore fields that require business logic / DB lookups in the service
+            .ForMember(dest => dest.PasswordHash, opt => opt.Ignore())
+            .ForMember(dest => dest.RoleId, opt => opt.Ignore());
+
+    CreateMap<RegisterUserDto, User>()
+      .ForMember(dest => dest.PasswordHash, opt => opt.Ignore())
+        .ForMember(dest => dest.Role, opt => opt.Ignore())
+        .ForMember(dest => dest.Department, opt => opt.Ignore());
+
+    // AutoMapper will automatically map `user.Role.RoleName` to a `RoleName` property on the DTO!
+    CreateMap<User, UserReadDto>()
+        .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role.RoleName))
+        .ForMember(dest => dest.DepartmentName, opt => opt.MapFrom(src => src.Department.DepartmentName));
+  
+
+
+  CreateMap<User, AuthUserDto>()
+        .ForMember(d => d.Rle, m => m.MapFrom(s => s.Role.RoleName))
         .ForSourceMember(s => s.Role, opt => opt.DoNotValidate())
         .ForSourceMember(s => s.FeedbacksFrom, opt => opt.DoNotValidate())
         .ForSourceMember(s => s.FeedbacksTo, opt => opt.DoNotValidate())

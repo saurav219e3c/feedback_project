@@ -5,7 +5,7 @@ namespace FeedbackSystem.API.Entities
         public string BadgeId { get; set; } = null!;
         public string BadgeName { get; set; } = null!;
         public string? Description { get; set; }
-        public string? IconClass { get; set; } // For storing icon/emoji class
+        public string? IconClass { get; set; } 
         public bool IsActive { get; set; }
         public DateTime CreatedAt { get; set; }
 

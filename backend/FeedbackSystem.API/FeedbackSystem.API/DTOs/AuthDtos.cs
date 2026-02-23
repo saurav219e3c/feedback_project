@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace FeedbackSystem.API.DTOs;
 
@@ -26,7 +26,7 @@ public record PublicRegisterDto(
 );
 
 public record AuthUserDto(
-    string UserId, string FullName, string Email, string Role, string DepartmentId, string DepartmentName, bool IsActive, DateTime CreatedAt
+    string UserId, string FullName, string Email, string Rle, string DepartmentId, string DepartmentName, bool IsActive, DateTime CreatedAt,string PasswordHash
 );
 
 public record AuthResponseDto(

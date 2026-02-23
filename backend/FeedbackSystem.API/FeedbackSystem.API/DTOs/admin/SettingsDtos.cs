@@ -1,4 +1,4 @@
-namespace FeedbackSystem.API.DTOs;
+namespace FeedbackSystem.API.DTOs.admin;
 
 /// <summary>
 /// Root settings object returned by GET /api/settings

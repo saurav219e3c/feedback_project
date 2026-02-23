@@ -1,5 +1,6 @@
-﻿using FeedbackSystem.API.Data;
+using FeedbackSystem.API.Data;
 using FeedbackSystem.API.Entities;
+using FeedbackSystem.API.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace FeedbackSystem.API.Repositories;
@@ -9,23 +10,36 @@ public class UserRepository : IUserRepository
     private readonly AppDbContext _db;
     public UserRepository(AppDbContext db) => _db = db;
 
-    public Task<User?> GetByEmailAsync(string email, CancellationToken ct = default) =>
-        _db.Users.Include(u => u.Role).Include(u => u.Department).FirstOrDefaultAsync(u => u.Email == email, ct);
+    public async Task<User?> GetByEmailAsync(string email, CancellationToken ct = default) =>
+       await _db.Users
+        .Include(u => u.Role)
+        .Include(u => u.Department)
+        .FirstOrDefaultAsync(u => u.Email == email, ct);
 
-    public Task<User?> GetByIdAsync(string id, CancellationToken ct = default) =>
-        _db.Users.Include(u => u.Role).Include(u => u.Department).FirstOrDefaultAsync(u => u.UserId == id, ct);
+    public async Task<User?> GetByIdAsync(string id, CancellationToken ct = default) =>
+         await _db.Users
+        .Include(u => u.Role)
+        .Include(u => u.Department)
+        .FirstOrDefaultAsync(u => u.UserId == id, ct);
 
-    public Task<List<User>> GetAllAsync(CancellationToken ct = default) =>
-        _db.Users.Include(u => u.Role).Include(u => u.Department).OrderBy(u => u.FullName).ToListAsync(ct);
+    public async Task<List<User>> GetAllAsync(CancellationToken ct = default) =>
+        await _db.Users.Include(u => u.Role)
+        .Include(u => u.Department)
+        .OrderBy(u => u.FullName)
+        .ToListAsync(ct);
 
-    public Task<bool> EmailExistsAsync(string email, CancellationToken ct = default) =>
-        _db.Users.AnyAsync(u => u.Email == email, ct);
+    public async Task<bool> EmailExistsAsync(string email, CancellationToken ct = default) =>
+         await _db.Users
+        .AnyAsync(u => u.Email == email, ct);
 
-    public Task<Role?> GetRoleByNameAsync(string roleName, CancellationToken ct = default) =>
-        _db.Roles.FirstOrDefaultAsync(r => r.RoleName == roleName, ct);
+    public async Task<Role?> GetRoleByNameAsync(string roleName, CancellationToken ct = default) =>
+        await _db.Roles
+       .FirstOrDefaultAsync(r => r.RoleName == roleName, ct);
 
-    public Task<Department?> GetDepartmentByIdAsync(string departmentId, CancellationToken ct = default) =>
-        _db.Departments.FirstOrDefaultAsync(d => d.DepartmentId == departmentId && d.IsActive, ct);
+
+    public async Task<Department?> GetDepartmentByIdAsync(string departmentId, CancellationToken ct = default) =>
+        await _db.Departments
+       .FirstOrDefaultAsync(d => d.DepartmentId == departmentId && d.IsActive, ct);
 
     public async Task<User> AddAsync(User user, CancellationToken ct = default)
     {

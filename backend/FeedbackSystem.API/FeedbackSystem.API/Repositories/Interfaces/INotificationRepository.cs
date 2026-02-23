@@ -1,6 +1,6 @@
-using FeedbackSystem.API.DTOs;
+using FeedbackSystem.API.DTOs.Manager;
 
-namespace FeedbackSystem.API.Repositories;
+namespace FeedbackSystem.API.Repositories.Interfaces;
 
 public interface INotificationRepository
 {

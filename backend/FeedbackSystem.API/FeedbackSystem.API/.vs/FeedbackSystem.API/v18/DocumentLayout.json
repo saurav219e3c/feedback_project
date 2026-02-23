@@ -3,144 +3,252 @@
   "WorkspaceRootPath": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\dtos\\mydatadtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:dtos\\mydatadtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\controllers\\managercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:controllers\\managercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\controllers\\mycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:controllers\\mycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\services\\insightsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:services\\insightsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\repositories\\employeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:repositories\\employeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\repositories\\iemployeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:repositories\\iemployeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\repositories\\recognitionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:repositories\\recognitionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\repositories\\irecognitionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:repositories\\irecognitionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\entities\\feedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:entities\\feedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\repositories\\ifeedbackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:repositories\\ifeedbackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\services\\interfaces\\iemployeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:services\\interfaces\\iemployeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\data\\dbseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:data\\dbseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\mapping\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:mapping\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\entities\\recognition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:entities\\recognition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\repositories\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:repositories\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\dtos\\settingsdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:dtos\\settingsdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\dtos\\authdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:dtos\\authdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\dtos\\categorydtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:dtos\\categorydtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\dtos\\dashboarddtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:dtos\\dashboarddtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\middleware\\globalexceptionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:middleware\\globalexceptionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\security\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:security\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\middleware\\errorhandlermiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:middleware\\errorhandlermiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\services\\interfaces\\ijwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:services\\interfaces\\ijwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\dtos\\insightsdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:dtos\\insightsdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\services\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:services\\jwttokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\entities\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:entities\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\options\\jwtoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:options\\jwtoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\repositories\\feedbackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:repositories\\feedbackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\controllers\\departmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:controllers\\departmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\services\\interfaces\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:services\\interfaces\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\services\\activityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:services\\activityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\services\\interfaces\\ibadgeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:services\\interfaces\\ibadgeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\entities\\feedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:entities\\feedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:entities\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\entities\\badge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:entities\\badge.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\entities\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:entities\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\services\\interfaces\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:services\\interfaces\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\data\\dbseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:data\\dbseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\services\\insightsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:services\\insightsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\services\\interfaces\\iinsightsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:services\\interfaces\\iinsightsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\repositories\\interfaces\\irecognitionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:repositories\\interfaces\\irecognitionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\repositories\\interfaces\\iemployeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:repositories\\interfaces\\iemployeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\repositories\\interfaces\\ifeedbackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:repositories\\interfaces\\ifeedbackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\repositories\\feedbackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:repositories\\feedbackrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\services\\interfaces\\iemployeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:services\\interfaces\\iemployeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\services\\activityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:services\\activityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\repositories\\activityrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:repositories\\activityrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\repositories\\employeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:repositories\\employeerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\controllers\\badgescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:controllers\\badgescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\entities\\feedbackreview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:entities\\feedbackreview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\entities\\appsetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:entities\\appsetting.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\controllers\\notificationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:controllers\\notificationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\dtos\\admin\\categorydtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:dtos\\admin\\categorydtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\controllers\\departmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:controllers\\departmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\controllers\\managercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:controllers\\managercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\dtos\\manager\\managerdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:dtos\\manager\\managerdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\services\\interfaces\\imanagerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:services\\interfaces\\imanagerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\services\\managerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:services\\managerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\controllers\\settingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:controllers\\settingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\middleware\\errorhandlermiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:middleware\\errorhandlermiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\middleware\\globalexceptionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:middleware\\globalexceptionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\entities\\recognition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:entities\\recognition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\dtos\\manager\\notificationdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:dtos\\manager\\notificationdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\dtos\\admin\\departmentdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:dtos\\admin\\departmentdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\dtos\\admin\\dashboarddtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:dtos\\admin\\dashboarddtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\dtos\\admin\\badgedtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:dtos\\admin\\badgedtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\dtos\\admin\\activityitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:dtos\\admin\\activityitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\dtos\\admin\\settingsdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:dtos\\admin\\settingsdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\dtos\\employee\\mydatadtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:dtos\\employee\\mydatadtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\services\\badgeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:services\\badgeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\controllers\\mycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:controllers\\mycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\repositories\\recognitionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:repositories\\recognitionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\dtos\\admin\\insightsdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:dtos\\admin\\insightsdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\services\\interfaces\\ibadgeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:services\\interfaces\\ibadgeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\project\\feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\services\\managerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:services\\managerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\10.0.103\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
@@ -157,376 +265,259 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "JwtTokenService.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\JwtTokenService.cs",
+              "RelativeDocumentMoniker": "Services\\JwtTokenService.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\JwtTokenService.cs",
+              "RelativeToolTip": "Services\\JwtTokenService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T04:29:55.123Z",
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\UserRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\UserRepository.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\UserRepository.cs",
+              "RelativeToolTip": "Repositories\\UserRepository.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAYwB8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T03:57:56.256Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "Services\\UserService.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\UserService.cs",
+              "RelativeToolTip": "Services\\UserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-21T12:09:33.284Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
               "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\AuthController.cs",
               "RelativeToolTip": "Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAACcAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAYwDEAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-21T07:18:24.284Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ManagerController.cs",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\ManagerController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ManagerController.cs",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\ManagerController.cs",
-              "RelativeToolTip": "Controllers\\ManagerController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-21T07:18:07.616Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "EmployeeService.cs",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\EmployeeService.cs",
-              "RelativeDocumentMoniker": "Services\\EmployeeService.cs",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\EmployeeService.cs",
-              "RelativeToolTip": "Services\\EmployeeService.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAQwB0AAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-18T14:28:01.102Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MyDataDtos.cs",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\MyDataDtos.cs",
-              "RelativeDocumentMoniker": "DTOs\\MyDataDtos.cs",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\MyDataDtos.cs",
-              "RelativeToolTip": "DTOs\\MyDataDtos.cs",
-              "ViewState": "AgIAAGIAAAAAAAAAAAAIwGkAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-18T13:55:47.493Z",
+              "WhenOpened": "2026-02-21T07:18:24.284Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "InsightsService.cs",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\InsightsService.cs",
-              "RelativeDocumentMoniker": "Services\\InsightsService.cs",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\InsightsService.cs",
-              "RelativeToolTip": "Services\\InsightsService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-18T14:05:03.575Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MyController.cs",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\MyController.cs",
-              "RelativeDocumentMoniker": "Controllers\\MyController.cs",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\MyController.cs",
-              "RelativeToolTip": "Controllers\\MyController.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAA3wGoAAABSAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-18T05:33:45.851Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "EmployeeRepository.cs",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\EmployeeRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\EmployeeRepository.cs",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\EmployeeRepository.cs",
-              "RelativeToolTip": "Repositories\\EmployeeRepository.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAgwCsAAABIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-19T06:56:49.27Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IEmployeeRepository.cs",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\IEmployeeRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\IEmployeeRepository.cs",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\IEmployeeRepository.cs",
-              "RelativeToolTip": "Repositories\\IEmployeeRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-19T06:55:14.2Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "RecognitionRepository.cs",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\RecognitionRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\RecognitionRepository.cs",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\RecognitionRepository.cs",
-              "RelativeToolTip": "Repositories\\RecognitionRepository.cs",
-              "ViewState": "AgIAAOoAAAAAAAAAAAAswAMBAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T04:58:00.276Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "IRecognitionRepository.cs",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\IRecognitionRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\IRecognitionRepository.cs",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\IRecognitionRepository.cs",
-              "RelativeToolTip": "Repositories\\IRecognitionRepository.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA4AAACmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T04:57:17.131Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Feedback.cs",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Entities\\Feedback.cs",
-              "RelativeDocumentMoniker": "Entities\\Feedback.cs",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Entities\\Feedback.cs",
-              "RelativeToolTip": "Entities\\Feedback.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-19T09:48:49.718Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "IFeedbackRepository.cs",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\IFeedbackRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\IFeedbackRepository.cs",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\IFeedbackRepository.cs",
-              "RelativeToolTip": "Repositories\\IFeedbackRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-19T06:54:01.806Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "IEmployeeService.cs",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\interfaces\\IEmployeeService.cs",
-              "RelativeDocumentMoniker": "Services\\interfaces\\IEmployeeService.cs",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\interfaces\\IEmployeeService.cs",
-              "RelativeToolTip": "Services\\interfaces\\IEmployeeService.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABQAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-18T14:27:09.953Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "DbSeeder.cs",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Data\\DbSeeder.cs",
-              "RelativeDocumentMoniker": "Data\\DbSeeder.cs",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Data\\DbSeeder.cs",
-              "RelativeToolTip": "Data\\DbSeeder.cs",
-              "ViewState": "AgIAAHwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-21T06:23:34.834Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "Recognition.cs",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Entities\\Recognition.cs",
-              "RelativeDocumentMoniker": "Entities\\Recognition.cs",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Entities\\Recognition.cs",
-              "RelativeToolTip": "Entities\\Recognition.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAIAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T04:35:12.567Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 1,
               "Title": "AuthService.cs",
               "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\AuthService.cs",
               "RelativeDocumentMoniker": "Services\\AuthService.cs",
               "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\AuthService.cs",
               "RelativeToolTip": "Services\\AuthService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAABCAAAAAAAAAA==",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAwwF8AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-21T03:44:22.274Z"
+              "WhenOpened": "2026-02-21T03:44:22.274Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAhwDAAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-18T05:01:40.145Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 3,
               "Title": "MappingProfile.cs",
               "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Mapping\\MappingProfile.cs",
               "RelativeDocumentMoniker": "Mapping\\MappingProfile.cs",
               "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Mapping\\MappingProfile.cs",
               "RelativeToolTip": "Mapping\\MappingProfile.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAowDUAAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAQwFkAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-18T15:10:42.973Z"
+              "WhenOpened": "2026-02-18T15:10:42.973Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "SettingsDtos.cs",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\SettingsDtos.cs",
-              "RelativeDocumentMoniker": "DTOs\\SettingsDtos.cs",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\SettingsDtos.cs",
-              "RelativeToolTip": "DTOs\\SettingsDtos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "AuthDtos.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\AuthDtos.cs",
+              "RelativeDocumentMoniker": "DTOs\\AuthDtos.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\AuthDtos.cs",
+              "RelativeToolTip": "DTOs\\AuthDtos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAkAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T12:21:51.628Z"
+              "WhenOpened": "2026-02-22T04:13:31.477Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "CategoryDtos.cs",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\CategoryDtos.cs",
-              "RelativeDocumentMoniker": "DTOs\\CategoryDtos.cs",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\CategoryDtos.cs",
-              "RelativeToolTip": "DTOs\\CategoryDtos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\Interfaces\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\Interfaces\\IUserRepository.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\Interfaces\\IUserRepository.cs",
+              "RelativeToolTip": "Repositories\\Interfaces\\IUserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T12:21:43.567Z"
+              "WhenOpened": "2026-02-22T03:56:09.034Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "DashboardDtos.cs",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\DashboardDtos.cs",
-              "RelativeDocumentMoniker": "DTOs\\DashboardDtos.cs",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\DashboardDtos.cs",
-              "RelativeToolTip": "DTOs\\DashboardDtos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T12:21:36.336Z"
+              "DocumentIndex": 12,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-18T05:01:27.348Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "GlobalExceptionHandler.cs",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Middleware\\GlobalExceptionHandler.cs",
-              "RelativeDocumentMoniker": "Middleware\\GlobalExceptionHandler.cs",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Middleware\\GlobalExceptionHandler.cs",
-              "RelativeToolTip": "Middleware\\GlobalExceptionHandler.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAQwDMAAAAoAAAAAAAAAA==",
+              "DocumentIndex": 8,
+              "Title": "PasswordHasher.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Security\\PasswordHasher.cs",
+              "RelativeDocumentMoniker": "Security\\PasswordHasher.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Security\\PasswordHasher.cs",
+              "RelativeToolTip": "Security\\PasswordHasher.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwBEAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-18T14:20:02.176Z"
+              "WhenOpened": "2026-02-22T03:52:05.089Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "ErrorHandlerMiddleware.cs",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Middleware\\ErrorHandlerMiddleware.cs",
-              "RelativeDocumentMoniker": "Middleware\\ErrorHandlerMiddleware.cs",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Middleware\\ErrorHandlerMiddleware.cs",
-              "RelativeToolTip": "Middleware\\ErrorHandlerMiddleware.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "Entities\\User.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Entities\\User.cs",
+              "RelativeToolTip": "Entities\\User.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAgwAgAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-18T14:19:18.72Z"
+              "WhenOpened": "2026-02-22T04:12:59.427Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "InsightsDtos.cs",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\InsightsDtos.cs",
-              "RelativeDocumentMoniker": "DTOs\\InsightsDtos.cs",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\InsightsDtos.cs",
-              "RelativeToolTip": "DTOs\\InsightsDtos.cs",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAowBsAAAAQAAAAAAAAAA==",
+              "DocumentIndex": 11,
+              "Title": "JwtOptions.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Options\\JwtOptions.cs",
+              "RelativeDocumentMoniker": "Options\\JwtOptions.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Options\\JwtOptions.cs",
+              "RelativeToolTip": "Options\\JwtOptions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAcAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T06:29:52.049Z"
+              "WhenOpened": "2026-02-21T12:23:05.265Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "Role.cs",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Entities\\Role.cs",
-              "RelativeDocumentMoniker": "Entities\\Role.cs",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Entities\\Role.cs",
-              "RelativeToolTip": "Entities\\Role.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "DocumentIndex": 9,
+              "Title": "IJwtTokenService.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\interfaces\\IJwtTokenService.cs",
+              "RelativeDocumentMoniker": "Services\\interfaces\\IJwtTokenService.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\interfaces\\IJwtTokenService.cs",
+              "RelativeToolTip": "Services\\interfaces\\IJwtTokenService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAcAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-19T14:30:12.373Z"
+              "WhenOpened": "2026-02-22T05:00:44.147Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "FeedbackRepository.cs",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\FeedbackRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\FeedbackRepository.cs",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\FeedbackRepository.cs",
-              "RelativeToolTip": "Repositories\\FeedbackRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 13,
+              "Title": "IAuthService.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\interfaces\\IAuthService.cs",
+              "RelativeDocumentMoniker": "Services\\interfaces\\IAuthService.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\interfaces\\IAuthService.cs",
+              "RelativeToolTip": "Services\\interfaces\\IAuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-19T09:23:53.614Z"
+              "WhenOpened": "2026-02-22T04:06:53.576Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "DepartmentsController.cs",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\DepartmentsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\DepartmentsController.cs",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\DepartmentsController.cs",
-              "RelativeToolTip": "Controllers\\DepartmentsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-19T09:06:27.944Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 14,
               "Title": "DashboardController.cs",
               "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\DashboardController.cs",
               "RelativeDocumentMoniker": "Controllers\\DashboardController.cs",
               "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\DashboardController.cs",
               "RelativeToolTip": "Controllers\\DashboardController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-19T09:06:26.721Z"
+              "WhenOpened": "2026-02-19T09:06:26.721Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "ActivityService.cs",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\ActivityService.cs",
-              "RelativeDocumentMoniker": "Services\\ActivityService.cs",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\ActivityService.cs",
-              "RelativeToolTip": "Services\\ActivityService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "DocumentIndex": 15,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAADAAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-18T05:32:16.774Z"
+              "WhenOpened": "2026-02-18T05:01:40.145Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "IBadgeService.cs",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\interfaces\\IBadgeService.cs",
-              "RelativeDocumentMoniker": "Services\\interfaces\\IBadgeService.cs",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\interfaces\\IBadgeService.cs",
-              "RelativeToolTip": "Services\\interfaces\\IBadgeService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 16,
+              "Title": "Feedback.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Entities\\Feedback.cs",
+              "RelativeDocumentMoniker": "Entities\\Feedback.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Entities\\Feedback.cs",
+              "RelativeToolTip": "Entities\\Feedback.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-18T14:05:57.805Z"
+              "WhenOpened": "2026-02-19T09:48:49.718Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 18,
+              "Title": "Badge.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Entities\\Badge.cs",
+              "RelativeDocumentMoniker": "Entities\\Badge.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Entities\\Badge.cs",
+              "RelativeToolTip": "Entities\\Badge.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-21T12:16:48.52Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Role.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Entities\\Role.cs",
+              "RelativeDocumentMoniker": "Entities\\Role.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Entities\\Role.cs",
+              "RelativeToolTip": "Entities\\Role.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T14:30:12.373Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
               "Title": "IUserService.cs",
               "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\interfaces\\IUserService.cs",
               "RelativeDocumentMoniker": "Services\\interfaces\\IUserService.cs",
@@ -534,11 +525,147 @@
               "RelativeToolTip": "Services\\interfaces\\IUserService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-18T14:05:07.886Z"
+              "WhenOpened": "2026-02-18T14:05:07.886Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 17,
+              "Title": "Category.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Entities\\Category.cs",
+              "RelativeDocumentMoniker": "Entities\\Category.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Entities\\Category.cs",
+              "RelativeToolTip": "Entities\\Category.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T03:51:38.62Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "DbSeeder.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Data\\DbSeeder.cs",
+              "RelativeDocumentMoniker": "Data\\DbSeeder.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Data\\DbSeeder.cs",
+              "RelativeToolTip": "Data\\DbSeeder.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-21T06:23:34.834Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "Data\\AppDbContext.cs",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAmwEEAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T03:51:21.053Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "InsightsService.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\InsightsService.cs",
+              "RelativeDocumentMoniker": "Services\\InsightsService.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\InsightsService.cs",
+              "RelativeToolTip": "Services\\InsightsService.cs",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAswAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T14:05:03.575Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "IInsightsService.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\interfaces\\IInsightsService.cs",
+              "RelativeDocumentMoniker": "Services\\interfaces\\IInsightsService.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\interfaces\\IInsightsService.cs",
+              "RelativeToolTip": "Services\\interfaces\\IInsightsService.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T05:24:03.834Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "IRecognitionRepository.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\Interfaces\\IRecognitionRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\Interfaces\\IRecognitionRepository.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\Interfaces\\IRecognitionRepository.cs",
+              "RelativeToolTip": "Repositories\\Interfaces\\IRecognitionRepository.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAQwBEAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-20T04:57:17.131Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "IEmployeeRepository.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\Interfaces\\IEmployeeRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\Interfaces\\IEmployeeRepository.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\Interfaces\\IEmployeeRepository.cs",
+              "RelativeToolTip": "Repositories\\Interfaces\\IEmployeeRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T06:55:14.2Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "IFeedbackRepository.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\Interfaces\\IFeedbackRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\Interfaces\\IFeedbackRepository.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\Interfaces\\IFeedbackRepository.cs",
+              "RelativeToolTip": "Repositories\\Interfaces\\IFeedbackRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T05:21:33.429Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "EmployeeService.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\EmployeeService.cs",
+              "RelativeDocumentMoniker": "Services\\EmployeeService.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\EmployeeService.cs",
+              "RelativeToolTip": "Services\\EmployeeService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T14:28:01.102Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "IEmployeeService.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\interfaces\\IEmployeeService.cs",
+              "RelativeDocumentMoniker": "Services\\interfaces\\IEmployeeService.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\interfaces\\IEmployeeService.cs",
+              "RelativeToolTip": "Services\\interfaces\\IEmployeeService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T14:27:09.953Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "FeedbackRepository.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\FeedbackRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\FeedbackRepository.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\FeedbackRepository.cs",
+              "RelativeToolTip": "Repositories\\FeedbackRepository.cs",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAkwA0AAACKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T09:23:53.614Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
               "Title": "ActivityRepository.cs",
               "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\ActivityRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\ActivityRepository.cs",
@@ -550,7 +677,355 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "ActivityService.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\ActivityService.cs",
+              "RelativeDocumentMoniker": "Services\\ActivityService.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\ActivityService.cs",
+              "RelativeToolTip": "Services\\ActivityService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T05:32:16.774Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 33,
+              "Title": "EmployeeRepository.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\EmployeeRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\EmployeeRepository.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\EmployeeRepository.cs",
+              "RelativeToolTip": "Repositories\\EmployeeRepository.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAA1wCsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T06:56:49.27Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "FeedbackReview.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Entities\\FeedbackReview.cs",
+              "RelativeDocumentMoniker": "Entities\\FeedbackReview.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Entities\\FeedbackReview.cs",
+              "RelativeToolTip": "Entities\\FeedbackReview.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T03:51:41.672Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "AppSetting.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Entities\\AppSetting.cs",
+              "RelativeDocumentMoniker": "Entities\\AppSetting.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Entities\\AppSetting.cs",
+              "RelativeToolTip": "Entities\\AppSetting.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T03:51:33.134Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "BadgesController.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\BadgesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BadgesController.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\BadgesController.cs",
+              "RelativeToolTip": "Controllers\\BadgesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T03:50:16.169Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "NotificationsController.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\NotificationsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\NotificationsController.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\NotificationsController.cs",
+              "RelativeToolTip": "Controllers\\NotificationsController.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T03:46:02.631Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "CategoriesController.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\CategoriesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CategoriesController.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\CategoriesController.cs",
+              "RelativeToolTip": "Controllers\\CategoriesController.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAgwBwAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T03:50:11.145Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "CategoryDtos.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\admin\\CategoryDtos.cs",
+              "RelativeDocumentMoniker": "DTOs\\admin\\CategoryDtos.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\admin\\CategoryDtos.cs",
+              "RelativeToolTip": "DTOs\\admin\\CategoryDtos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-20T12:21:43.567Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "ManagerController.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\ManagerController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ManagerController.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\ManagerController.cs",
+              "RelativeToolTip": "Controllers\\ManagerController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACAAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-21T07:18:07.616Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "DepartmentsController.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\DepartmentsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DepartmentsController.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\DepartmentsController.cs",
+              "RelativeToolTip": "Controllers\\DepartmentsController.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAA7wCQAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-19T09:06:27.944Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "ManagerDtos.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\Manager\\ManagerDtos.cs",
+              "RelativeDocumentMoniker": "DTOs\\Manager\\ManagerDtos.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\Manager\\ManagerDtos.cs",
+              "RelativeToolTip": "DTOs\\Manager\\ManagerDtos.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAcAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-21T12:12:20.993Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "IManagerService.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\interfaces\\IManagerService.cs",
+              "RelativeDocumentMoniker": "Services\\interfaces\\IManagerService.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\interfaces\\IManagerService.cs",
+              "RelativeToolTip": "Services\\interfaces\\IManagerService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T05:30:58.241Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "SettingsController.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\SettingsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\SettingsController.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\SettingsController.cs",
+              "RelativeToolTip": "Controllers\\SettingsController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwDgAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T03:45:28.396Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "Controllers\\UsersController.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAYwBsAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-22T03:44:59.915Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "GlobalExceptionHandler.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Middleware\\GlobalExceptionHandler.cs",
+              "RelativeDocumentMoniker": "Middleware\\GlobalExceptionHandler.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Middleware\\GlobalExceptionHandler.cs",
+              "RelativeToolTip": "Middleware\\GlobalExceptionHandler.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAYwBIAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T14:20:02.176Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "Recognition.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Entities\\Recognition.cs",
+              "RelativeDocumentMoniker": "Entities\\Recognition.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Entities\\Recognition.cs",
+              "RelativeToolTip": "Entities\\Recognition.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-20T04:35:12.567Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "ErrorHandlerMiddleware.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Middleware\\ErrorHandlerMiddleware.cs",
+              "RelativeDocumentMoniker": "Middleware\\ErrorHandlerMiddleware.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Middleware\\ErrorHandlerMiddleware.cs",
+              "RelativeToolTip": "Middleware\\ErrorHandlerMiddleware.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T14:19:18.72Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "NotificationDtos.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\Manager\\NotificationDtos.cs",
+              "RelativeDocumentMoniker": "DTOs\\Manager\\NotificationDtos.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\Manager\\NotificationDtos.cs",
+              "RelativeToolTip": "DTOs\\Manager\\NotificationDtos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-21T12:12:37.558Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "DepartmentDtos.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\admin\\DepartmentDtos.cs",
+              "RelativeDocumentMoniker": "DTOs\\admin\\DepartmentDtos.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\admin\\DepartmentDtos.cs",
+              "RelativeToolTip": "DTOs\\admin\\DepartmentDtos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-21T12:14:15.633Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "BadgeDtos.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\admin\\BadgeDtos.cs",
+              "RelativeDocumentMoniker": "DTOs\\admin\\BadgeDtos.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\admin\\BadgeDtos.cs",
+              "RelativeToolTip": "DTOs\\admin\\BadgeDtos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-21T12:13:43.338Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "ActivityItemDto.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\admin\\ActivityItemDto.cs",
+              "RelativeDocumentMoniker": "DTOs\\admin\\ActivityItemDto.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\admin\\ActivityItemDto.cs",
+              "RelativeToolTip": "DTOs\\admin\\ActivityItemDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-21T12:13:26.361Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "DashboardDtos.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\admin\\DashboardDtos.cs",
+              "RelativeDocumentMoniker": "DTOs\\admin\\DashboardDtos.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\admin\\DashboardDtos.cs",
+              "RelativeToolTip": "DTOs\\admin\\DashboardDtos.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-20T12:21:36.336Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "SettingsDtos.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\admin\\SettingsDtos.cs",
+              "RelativeDocumentMoniker": "DTOs\\admin\\SettingsDtos.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\admin\\SettingsDtos.cs",
+              "RelativeToolTip": "DTOs\\admin\\SettingsDtos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-20T12:21:51.628Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "BadgeService.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\BadgeService.cs",
+              "RelativeDocumentMoniker": "Services\\BadgeService.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\BadgeService.cs",
+              "RelativeToolTip": "Services\\BadgeService.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-21T12:08:14.418Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "MyDataDtos.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\Employee\\MyDataDtos.cs",
+              "RelativeDocumentMoniker": "DTOs\\Employee\\MyDataDtos.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\Employee\\MyDataDtos.cs",
+              "RelativeToolTip": "DTOs\\Employee\\MyDataDtos.cs",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAIwGkAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T13:55:47.493Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "MyController.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\MyController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MyController.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\MyController.cs",
+              "RelativeToolTip": "Controllers\\MyController.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAA3wGoAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T05:33:45.851Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "RecognitionRepository.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\RecognitionRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\RecognitionRepository.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\RecognitionRepository.cs",
+              "RelativeToolTip": "Repositories\\RecognitionRepository.cs",
+              "ViewState": "AgIAAOoAAAAAAAAAAAAswAMBAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-20T04:58:00.276Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "InsightsDtos.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\admin\\InsightsDtos.cs",
+              "RelativeDocumentMoniker": "DTOs\\admin\\InsightsDtos.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\DTOs\\admin\\InsightsDtos.cs",
+              "RelativeToolTip": "DTOs\\admin\\InsightsDtos.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAowBsAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-20T06:29:52.049Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "IBadgeService.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\interfaces\\IBadgeService.cs",
+              "RelativeDocumentMoniker": "Services\\interfaces\\IBadgeService.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\interfaces\\IBadgeService.cs",
+              "RelativeToolTip": "Services\\interfaces\\IBadgeService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T14:05:57.805Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
               "Title": "ManagerService.cs",
               "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\ManagerService.cs",
               "RelativeDocumentMoniker": "Services\\ManagerService.cs",
@@ -562,19 +1037,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "IManagerService.cs",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\interfaces\\IManagerService.cs",
-              "RelativeDocumentMoniker": "Services\\interfaces\\IManagerService.cs",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\interfaces\\IManagerService.cs",
-              "RelativeToolTip": "Services\\interfaces\\IManagerService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-18T05:30:58.241Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 63,
               "Title": "20260218052026_Initial dB1.cs",
               "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Migrations\\20260218052026_Initial dB1.cs",
               "RelativeDocumentMoniker": "Migrations\\20260218052026_Initial dB1.cs",
@@ -586,7 +1049,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 62,
               "Title": "Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets",
               "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\10.0.103\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\10.0.103\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets",
@@ -595,18 +1058,6 @@
               "ViewState": "AgIAAM0BAAAAAAAAAAAswKsBAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
               "WhenOpened": "2026-02-18T05:05:52.29Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-02-18T05:01:27.348Z"
             }
           ]
         }

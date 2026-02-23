@@ -1,5 +1,5 @@
-using FeedbackSystem.API.DTOs;
-using FeedbackSystem.API.Repositories;
+using FeedbackSystem.API.DTOs.Manager;
+using FeedbackSystem.API.Repositories.Interfaces;
 using FeedbackSystem.API.Services.interfaces;
 
 namespace FeedbackSystem.API.Services;

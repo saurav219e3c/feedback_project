@@ -1,6 +1,6 @@
 using FeedbackSystem.API.Entities;
 
-namespace FeedbackSystem.API.Repositories;
+namespace FeedbackSystem.API.Repositories.Interfaces;
 
 public interface IActivityRepository
 {

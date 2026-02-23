@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace FeedbackSystem.API.DTOs
+namespace FeedbackSystem.API.DTOs.admin
 {
     // DTO for creating a new badge
     public record CreateBadgeDto(

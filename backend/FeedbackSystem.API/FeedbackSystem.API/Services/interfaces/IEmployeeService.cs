@@ -1,10 +1,8 @@
-using FeedbackSystem.API.DTOs;
+using FeedbackSystem.API.DTOs.Employee;
 
 namespace FeedbackSystem.API.Services.interfaces;
 
-/// <summary>
-/// Service for employee's personal feedback and recognition data
-/// </summary>
+//emp service 
 public interface IEmployeeService
 {
     //SUBMIT FB
@@ -14,9 +12,13 @@ public interface IEmployeeService
     Task<List<MyFeedbackDto>> GetMyFeedbackAsync(string userId, string? direction, CancellationToken ct);
 
   // Recognition
+
+  //submit recognition
   Task<MyRecognitionrResponseDto> SubmitMyRecognitionAsync(string userId, MyRecognitionsubmitDto dto, CancellationToken ct);
+
+  //get all my recognition
   Task<List<MyAllRecognitionItemDto>> GetMyRecognitionAsync(string userId, string? direction, CancellationToken ct);
     
-    // Summary
-    Task<MySummaryDto> GetMySummaryAsync(string userId, CancellationToken ct);
+  //dashboard summary
+  Task<MySummaryDto> GetMySummaryAsync(string userId, CancellationToken ct);
 }

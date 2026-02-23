@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
-namespace FeedbackSystem.API.DTOs;
+namespace FeedbackSystem.API.DTOs.admin;
 
 public record CategoryCreateDto(
     [Required, StringLength(20)] string CategoryId,
