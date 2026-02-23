@@ -1,4 +1,3 @@
-
 <!-- Theme wrapper: switches classes based on dataset (feedback / recognition) -->
 <div
   [ngClass]="{
@@ -114,31 +113,8 @@
       </div>
     </section>
 
-    <!-- Pie Chart + Activity -->
+    <!-- Activity Only -->
     <section class="row g-3">
-      <div class="col-12 col-lg-6">
-        <div class="card h-100 shadow-sm white-panel">
-          <div class="card-header d-flex align-items-center justify-content-between white-panel-header">
-            <strong>PIE CHART</strong>
-            <div class="btn-group btn-group-sm" role="group" aria-label="Dataset">
-              <button class="btn btn-outline-primary"
-                      [class.active]="currentDataset === 'feedback'"
-                      (click)="setDataset('feedback'); renderFeedbackTypePie();">
-                Feedback
-              </button>
-              <button class="btn btn-outline-warning"
-                      [class.active]="currentDataset === 'recognition'"
-                      (click)="setDataset('recognition'); renderFeedbackTypePie();">
-                Recognitions
-              </button>
-            </div>
-          </div>
-          <div class="card-body chart-min-h white-panel-body">
-            <canvas #pieArea></canvas>
-          </div>
-        </div>
-      </div>
-
       <div class="col-12 col-lg-6">
         <div class="card h-100 shadow-sm white-panel">
           <div class="card-header white-panel-header">
@@ -146,7 +122,7 @@
           </div>
           <div class="card-body" style="min-height: 280px;">
             <ul class="list-group list-group-flush white-list">
-              <li class="list-group-item d-flex justify-content-between align-items-start" *ngFor="let a of activities">
+              <li class="list-group-item d-flex justify-content-between align-items-start" *ngFor="let a of activities | slice:0:7">
                 <div class="me-auto">
                   <div class="fw-semibold">{{ a.user }} <span class="text-muted">• {{ a.action }}</span></div>
                   <small class="text-muted">{{ a.details }}</small>

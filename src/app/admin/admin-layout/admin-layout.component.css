@@ -2,8 +2,7 @@
 :root {
   --bg-app: #f7f9fc;
   --bg-card: #ffffff;
-  --bg-sidebar: #ffffff;
-  --bg-hamburger: #ffffff;
+  --bg-iconbar: #ffffff;
 
   --border-soft: #e6e9ef;
   --border-strong: #d7dce5;
@@ -12,8 +11,8 @@
   --text-medium: #334155;
   --text-soft: #64748b;
 
-  --brand: #2563eb; /* blue-600 */
-  --brand-weak: #93c5fd; /* blue-300 */
+  --brand: #2563eb;
+  --brand-weak: #93c5fd;
 
   --shadow-soft: 0 6px 18px rgba(15, 23, 42, 0.06);
   --shadow-xs: 0 2px 8px rgba(15, 23, 42, 0.06);
@@ -25,205 +24,16 @@
 /* ---------- App Layout ---------- */
 .layout {
   display: flex;
-  min-height: 100vh; /* full height, no header subtraction */
+  min-height: 100vh;
   background: var(--bg-app);
   position: relative;
-}
-
-.topbar {
-  position: fixed;
-  top: 12px;
-  left: 12px;
-  height: auto;
-  padding: 0;
-  border-bottom: none !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  z-index: 3000; /* above sidebar and backdrop */
-  pointer-events: none; /* container ignores clicks */
-}
-
-.hamburger {
-  pointer-events: auto; /* button is clickable */
-  background: rgba(225, 225, 225, 0.4); /* transparent black shade */
-  border: 1px solid rgba(0, 0, 0, 0.4);
-  padding: 10px;
-  display: inline-flex;
-  flex-direction: column;
-  gap: 5px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: transform 160ms ease, box-shadow 160ms ease,
-    border-color 160ms ease;
-}
-
-.hamburger:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
-}
-.hamburger:active {
-  transform: scale(0.98);
-}
-.hamburger span {
-  width: 22px;
-  height: 2px;
-  background: #181717;
-  border-radius: 2px;
-  display: block;
-}
-
-/* Hide any title if present; we only want hamburger here */
-.topbar-title {
-  display: none;
-}
-
-/* ---------- Sidebar ---------- */
-.sidebar {
-  width: 280px;
-  background: var(--bg-sidebar);
-  border-right: 1px solid var(--border-soft);
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  transform: translateX(-100%); /* hidden by default */
-  transition: transform 220ms ease;
-  z-index: 2000; /* below hamburger, above content */
-  overflow-y: auto;
-  box-shadow: var(--shadow-soft);
-}
-.sidebar.open {
-  transform: translateX(0); /* toggled visible */
-}
-
-/* Sidebar header/brand */
-.sidebar-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 18px 16px;
-  border-bottom: 1px solid var(--border-soft);
-}
-.brand-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: linear-gradient(
-    135deg,
-    rgba(30, 41, 59, 0.9) 0%,
-    rgba(2, 6, 23, 0.95) 100%
-  );
-  display: grid;
-  place-items: center;
-  color: #9b6b6b;
-  font-size: 18px;
-  box-shadow: var(--shadow-xs);
-}
-.brand-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
-}
-.brand-title {
-  font-weight: 700;
-  color: rgb(5, 178, 246);
-}
-.brand-subtitle {
-  font-size: 12px;
-  color: rgb(5, 178, 246);
-}
-
-/* Sidebar menu items */
-.menu {
-  padding: 8px;
-}
-.menu-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 12px;
-  margin: 6px 4px;
-  border-radius: var(--radius-sm);
-  color: black; /* changed to black */
-  text-decoration: none;
-  border: 1px solid transparent;
-  transition: background 160ms ease, color 160ms ease, transform 160ms ease,
-    border-color 160ms ease;
-  font-weight: 800;
-}
-.menu-item i {
-  font-size: 18px;
-  color: black; /* changed to black */
-}
-.menu-item:hover {
-  background: #f1f5f9;
-  color: white; /* on hover: white text */
-  transform: translateX(2px);
-  border-color: var(--border-soft);
-}
-.menu-item:hover i {
-  color: white; /* on hover: white icon */
-}
-.menu-item.active {
-  background: #eef2ff;
-  border-color: #c7d2fe;
-  color: #6842c2;
-}
-.menu-item.active i {
-  color: #4338ca;
-}
-
-/* Sidebar footer */
-.sidebar-footer {
-  margin-top: auto;
-  padding: 12px;
-  border-top: 1px solid var(--border-soft);
-}
-.collapse-btn {
-  width: 100%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 10px 12px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border-soft);
-  background: #f8fafc;
-  color: var(--text-medium);
-  cursor: pointer;
-  transition: background 160ms ease, border-color 160ms ease,
-    transform 160ms ease;
-}
-.collapse-btn:hover {
-  background: #eef2f7;
-  border-color: var(--border-strong);
-  transform: translateY(-1px);
 }
 
 /* ---------- Main content ---------- */
 .content {
   flex: 1;
   padding: 24px;
-  margin-left: 0; /* no reserved space; sidebar overlays */
-}
-
-/* Page header inside content */
-.page-header {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-bottom: 16px;
-}
-.page-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--text-strong);
-  margin: 0;
-}
-.page-subtitle {
-  font-size: 0.95rem;
-  color: var(--text-soft);
-  margin: 0;
+  margin-right: 64px; /* leave space for right icon bar */
 }
 
 /* Card surface for router content */
@@ -236,29 +46,167 @@
   min-height: 60vh;
 }
 
-/* ---------- Backdrop (on any screen when sidebar open) ---------- */
-.backdrop {
+/* ---------- Right Icon Bar ---------- */
+.icon-bar {
   position: fixed;
-  inset: 0;
-  background: rgba(12, 20, 33, 0.35);
-  z-index: 1999; /* below sidebar, below hamburger */
-  backdrop-filter: blur(1.5px);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 64px;
+  background: var(--bg-iconbar);
+  border-left: 1px solid var(--border-soft);
+  box-shadow: -4px 0 16px rgba(15, 23, 42, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 0;
+  gap: 4px;
+  z-index: 1000;
+  overflow: visible;
 }
 
-/* ---------- IMPORTANT: Remove desktop "always visible" behavior ----------
-   We want mobile-like toggle behavior on ALL screens, so DO NOT force
-   the sidebar to stay open for wide screens.
-   (If you had an @media rule that set transform:none !important or margin-left,
-    remove it. We keep everything responsive and overlay-based.)
-*/
+/* Spacer to push logout to bottom */
+.icon-spacer {
+  flex: 1;
+}
 
-/* Optional: Dark mode */
+/* Icon item */
+.icon-item {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  color: var(--text-soft);
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  overflow: visible;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.icon-item i {
+  font-size: 20px;
+  transition: color 180ms ease;
+}
+
+.icon-item:hover {
+  background: #f0f7ff;
+  color: #93c5fd;
+  border-color: #dbeafe;
+  transform: scale(1.08);
+}
+
+.icon-item:hover i {
+  color: #93c5fd;
+}
+
+.icon-item.active {
+  background: #eef2ff;
+  border-color: #c7d2fe;
+  color: #4338ca;
+}
+
+.icon-item.active i {
+  color: #4338ca;
+}
+
+.icon-item.active::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  /* Using right side indicator since bar is on right */
+  left: auto;
+  right: -1px;
+  border-radius: 3px 0 0 3px;
+  background: #4338ca;
+}
+
+/* Logout item special styling */
+.logout-item:hover {
+  background: #fff5f5;
+  color: #fca5a5;
+  border-color: #fee2e2;
+}
+
+.logout-item:hover i {
+  color: #fca5a5;
+}
+
+/* ---------- Tooltip on hover ---------- */
+.icon-tooltip {
+  position: absolute;
+  right: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: #0f172a;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 180ms ease, visibility 180ms ease, transform 180ms ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  letter-spacing: 0.3px;
+}
+
+/* Tooltip arrow */
+.icon-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -5px;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-left-color: #0f172a;
+  border-right: none;
+}
+
+/* Show tooltip on hover */
+.icon-item:hover .icon-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(-4px);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 576px) {
+  .icon-bar {
+    width: 52px;
+    padding: 10px 0;
+  }
+
+  .icon-item {
+    width: 38px;
+    height: 38px;
+  }
+
+  .icon-item i {
+    font-size: 18px;
+  }
+
+  .content {
+    margin-right: 52px;
+    padding: 12px;
+  }
+}
+
+/* ---------- Dark mode ---------- */
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-app: #0b1220;
     --bg-card: #0f172a;
-    --bg-sidebar: #0f172a;
-    --bg-hamburger: #0f172a;
+    --bg-iconbar: #0f172a;
 
     --border-soft: #1f2937;
     --border-strong: #334155;
@@ -270,16 +218,46 @@
     --shadow-soft: 0 8px 22px rgba(0, 0, 0, 0.45);
     --shadow-xs: 0 4px 10px rgba(0, 0, 0, 0.25);
   }
-  .menu-item:hover {
-    background: #0b1324;
+
+  .icon-bar {
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.3);
   }
-  .menu-item.active {
+
+  .icon-item:hover {
+    background: #1e293b;
+  }
+
+  .icon-item.active {
     background: #0e1a34;
     border-color: #1d2a4d;
-    color: #bcd0ff;
-  }
-  .menu-item.active i {
     color: #7aa2ff;
+  }
+
+  .icon-item.active i {
+    color: #7aa2ff;
+  }
+
+  .icon-item.active::before {
+    background: #7aa2ff;
+  }
+
+  .icon-tooltip {
+    background: #1e293b;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .icon-tooltip::after {
+    border-left-color: #1e293b;
+  }
+
+  .logout-item:hover {
+    background: #1c1012;
+    color: #f87171;
+    border-color: #7f1d1d;
+  }
+
+  .logout-item:hover i {
+    color: #f87171;
   }
 }
 

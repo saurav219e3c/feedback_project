@@ -1,102 +1,54 @@
 
-<!-- Fixed overlay topbar with only the hamburger (no visible bar) -->
-<header class="topbar d-flex align-items-center" aria-label="App actions">
-  <button
-    *ngIf="!isSidebarOpen"
-    class="hamburger"
-    aria-label="Toggle navigation"
-    [attr.aria-expanded]="isSidebarOpen"
-    (click)="toggleSidebar()"
-  >
-    <span></span><span></span><span></span>
-  </button>
-</header>
-
-<!-- rest of your layout (unchanged) -->
-
-
 <div class="layout">
-  <!-- Sidebar -->
-  <aside
-    class="sidebar"
-    [class.open]="isSidebarOpen"
-    role="navigation"
-    aria-label="Sidebar"
-  >
-    <div class="sidebar-header">
-      <div class="brand-icon">⚙️</div>
-      <div class="brand-text">
-        <div class="brand-title">Admin</div>
-        <div class="brand-subtitle">Control Panel</div>
-      </div>
-    </div>
-
-    <nav class="menu">
-      <a
-        class="menu-item"
-        routerLink="/admin"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
-        <i class="bi bi-speedometer2"></i>
-        <span>Dashboard</span>
-      </a>
-
-      <a class="menu-item" routerLink="/admin/users" routerLinkActive="active">
-        <i class="bi bi-people"></i>
-        <span>Users</span>
-      </a>
-
-      <a class="menu-item" routerLink="/admin/categories" routerLinkActive="active">
-        <i class="bi bi-tags"></i>
-        <span>Categories</span>
-      </a>
-      <a class="menu-item" routerLink="/admin/departments" routerLinkActive="active">
-        <i class="bi bi-tags"></i>
-        <span>Departments</span>
-      </a>
-
-      <a class="menu-item" routerLink="/admin/reports" routerLinkActive="active">
-        <i class="bi bi-graph-up"></i>
-        <span>Reports</span>
-      </a>
-
-      <a class="menu-item" routerLink="/admin/settings" routerLinkActive="active">
-        <i class="bi bi-sliders"></i>
-        <span>Settings</span>
-      </a>
-
-      <a class="menu-item"  (click)="logout()">
-        <i class="bi bi-sliders"></i>
-        <span>Logout</span>
-      </a>
-    </nav>
-
-    <div class="sidebar-footer">
-      <button class="collapse-btn" (click)="closeSidebar()" aria-label="Close sidebar">
-        <i class="bi bi-x-lg"></i> Close
-      </button>
-    </div>
-  </aside>
-
   <!-- Main content -->
   <main class="content">
-    <!-- Optional page header INSIDE content (not a global bar) -->
-    <!-- <div class="page-header">
-      <h1 class="page-title">Admin Panel</h1>
-      <p class="page-subtitle">Manage users, categories, reports & settings</p>
-    </div> -->
-
     <section class="page-body card-surface">
       <router-outlet></router-outlet>
     </section>
   </main>
-</div>
 
-<!-- Backdrop when sidebar is open on any screen -->
-<div
-  class="backdrop"
-  *ngIf="isSidebarOpen"
-  (click)="closeSidebar()"
-  aria-hidden="true"
-></div>
+  <!-- Right icon bar -->
+  <nav class="icon-bar" role="navigation" aria-label="Admin navigation">
+    <a
+      class="icon-item"
+      routerLink="/admin"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <i class="bi bi-speedometer2"></i>
+      <span class="icon-tooltip">Dashboard</span>
+    </a>
+
+    <a class="icon-item" routerLink="/admin/users" routerLinkActive="active">
+      <i class="bi bi-people"></i>
+      <span class="icon-tooltip">Users</span>
+    </a>
+
+    <a class="icon-item" routerLink="/admin/categories" routerLinkActive="active">
+      <i class="bi bi-tags"></i>
+      <span class="icon-tooltip">Categories</span>
+    </a>
+
+    <a class="icon-item" routerLink="/admin/departments" routerLinkActive="active">
+      <i class="bi bi-building"></i>
+      <span class="icon-tooltip">Departments</span>
+    </a>
+
+    <a class="icon-item" routerLink="/admin/reports" routerLinkActive="active">
+      <i class="bi bi-graph-up"></i>
+      <span class="icon-tooltip">Reports</span>
+    </a>
+
+    <a class="icon-item" routerLink="/admin/settings" routerLinkActive="active">
+      <i class="bi bi-sliders"></i>
+      <span class="icon-tooltip">Settings</span>
+    </a>
+
+    <div class="icon-spacer"></div>
+
+    <a class="icon-item logout-item" (click)="logout()">
+      <i class="bi bi-box-arrow-right"></i>
+      <span class="icon-tooltip">Logout</span>
+    </a>
+  </nav>
+</div>

@@ -1,15 +1,13 @@
 
-import { Component, HostListener, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../core/services/auth.service';
 import {
   Router,
-  NavigationEnd,
   RouterOutlet,
   RouterLink,
   RouterLinkActive
 } from '@angular/router';
-import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-admin-layout',
@@ -19,31 +17,12 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./admin-layout.component.css']
 })
 export class AdminLayoutComponent {
-  isSidebarOpen = false;
-  auth= inject(AuthService);
-  constructor(private router: Router) {
-    // Close sidebar on each route change (mobile-like UX on all screens)
-    this.router.events
-      .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
-      .subscribe(() => {
-        this.isSidebarOpen = false;
-      });
-  }
+  auth = inject(AuthService);
 
-  toggleSidebar(): void {
-    this.isSidebarOpen = !this.isSidebarOpen;
-  }
+  constructor(private router: Router) {}
 
-  closeSidebar(): void {
-    this.isSidebarOpen = false;
-  }
-  logout() :void{
+  logout(): void {
     this.auth.logout();
     this.router.navigate(['/auth/home-page']);
-  }
-
-  @HostListener('document:keydown.escape')
-  onEsc(): void {
-    this.isSidebarOpen = false;
   }
 }
