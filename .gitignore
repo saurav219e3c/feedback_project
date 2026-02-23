@@ -41,3 +41,17 @@ testem.log
 .DS_Store
 Thumbs.db
 .vs/
+
+# .NET / Visual Studio
+[Bb]in/
+[Oo]bj/
+*.exe
+*.dll
+*.pdb
+*.user
+*.suo
+*.sln.docstates
+
+# Visual Studio temporary files
+.vs/
+backend/FeedbackSystem.API/FeedbackSystem.API/.vs/

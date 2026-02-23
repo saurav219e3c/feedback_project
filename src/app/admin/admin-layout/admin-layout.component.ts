@@ -8,6 +8,7 @@ import {
   RouterLink,
   RouterLinkActive
 } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-admin-layout',
@@ -22,7 +23,29 @@ export class AdminLayoutComponent {
   constructor(private router: Router) {}
 
   logout(): void {
-    this.auth.logout();
-    this.router.navigate(['/auth/home-page']);
+    Swal.fire({
+      title: 'Logout Confirmation',
+      text: 'Do you want to logout?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No',
+      confirmButtonColor: '#ef4444',
+      cancelButtonColor: '#6b7280'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.auth.logout();
+        Swal.fire({
+          title: 'Logged Out!',
+          text: 'Logout successful',
+          icon: 'success',
+          timer: 1500,
+          timerProgressBar: true,
+          showConfirmButton: false
+        }).then(() => {
+          this.router.navigate(['/auth/home-page']);
+        });
+      }
+    });
   }
 }

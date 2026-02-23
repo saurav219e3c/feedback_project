@@ -14,10 +14,11 @@
 
   <header class="hero-section">
     <div class="hero-content">
-      <div class="badge">Internal System</div>
-      <h1 class="project-name">
-        <span>Feedback</span>
-        <span>Track</span>
+      <div class="badge-container">
+        <div class="badge">Internal System</div>
+      </div>
+      <h1 class="project-name typing-text">
+        {{ typedMainTitle }}<span class="cursor" *ngIf="!mainTitleComplete">|</span>
       </h1>
       <p class="project-subtitle">Internal Employee Feedback & Recognition System</p>
       
@@ -62,7 +63,7 @@
 
   <section id="roles-anchor" class="roles-section">
     <div class="section-header">
-      <h2 class="roles-title">Select Your Portal For Feedback</h2>
+      <h2 class="roles-title typing-text">{{ typedPortalTitle }}<span class="cursor" *ngIf="!portalTitleComplete">|</span></h2>
       <p class="roles-subtitle">Please choose your specialized role to begin your journey.</p>
     </div>
     
