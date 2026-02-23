@@ -1,0 +1,163 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\roshan\\cts_feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\roshan\\cts_feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\controllers\\mycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:controllers\\mycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\roshan\\cts_feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\repositories\\activityrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:repositories\\activityrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\roshan\\cts_feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\services\\activityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:services\\activityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\roshan\\cts_feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\services\\imanagerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:services\\imanagerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\roshan\\cts_feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\services\\managerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:services\\managerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Migrations\\20260218052026_Initial dB1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\roshan\\cts_feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|c:\\roshan\\cts_feedback_project\\backend\\feedbacksystem.api\\feedbacksystem.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6FC0E068-C330-7502-3FED-A574F1F18A00}|FeedbackSystem.API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\10.0.103\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MyController.cs",
+              "DocumentMoniker": "C:\\roshan\\cts_feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\MyController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MyController.cs",
+              "ToolTip": "C:\\roshan\\cts_feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Controllers\\MyController.cs",
+              "RelativeToolTip": "Controllers\\MyController.cs",
+              "ViewState": "AgIAAJsAAAAAAAAAAAAswDQAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T05:33:45.851Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ActivityRepository.cs",
+              "DocumentMoniker": "C:\\roshan\\cts_feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\ActivityRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\ActivityRepository.cs",
+              "ToolTip": "C:\\roshan\\cts_feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Repositories\\ActivityRepository.cs",
+              "RelativeToolTip": "Repositories\\ActivityRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T05:32:50.893Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ActivityService.cs",
+              "DocumentMoniker": "C:\\roshan\\cts_feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\ActivityService.cs",
+              "RelativeDocumentMoniker": "Services\\ActivityService.cs",
+              "ToolTip": "C:\\roshan\\cts_feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\ActivityService.cs",
+              "RelativeToolTip": "Services\\ActivityService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T05:32:16.774Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ManagerService.cs",
+              "DocumentMoniker": "C:\\roshan\\cts_feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\ManagerService.cs",
+              "RelativeDocumentMoniker": "Services\\ManagerService.cs",
+              "ToolTip": "C:\\roshan\\cts_feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\ManagerService.cs",
+              "RelativeToolTip": "Services\\ManagerService.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwAkAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T05:31:05.251Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IManagerService.cs",
+              "DocumentMoniker": "C:\\roshan\\cts_feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\IManagerService.cs",
+              "RelativeDocumentMoniker": "Services\\IManagerService.cs",
+              "ToolTip": "C:\\roshan\\cts_feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Services\\IManagerService.cs",
+              "RelativeToolTip": "Services\\IManagerService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T05:30:58.241Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "20260218052026_Initial dB1.cs",
+              "DocumentMoniker": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Migrations\\20260218052026_Initial dB1.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Migrations\\20260218052026_Initial dB1.cs",
+              "ToolTip": "C:\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Migrations\\20260218052026_Initial dB1.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Project\\feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Migrations\\20260218052026_Initial dB1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T05:20:27.095Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets",
+              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\10.0.103\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\10.0.103\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets",
+              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\10.0.103\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\10.0.103\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.JSModules.targets",
+              "ViewState": "AgIAAM0BAAAAAAAAAAAswKsBAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2026-02-18T05:05:52.29Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\roshan\\cts_feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\roshan\\cts_feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-18T05:01:27.348Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\roshan\\cts_feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\roshan\\cts_feedback_project\\backend\\FeedbackSystem.API\\FeedbackSystem.API\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAL4AAAAAAAAAAAAswMkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-18T05:01:40.145Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -113,24 +113,22 @@ namespace FeedbackSystem.API.Repositories
         public async Task<(int Given, int Received, DateTime? LatestGivenAt, DateTime? LatestReceivedAt)> GetSummaryAsync(
             string userId, CancellationToken ct)
         {
-            var givenCountTask = _db.Feedbacks.AsNoTracking().CountAsync(f => f.FromUserId == userId, ct);
-            var receivedCountTask = _db.Feedbacks.AsNoTracking().CountAsync(f => f.ToUserId == userId, ct);
+            var givenCount = await _db.Feedbacks.AsNoTracking().CountAsync(f => f.FromUserId == userId, ct);
+            var receivedCount = await _db.Feedbacks.AsNoTracking().CountAsync(f => f.ToUserId == userId, ct);
 
-            var latestGivenAtTask = _db.Feedbacks.AsNoTracking()
+            var latestGivenAt = await _db.Feedbacks.AsNoTracking()
                 .Where(f => f.FromUserId == userId)
                 .OrderByDescending(f => f.CreatedAt)
                 .Select(f => (DateTime?)f.CreatedAt)
                 .FirstOrDefaultAsync(ct);
 
-            var latestReceivedAtTask = _db.Feedbacks.AsNoTracking()
+            var latestReceivedAt = await _db.Feedbacks.AsNoTracking()
                 .Where(f => f.ToUserId == userId)
                 .OrderByDescending(f => f.CreatedAt)
                 .Select(f => (DateTime?)f.CreatedAt)
                 .FirstOrDefaultAsync(ct);
 
-            await Task.WhenAll(givenCountTask, receivedCountTask, latestGivenAtTask, latestReceivedAtTask);
-
-            return (givenCountTask.Result, receivedCountTask.Result, latestGivenAtTask.Result, latestReceivedAtTask.Result);
+            return (givenCount, receivedCount, latestGivenAt, latestReceivedAt);
         }
 
         // -------------- private helpers --------------

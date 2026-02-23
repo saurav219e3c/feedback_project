@@ -11,7 +11,7 @@ import {
   TopEmployeeDto,
   GivenReceivedDto,
   CategoryScoreDto,
-  MonthlyTrendDto
+  WeeklyTrendDto
 } from '../services/admin-report.service';
 
 @Component({
@@ -26,6 +26,24 @@ export class AdminReportsComponent implements OnInit {
 
   loading = true;
   errors: string[] = [];
+
+  // Month selection for weekly trends
+  selectedYear: number = new Date().getFullYear();
+  selectedMonth: number = new Date().getMonth() + 1; // 1-12
+  months = [
+    { value: 1, name: 'January' },
+    { value: 2, name: 'February' },
+    { value: 3, name: 'March' },
+    { value: 4, name: 'April' },
+    { value: 5, name: 'May' },
+    { value: 6, name: 'June' },
+    { value: 7, name: 'July' },
+    { value: 8, name: 'August' },
+    { value: 9, name: 'September' },
+    { value: 10, name: 'October' },
+    { value: 11, name: 'November' },
+    { value: 12, name: 'December' }
+  ];
 
   get error(): string | null {
     return this.errors.length > 0 ? this.errors.join(', ') : null;
@@ -50,8 +68,8 @@ export class AdminReportsComponent implements OnInit {
     data: {
       labels: [],
       datasets: [
-        { label: 'Feedback', data: [], tension: 0.35, borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,0.2)', fill: true, pointRadius: 3 },
-        { label: 'Recognition', data: [], tension: 0.35, borderColor: '#22c55e', backgroundColor: 'rgba(34,197,94,0.2)', fill: true, pointRadius: 3 }
+        { label: 'Feedback', data: [], tension: 0.35, borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,0.2)', fill: true, pointRadius: 4 },
+        { label: 'Recognition', data: [], tension: 0.35, borderColor: '#22c55e', backgroundColor: 'rgba(34,197,94,0.2)', fill: true, pointRadius: 4 }
       ]
     },
     options: {
@@ -121,6 +139,33 @@ export class AdminReportsComponent implements OnInit {
     this.loadAll();
   }
 
+  onMonthChange(event: Event): void {
+    const target = event.target as HTMLSelectElement;
+    this.selectedMonth = parseInt(target.value, 10);
+    this.loadWeeklyTrend();
+  }
+
+  onYearChange(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    this.selectedYear = parseInt(target.value, 10);
+    this.loadWeeklyTrend();
+  }
+
+  private loadWeeklyTrend() {
+    this.reports.getWeeklyTrend(this.selectedYear, this.selectedMonth).pipe(
+      catchError(err => { console.error('Weekly trend error:', err); this.errors.push('Weekly Trend'); return of(null); })
+    ).subscribe(trend => {
+      if (trend) {
+        this.lineConfig.data.labels = trend.labels;
+        this.lineConfig.data.datasets[0].data = trend.feedbackCounts;
+        this.lineConfig.data.datasets[1].data = trend.recognitionCounts;
+        setTimeout(() => {
+          this.charts?.forEach(c => c.update());
+        });
+      }
+    });
+  }
+
   private loadAll() {
     this.loading = true;
     this.errors = [];
@@ -128,9 +173,6 @@ export class AdminReportsComponent implements OnInit {
     forkJoin({
       sentiment: this.reports.getFeedbackSentiment().pipe(
         catchError(err => { console.error('Sentiment error:', err); this.errors.push('Sentiment'); return of(null); })
-      ),
-      trend: this.reports.getMonthlyTrend().pipe(
-        catchError(err => { console.error('Monthly trend error:', err); this.errors.push('Monthly Trend'); return of(null); })
       ),
       deptCounts: this.reports.getDepartmentFeedbackCounts().pipe(
         catchError(err => { console.error('Dept counts error:', err); this.errors.push('Dept Feedback'); return of(null); })
@@ -152,14 +194,6 @@ export class AdminReportsComponent implements OnInit {
       if (results.sentiment) {
         const s = results.sentiment;
         this.doughnutConfig.data.datasets[0].data = [s.positiveCount, s.neutralCount, s.negativeCount];
-      }
-
-      // Monthly trend line
-      if (results.trend) {
-        const t = results.trend;
-        this.lineConfig.data.labels = t.labels;
-        this.lineConfig.data.datasets[0].data = t.feedback;
-        this.lineConfig.data.datasets[1].data = t.recognition;
       }
 
       // Department feedback bar
@@ -199,5 +233,8 @@ export class AdminReportsComponent implements OnInit {
 
       this.loading = false;
     });
+
+    // Load weekly trend separately with selected month/year
+    this.loadWeeklyTrend();
   }
 }

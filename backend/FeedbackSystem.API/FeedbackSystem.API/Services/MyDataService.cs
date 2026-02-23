@@ -123,6 +123,22 @@ public class MyDataService : IMyDataService
         };
 
         _db.Feedbacks.Add(feedback);
+        
+        // Create activity log
+        var activityLog = new ActivityLog
+        {
+            UserId = userId,
+            ActionType = "Gave Feedback",
+            EntityType = "Feedback",
+            EntityId = null, // Will be set after SaveChanges
+            CreatedAt = DateTime.UtcNow
+        };
+        _db.ActivityLogs.Add(activityLog);
+        
+        await _db.SaveChangesAsync(ct);
+        
+        // Update activity log with feedback ID
+        activityLog.EntityId = feedback.FeedbackId;
         await _db.SaveChangesAsync(ct);
 
         // Notify managers in the target user's department
@@ -200,6 +216,22 @@ public class MyDataService : IMyDataService
         };
 
         _db.Recognitions.Add(recognition);
+        
+        // Create activity log
+        var activityLog = new ActivityLog
+        {
+            UserId = userId,
+            ActionType = "Sent Recognition",
+            EntityType = "Recognition",
+            EntityId = null, // Will be set after SaveChanges
+            CreatedAt = DateTime.UtcNow
+        };
+        _db.ActivityLogs.Add(activityLog);
+        
+        await _db.SaveChangesAsync(ct);
+        
+        // Update activity log with recognition ID
+        activityLog.EntityId = recognition.RecognitionId;
         await _db.SaveChangesAsync(ct);
 
         // Notify managers in the target user's department

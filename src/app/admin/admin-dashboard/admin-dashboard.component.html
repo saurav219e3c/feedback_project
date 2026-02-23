@@ -82,14 +82,25 @@
               </button>
             </div>
 
+            <!-- Month/Year Selection for Weekly Trends -->
+            <div class="d-flex gap-2 align-items-center" *ngIf="currentBarView !== 'category'">
+              <select class="form-select form-select-sm" style="width: auto;" 
+                      [value]="selectedMonth" (change)="onMonthChange($event)">
+                <option *ngFor="let m of months" [value]="m.value">{{ m.name }}</option>
+              </select>
+              <input type="number" class="form-control form-control-sm" style="width: 80px;" 
+                     [value]="selectedYear" (change)="onYearChange($event)"
+                     min="2020" max="2030">
+            </div>
+
             <!-- View toggle -->
             <div class="btn-group btn-group-sm" role="group" aria-label="Chart view">
               <button class="btn btn-outline-secondary" [class.active]="currentBarView === 'category'"
                       (click)="showCategoryBar()">Category</button>
-              <button class="btn btn-outline-secondary" [class.active]="currentBarView === 'monthly-line'"
-                      (click)="showMonthlyTrend('line')">Monthly (Line)</button>
-              <button class="btn btn-outline-secondary" [class.active]="currentBarView === 'monthly-bar'"
-                      (click)="showMonthlyTrend('bar')">Monthly (Bar)</button>
+              <button class="btn btn-outline-secondary" [class.active]="currentBarView === 'weekly-line'"
+                      (click)="showWeeklyTrend('line')">Weekly (Line)</button>
+              <button class="btn btn-outline-secondary" [class.active]="currentBarView === 'weekly-bar'"
+                      (click)="showWeeklyTrend('bar')">Weekly (Bar)</button>
             </div>
           </div>
 

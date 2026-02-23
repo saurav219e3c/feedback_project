@@ -46,6 +46,32 @@
   margin-bottom: 8px;
 }
 
+.card-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.date-selectors {
+  display: flex;
+  gap: 8px;
+}
+
+.month-select, .year-select {
+  padding: 4px 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
+}
+
+.month-select:focus, .year-select:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
 .chart {
   position: relative;
   flex: 1;

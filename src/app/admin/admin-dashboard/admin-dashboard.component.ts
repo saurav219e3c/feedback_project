@@ -13,13 +13,13 @@ import {
   DashboardSummary,
   CategoryCount,
   TypeDistribution,
-  MonthlyTrend,
+  WeeklyTrend,
   ActivityItem,
 } from '../services/admin-dashboard.service';
-import { Subscription, combineLatest } from 'rxjs'; // ⬅️ add combineLatest
+import { Subscription, combineLatest } from 'rxjs';
 
 type DatasetKind = 'feedback' | 'recognition';
-type BarView = 'category' | 'monthly-line' | 'monthly-bar';
+type BarView = 'category' | 'weekly-line' | 'weekly-bar';
 
 @Component({
   standalone: true,
@@ -45,13 +45,30 @@ export class AdminDashboardComponent
   currentDataset: DatasetKind = 'feedback'; // controls theme + colors
   currentBarView: BarView = 'category';
 
+  // Month selection for weekly trends
+  selectedYear: number = new Date().getFullYear();
+  selectedMonth: number = new Date().getMonth() + 1; // 1-12
+  months = [
+    { value: 1, name: 'January' },
+    { value: 2, name: 'February' },
+    { value: 3, name: 'March' },
+    { value: 4, name: 'April' },
+    { value: 5, name: 'May' },
+    { value: 6, name: 'June' },
+    { value: 7, name: 'July' },
+    { value: 8, name: 'August' },
+    { value: 9, name: 'September' },
+    { value: 10, name: 'October' },
+    { value: 11, name: 'November' },
+    { value: 12, name: 'December' }
+  ];
+
   // Data stores via observables
   feedbackByCategory: CategoryCount[] = [];
   recognitionByCategory: CategoryCount[] = [];
   feedbackTypeDist: TypeDistribution[] = [];
   recognitionTypeDist: TypeDistribution[] = [];
-  monthlyFeedback: MonthlyTrend[] = [];
-  monthlyRecognition: MonthlyTrend[] = [];
+  weeklyTrend?: WeeklyTrend;
 
   // Auto-slide control
   private autoSlideTimer?: number; // DOM setInterval id
@@ -87,23 +104,22 @@ export class AdminDashboardComponent
         .subscribe((items) => (this.activities = items))
     );
 
-    // Group all BAR-related data in one stream, refresh once
+    // Load category data for bar chart
     this.subs.add(
       combineLatest([
         this.dashboardSvc.getFeedbackByCategory$(),
         this.dashboardSvc.getRecognitionByCategory$(),
-        this.dashboardSvc.getMonthlyFeedbackTrend$(),
-        this.dashboardSvc.getMonthlyRecognitionTrend$(),
       ]).subscribe(
-        ([feedbackByCat, recognitionByCat, monthlyFb, monthlyRec]) => {
+        ([feedbackByCat, recognitionByCat]) => {
           this.feedbackByCategory = feedbackByCat;
           this.recognitionByCategory = recognitionByCat;
-          this.monthlyFeedback = monthlyFb;
-          this.monthlyRecognition = monthlyRec;
           this.refreshBarIfNeeded(); 
         }
       )
     );
+
+    // Load weekly trend data for selected month
+    this.loadWeeklyTrend();
 
     
     this.subs.add(
@@ -135,26 +151,40 @@ export class AdminDashboardComponent
   setDataset(kind: DatasetKind): void {
     if (this.currentDataset === kind) return;
     this.currentDataset = kind;
-    switch (this.currentBarView) {
-      case 'category':
-        this.renderCategoryBar();
-        break;
-      case 'monthly-line':
-        this.renderMonthlyTrend('line');
-        break;
-      case 'monthly-bar':
-        this.renderMonthlyTrend('bar');
-        break;
-    }
+    this.refreshBarIfNeeded();
     this.renderFeedbackTypePie();
   }
+  
   showCategoryBar(): void {
     this.currentBarView = 'category';
     this.renderCategoryBar();
   }
-  showMonthlyTrend(type: 'line' | 'bar'): void {
-    this.currentBarView = type === 'line' ? 'monthly-line' : 'monthly-bar';
-    this.renderMonthlyTrend(type);
+  
+  showWeeklyTrend(type: 'line' | 'bar'): void {
+    this.currentBarView = type === 'line' ? 'weekly-line' : 'weekly-bar';
+    this.renderWeeklyTrend(type);
+  }
+
+  onMonthChange(event: Event): void {
+    const target = event.target as HTMLSelectElement;
+    this.selectedMonth = parseInt(target.value, 10);
+    this.loadWeeklyTrend();
+  }
+
+  onYearChange(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    this.selectedYear = parseInt(target.value, 10);
+    this.loadWeeklyTrend();
+  }
+
+  private loadWeeklyTrend(): void {
+    this.subs.add(
+      this.dashboardSvc.getWeeklyTrend$(this.selectedYear, this.selectedMonth)
+        .subscribe(trend => {
+          this.weeklyTrend = trend;
+          this.refreshBarIfNeeded();
+        })
+    );
   }
 
 
@@ -180,17 +210,18 @@ export class AdminDashboardComponent
     return { labels, counts, label, color };
   }
 
-  private getMonthlyData() {
-    const rows =
-      this.currentDataset === 'feedback'
-        ? this.monthlyFeedback
-        : this.monthlyRecognition;
-    const labels = rows.map((r) => r.month);
-    const counts = rows.map((r) => r.count);
+  private getWeeklyData() {
+    if (!this.weeklyTrend) {
+      return { labels: [], counts: [], label: '', color: { bg: '', border: '' } };
+    }
+    const labels = this.weeklyTrend.labels;
+    const counts = this.currentDataset === 'feedback'
+      ? this.weeklyTrend.feedbackCounts
+      : this.weeklyTrend.recognitionCounts;
     const label =
       this.currentDataset === 'feedback'
-        ? 'Monthly Feedback Trend'
-        : 'Monthly Recognitions Trend';
+        ? 'Weekly Feedback Trend'
+        : 'Weekly Recognitions Trend';
     const color =
       this.currentDataset === 'feedback'
         ? { bg: this.palette.bluePrimary, border: this.palette.blueLight }
@@ -315,10 +346,10 @@ export class AdminDashboardComponent
     });
   }
 
-  // Monthly trend (line/bar) bold on white
-  private renderMonthlyTrend(type: 'line' | 'bar'): void {
+  // Weekly trend (line/bar) bold on white
+  private renderWeeklyTrend(type: 'line' | 'bar'): void {
     if (!this.barArea) return;
-    const { labels, counts, label, color } = this.getMonthlyData();
+    const { labels, counts, label, color } = this.getWeeklyData();
     this.destroyChart(this.barChart);
 
     this.barChart = new Chart(this.barArea.nativeElement, {
@@ -377,7 +408,7 @@ export class AdminDashboardComponent
   // Auto-rotation with hover pause
   private startAutoSlide(): void {
     this.clearAutoSlide();
-    const views: BarView[] = ['category', 'monthly-line', 'monthly-bar'];
+    const views: BarView[] = ['category', 'weekly-line', 'weekly-bar'];
     let idx = views.indexOf(this.currentBarView);
 
     this.autoSlideTimer = window.setInterval(() => {
@@ -387,8 +418,8 @@ export class AdminDashboardComponent
       this.currentBarView = next;
 
       if (next === 'category') this.renderCategoryBar();
-      else if (next === 'monthly-line') this.renderMonthlyTrend('line');
-      else this.renderMonthlyTrend('bar');
+      else if (next === 'weekly-line') this.renderWeeklyTrend('line');
+      else this.renderWeeklyTrend('bar');
     }, 5000);
   }
   private clearAutoSlide(): void {
@@ -410,11 +441,11 @@ export class AdminDashboardComponent
       case 'category':
         this.renderCategoryBar();
         break;
-      case 'monthly-line':
-        this.renderMonthlyTrend('line');
+      case 'weekly-line':
+        this.renderWeeklyTrend('line');
         break;
-      case 'monthly-bar':
-        this.renderMonthlyTrend('bar');
+      case 'weekly-bar':
+        this.renderWeeklyTrend('bar');
         break;
     }
   }

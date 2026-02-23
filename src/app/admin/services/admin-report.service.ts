@@ -14,10 +14,12 @@ export interface SentimentDto {
   neutralPercentage: number;
 }
 
-export interface MonthlyTrendDto {
-  labels: string[];
-  feedback: number[];
-  recognition: number[];
+export interface WeeklyTrendDto {
+  labels: string[];           // ["Week 1", "Week 2", "Week 3", "Week 4"]
+  feedbackCounts: number[];   // Feedback counts per week
+  recognitionCounts: number[]; // Recognition counts per week
+  year: number;               // Year of the data
+  month: number;              // Month of the data (1-12)
 }
 
 export interface DepartmentCountDto {
@@ -60,14 +62,8 @@ export class AdminReportService {
     return this.api.get<SentimentDto>('/api/insight/sentiment/stats', params);
   }
 
-  getMonthlyTrend(from?: string, to?: string): Observable<MonthlyTrendDto> {
-    return this.api.get<any>('/api/dashboard/monthly-trends', { months: 6 }).pipe(
-      map((data: any) => ({
-        labels: data.labels ?? [],
-        feedback: data.feedbackCounts ?? [],
-        recognition: data.recognitionCounts ?? []
-      }))
-    );
+  getWeeklyTrend(year: number, month: number): Observable<WeeklyTrendDto> {
+    return this.api.get<WeeklyTrendDto>('/api/dashboard/weekly-trends', { year, month });
   }
 
   getDepartmentFeedbackCounts(from?: string, to?: string): Observable<DepartmentCountDto[]> {
@@ -120,11 +116,6 @@ export class AdminReportService {
   }
 
   getRecentActivities(limit = 20): Observable<ActivityItemDto[]> {
-    return of([
-      { time: '2 min ago', user: 'Amit', action: 'Gave Feedback', details: 'Communication' },
-      { time: '10 min ago', user: 'Sara', action: 'Recognition Received', details: 'Teamwork (+7)' },
-      { time: '1 hr ago', user: 'Nisha', action: 'Feedback Received', details: 'Leadership' },
-      { time: '3 hr ago', user: 'Rahul', action: 'Recognition Given', details: 'Problem Solving (+5)' }
-    ]);
+    return this.api.get<ActivityItemDto[]>('/api/activity/logs');
   }
 }

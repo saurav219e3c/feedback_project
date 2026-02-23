@@ -41,8 +41,14 @@
       <article class="card">
         <h3 class="card-title">Activity</h3>
         <div class="rows">
-          <div class="row"><span class="label">Feedback</span><span class="value">{{ user.feedback }}</span></div>
-          <div class="row"><span class="label">Recognition</span><span class="value">{{ user.recognition }}</span></div>
+          <div class="row">
+            <span class="label">Feedback</span>
+            <span class="value">{{ user.feedback === -1 ? 'Loading...' : user.feedback }}</span>
+          </div>
+          <div class="row">
+            <span class="label">Recognition</span>
+            <span class="value">{{ user.recognition === -1 ? 'Loading...' : user.recognition }}</span>
+          </div>
         </div>
       </article>
 

@@ -7,7 +7,7 @@ namespace FeedbackSystem.API.Services
         Task<DashboardSummaryDto> GetSummaryAsync(CancellationToken ct = default);
         Task<IReadOnlyList<CategoryStatsDto>> GetFeedbackByCategoryAsync(CancellationToken ct = default);
         Task<IReadOnlyList<RecognitionBadgeStatsDto>> GetRecognitionByBadgeAsync(CancellationToken ct = default);
-        Task<MonthlyTrendDto> GetMonthlyTrendsAsync(int months = 6, CancellationToken ct = default);
+        Task<WeeklyTrendDto> GetWeeklyTrendsAsync(int year, int month, CancellationToken ct = default);
         Task<IReadOnlyList<DepartmentCountDto>> GetDepartmentFeedbackCountsAsync(DateTime? from = null, DateTime? to = null, CancellationToken ct = default);
         Task<IReadOnlyList<TopEmployeeDto>> GetTopEmployeesByPointsAsync(int limit = 10, DateTime? from = null, DateTime? to = null, CancellationToken ct = default);
         Task<IReadOnlyList<DepartmentRecognitionDto>> GetDepartmentRecognitionStatsAsync(DateTime? from = null, DateTime? to = null, CancellationToken ct = default);

@@ -1,5 +1,5 @@
 
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { User } from '../user-management/user-management.component';
 
@@ -8,8 +8,7 @@ import { User } from '../user-management/user-management.component';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent {
   @Input() user!: User;

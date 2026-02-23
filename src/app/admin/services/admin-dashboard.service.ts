@@ -23,7 +23,13 @@ export interface SentimentStats {
 
 export interface CategoryCount { category: string; count: number; }
 export interface TypeDistribution { type: string; count: number; }
-export interface MonthlyTrend { month: string; count: number; }
+export interface WeeklyTrend { 
+  labels: string[];           // ["Week 1", "Week 2", "Week 3", "Week 4"]
+  feedbackCounts: number[];   // Feedback counts per week
+  recognitionCounts: number[]; // Recognition counts per week
+  year: number;               // Year of the data
+  month: number;              // Month of the data (1-12)
+}
 export interface ActivityItem { time: string; user: string; action: string; details: string; }
 
 @Injectable({ providedIn: 'root' })
@@ -55,10 +61,10 @@ export class AdminDashboardService {
   }
 
   getRecognitionByCategory$(): Observable<CategoryCount[]> {
-    return this.api.get<any[]>('/api/dashboard/recognition-by-category').pipe(
+    return this.api.get<any[]>('/api/dashboard/recognition-by-badge').pipe(
       map((items: any[]) => items.map(item => ({
-        category: item.categoryName,
-        count: item.recognitionCount
+        category: item.badgeName || item.categoryName,
+        count: item.recognitionCount || item.count
       })))
     );
   }
@@ -83,36 +89,11 @@ export class AdminDashboardService {
     ]).pipe(delay(150));
   }
 
-  getMonthlyFeedbackTrend$(): Observable<MonthlyTrend[]> {
-    return this.api.get<any>('/api/dashboard/monthly-trends', { months: 6 }).pipe(
-      map((data: any) => {
-        return data.labels.map((label: string, index: number) => ({
-          month: label,
-          count: data.feedbackCounts[index]
-        }));
-      })
-    );
-  }
-
-  getMonthlyRecognitionTrend$(): Observable<MonthlyTrend[]> {
-    return this.api.get<any>('/api/dashboard/monthly-trends', { months: 6 }).pipe(
-      map((data: any) => {
-        return data.labels.map((label: string, index: number) => ({
-          month: label,
-          count: data.recognitionCounts[index]
-        }));
-      })
-    );
+  getWeeklyTrend$(year: number, month: number): Observable<WeeklyTrend> {
+    return this.api.get<WeeklyTrend>('/api/dashboard/weekly-trends', { year, month });
   }
 
   getActivityLog$(): Observable<ActivityItem[]> {
-    // Activity log from ActivityController - mock for now since it needs different endpoint
-    return of([
-      { time: '2 min ago',  user: 'Amit',  action: 'Gave Feedback',    details: 'Communication' },
-      { time: '10 min ago', user: 'Admin', action: 'Disabled Category',details: 'Time Management' },
-      { time: '1 hr ago',   user: 'Neha',  action: 'Sent Recognition', details: 'Team Player' },
-      { time: 'Today',      user: 'Ravi',  action: 'Gave Feedback',    details: 'Leadership' },
-      { time: 'Today',      user: 'Priya', action: 'Updated Settings', details: 'Email templates' },
-    ]).pipe(delay(150));
+    return this.api.get<ActivityItem[]>('/api/activity/logs');
   }
 }

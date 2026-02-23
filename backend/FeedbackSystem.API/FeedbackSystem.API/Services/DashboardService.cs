@@ -63,29 +63,49 @@ namespace FeedbackSystem.API.Services
             return stats;
         }
 
-        public async Task<MonthlyTrendDto> GetMonthlyTrendsAsync(int months = 6, CancellationToken ct = default)
+        public async Task<WeeklyTrendDto> GetWeeklyTrendsAsync(int year, int month, CancellationToken ct = default)
         {
+            // Validate month
+            if (month < 1 || month > 12)
+                throw new ArgumentException("Month must be between 1 and 12", nameof(month));
+
+            var monthStart = new DateTime(year, month, 1);
+            var monthEnd = monthStart.AddMonths(1);
+
+            // Calculate weeks in the month
+            var weeks = new List<(DateTime start, DateTime end, string label)>();
+            var currentWeekStart = monthStart;
+            int weekNumber = 1;
+
+            while (currentWeekStart < monthEnd)
+            {
+                var currentWeekEnd = currentWeekStart.AddDays(7);
+                if (currentWeekEnd > monthEnd)
+                    currentWeekEnd = monthEnd;
+
+                weeks.Add((currentWeekStart, currentWeekEnd, $"Week {weekNumber}"));
+                currentWeekStart = currentWeekEnd;
+                weekNumber++;
+            }
+
             var labels = new List<string>();
             var feedbackCounts = new List<int>();
             var recognitionCounts = new List<int>();
 
-            for (int i = months - 1; i >= 0; i--)
+            foreach (var (start, end, label) in weeks)
             {
-                var monthStart = new DateTime(DateTime.UtcNow.Year, DateTime.UtcNow.Month, 1).AddMonths(-i);
-                var monthEnd = monthStart.AddMonths(1);
-
-                labels.Add(monthStart.ToString("MMM"));
+                labels.Add(label);
 
                 var feedbackCount = await _db.Feedbacks
-                    .CountAsync(f => f.CreatedAt >= monthStart && f.CreatedAt < monthEnd, ct);
+                    .CountAsync(f => f.CreatedAt >= start && f.CreatedAt < end, ct);
                 feedbackCounts.Add(feedbackCount);
 
                 var recognitionCount = await _db.Recognitions
-                    .CountAsync(r => r.CreatedAt >= monthStart && r.CreatedAt < monthEnd, ct);
+                    .CountAsync(r => r.CreatedAt >= start && r.CreatedAt < end, ct);
                 recognitionCounts.Add(recognitionCount);
             }
 
-            return new MonthlyTrendDto(labels.ToArray(), feedbackCounts.ToArray(), recognitionCounts.ToArray());
+            return new WeeklyTrendDto(labels.ToArray(), feedbackCounts.ToArray(), recognitionCounts.ToArray(), year, month);
         }
 
         public async Task<IReadOnlyList<DepartmentCountDto>> GetDepartmentFeedbackCountsAsync(
