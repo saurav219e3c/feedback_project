@@ -1,2 +1,0 @@
-# Keep local Migrations folder unchanged during merge
-backend/FeedbackSystem.API/FeedbackSystem.API/Migrations/** merge=ours

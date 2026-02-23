@@ -41,6 +41,3 @@ testem.log
 .DS_Store
 Thumbs.db
 .vs/
-
-# Backend - EF Core Migrations (keep local only)
-backend/FeedbackSystem.API/FeedbackSystem.API/Migrations/
