@@ -74,7 +74,19 @@ export class LoginPageComponent implements OnInit {
           normalizedRole === 'Manager' ? '/manager' :
                                          '/employee';
 
-        this.router.navigate([target]);
+        // Show success alert then navigate
+        Swal.fire({
+          title: 'Welcome!',
+          text: `Login successful. Redirecting to ${normalizedRole} dashboard...`,
+          icon: 'success',
+          timer: 1500,
+          timerProgressBar: true,
+          showConfirmButton: false,
+          background: '#ffffff',
+          color: '#1f2937'
+        }).then(() => {
+          this.router.navigate([target]);
+        });
       },
       error: () => {
         Swal.fire({
