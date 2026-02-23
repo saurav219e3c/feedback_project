@@ -50,8 +50,13 @@ Thumbs.db
 *.suo
 
 # Build results
+# .NET Build Artifacts
 [Bb]in/
 [Oo]bj/
+*.exe
+*.dll
+*.pdb
+*.user
 
 # Project evaluation and internal caches
 .ProjectEvaluation/
