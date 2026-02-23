@@ -111,7 +111,7 @@ export class LoginPageComponent implements OnInit {
   onForgotPassword() {
     Swal.fire({
       title: 'Forgot Password',
-      text: 'Password reset functionality will be implemented soon.',
+      text: 'You can contact your administrator for password reset.',
       icon: 'info',
       confirmButtonText: 'OK',
       confirmButtonColor: '#3b82f6',
