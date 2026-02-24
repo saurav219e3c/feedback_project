@@ -8,12 +8,17 @@ namespace FeedbackSystem.API.Services;
 public interface IMyDataService
 {
     // Feedback
-    Task<MyFeedbackSubmitResultDto> SubmitMyFeedbackAsync(string userId, MyFeedbackSubmitDto dto, CancellationToken ct);
-    Task<List<MyFeedbackDto>> GetMyFeedbackAsync(string userId, string? direction, CancellationToken ct);
+   // Task<MyFeedbackSubmitResultDto> SubmitMyFeedbackAsync(string userId, MyFeedbackSubmitDto dto, CancellationToken ct);
+
+  //SUBMIT FB
+  Task<MyFeedbackSubmitResultDto> SubmitMyFeedbackAsync(string userId, MyFeedbackSubmitDto dto, CancellationToken ct);
+
+
+  Task<List<MyFeedbackDto>> GetMyFeedbackAsync(string userId, string? direction, CancellationToken ct);
     
     // Recognition
-    Task<MyRecognitionSubmitResultDto> SubmitMyRecognitionAsync(string userId, MyRecognitionSubmitDto dto, CancellationToken ct);
-    Task<List<MyRecognitionDto>> GetMyRecognitionAsync(string userId, string? direction, CancellationToken ct);
+    Task<MyRecognitionResponseDto> SubmitMyRecognitionAsync(string userId, MyRecognitionSubmitDto dto, CancellationToken ct);
+    Task<List<MyAllRecognitionItemDto>> GetMyRecognitionAsync(string userId, string? direction, CancellationToken ct);
     
     // Summary
     Task<MySummaryDto> GetMySummaryAsync(string userId, CancellationToken ct);

@@ -26,7 +26,7 @@ export class EmployeeFeedbackComponent implements OnInit {
     return raw.map(item =>({
       ...item,//keeps orignal data
 
-      senderName: item.isAnonymous ? 'Anonymous Colleage' : this.empService.getEmployeeName(item.submittedByUserId)
+       senderName: item.isAnonymous ? 'Anonymous Colleague' : this.empService.getEmployeeName(item.fromUserId)
     }));
   });
 
@@ -38,8 +38,9 @@ export class EmployeeFeedbackComponent implements OnInit {
     //load data into signal
     this.empService.getMyReceivedFeedback().subscribe({
       next: (response) => {
-        const data = response.items || response || [];
-        this.rawFeedback.set(data);
+        // const data = response.items || response || [];
+        // this.rawFeedback.set(data);
+        this.rawFeedback.set(response.items || []);
       },
       error: (error) => {
         console.error('Error loading feedback:', error);

@@ -6,9 +6,9 @@
       </h2>
       <p class="text-muted fs-5">Welcome back,{{name}},</p>
     </div>
-    
+   
   </div>
-
+ 
   <h5 class="fw-bold mb-2 text-uppercase small letter-spacing text-secondary">Quick Actions</h5>
   <div class="row g-4">
     <div class="col-md-3">
@@ -19,7 +19,7 @@
           </div>
           <h6 class="fw-bold">Submit Feedback</h6>
           <p class="text-muted small">Send constructive feedback to a colleague.</p>
-
+ 
           <div class="mt-auto"> <button class="btn btn-primary w-100 rounded-pill fw-bold py-2"
               routerLink="/employee/feedback">
               Start Writing
@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-
+ 
     <div class="col-md-3">
       <div class="card action-card h-100 border-0 shadow-sm transition-up">
         <div class="card-body p-4 text-center d-flex flex-column">
@@ -37,7 +37,7 @@
           </div>
           <h6 class="fw-bold">Give Recognition</h6>
           <p class="text-muted small">Acknowledge a teammate's hard work.</p>
-
+ 
           <div class="mt-auto">
             <button class="btn btn-success w-100 rounded-pill fw-bold py-2" routerLink="/employee/recognition">
               Recognize
@@ -46,7 +46,7 @@
         </div>
       </div>
     </div>
-
+ 
     <div class="col-md-3">
       <div class="card action-card h-100 border-0 shadow-sm transition-up">
         <div class="card-body p-4 text-center d-flex flex-column">
@@ -55,7 +55,7 @@
           </div>
           <h6 class="fw-bold">Feedback History</h6>
           <p class="text-muted small">View feedback you have received. and recognition</p>
-
+ 
           <div class="mt-auto">
             <button class="btn btn-warning w-100 rounded-pill fw-bold py-2 text-white"
               routerLink="/employee/recivedfeedback">
@@ -65,17 +65,17 @@
         </div>
       </div>
     </div>
-
+ 
     <div class="col-md-3">
       <div class="card action-card h-100 border-0 shadow-sm transition-up">
         <div class="card-body p-4 text-center d-flex flex-column">
           <div class="action-icon bg-info-soft mb-3 text-info">
             <i class="bi bi-award-fill"></i>
           </div>
-
+ 
           <h6 class="fw-bold">Received Recognition</h6>
           <p class="text-muted small">View all the praise and badges you've earned.</p>
-
+ 
           <div class="mt-auto">
             <button class="btn btn-info w-100 rounded-pill fw-bold py-2 text-white"
               routerLink="/employee/received-recognition">
@@ -84,12 +84,12 @@
           </div>
         </div>
       </div>
-
+ 
     </div>
   </div>
   <h5 class="fw-bold mt-4 mb-4 text-uppercase small letter-spacing text-secondary">Your Performance Summary</h5>
   <div class="row g-4 mb-5">
-    
+   
     <div class="col-md-3" *ngFor="let stat of stats">
       <div class="card stat-card border-0 shadow-sm">
         <div class="card-body p-4">
@@ -111,3 +111,4 @@
     </div>
   </div>
 </div>
+ 
