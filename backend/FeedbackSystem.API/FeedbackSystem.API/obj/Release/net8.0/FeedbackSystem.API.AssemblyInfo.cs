@@ -12,9 +12,9 @@ using System;
 using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("FeedbackSystem.API")]
-[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0634d5a2facee0ff5ffe3dc98c7150b5af023463")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c740d748cc9671b59097001324a2ac5d2734e971")]
 [assembly: System.Reflection.AssemblyProductAttribute("FeedbackSystem.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FeedbackSystem.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
