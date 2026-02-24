@@ -1,0 +1,49 @@
+:root {
+  --primary-color: #ffffff;
+  --secondary-color: #f4f5f7;
+  --accent-color: #6a1b9a;
+  --text-color: #212529;
+  --text-secondary-color: #6c757d;
+  --surface-color: #ffffff;
+  --surface-highlight-color: #f8f9fa;
+  --border-color: #dee2e6;
+  --hover-color: #e9ecef;
+  --active-color: #d1d5da;
+  --icon-color: #6c757d;
+  --icon-active-color: #6a1b9a;
+  --card-background-color: #ffffff;
+  --input-background-color: #ffffff;
+  --input-border-color: #ced4da;
+  --button-background-color: #6a1b9a;
+  --button-text-color: #ffffff;
+  --danger-color: #dc3545;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --info-color: #17a2b8;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body.dark-theme {
+  --primary-color: #1f1f1f;
+  --secondary-color: #2d2d2d;
+  --accent-color: #bb86fc;
+  --text-color: #e0e0e0;
+  --text-secondary-color: #a0a0a0;
+  --surface-color: #252525;
+  --surface-highlight-color: #3a3a3a;
+  --border-color: #444;
+  --hover-color: #4f4f4f;
+  --active-color: #5a5a5a;
+  --icon-color: #e0e0e0;
+  --icon-active-color: #bb86fc;
+  --card-background-color: #2d2d2d;
+  --input-background-color: #3a3a3a;
+  --input-border-color: #555;
+  --button-background-color: #bb86fc;
+  --button-text-color: #121212;
+  --danger-color: #cf6679;
+  --success-color: #03dac6;
+  --warning-color: #f8b400;
+  --info-color: #37a2f0;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

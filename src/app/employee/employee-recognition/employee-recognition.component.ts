@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, HostListener, inject, OnInit, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { EmployeeService, Recognition, Badge } from '../service/employee.service';
@@ -24,6 +24,8 @@ export class EmployeeRecognitionComponent implements OnInit {
   filteredEmployees = signal<any[]>([]);
   selectedEmp = signal<any>(null);
   isSearching = signal<boolean>(false);
+  selectedBadge = signal<Badge | null>(null);
+  badgeDropdownOpen = false;
 
   // Settings-related properties
   maxPoints = 10;
@@ -131,6 +133,20 @@ export class EmployeeRecognitionComponent implements OnInit {
     this.filteredEmployees.set([]);
   }
 
+  selectBadge(badge: Badge): void {
+    this.selectedBadge.set(badge);
+    this.recognitionForm.get('badgeType')?.setValue(badge.badgeId);
+    this.badgeDropdownOpen = false;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+    const picker = document.getElementById('badge-picker');
+    if (picker && !picker.contains(event.target as Node)) {
+      this.badgeDropdownOpen = false;
+    }
+  }
+
   onSubmit() {
     const rawForm = this.recognitionForm.getRawValue();
 
@@ -220,6 +236,7 @@ export class EmployeeRecognitionComponent implements OnInit {
       employeeName: ''
     });
     this.selectedEmp.set(null);
+    this.selectedBadge.set(null);
     this.filteredEmployees.set([]);
   }
 }

@@ -1,4 +1,5 @@
 using FeedbackSystem.API.DTOs;
+using FeedbackSystem.API.Entities;
 using FeedbackSystem.API.Repositories;
 
 namespace FeedbackSystem.API.Services
@@ -9,85 +10,97 @@ namespace FeedbackSystem.API.Services
 
         public BadgeService(IBadgeRepository repo) => _repo = repo;
 
-        public async Task<BadgeDto?> GetByIdAsync(string badgeId, CancellationToken ct)
+        // ── helpers ─────────────────────────────────────────────────────────
+
+        private static BadgeDto ToDto(Badge b) =>
+            new BadgeDto(b.BadgeId, b.BadgeName, b.Description, b.IconClass, b.IsActive, b.CreatedAt);
+
+        // ── queries ──────────────────────────────────────────────────────────
+
+        public async Task<BadgeDto?> GetByIdAsync(string badgeId, CancellationToken ct = default)
         {
             if (string.IsNullOrWhiteSpace(badgeId))
-                throw new ArgumentException("Badge ID is required", nameof(badgeId));
+                throw new ArgumentException("Badge ID is required.", nameof(badgeId));
 
-            return await _repo.GetByIdAsync(badgeId, ct);
+            var entity = await _repo.GetByIdAsync(badgeId, ct);
+            return entity is null ? null : ToDto(entity);
         }
 
-        public async Task<PagedBadgeResult> GetAllAsync(bool? isActive, string? search, int page, int pageSize, CancellationToken ct)
+        public async Task<PagedBadgeResult> GetAllAsync(
+            bool? isActive, string? search, int page, int pageSize, CancellationToken ct = default)
         {
-            // Normalize pagination
             if (page < 1) page = 1;
             if (pageSize < 1) pageSize = 10;
             if (pageSize > 100) pageSize = 100;
 
             var (items, total) = await _repo.GetAllAsync(isActive, search, page, pageSize, ct);
-            return new PagedBadgeResult(page, pageSize, total, items);
+            return new PagedBadgeResult(page, pageSize, total, items.Select(ToDto).ToList());
         }
 
-        public async Task<BadgeDto> CreateAsync(CreateBadgeDto dto, CancellationToken ct)
-        {
-            // Validate badge ID format
-            if (string.IsNullOrWhiteSpace(dto.BadgeId))
-                throw new ArgumentException("Badge ID is required");
-
-            // Check if badge ID already exists
-            if (await _repo.ExistsAsync(dto.BadgeId, ct))
-                throw new InvalidOperationException($"Badge with ID '{dto.BadgeId}' already exists");
-
-            // Check if badge name already exists
-            if (await _repo.BadgeNameExistsAsync(dto.BadgeName, null, ct))
-                throw new InvalidOperationException($"Badge with name '{dto.BadgeName}' already exists");
-
-            await _repo.CreateAsync(dto, ct);
-
-            var created = await _repo.GetByIdAsync(dto.BadgeId, ct);
-            return created ?? throw new InvalidOperationException("Failed to create badge");
-        }
-
-        public async Task<BadgeDto> UpdateAsync(string badgeId, UpdateBadgeDto dto, CancellationToken ct)
-        {
-            if (string.IsNullOrWhiteSpace(badgeId))
-                throw new ArgumentException("Badge ID is required", nameof(badgeId));
-
-            // Check if badge exists
-            var existing = await _repo.GetByIdAsync(badgeId, ct);
-            if (existing == null)
-                throw new KeyNotFoundException($"Badge with ID '{badgeId}' not found");
-
-            // Check if new name conflicts with existing badges
-            if (await _repo.BadgeNameExistsAsync(dto.BadgeName, badgeId, ct))
-                throw new InvalidOperationException($"Badge with name '{dto.BadgeName}' already exists");
-
-            var updated = await _repo.UpdateAsync(badgeId, dto, ct);
-            if (!updated)
-                throw new InvalidOperationException("Failed to update badge");
-
-            var result = await _repo.GetByIdAsync(badgeId, ct);
-            return result ?? throw new InvalidOperationException("Failed to retrieve updated badge");
-        }
-
-        public async Task DeleteAsync(string badgeId, CancellationToken ct)
-        {
-            if (string.IsNullOrWhiteSpace(badgeId))
-                throw new ArgumentException("Badge ID is required", nameof(badgeId));
-
-            // Check if badge exists
-            var existing = await _repo.GetByIdAsync(badgeId, ct);
-            if (existing == null)
-                throw new KeyNotFoundException($"Badge with ID '{badgeId}' not found");
-
-            var deleted = await _repo.DeleteAsync(badgeId, ct);
-            if (!deleted)
-                throw new InvalidOperationException("Cannot delete badge that is in use by recognitions");
-        }
-
-        public async Task<int> GetTotalCountAsync(CancellationToken ct)
+        public async Task<int> GetTotalCountAsync(CancellationToken ct = default)
         {
             return await _repo.GetTotalCountAsync(ct);
+        }
+
+        // ── commands ─────────────────────────────────────────────────────────
+
+        public async Task<BadgeDto> CreateAsync(CreateBadgeDto dto, CancellationToken ct = default)
+        {
+            if (string.IsNullOrWhiteSpace(dto.BadgeId))
+                throw new ArgumentException("Badge ID is required.");
+
+            if (await _repo.ExistsAsync(dto.BadgeId, ct))
+                throw new InvalidOperationException($"Badge with ID '{dto.BadgeId}' already exists.");
+
+            if (await _repo.BadgeNameExistsAsync(dto.BadgeName, null, ct))
+                throw new InvalidOperationException($"Badge with name '{dto.BadgeName}' already exists.");
+
+            var entity = new Badge
+            {
+                BadgeId  = dto.BadgeId.Trim(),
+                BadgeName = dto.BadgeName.Trim(),
+                Description = dto.Description?.Trim(),
+                IconClass = dto.IconClass?.Trim(),
+                IsActive  = true,
+                CreatedAt = DateTime.UtcNow
+            };
+
+            var created = await _repo.AddAsync(entity, ct);
+            return ToDto(created);
+        }
+
+        public async Task<BadgeDto> UpdateAsync(string badgeId, UpdateBadgeDto dto, CancellationToken ct = default)
+        {
+            if (string.IsNullOrWhiteSpace(badgeId))
+                throw new ArgumentException("Badge ID is required.", nameof(badgeId));
+
+            var entity = await _repo.GetByIdAsync(badgeId, ct)
+                ?? throw new KeyNotFoundException($"Badge with ID '{badgeId}' not found.");
+
+            if (await _repo.BadgeNameExistsAsync(dto.BadgeName, badgeId, ct))
+                throw new InvalidOperationException($"Badge with name '{dto.BadgeName}' already exists.");
+
+            entity.BadgeName  = dto.BadgeName.Trim();
+            entity.Description = dto.Description?.Trim();
+            entity.IconClass  = dto.IconClass?.Trim();
+            entity.IsActive   = dto.IsActive;
+
+            await _repo.UpdateAsync(entity, ct);
+            return ToDto(entity);
+        }
+
+        public async Task DeleteAsync(string badgeId, CancellationToken ct = default)
+        {
+            if (string.IsNullOrWhiteSpace(badgeId))
+                throw new ArgumentException("Badge ID is required.", nameof(badgeId));
+
+            var entity = await _repo.GetByIdAsync(badgeId, ct)
+                ?? throw new KeyNotFoundException($"Badge with ID '{badgeId}' not found.");
+
+            if (await _repo.IsInUseAsync(badgeId, ct))
+                throw new InvalidOperationException("Cannot delete a badge that is assigned to existing recognitions.");
+
+            await _repo.DeleteAsync(entity, ct);
         }
     }
 }

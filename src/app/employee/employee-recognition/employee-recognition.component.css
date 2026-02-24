@@ -235,3 +235,128 @@
     border-radius: 12px;
   }
 }
+
+/* ── Custom Badge Picker ───────────────────────────────── */
+.badge-picker-wrap {
+  position: relative;
+}
+
+.badge-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+  min-height: 44px;
+}
+
+.badge-trigger.open {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
+  background: #fff;
+}
+
+.badge-trigger-icon {
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.badge-trigger-name {
+  flex: 1;
+  font-size: 0.95rem;
+  color: #111827;
+  font-weight: 500;
+}
+
+.badge-trigger-placeholder {
+  flex: 1;
+  font-size: 0.95rem;
+  color: #9ca3af;
+}
+
+.badge-chevron {
+  margin-left: auto;
+  color: #9ca3af;
+  transition: transform 0.2s ease;
+  font-size: 0.8rem;
+}
+
+.badge-chevron.rotated {
+  transform: rotate(180deg);
+}
+
+.badge-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1.5px solid #dee2e6;
+  border-radius: 10px;
+  z-index: 1040;
+  padding: 0.4rem;
+  list-style: none;
+  margin: 0;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.badge-option {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.5rem 0.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.badge-option:hover {
+  background: #f0f0ff;
+}
+
+.badge-option.selected {
+  background: #ede9fe;
+}
+
+.badge-opt-icon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.badge-opt-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.badge-opt-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.badge-opt-desc {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

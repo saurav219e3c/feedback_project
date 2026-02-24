@@ -113,3 +113,57 @@
 /* Existing rules retained */
 .chart-min-h { min-height: 280px; }
 .list-group-item { padding-top: 0.65rem; padding-bottom: 0.65rem; }
+
+/* ===== DARK MODE ===== */
+:host-context(body.dark-theme) .dashboard-bg {
+  background: linear-gradient(180deg, #121212 0%, #1a1a1a 100%);
+}
+
+:host-context(body.dark-theme) .white-header {
+  background: #1e1e1e !important;
+  border-color: #333 !important;
+}
+
+:host-context(body.dark-theme) .white-header .h3,
+:host-context(body.dark-theme) .white-header h1 {
+  color: #e0e0e0;
+}
+
+:host-context(body.dark-theme) .white-card,
+:host-context(body.dark-theme) .white-panel {
+  background: #1e1e1e;
+  border: 2px solid #333;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+}
+
+:host-context(body.dark-theme) .white-panel-header {
+  background: #1e1e1e;
+  border-bottom: 1.5px solid #333;
+}
+
+:host-context(body.dark-theme) .white-panel-body {
+  background: #252525;
+}
+
+:host-context(body.dark-theme) .white-list .list-group-item {
+  background: #1e1e1e;
+  border-color: #333;
+  color: #e0e0e0;
+}
+
+:host-context(body.dark-theme) .white-card .card-title,
+:host-context(body.dark-theme) .white-panel-header strong {
+  color: #e0e0e0;
+}
+
+:host-context(body.dark-theme) .white-card .display-6 {
+  color: #e0e0e0;
+}
+
+:host-context(body.dark-theme) .white-list .fw-semibold {
+  color: #e0e0e0;
+}
+
+:host-context(body.dark-theme) .fill-window {
+  background: #121212;
+}
