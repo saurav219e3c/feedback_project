@@ -4,7 +4,7 @@
   top: 0;
   z-index: 1040;
   height: 60px;
-
+ 
   /* Keep navbar contents on a single row and vertically center them */
   display: flex;
   align-items: center;
@@ -13,7 +13,7 @@
   gap: 0.5rem;
   padding: 0 0.75rem;
 }
-
+ 
 /* Brand */
 .navbar-brand {
   flex: 1 1 auto;
@@ -24,7 +24,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
+ 
 /* Right-side container */
 .ms-auto.d-flex {
   margin-left: auto;
@@ -32,7 +32,7 @@
   align-items: center;
   flex: 0 0 auto;
 }
-
+ 
 /* Toggle Button Styling */
 .hamburger {
   width: 42px;
@@ -42,16 +42,16 @@
   transition: all 0.2s;
   flex: 0 0 auto;
 }
-
+ 
 .hamburger i {
   font-size: 1.5rem;
   color: #333;
 }
-
+ 
 .hamburger:hover {
   background-color: #f0f0f0;
 }
-
+ 
 /* Layout */
 .layout {
   position: relative;
@@ -59,7 +59,7 @@
   height: calc(100vh - 60px);
   width: 100%;
 }
-
+ 
 /* Sidebar */
 .sidebar {
   width: 250px;
@@ -74,12 +74,12 @@
   overflow-x: hidden;
   white-space: nowrap;
 }
-
+ 
 .sidebar-closed {
   transform: translateX(-100%);
   border-right: none;
 }
-
+ 
 /* Content Area */
 .content {
   width: 100%;
@@ -87,7 +87,7 @@
   padding: 20px;
   overflow-y: auto;
 }
-
+ 
 /* Sidebar Menu Items */
 .sidebar-menu .nav-link {
   padding: 12px 15px;
@@ -97,16 +97,16 @@
   display: flex;
   align-items: center;
 }
-
+ 
 .sidebar-menu .nav-link:hover {
   background-color: #e9ecef;
 }
-
+ 
 .sidebar-menu .nav-link.active {
   background-color: #0d6efd;
   color: white;
 }
-
+ 
 .sidebar-overlay {
   position: absolute;
   top: 0;
@@ -116,7 +116,7 @@
   background-color: rgba(0, 0, 0, 0.3);
   z-index: 1045;
 }
-
+ 
 /* Profile Trigger Interaction */
 .profile-trigger {
   display: inline-flex;
@@ -129,15 +129,15 @@
   user-select: none;
   flex: 0 0 auto;
 }
-
+ 
 .profile-trigger:hover {
   background-color: #f8fafc;
 }
-
+ 
 .profile-trigger.active {
   background-color: #f1f5f9;
 }
-
+ 
 /* Rounded Navbar Avatar */
 .nav-profile-avatar {
   width: 40px;
@@ -152,17 +152,17 @@
   font-size: 0.9rem;
   transition: transform 0.2s ease;
 }
-
+ 
 .profile-trigger:hover .nav-profile-avatar {
   transform: scale(1.05);
 }
-
+ 
 /* Positioning helper - keeps dropdown relative to trigger */
 .position-relative {
   position: relative;
   align-self: center;
 }
-
+ 
 /* Dropdown card */
 .dropdown-menu-custom {
   position: absolute;
@@ -180,14 +180,14 @@
   overflow: visible !important;
   pointer-events: none;
 }
-
+ 
 .dropdown-menu-custom.show {
   visibility: visible;
   opacity: 1;
   transform: translateY(0) scale(1);
   pointer-events: auto;
 }
-
+ 
 /* Dropdown Content Styles */
 .avatar-initials-large {
   width: 60px;
@@ -201,7 +201,7 @@
   font-size: 1.4rem;
   font-weight: 800;
 }
-
+ 
 .icon-box {
   width: 34px;
   height: 34px;
@@ -210,24 +210,24 @@
   justify-content: center;
   border-radius: 10px;
 }
-
+ 
 .dropdown-item {
   text-decoration: none;
   color: #334155;
   transition: all 0.2s;
   cursor: pointer;
 }
-
+ 
 .dropdown-item:hover {
   background-color: #f1f5f9;
   color: #0d6efd;
 }
-
+ 
 .dropdown-item.text-danger:hover {
   background-color: #fff1f2;
   color: #e11d48;
 }
-
+ 
 /* The Caret (Triangle) */
 .dropdown-caret {
   position: absolute;
@@ -241,27 +241,28 @@
   border-top: 1px solid rgba(0,0,0,0.05);
   z-index: 2001;
 }
-
+ 
 /* Ensure header background doesn't hide the caret */
 .bg-light-subtle {
   background-color: #f8f9fa !important;
 }
-
+ 
 /* Responsive tweaks */
 @media (max-width: 480px) {
   .navbar-brand {
     font-size: 0.95rem;
   }
-
+ 
   .nav-profile-avatar {
     width: 36px;
     height: 36px;
     font-size: 0.85rem;
   }
-
+ 
   .dropdown-menu-custom {
     right: 8px;
     left: auto;
     width: 200px;
   }
 }
+ 

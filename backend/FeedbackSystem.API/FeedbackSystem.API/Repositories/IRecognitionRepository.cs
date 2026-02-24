@@ -1,10 +1,17 @@
 using FeedbackSystem.API.DTOs;
+using FeedbackSystem.API.Entities;
 
 namespace FeedbackSystem.API.Repositories
 {
     public interface IRecognitionRepository
     {
-        Task<(IReadOnlyList<RecognitionItemDto> Items, int Total)> GetGivenAsync(
+
+    //employee module service calls
+    Task<bool> UserExistsAsync(string userId, CancellationToken ct);
+    Task<string> GetBadgeNameAsync(string badgeId, CancellationToken ct);
+    Task AddRecognitionAsync(Recognition recognition, CancellationToken ct);
+    Task<List<Recognition>> GetUserRecognitionsAsync(string userId, string? direction, CancellationToken ct);
+    Task<(IReadOnlyList<RecognitionItemDto> Items, int Total)> GetGivenAsync(
             string userId, DateTime? from, DateTime? to, string? search, int page, int pageSize, CancellationToken ct);
 
         Task<(IReadOnlyList<RecognitionItemDto> Items, int Total)> GetReceivedAsync(

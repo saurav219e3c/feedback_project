@@ -8,28 +8,36 @@ import { environment } from "../../../environments/environment";
 
 
 export interface Feedback {
-  id?: number;
-  feedbackId?: string;
-  submittedByUserId: string;
-  targetUserId: string;
-  searchEmployee?: string;
-  category: string;
+  // id?: number;
+  // feedbackId?: string;
+  // submittedByUserId: string;
+  // targetUserId: string;
+  // searchEmployee?: string;
+  // category: string;
+  // comments: string;
+  // isAnonymous: boolean;
+  // submissionDate: string;
+  feedbackId: number;
+  fromUserId: string;       // Changed from submittedByUserId
+  toUserId: string;         // Changed from targetUserId
+  fromUserName: string;     // Added this since your API provides it!
+  categoryId: string;
+  categoryName: string;     // Changed from category
   comments: string;
   isAnonymous: boolean;
-  submissionDate: string;
+  createdAt: string;
 }
 
 export interface Recognition {
-  id?: number;
-  recognitionId?: string;
+  recognitionId: number;
   fromUserId: string;
   toUserId: string;
+  fromUserName?: string;  // Usually returned by the API
   badgeId: string;
-  BadgeType?: string;
+  badgeName: string;      // Changed from BadgeType
   points: number;
-  date: string;
-  comment?: string;
-  message?: string;
+  message: string;        // Changed from comment
+  createdAt: string;
 }
 
 

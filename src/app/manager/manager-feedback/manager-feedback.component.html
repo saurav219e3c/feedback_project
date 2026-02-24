@@ -171,7 +171,7 @@
               </svg>
               Acknowledge
             </button>
-            <button *ngIf="selectedFeedback.status !== 'Resolved'"
+            <button *ngIf="selectedFeedback.status === 'Acknowledged'"
               (click)="updateStatus(selectedFeedback.feedbackId, 'Resolved'); closeModal()"
               class="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-lg text-sm font-medium hover:bg-green-700 shadow-sm transition">
               <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -179,6 +179,9 @@
               </svg>
               Resolve
             </button>
+            <span *ngIf="selectedFeedback.status === 'Resolved'" class="text-green-600 text-sm font-medium italic">
+              ✓ Feedback has been resolved
+            </span>
             <button (click)="closeModal()" 
               class="inline-flex items-center px-4 py-2 bg-gray-600 text-white rounded-lg text-sm font-medium hover:bg-gray-700 shadow-sm transition">
               Close
@@ -266,7 +269,7 @@
                 class="text-sky-600 hover:text-sky-800 text-sm font-bold transition">
                 Acknowledge
               </button>
-              <button *ngIf="feedback.status !== 'Resolved'"
+              <button *ngIf="feedback.status === 'Acknowledged'"
                 (click)="updateStatus(feedback.feedbackId, 'Resolved')"
                 class="text-green-600 hover:text-green-800 text-sm font-bold transition">
                 Resolve

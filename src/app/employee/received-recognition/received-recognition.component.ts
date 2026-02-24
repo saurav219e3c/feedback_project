@@ -8,7 +8,7 @@ import { AuthService } from '../../core/services/auth.service';
   selector: 'app-received-recognition',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './received-recognition.component.html',
+  templateUrl:'./received-recognition.component.html',
   styleUrl: './received-recognition.component.css'
 })
 export class ReceivedRecognitionComponent implements OnInit {
@@ -25,7 +25,7 @@ export class ReceivedRecognitionComponent implements OnInit {
 
     return raw.map(item => ({
       ...item,
-      senderName: this.empService.getEmployeeName(item.fromUserId),
+     senderName: item.fromUserName || this.empService.getEmployeeName(item.fromUserId),
       receivedName: this.empService.getEmployeeName(item.toUserId)
     }));
   });

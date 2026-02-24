@@ -1,5 +1,6 @@
 using FeedbackSystem.API.Data;
 using FeedbackSystem.API.DTOs;
+using FeedbackSystem.API.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace FeedbackSystem.API.Repositories
@@ -182,6 +183,62 @@ namespace FeedbackSystem.API.Repositories
                 ))
                 .OrderByDescending(s => s.RecognitionCount)
                 .ToListAsync(ct);
+
+             
         }
+
+    public async Task<bool> UserExistsAsync(string userId, CancellationToken ct)
+    {
+      return await _db.Users.AnyAsync(u => u.UserId == userId, ct);
     }
+
+    public async Task<string> GetBadgeNameAsync(string badgeId, CancellationToken ct)
+    {
+      var badge = await _db.Badges
+            .Where(b => b.BadgeId == badgeId)
+            .Select(b => b.BadgeName)
+            .FirstOrDefaultAsync(ct);
+
+      return badge; // Returns null if n
+    }
+
+    
+
+    public async Task AddRecognitionAsync(Recognition recognition, CancellationToken ct)
+    {
+      await _db.Recognitions.AddAsync(recognition, ct);
+      await _db.SaveChangesAsync(ct);
+    }
+
+    public async Task<List<Recognition>> GetUserRecognitionsAsync(string userId, string? direction, CancellationToken ct)
+    {
+      var query = _db.Recognitions
+            .AsNoTracking()
+            .Include(r => r.FromUser)
+            .Include(r => r.ToUser)
+            .Include(r => r.Badge)
+            .AsQueryable(); // Start building the query
+
+      // Apply filters based on direction
+      if (!string.IsNullOrWhiteSpace(direction))
+      {
+        if (direction.Equals("given", StringComparison.OrdinalIgnoreCase))
+          query = query.Where(r => r.FromUserId == userId);
+        else if (direction.Equals("received", StringComparison.OrdinalIgnoreCase))
+          query = query.Where(r => r.ToUserId == userId);
+        else
+          throw new ArgumentException("Invalid direction parameter. Use 'given' or 'received'.");
+      }
+      else
+      {
+        // If no direction provided, get both given and received
+        query = query.Where(r => r.FromUserId == userId || r.ToUserId == userId);
+      }
+
+      // Execute the query and return the entities
+      return await query
+          .OrderByDescending(r => r.CreatedAt)
+          .ToListAsync(ct);
+    }
+  }
 }

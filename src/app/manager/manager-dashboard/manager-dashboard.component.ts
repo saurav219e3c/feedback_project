@@ -33,7 +33,9 @@ export class ManagerDashboardComponent implements OnInit, OnDestroy {
     totalFeedback: 0,
     pendingReviews: 0,
     engagementScore: 0,
-    acknowledged: 0
+    acknowledged: 0,
+    resolved: 0,
+    processedFeedback: 0
   };
 
   // UI State
@@ -203,6 +205,8 @@ export class ManagerDashboardComponent implements OnInit, OnDestroy {
       this.display.pendingReviews = Math.round(this.data.pendingReviews * ratio);
       this.display.engagementScore = Math.round(this.data.engagementScore * ratio);
       this.display.acknowledged = Math.round(this.data.acknowledged * ratio);
+      this.display.resolved = Math.round(this.data.resolved * ratio);
+      this.display.processedFeedback = Math.round((this.data.acknowledged + this.data.resolved) * ratio);
 
       if (i === steps) {
         clearInterval(this.timer);

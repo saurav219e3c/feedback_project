@@ -37,7 +37,7 @@ export class ManagerFeedbackComponent implements OnInit {
     this.managerService.getAllFeedback({ pageSize: 100 })
       .subscribe({
         next: (result: PagedResult<ManagerFeedbackItem>) => {
-          this.feedbackList = result.items;
+          this.feedbackList = this.sortFeedbackByStatus(result.items);
           this.filteredList = [...this.feedbackList];
           this.isLoading = false;
         },
@@ -50,11 +50,12 @@ export class ManagerFeedbackComponent implements OnInit {
 
   filterFeedback(): void {
     const q = this.searchText.trim().toLowerCase();
-    this.filteredList = this.feedbackList.filter(f =>
+    const filtered = this.feedbackList.filter(f =>
       f.fromUserName.toLowerCase().includes(q) ||
       f.toUserId.toLowerCase().includes(q) ||
       f.categoryName.toLowerCase().includes(q)
     );
+    this.filteredList = this.sortFeedbackByStatus(filtered);
   }
 
   updateStatus(id: number, newStatus: 'Acknowledged' | 'Resolved'): void {
@@ -70,6 +71,28 @@ export class ManagerFeedbackComponent implements OnInit {
           this.isLoading = false;
         }
       });
+  }
+
+  private sortFeedbackByStatus(items: ManagerFeedbackItem[]): ManagerFeedbackItem[] {
+    return items.sort((a, b) => {
+      // Define priority: Pending = 0, Acknowledged = 1, Resolved = 2
+      const getPriority = (status: string) => {
+        switch (status) {
+          case 'Pending': return 0;
+          case 'Acknowledged': return 1;
+          case 'Resolved': return 2;
+          default: return 3;
+        }
+      };
+
+      const priorityDiff = getPriority(a.status) - getPriority(b.status);
+      if (priorityDiff !== 0) {
+        return priorityDiff;
+      }
+
+      // Within same status, sort by creation date (newest first)
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+    });
   }
 
 
