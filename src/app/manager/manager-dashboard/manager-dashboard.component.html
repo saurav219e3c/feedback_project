@@ -73,10 +73,14 @@
         <div class="p-3 bg-purple-50 rounded-xl group-hover:bg-purple-600 transition-colors">
           <svg class="w-6 h-6 text-purple-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
         </div>
-        <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2 py-1 rounded-full">Completed</span>
+        <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2 py-1 rounded-full">Processed</span>
       </div>
-      <h3 class="text-slate-500 text-sm font-medium">Acknowledged Feedback</h3>
-      <p class="text-3xl font-bold text-slate-900 mt-1">{{ display.acknowledged }}</p> 
+      <h3 class="text-slate-500 text-sm font-medium">Processed Feedback</h3>
+      <p class="text-3xl font-bold text-slate-900 mt-1">{{ display.processedFeedback }}</p>
+      <div class="mt-2 flex items-center gap-2 text-xs text-slate-500">
+        <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded">{{ display.acknowledged }} Ack</span>
+        <span class="bg-green-100 text-green-700 px-2 py-1 rounded">{{ display.resolved }} Res</span>
+      </div>
     </div>
   </section>
 
