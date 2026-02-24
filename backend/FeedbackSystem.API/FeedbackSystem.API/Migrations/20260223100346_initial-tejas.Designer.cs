@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FeedbackSystem.API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260224054549_initial-roshan")]
-    partial class initialroshan
+    [Migration("20260223100346_initial-tejas")]
+    partial class initialtejas
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
