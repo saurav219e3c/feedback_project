@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FeedbackSystem.API.Migrations
 {
     /// <inheritdoc />
-    public partial class initialtejas : Migration
+    public partial class initialroshan : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
