@@ -97,11 +97,17 @@ export class AuthService {
 
   private hydrateUserFromToken(token: string): void {
     const payload = this.tokenSvc.decodePayload<any>(token);
+    
+    // .NET ClaimTypes URIs for extracting claims from JWT
+    const CLAIM_NAME = 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name';
+    const CLAIM_NAMEID = 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier';
+    const CLAIM_EMAIL = 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress';
+    
     const user: User | null = payload
       ? {
-        id: payload.userId ?? payload.nameid ?? payload.sub ?? 'unknown',  // Priority: explicit userId, then nameid, then sub
-        name: payload.unique_name ?? payload.name ?? payload.fullName ?? '',
-        email: payload.email ?? '',
+        id: payload.userId ?? payload[CLAIM_NAMEID] ?? payload.nameid ?? payload.sub ?? 'unknown',
+        name: payload.unique_name ?? payload.name ?? payload.fullName ?? payload[CLAIM_NAME] ?? '',
+        email: payload.email ?? payload[CLAIM_EMAIL] ?? '',
         roles: this.extractRoles(payload),
       }
       : null;
