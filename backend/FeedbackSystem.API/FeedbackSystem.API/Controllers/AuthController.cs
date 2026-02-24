@@ -48,4 +48,21 @@ public class AuthController : ControllerBase
             return BadRequest(new { message = ex.Message });
         }
     }
+
+    // ✅ Manager public registration endpoint - No authentication required
+    // Role is always forced to "Manager" regardless of input
+    [HttpPost("register-manager")]
+    [AllowAnonymous]
+    public async Task<ActionResult<UserReadDto>> RegisterManager([FromBody] ManagerPublicRegisterDto dto, CancellationToken ct)
+    {
+        try
+        {
+            var user = await _auth.ManagerPublicRegisterAsync(dto, ct);
+            return CreatedAtAction(nameof(Register), new { id = user.UserId }, user);
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+    }
 }

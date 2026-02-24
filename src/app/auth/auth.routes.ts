@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
+import { ManagerRegisterPageComponent } from './manager-register-page/manager-register-page.component';
 import { ADMIN_ROUTES } from '../admin/admin.routes';
 import { loginGuard } from '../core/guards/login.guard';
 
@@ -15,6 +16,9 @@ export const AUTH_ROUTES: Routes = [
   // /auth/login-page?role=admin|manager|employee - Guard prevents access if logged in
   { path: 'login-page', canMatch: [loginGuard], component: LoginPageComponent },
 
-  // /auth/register-page - Guard prevents access if logged in
+  // /auth/register-page - Employee public registration
   { path: 'register-page', canMatch: [loginGuard], component: RegisterPageComponent },
+
+  // /auth/manager-register-page - Manager public registration
+  { path: 'manager-register-page', canMatch: [loginGuard], component: ManagerRegisterPageComponent },
 ];

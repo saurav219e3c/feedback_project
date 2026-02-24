@@ -59,6 +59,43 @@
   letter-spacing: -0.02em;
 }
 
+/* Filters row */
+.user-filters {
+  flex-wrap: wrap;
+}
+
+/* Role filter dropdown */
+.role-filter-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.role-filter-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--bg-card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 20 20' fill='%236b7280'%3E%3Cpath fill-rule='evenodd' d='M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z' clip-rule='evenodd'/%3E%3C/svg%3E") no-repeat right 1rem center;
+  border: 2px solid var(--border-color);
+  border-radius: 50px;
+  padding: 0.72rem 2.75rem 0.72rem 1.25rem;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  min-width: 150px;
+  font-weight: 500;
+}
+
+.role-filter-select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.1), var(--shadow-md);
+}
+
+.role-filter-select:hover {
+  border-color: #d1d5db;
+}
+
 /* Search */
 .user-search .search-wrap {
   position: relative;

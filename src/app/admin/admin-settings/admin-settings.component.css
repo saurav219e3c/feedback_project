@@ -26,21 +26,6 @@
   overflow: hidden;
 }
 
-:host.theme-dark {
-  --bg: #0b1220;
-  --text: #e5e7eb;
-  --muted: #9aa3b2;
-  --card: #111827;
-  --border: #1f2937;
-  --shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  --primary: #6ea8fe;
-  --primary-light: rgba(110, 168, 254, 0.12);
-  --primary-strong: #5a8bdd;
-  --success-light: rgba(16, 185, 129, 0.15);
-  --danger-light: rgba(239, 68, 68, 0.12);
-  --warning-light: rgba(245, 158, 11, 0.12);
-}
-
 /* ========== LAYOUT ========== */
 .settings-container {
   max-width: 920px;
@@ -95,12 +80,6 @@
   background-clip: text;
   color: transparent;
 }
-:host.theme-dark .page-title {
-  background: linear-gradient(135deg, #e5e7eb, #94a3b8);
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-
 .page-subtitle {
   margin: 4px 0 0;
   font-size: 13px;
@@ -193,11 +172,6 @@
   border-color: rgba(76, 110, 245, 0.2);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
-:host.theme-dark .card:hover {
-  border-color: rgba(110, 168, 254, 0.2);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-}
-
 .card summary {
   padding: 18px 20px;
   cursor: pointer;
@@ -346,10 +320,6 @@
 .toggle-switch input:checked + .toggle-track::after {
   transform: translateX(22px);
 }
-:host.theme-dark .toggle-track {
-  background: #374151;
-}
-
 /* ========== RANGE SLIDER ========== */
 .slider-control {
   display: flex;

@@ -8,7 +8,7 @@ import {
   AbstractControl,
   ValidationErrors,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { RegisterService } from '../service/register.service';
 import { AdminDepartmentService, DepartmentReadDto } from '../../admin/services/admin-dapartment.service';
 import Swal from 'sweetalert2';
@@ -16,7 +16,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-register-page',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './register-page.component.html',
   styleUrls: ['./register-page.component.css'],
 })
@@ -27,7 +27,7 @@ export class RegisterPageComponent implements OnInit {
 
   departments: DepartmentReadDto[] = [];
 
-  userIdPattern = /^[a-z]{3}[0-9]{4}$/;
+  userIdPattern = /^emp[0-9]{4}$/i;
   passwordPattern =
     /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{6,}$/;
 
@@ -145,6 +145,10 @@ export class RegisterPageComponent implements OnInit {
       },
       complete: () => (this.loading = false),
     });
+  }
+
+  goToManagerRegister(): void {
+    this.router.navigate(['/auth/manager-register-page']);
   }
 
   goToLogin(): void {

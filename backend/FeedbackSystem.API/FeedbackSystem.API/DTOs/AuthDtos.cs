@@ -25,6 +25,15 @@ public record PublicRegisterDto(
     [Required] string DepartmentId
 );
 
+// ✅ Manager public registration DTO - Role is forced to Manager
+public record ManagerPublicRegisterDto(
+    [Required, StringLength(20)] string UserId,
+    [Required, StringLength(50)] string FullName,
+    [Required, EmailAddress] string Email,
+    [Required, MinLength(6)] string Password,
+    [Required] string DepartmentId
+);
+
 public record AuthUserDto(
     string UserId, string FullName, string Email, string Role, string DepartmentId, string DepartmentName, bool IsActive, DateTime CreatedAt
 );

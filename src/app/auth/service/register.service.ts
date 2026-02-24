@@ -7,7 +7,15 @@ export interface PublicRegisterDto {
   userId: string;
   fullName: string;
   email: string;
-  departmentId: string; // Maps to departmentId (string) in backend
+  departmentId: string;
+  password: string;
+}
+
+export interface ManagerRegisterDto {
+  userId: string;
+  fullName: string;
+  email: string;
+  departmentId: string;
   password: string;
 }
 
@@ -17,5 +25,9 @@ export class RegisterService {
 
   registerPublic(dto: PublicRegisterDto): Observable<any> {
     return this.api.post('/api/auth/register-public', dto);
+  }
+
+  registerManager(dto: ManagerRegisterDto): Observable<any> {
+    return this.api.post('/api/auth/register-manager', dto);
   }
 }

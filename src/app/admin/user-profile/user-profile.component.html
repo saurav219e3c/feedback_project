@@ -80,7 +80,7 @@
         <div class="actions">
           <button class="btn primary" (click)="onEdit()">Edit User</button>
           <button class="btn outline" (click)="onToggleStatus()">
-            {{ (user.isActive || 'Active') === 'Active' ? 'Disable' : 'Enable' }} User
+            {{ (user.isActive || 'Active') === 'Active' ? 'Enable' : 'Disable' }} User
           </button>
           <button class="btn danger" (click)="onResetPassword()">Reset Password</button>
         </div>

@@ -2,7 +2,6 @@ import {
   Component,
   OnInit,
   OnDestroy,
-  HostBinding,
   signal
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -23,12 +22,6 @@ import { AdminSettingsService } from '../services/admin-settings.service';
   styleUrls: ['./admin-settings.component.css']
 })
 export class AdminSettingsComponent implements OnInit, OnDestroy {
-  // Dark theme class on host
-  @HostBinding('class.theme-dark') get isDark() {
-    return this.darkTheme();
-  }
-  darkTheme = signal(false);
-
   settingsForm!: FormGroup;
   loading = signal(true);
   saving = signal(false);
@@ -45,14 +38,6 @@ export class AdminSettingsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    // Theme: localStorage -> OS preference -> light
-    const stored = localStorage.getItem('adminTheme');
-    if (stored) {
-      this.darkTheme.set(stored === 'dark');
-    } else if (window.matchMedia?.('(prefers-color-scheme: dark)').matches) {
-      this.darkTheme.set(true);
-    }
-
     // Build form
     this.settingsForm = this.fb.group({
       feedbackSettings: this.fb.group({
@@ -103,12 +88,6 @@ export class AdminSettingsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.sub?.unsubscribe();
     clearTimeout(this.toastTimer);
-  }
-
-  toggleTheme() {
-    const next = !this.darkTheme();
-    this.darkTheme.set(next);
-    localStorage.setItem('adminTheme', next ? 'dark' : 'light');
   }
 
   loadSettings() {

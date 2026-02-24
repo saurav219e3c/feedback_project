@@ -117,4 +117,44 @@ public class AuthService : IAuthService
             user.CreatedAt
         );
     }
+
+    // ✅ Manager public registration - Always forces role to "Manager"
+    public async Task<UserReadDto> ManagerPublicRegisterAsync(ManagerPublicRegisterDto dto, CancellationToken ct = default)
+    {
+        if (await _users.EmailExistsAsync(dto.Email, ct))
+            throw new InvalidOperationException("Email already exists.");
+
+        var managerRole = await _users.GetRoleByNameAsync("Manager", ct)
+                          ?? throw new InvalidOperationException("Manager role not found in system.");
+
+        var department = await _users.GetDepartmentByIdAsync(dto.DepartmentId, ct)
+                        ?? throw new InvalidOperationException("Department not found or inactive.");
+
+        var user = new User
+        {
+            UserId = dto.UserId,
+            FullName = dto.FullName,
+            Email = dto.Email,
+            PasswordHash = PasswordHasher.Hash(dto.Password),
+            RoleId = managerRole.RoleId,
+            DepartmentId = dto.DepartmentId,
+            IsActive = true,
+            CreatedAt = DateTime.UtcNow
+        };
+
+        await _users.AddAsync(user, ct);
+
+        user = await _users.GetByIdAsync(user.UserId, ct) ?? user;
+        return new UserReadDto(
+            user.UserId,
+            user.FullName,
+            user.Email,
+            user.Phone,
+            user.Role.RoleName,
+            user.DepartmentId,
+            user.Department.DepartmentName,
+            user.IsActive,
+            user.CreatedAt
+        );
+    }
 }

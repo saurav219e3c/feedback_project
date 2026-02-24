@@ -32,6 +32,7 @@ export class UserManagementComponent implements OnInit {
   error: string | null = null;
 
   searchTerm = '';
+  selectedRole = 'All';
   selectedUser: User | null = null;
   loadingUserActivity = false;
 
@@ -76,14 +77,18 @@ export class UserManagementComponent implements OnInit {
 
   get filteredUsers() {
     const q = this.searchTerm.trim().toLowerCase();
-    if (!q) return this.users;
-
     return this.users.filter(u => {
       const name = (u.name ?? '').toLowerCase();
       const role = (u.role ?? '').toLowerCase();
       const idStr = String(u.id ?? '').toLowerCase();
-      return name.includes(q) || role.includes(q) || idStr.includes(q);
+      const matchesSearch = !q || name.includes(q) || role.includes(q) || idStr.includes(q);
+      const matchesRole = this.selectedRole === 'All' || u.role === this.selectedRole;
+      return matchesSearch && matchesRole;
     });
+  }
+
+  onRoleFilterChange(): void {
+    // triggered by dropdown change
   }
 
   onSearchChange(): void {
@@ -92,6 +97,7 @@ export class UserManagementComponent implements OnInit {
 
   clearSearch(): void {
     this.searchTerm = '';
+    this.selectedRole = 'All';
   }
 
   // Open profile from card click
