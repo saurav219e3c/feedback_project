@@ -1,6 +1,0 @@
-@FeedbackSystem.API_HostAddress = http://localhost:5001
-
-GET {{FeedbackSystem.API_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
