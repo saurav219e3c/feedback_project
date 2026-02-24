@@ -1,10 +1,16 @@
 using FeedbackSystem.API.DTOs;
+using FeedbackSystem.API.Entities;
 
 namespace FeedbackSystem.API.Repositories
 {
     public interface IFeedbackRepository
     {
-        Task<(IReadOnlyList<FeedbackItemDto> Items, int Total)> GetGivenAsync(
+    //add fb to db
+    public Task AddAsync(Feedback feedback, CancellationToken ct);
+    //get fb from db 
+    Task<List<Feedback>> GetAllFeedbacksAsync(string userId, string? direction, CancellationToken ct);
+
+    Task<(IReadOnlyList<FeedbackItemDto> Items, int Total)> GetGivenAsync(
             string userId, DateTime? from, DateTime? to, string? categoryId, string? search, int page, int pageSize, CancellationToken ct);
 
         Task<(IReadOnlyList<FeedbackItemDto> Items, int Total)> GetReceivedAsync(
