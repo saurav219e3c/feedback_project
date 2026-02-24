@@ -8,7 +8,7 @@ import {
   AbstractControl,
   ValidationErrors,
 } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Router} from '@angular/router';
 import { RegisterService } from '../service/register.service';
 import { AdminDepartmentService, DepartmentReadDto } from '../../admin/services/admin-dapartment.service';
 import Swal from 'sweetalert2';
@@ -16,7 +16,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-register-page',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './register-page.component.html',
   styleUrls: ['./register-page.component.css'],
 })

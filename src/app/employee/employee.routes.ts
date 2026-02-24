@@ -6,6 +6,7 @@ import { EmployeeRecognitionComponent } from "./employee-recognition/employee-re
 import { SubmitFeedbackComponent } from './submit-feedback/submit-feedback.component';
 import { EmployeeLayoutComponent } from "./employee-layout/employee-layout.component";
 import { ReceivedRecognitionComponent } from "./received-recognition/received-recognition.component";
+import { EmployeeProfileComponent } from "./employee-profile/employee-profile.component";
 import { authGuard } from "../core/guards/auth.guard";
 import { roleGuard } from "../core/guards/role.guard";
 
@@ -23,6 +24,7 @@ export const EMPLOYEE_ROUTES: Routes = [
       { path: 'recognition', component: EmployeeRecognitionComponent },
       {path: 'received-recognition',component:ReceivedRecognitionComponent},
       {path: 'recivedfeedback',component:EmployeeFeedbackComponent},
+      {path: 'profile', component: EmployeeProfileComponent},
       {path:'**', redirectTo:'dashboard', pathMatch:'full'}
     ]
   }

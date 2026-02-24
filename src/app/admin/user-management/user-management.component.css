@@ -297,7 +297,7 @@
   justify-content: center;
   font-size: 2.5rem;
   font-weight: 900;
-  color: #fef08a;
+  color: #1e1b4b;
   background: var(--gradient-primary);
   box-shadow: 0 12px 28px rgba(124, 58, 237, 0.35), 0 0 0 4px rgba(255, 255, 255, 0.8), 0 0 0 6px rgba(124, 58, 237, 0.15);
   position: relative;
@@ -315,21 +315,21 @@
 
 .avatar[data-role="Admin"] {
   background: var(--gradient-warning);
-  color: #fef3c7;
+  color: #78350f;
   box-shadow: 0 12px 28px rgba(245, 158, 11, 0.35), 0 0 0 4px rgba(255, 255, 255, 0.8), 0 0 0 6px rgba(245, 158, 11, 0.15);
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35), 0 0 20px rgba(254, 243, 199, 0.4);
 }
 
 .avatar[data-role="Manager"] {
   background: var(--gradient-info);
-  color: #dbeafe;
+  color: #1e3a5f;
   box-shadow: 0 12px 28px rgba(59, 130, 246, 0.35), 0 0 0 4px rgba(255, 255, 255, 0.8), 0 0 0 6px rgba(59, 130, 246, 0.15);
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35), 0 0 20px rgba(219, 234, 254, 0.4);
 }
 
 .avatar[data-role="Employee"] {
   background: var(--gradient-success);
-  color: #d1fae5;
+  color: #064e3b;
   box-shadow: 0 12px 28px rgba(16, 185, 129, 0.35), 0 0 0 4px rgba(255, 255, 255, 0.8), 0 0 0 6px rgba(16, 185, 129, 0.15);
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35), 0 0 20px rgba(209, 250, 229, 0.4);
 }

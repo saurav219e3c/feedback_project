@@ -42,8 +42,6 @@ export class LoginPageComponent implements OnInit {
   get f() { return this.form.controls; }
 
   onLogin() {
-
-    debugger;
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       
@@ -60,24 +58,40 @@ export class LoginPageComponent implements OnInit {
 
     this.loginService.login(payload).subscribe({
       next: (res) => {
+        // Normalize the actual role from the token response
+        const actualRole = (res.user?.role ?? '').toString().toLowerCase();
+        const normalizedActual =
+          actualRole === 'admin' ? 'Admin' :
+          actualRole === 'manager' ? 'Manager' : 'Employee';
+
+        // Enforce role match: the portal role must match the user's actual role
+        const expectedRole = (this.role ?? '').toLowerCase();
+        if (expectedRole && expectedRole !== actualRole) {
+          this.loading = false;
+          Swal.fire({
+            title: 'Access Denied',
+            text: `This login portal is for ${expectedRole.charAt(0).toUpperCase() + expectedRole.slice(1)}s only. Your account is registered as a ${normalizedActual}.`,
+            icon: 'error',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#ef4444',
+            background: '#ffffff',
+            color: '#1f2937'
+          });
+          return;
+        }
+
         // Save token + hydrate user from token (keeps your guards working)
         this.auth.loginWithToken(res.token);
 
-        // Role normalization for redirect:
-        const r = (this.role ?? res.user?.role ?? 'employee').toString().toLowerCase();
-        const normalizedRole =
-          r === 'admin' ? 'Admin' :
-          r === 'manager' ? 'Manager' : 'Employee';
-
         const target =
-          normalizedRole === 'Admin'   ? '/admin'   :
-          normalizedRole === 'Manager' ? '/manager' :
-                                         '/employee';
+          normalizedActual === 'Admin'   ? '/admin'   :
+          normalizedActual === 'Manager' ? '/manager' :
+                                           '/employee';
 
         // Show success alert then navigate
         Swal.fire({
           title: 'Welcome!',
-          text: `Login successful. Redirecting to ${normalizedRole} dashboard...`,
+          text: `Login successful. Redirecting to ${normalizedActual} dashboard...`,
           icon: 'success',
           timer: 1500,
           timerProgressBar: true,

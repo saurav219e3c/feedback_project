@@ -11,6 +11,7 @@ import {
 import { Router } from '@angular/router';
 import { RegisterService } from '../service/register.service';
 import { AdminDepartmentService, DepartmentReadDto } from '../../admin/services/admin-dapartment.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-manager-register-page',
@@ -112,14 +113,31 @@ export class ManagerRegisterPageComponent implements OnInit {
 
     this.registerService.registerManager(payload).subscribe({
       next: () => {
-        alert('Manager registration successful! You can now log in.');
-        this.router.navigate(['/auth/login-page'], {
-          queryParams: { role: 'manager' },
+        Swal.fire({
+          title: 'Success!',
+          text: 'Manager registration successful! You can now log in.',
+          icon: 'success',
+          confirmButtonText: 'Continue',
+          confirmButtonColor: '#10b981',
+          background: '#ffffff',
+          color: '#1f2937'
+        }).then(() => {
+          this.router.navigate(['/auth/login-page'], {
+            queryParams: { role: 'manager' },
+          });
         });
       },
       error: (err) => {
         const msg = err?.error?.message || 'Registration failed.';
-        alert(msg);
+        Swal.fire({
+          title: 'Registration Failed',
+          text: msg,
+          icon: 'error',
+          confirmButtonText: 'Try Again',
+          confirmButtonColor: '#ef4444',
+          background: '#ffffff',
+          color: '#1f2937'
+        });
         this.loading = false;
       },
       complete: () => (this.loading = false),
