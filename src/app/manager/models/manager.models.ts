@@ -35,6 +35,7 @@ export interface RecentActivity {
   detail: string;
   createdAt: string;
   status: string;
+  timeAgo: string;
 }
 
 export interface CategoryStats {

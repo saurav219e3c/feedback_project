@@ -44,5 +44,6 @@ public record RecentActivityDto(
     string UserName,
     string Detail,
     DateTime CreatedAt,
-    string Status
+    string Status,
+    string TimeAgo  // Formatted time string using UTC
 );

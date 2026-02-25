@@ -110,7 +110,7 @@ export class ManagerDashboardComponent implements OnInit, OnDestroy {
         next: (activities) => {
           this.activities = activities.map(a => ({
             ...a,
-            time: this.calculateTimeAgo(a.createdAt),
+            time: a.timeAgo, // Use backend-provided UTC-formatted time
             colorClass: this.getActivityColorClass(a.status)
           }));
         }
