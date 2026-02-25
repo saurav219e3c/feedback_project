@@ -46,9 +46,7 @@ Thumbs.db
 [Bb]in/
 [Oo]bj/
 
-# Allow backend bin and obj folders to be tracked
-!backend/**/bin/
-!backend/**/obj/
+# Allow backend bin and obj folders to be tracke
 *.exe
 *.dll
 *.pdb

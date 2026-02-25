@@ -34,6 +34,11 @@
       <span class="icon-tooltip">Departments</span>
     </a>
 
+    <a class="icon-item" routerLink="/admin/badges" routerLinkActive="active">
+      <i class="bi bi-award"></i>
+      <span class="icon-tooltip">Badges</span>
+    </a>
+
     <a class="icon-item" routerLink="/admin/reports" routerLinkActive="active">
       <i class="bi bi-graph-up"></i>
       <span class="icon-tooltip">Reports</span>
@@ -45,6 +50,11 @@
     </a>
 
     <div class="icon-spacer"></div>
+
+    <a class="icon-item theme-toggle-item" (click)="toggleTheme()">
+      <i class="bi" [ngClass]="isDarkMode() ? 'bi-sun' : 'bi-moon'"></i>
+      <span class="icon-tooltip">Toggle Theme</span>
+    </a>
 
     <a class="icon-item logout-item" (click)="logout()">
       <i class="bi bi-box-arrow-right"></i>

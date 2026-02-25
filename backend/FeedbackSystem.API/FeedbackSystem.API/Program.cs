@@ -125,7 +125,15 @@ builder.Services.AddSwaggerGen(c =>
 // --------------------------------------------------
 // AutoMapper
 // --------------------------------------------------
-builder.Services.AddAutoMapper(typeof(MappingProfile));
+// Add this instead:
+builder.Services.AddAutoMapper(cfg =>
+{
+  // This is the critical fix for the MaxInteger error
+  cfg.ShouldMapMethod = m => false;
+
+  // Register your profile
+  cfg.AddProfile<MappingProfile>();
+}, typeof(Program).Assembly);
 
 // --------------------------------------------------
 // Dependency Injection: Repositories & Services

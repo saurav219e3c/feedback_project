@@ -9,10 +9,10 @@
   </div>
 
   <div class="row g-4">
-    @for (item of feedbackView(); track item.id) {
+    @for (item of feedbackView(); track item.feedbackId) {
       <div class="col-md-6 col-lg-4">
         <div class="modern-card">
-          <div class="category-tag">{{ item.category }}</div>
+          <div class="category-tag">{{ item.categoryName }}</div>
           
           <div class="card-content d-flex flex-column h-100">
             <div class="feedback-body mb-4">
@@ -36,15 +36,15 @@
             
               <div class="ms-3">
                 <h6 class="mb-0 fw-bold" [class.text-muted]="item.isAnonymous">
-                  {{ item.senderName }}
+                  {{ item.fromUserName }}
                 </h6>
                 
                 @if (!item.isAnonymous) {
                   <div class="text-primary" style="font-size: 0.7rem; font-weight: 700;">
-                    ID: {{ item.submittedByUserId }}
+                    ID: {{ item.fromUserId }}
                   </div>
                 }
-                <span class="text-overline d-block mt-1">{{ item.submissionDate | date:'longDate' }}</span>
+                <span class="text-overline d-block mt-1">{{ item.createdAt | date:'longDate' }}</span>
               </div>
             </div>
           </div>

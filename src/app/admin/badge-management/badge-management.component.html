@@ -1,0 +1,210 @@
+<div class="badge-bg"></div>
+
+<div class="badge-container">
+  <!-- Header -->
+  <div class="badge-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+    <div class="d-flex align-items-center gap-2">
+      <i class="bi bi-award fs-4" style="color: var(--ink)"></i>
+      <h3 class="mb-0 badge-title">Badge Management</h3>
+      <span class="total-chip">{{ totalCount }} badges</span>
+    </div>
+    <div class="header-actions">
+      <button type="button" class="btn-add" (click)="openAddForm()">
+        <i class="bi bi-plus-lg"></i> Add Badge
+      </button>
+    </div>
+  </div>
+
+  <!-- Filters row -->
+  <div class="filters-row mb-3 d-flex flex-wrap gap-2 align-items-center">
+    <div class="search-wrap">
+      <i class="bi bi-search search-icon"></i>
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Search badges…"
+        [(ngModel)]="searchTerm"
+        (input)="onSearch()"
+      />
+    </div>
+    <select class="filter-select" [(ngModel)]="filterActive" (change)="onFilterChange()">
+      <option [ngValue]="undefined">All Status</option>
+      <option [ngValue]="true">Active</option>
+      <option [ngValue]="false">Inactive</option>
+    </select>
+  </div>
+
+  <!-- Add / Edit Form -->
+  <div class="badge-form-card badge-card mb-3" *ngIf="formOpen">
+    <div class="form-card-header">
+      <i class="bi" [ngClass]="editingId ? 'bi-pencil-square' : 'bi-plus-circle'"></i>
+      {{ editingId ? 'Edit Badge' : 'Create New Badge' }}
+    </div>
+
+    <form (ngSubmit)="save()" class="row g-3 p-3">
+      <!-- Badge ID (create only) -->
+      <div class="col-md-4" *ngIf="editingId === null">
+        <label class="form-label">Badge ID <span class="text-danger">*</span></label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="formModel.badgeId"
+          name="badgeId"
+          placeholder="e.g., STAR_PERFORMER"
+          required
+          maxlength="20"
+        />
+        <small class="field-hint">Unique identifier, max 20 chars. Cannot be changed later.</small>
+      </div>
+      <div class="col-md-4" *ngIf="editingId !== null">
+        <label class="form-label">Badge ID</label>
+        <div class="id-display"><code>{{ formModel.badgeId }}</code></div>
+      </div>
+
+      <!-- Badge Name -->
+      <div class="col-md-4">
+        <label class="form-label">Badge Name <span class="text-danger">*</span></label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="formModel.badgeName"
+          name="badgeName"
+          placeholder="e.g., Star Performer"
+          required
+          maxlength="100"
+        />
+      </div>
+
+      <!-- Icon Class -->
+      <div class="col-md-4">
+        <label class="form-label">Icon Class</label>
+        <div class="icon-input-wrap">
+          <span *ngIf="isEmoji(formModel.iconClass)" class="preview-icon emoji-icon">{{ getEmojiValue(formModel.iconClass) }}</span>
+          <i *ngIf="!isEmoji(formModel.iconClass)" class="preview-icon" [class]="getIconClass(formModel.iconClass)"></i>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="formModel.iconClass"
+            name="iconClass"
+            placeholder="e.g., bi-trophy"
+            maxlength="50"
+          />
+        </div>
+        <!-- Icon quick-pick -->
+        <div class="icon-picker mt-2">
+          <button
+            type="button"
+            class="icon-pick-btn"
+            *ngFor="let icon of popularIcons"
+            [class.selected]="formModel.iconClass === icon"
+            (click)="selectIcon(icon)"
+            [title]="icon"
+          >
+            <i [class]="'bi ' + icon"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="col-12">
+        <label class="form-label">Description</label>
+        <textarea
+          class="form-control"
+          [(ngModel)]="formModel.description"
+          name="description"
+          placeholder="Short description of this badge…"
+          rows="2"
+          maxlength="225"
+        ></textarea>
+      </div>
+
+      <!-- Active toggle (edit only) -->
+      <div class="col-12" *ngIf="editingId !== null">
+        <label class="toggle-label">
+          <span class="toggle-switch">
+            <input type="checkbox" [(ngModel)]="formModel.isActive" name="isActive" />
+            <span class="toggle-track"></span>
+          </span>
+          <span>Active</span>
+        </label>
+      </div>
+
+      <!-- Actions -->
+      <div class="col-12 d-flex gap-2 justify-content-end">
+        <button type="button" class="btn-cancel" (click)="closeForm()">Cancel</button>
+        <button type="submit" class="btn-save" [disabled]="!formModel.badgeName.trim() || (editingId === null && !formModel.badgeId.trim())">
+          <i class="bi" [ngClass]="editingId ? 'bi-check-lg' : 'bi-plus-lg'"></i>
+          {{ editingId ? 'Save Changes' : 'Create Badge' }}
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Loading / Error states -->
+  <div class="state-box" *ngIf="loading">
+    <div class="spinner-border spinner-border-sm me-2"></div> Loading badges…
+  </div>
+  <div class="state-box error" *ngIf="error && !loading">
+    <i class="bi bi-exclamation-triangle me-2"></i>{{ error }}
+    <button class="btn-retry ms-3" (click)="load()">Retry</button>
+  </div>
+
+  <!-- Badge Grid -->
+  <div class="badge-grid" *ngIf="!loading && !error">
+    <div
+      class="badge-card badge-item"
+      *ngFor="let badge of badges"
+      [class.inactive]="!badge.isActive"
+    >
+      <!-- Status pill -->
+      <span class="status-pill" [class.active]="badge.isActive" [class.inactive-pill]="!badge.isActive">
+        <span class="status-dot"></span>{{ badge.isActive ? 'Active' : 'Inactive' }}
+      </span>
+
+      <!-- Icon area -->
+      <div class="badge-icon-wrap">
+        <span *ngIf="isEmoji(badge.iconClass)" class="emoji-icon">{{ getEmojiValue(badge.iconClass) }}</span>
+        <i *ngIf="!isEmoji(badge.iconClass)" [class]="getIconClass(badge.iconClass)"></i>
+      </div>
+
+      <!-- Info -->
+      <div class="badge-info">
+        <div class="badge-name">{{ badge.badgeName }}</div>
+        <div class="badge-id-tag"><code>{{ badge.badgeId }}</code></div>
+        <div class="badge-desc" *ngIf="badge.description">{{ badge.description }}</div>
+      </div>
+
+      <!-- Footer actions -->
+      <div class="badge-actions">
+        <button class="action-btn" title="Toggle Status" (click)="toggleStatus(badge)">
+          <i class="bi" [ngClass]="badge.isActive ? 'bi-toggle-on text-success' : 'bi-toggle-off text-secondary'"></i>
+        </button>
+        <button class="action-btn" title="Edit" (click)="openEditForm(badge)">
+          <i class="bi bi-pencil"></i>
+        </button>
+        <button class="action-btn danger" title="Delete" (click)="confirmDelete(badge)">
+          <i class="bi bi-trash"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Empty state -->
+    <div class="empty-state" *ngIf="badges.length === 0">
+      <i class="bi bi-award empty-icon"></i>
+      <h5>No badges found</h5>
+      <p>Try adjusting your search or create a new badge.</p>
+      <button class="btn-add" (click)="openAddForm()">+ Add First Badge</button>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination-row" *ngIf="totalPages > 1 && !loading">
+    <button class="page-btn" [disabled]="page === 1" (click)="goToPage(page - 1)">
+      <i class="bi bi-chevron-left"></i>
+    </button>
+    <span class="page-info">Page {{ page }} of {{ totalPages }}</span>
+    <button class="page-btn" [disabled]="page === totalPages" (click)="goToPage(page + 1)">
+      <i class="bi bi-chevron-right"></i>
+    </button>
+  </div>
+</div>
