@@ -1,4 +1,4 @@
-﻿using FeedbackSystem.API.DTOs;
+using FeedbackSystem.API.DTOs;
 using FeedbackSystem.API.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +12,9 @@ public class CategoriesController : ControllerBase
     private readonly ICategoryService _service;
     public CategoriesController(ICategoryService service) => _service = service;
 
+
+    //category for employeeee
+
     [HttpGet]
     public async Task<ActionResult<List<CategoryReadDto>>> GetAll(CancellationToken ct)
         => Ok(await _service.GetAllAsync(ct));
@@ -22,6 +25,7 @@ public class CategoriesController : ControllerBase
         var item = await _service.GetByIdAsync(id, ct);
         return item is null ? NotFound() : Ok(item);
     }
+  //category operation for admin
 
     // Protect writes later with [Authorize(Roles="Admin")]
     [HttpPost]

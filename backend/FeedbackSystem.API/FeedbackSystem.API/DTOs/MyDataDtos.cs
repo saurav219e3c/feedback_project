@@ -42,36 +42,9 @@ public record MyRecognitionResponseDto(
     int Points
 );
 
-/// <summary>
-/// Response DTO for "My Feedback" items
-/// </summary>
-//public record MyFeedbackDto(
-//    int FeedbackId,
-//    string Direction,  // "Given" or "Received"
-//    string OtherUserId,
-//    string OtherUserName,
-//    string CategoryId,
-//    string CategoryName,
-//    string Comments,
-//    bool IsAnonymous,
-//    DateTime CreatedAt
-//);
-//get all 
 
 public record MyFeedbackDto
 {
-  //int FeedbackId,
-  //string Direction,  
-  //string OtherUserId,
-  //string OtherUserName,
-  //string CategoryId,
-  //string CategoryName,
-  //string Comments,
-  //bool IsAnonymous,
-  //DateTime CreatedAt
-
-
-
   public int FeedbackId { get; init; }
   public string? FromUserId { get; init; } // Nullable for anonymity
   public string ToUserId { get; init; } = string.Empty;
@@ -86,20 +59,6 @@ public record MyFeedbackDto
 
 }
 
-/// <summary>
-/// Response DTO for "My Recognition" items
-/// </summary>
-//public record MyRecognitionDto(
-//    int RecognitionId,
-//    string Direction,  // "Given" or "Received"
-//    string OtherUserId,
-//    string OtherUserName,
-//    string BadgeId,
-//    string BadgeName,
-//    int Points,
-//    string Message,
-//    DateTime CreatedAt
-//);
 
 /// <summary>
 /// Summary of user's feedback and recognition stats
@@ -112,20 +71,12 @@ public record MySummaryDto(
     int TotalPointsGiven,
     int TotalPointsReceived,
     DateTime? LastActivityAt
+
+    
 );
 
 public record MyAllRecognitionItemDto
 {
-  //int RecognitionId,
-  //string FromUserId,
-  //string FromUserName,
-  //string ToUserId,
-  //string ToUserName,
-  //string BadgeId,
-  //string BadgeName,
-  //int Points,
-  //string Message,
-  //DateTime CreatedAt
   public int RecognitionId { get; init; }
   public string FromUserId { get; init; } = string.Empty;
   public string FromUserName { get; init; } = string.Empty;
@@ -140,8 +91,5 @@ public record MyAllRecognitionItemDto
 
 
 
-/// <summary>
-/// Result of recognition submission
-/// </summary>
 
 

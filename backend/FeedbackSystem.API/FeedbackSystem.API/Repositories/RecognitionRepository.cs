@@ -240,5 +240,25 @@ namespace FeedbackSystem.API.Repositories
           .OrderByDescending(r => r.CreatedAt)
           .ToListAsync(ct);
     }
+
+    public async Task<(int Given, int Received, int PointsGiven, int PointsReceived, DateTime? LastActivity)> GetRecognitionSummaryStatsAsync(string userId, CancellationToken ct)
+    {
+      var given = await _db.Recognitions.CountAsync(r => r.FromUserId == userId, ct);
+      var received = await _db.Recognitions.CountAsync(r => r.ToUserId == userId, ct);
+
+      var pointsGiven = await _db.Recognitions
+          .Where(r => r.FromUserId == userId)
+          .SumAsync(r => (int?)r.Points, ct) ?? 0;
+
+      var pointsReceived = await _db.Recognitions
+          .Where(r => r.ToUserId == userId)
+          .SumAsync(r => (int?)r.Points, ct) ?? 0;
+
+      var lastActivity = await _db.Recognitions
+          .Where(r => r.FromUserId == userId || r.ToUserId == userId)
+          .MaxAsync(r => (DateTime?)r.CreatedAt, ct);
+
+      return (given, received, pointsGiven, pointsReceived, lastActivity);
+    }
   }
 }

@@ -1,9 +1,9 @@
-﻿using FeedbackSystem.API.Entities;
+using FeedbackSystem.API.Entities;
 
 namespace FeedbackSystem.API.Repositories;
 
 public interface IUserRepository
-{
+{   
     Task<User?> GetByEmailAsync(string email, CancellationToken ct = default);
     Task<User?> GetByIdAsync(string id, CancellationToken ct = default);
     Task<List<User>> GetAllAsync(CancellationToken ct = default);

@@ -12,6 +12,7 @@ public class ActivityController : ControllerBase
 {
     private readonly IActivityService _service;
 
+
     public ActivityController(IActivityService service) => _service = service;
 
     // GET /api/activity/logs

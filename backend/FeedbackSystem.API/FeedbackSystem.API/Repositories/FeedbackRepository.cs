@@ -216,5 +216,18 @@ namespace FeedbackSystem.API.Repositories
 
 
     }
+
+    public async Task<(int Given, int Received, DateTime? LastActivity)> GetFeedbackSummaryStatsAsync(string userId, CancellationToken ct)
+    {
+      var given = await _db.Feedbacks.CountAsync(f => f.FromUserId == userId, ct);
+      var received = await _db.Feedbacks.CountAsync(f => f.ToUserId == userId, ct);
+
+      // Optimized: MaxAsync is much faster than OrderBy.FirstOrDefault for getting the latest date!
+      var lastActivity = await _db.Feedbacks
+          .Where(f => f.FromUserId == userId || f.ToUserId == userId)
+          .MaxAsync(f => (DateTime?)f.CreatedAt, ct);
+
+      return (given, received, lastActivity);
+    }
   }
 }

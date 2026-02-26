@@ -32,6 +32,7 @@ export class SubmitFeedbackComponent implements OnInit {
 
   ngOnInit(): void {
     this.employees = this.empService.getAllEmployees();
+    debugger;
 
     this.empService.getCategories().subscribe(cats => {
       this.categories = cats;
@@ -131,6 +132,7 @@ export class SubmitFeedbackComponent implements OnInit {
   }
 
   onSubmit(): void {
+    debugger;
     if (this.feedbackForm.valid) {
       const formValue = this.feedbackForm.getRawValue();
 

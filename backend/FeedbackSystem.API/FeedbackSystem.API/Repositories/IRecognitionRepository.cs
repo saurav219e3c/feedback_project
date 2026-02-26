@@ -11,6 +11,11 @@ namespace FeedbackSystem.API.Repositories
     Task<string> GetBadgeNameAsync(string badgeId, CancellationToken ct);
     Task AddRecognitionAsync(Recognition recognition, CancellationToken ct);
     Task<List<Recognition>> GetUserRecognitionsAsync(string userId, string? direction, CancellationToken ct);
+
+   
+
+    Task<(int Given, int Received, int PointsGiven, int PointsReceived, DateTime? LastActivity)> GetRecognitionSummaryStatsAsync(string userId, CancellationToken ct);
+
     Task<(IReadOnlyList<RecognitionItemDto> Items, int Total)> GetGivenAsync(
             string userId, DateTime? from, DateTime? to, string? search, int page, int pageSize, CancellationToken ct);
 
