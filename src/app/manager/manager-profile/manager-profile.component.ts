@@ -186,8 +186,6 @@ export class ManagerProfileComponent implements OnInit {
       cancelButtonText: 'Cancel'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.authService.logout();
-        
         Swal.fire({
           title: 'Logged out!',
           text: 'You have been successfully logged out.',
@@ -195,6 +193,7 @@ export class ManagerProfileComponent implements OnInit {
           timer: 1500,
           showConfirmButton: false
         }).then(() => {
+          this.authService.logout();
           this.router.navigate(['/']);
         });
       }
