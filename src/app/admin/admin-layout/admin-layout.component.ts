@@ -9,6 +9,7 @@ import {
   RouterLinkActive
 } from '@angular/router';
 import Swal from 'sweetalert2';
+import { ThemeService } from '../../core/services/theme.service';
 
 @Component({
   selector: 'app-admin-layout',
@@ -20,7 +21,15 @@ import Swal from 'sweetalert2';
 export class AdminLayoutComponent {
   auth = inject(AuthService);
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private themeService: ThemeService) {}
+
+  toggleTheme() {
+    this.themeService.toggleTheme();
+  }
+
+  isDarkMode() {
+    return this.themeService.isDarkMode();
+  }
 
   logout(): void {
     Swal.fire({

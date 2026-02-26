@@ -49,10 +49,10 @@ public static class DbSeeder
         if (!await db.Badges.AnyAsync())
         {
             db.Badges.AddRange(
-                new Badge { BadgeId = "badge001", BadgeName = "Team Player", Description = "Collaboration excellence", IconClass = "🤝", IsActive = true },
-                new Badge { BadgeId = "badge002", BadgeName = "Problem Solver", Description = "Creative solutions", IconClass = "💡", IsActive = true },
-                new Badge { BadgeId = "badge003", BadgeName = "Leader", Description = "Leadership excellence", IconClass = "🚀", IsActive = true },
-                new Badge { BadgeId = "badge004", BadgeName = "Innovator", Description = "Innovation and creativity", IconClass = "✨", IsActive = true }
+                new Badge { BadgeId = "badge001", BadgeName = "Team Player", Description = "Collaboration excellence", IconClass = "bi-people", IsActive = true },
+                new Badge { BadgeId = "badge002", BadgeName = "Problem Solver", Description = "Creative solutions", IconClass = "bi-lightbulb", IsActive = true },
+                new Badge { BadgeId = "badge003", BadgeName = "Leader", Description = "Leadership excellence", IconClass = "bi-rocket", IsActive = true },
+                new Badge { BadgeId = "badge004", BadgeName = "Innovator", Description = "Innovation and creativity", IconClass = "bi-stars", IsActive = true }
             );
         }
 

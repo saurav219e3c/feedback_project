@@ -76,14 +76,44 @@
                   <i class="bi bi-award-fill me-1 text-primary"></i>
                   Award Badge <span class="text-danger">*</span>
                 </label>
-                <select formControlName="badgeType" class="form-select modern-input" [ngClass]="getBadgeTheme()">
-                  <option value="" disabled>Choose a badge...</option>
-                  @for (badge of badges; track badge.badgeId) {
-                    <option [value]="badge.badgeId">
-                      {{ badge.iconClass || '🏆' }} {{ badge.badgeName }}
-                    </option>
-                  }
-                </select>
+
+                <!-- Custom Badge Picker -->
+                <div class="badge-picker-wrap" id="badge-picker">
+                  <!-- Trigger -->
+                  <div class="badge-trigger modern-input"
+                       [class.is-invalid]="recognitionForm.get('badgeType')?.touched && recognitionForm.get('badgeType')?.invalid"
+                       [class.open]="badgeDropdownOpen"
+                       (click)="badgeDropdownOpen = !badgeDropdownOpen">
+                    <ng-container *ngIf="selectedBadge(); else badgePlaceholder">
+                      <span class="badge-trigger-icon">
+                        <i [class]="'bi ' + (selectedBadge()!.iconClass || 'bi-award')"></i>
+                      </span>
+                      <span class="badge-trigger-name">{{ selectedBadge()!.badgeName }}</span>
+                    </ng-container>
+                    <ng-template #badgePlaceholder>
+                      <span class="badge-trigger-placeholder">Choose a badge…</span>
+                    </ng-template>
+                    <i class="bi bi-chevron-down badge-chevron" [class.rotated]="badgeDropdownOpen"></i>
+                  </div>
+
+                  <!-- Dropdown list -->
+                  <ul class="badge-dropdown" *ngIf="badgeDropdownOpen">
+                    @for (badge of badges; track badge.badgeId) {
+                      <li class="badge-option"
+                          [class.selected]="recognitionForm.get('badgeType')?.value === badge.badgeId"
+                          (click)="selectBadge(badge)">
+                        <span class="badge-opt-icon">
+                          <i [class]="'bi ' + (badge.iconClass || 'bi-award')"></i>
+                        </span>
+                        <div class="badge-opt-info">
+                          <span class="badge-opt-name">{{ badge.badgeName }}</span>
+                          <span class="badge-opt-desc" *ngIf="badge.description">{{ badge.description }}</span>
+                        </div>
+                      </li>
+                    }
+                  </ul>
+                </div>
+
               </div>
             </div>
           </div>

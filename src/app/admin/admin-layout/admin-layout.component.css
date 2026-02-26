@@ -21,6 +21,25 @@
   --radius-sm: 8px;
 }
 
+:host-context(body.dark-theme) {
+  --bg-app: #121212;
+  --bg-card: #1e1e1e;
+  --bg-iconbar: #1a1a1a;
+
+  --border-soft: #333;
+  --border-strong: #444;
+
+  --text-strong: #e0e0e0;
+  --text-medium: #b0b0b0;
+  --text-soft: #888;
+
+  --brand: #bb86fc;
+  --brand-weak: #9c64fc;
+
+  --shadow-soft: 0 6px 18px rgba(0, 0, 0, 0.4);
+  --shadow-xs: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
 /* ---------- App Layout ---------- */
 .layout {
   display: flex;
@@ -202,62 +221,56 @@
 }
 
 /* ---------- Dark mode ---------- */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-app: #0b1220;
-    --bg-card: #0f172a;
-    --bg-iconbar: #0f172a;
+:host-context(body.dark-theme) .icon-bar {
+  box-shadow: -4px 0 16px rgba(0, 0, 0, 0.3);
+}
 
-    --border-soft: #1f2937;
-    --border-strong: #334155;
+:host-context(body.dark-theme) .icon-item:hover {
+  background: #2a2a2a;
+  color: #bb86fc;
+  border-color: #444;
+}
 
-    --text-strong: #e5e7eb;
-    --text-medium: #e2e8f0;
-    --text-soft: #94a3b8;
+:host-context(body.dark-theme) .icon-item:hover i {
+  color: #bb86fc;
+}
 
-    --shadow-soft: 0 8px 22px rgba(0, 0, 0, 0.45);
-    --shadow-xs: 0 4px 10px rgba(0, 0, 0, 0.25);
-  }
+:host-context(body.dark-theme) .icon-item.active {
+  background: #2d2040;
+  border-color: #5a3d8a;
+  color: #bb86fc;
+}
 
-  .icon-bar {
-    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.3);
-  }
+:host-context(body.dark-theme) .icon-item.active i {
+  color: #bb86fc;
+}
 
-  .icon-item:hover {
-    background: #1e293b;
-  }
+:host-context(body.dark-theme) .icon-item.active::before {
+  background: #bb86fc;
+}
 
-  .icon-item.active {
-    background: #0e1a34;
-    border-color: #1d2a4d;
-    color: #7aa2ff;
-  }
+:host-context(body.dark-theme) .icon-tooltip {
+  background: #2a2a2a;
+  color: #e0e0e0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
 
-  .icon-item.active i {
-    color: #7aa2ff;
-  }
+:host-context(body.dark-theme) .icon-tooltip::after {
+  border-left-color: #2a2a2a;
+}
 
-  .icon-item.active::before {
-    background: #7aa2ff;
-  }
+:host-context(body.dark-theme) .logout-item:hover {
+  background: #2d1a1a;
+  color: #f87171;
+  border-color: #7f1d1d;
+}
 
-  .icon-tooltip {
-    background: #1e293b;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  }
+:host-context(body.dark-theme) .logout-item:hover i {
+  color: #f87171;
+}
 
-  .icon-tooltip::after {
-    border-left-color: #1e293b;
-  }
-
-  .logout-item:hover {
-    background: #1c1012;
-    color: #f87171;
-    border-color: #7f1d1d;
-  }
-
-  .logout-item:hover i {
-    color: #f87171;
-  }
+/* ---------- Theme Toggle ---------- */
+.theme-toggle-item {
+  cursor: pointer;
 }
 

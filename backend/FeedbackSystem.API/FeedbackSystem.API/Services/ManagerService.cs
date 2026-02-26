@@ -205,19 +205,6 @@ public class ManagerService : IManagerService
             .Where(f => f.FromUser.DepartmentId == deptId || f.ToUser.DepartmentId == deptId)
             .OrderByDescending(f => f.CreatedAt)
             .Take(count)
-            .Select(f => new RecentActivityDto(
-                f.FeedbackId,
-                "Feedback",
-                f.Reviews.Any() && f.Reviews.OrderByDescending(r => r.ReviewedAt).First().Status == "Resolved" 
-                    ? "Review Completed" 
-                    : "New Feedback",
-                f.IsAnonymous ? "Anonymous" : f.FromUser.FullName,
-                f.Category.CategoryName,
-                f.CreatedAt,
-                f.Reviews.Any() 
-                    ? f.Reviews.OrderByDescending(r => r.ReviewedAt).First().Status 
-                    : "Pending"
-            ))
             .ToListAsync(ct);
 
         // Get recent recognitions
@@ -227,23 +214,66 @@ public class ManagerService : IManagerService
             .Where(r => r.FromUser.DepartmentId == deptId || r.ToUser.DepartmentId == deptId)
             .OrderByDescending(r => r.CreatedAt)
             .Take(count)
-            .Select(r => new RecentActivityDto(
-                r.RecognitionId,
-                "Recognition",
-                "Recognition Sent",
-                r.FromUser.FullName,
-                r.Badge.BadgeName,
-                r.CreatedAt,
-                "Completed"
-            ))
             .ToListAsync(ct);
 
+        // Convert to DTOs with UTC-formatted time
+        var feedbackActivities = recentFeedback.Select(f => new RecentActivityDto(
+            f.FeedbackId,
+            "Feedback",
+            f.Reviews.Any() && f.Reviews.OrderByDescending(r => r.ReviewedAt).First().Status == "Resolved" 
+                ? "Review Completed" 
+                : "New Feedback",
+            f.IsAnonymous ? "Anonymous" : f.FromUser.FullName,
+            f.Category.CategoryName,
+            f.CreatedAt,
+            f.Reviews.Any() 
+                ? f.Reviews.OrderByDescending(r => r.ReviewedAt).First().Status 
+                : "Pending",
+            FormatTimeAgo(f.CreatedAt)
+        ));
+
+        var recognitionActivities = recentRecognitions.Select(r => new RecentActivityDto(
+            r.RecognitionId,
+            "Recognition",
+            "Recognition Sent",
+            r.FromUser.FullName,
+            r.Badge.BadgeName,
+            r.CreatedAt,
+            "Completed",
+            FormatTimeAgo(r.CreatedAt)
+        ));
+
         // Combine and sort by date
-        return recentFeedback
-            .Concat(recentRecognitions)
+        return feedbackActivities
+            .Concat(recognitionActivities)
             .OrderByDescending(a => a.CreatedAt)
             .Take(count)
             .ToList();
+    }
+
+    private static string FormatTimeAgo(DateTime createdAt)
+    {
+        var now = DateTime.UtcNow;
+        var timeSpan = now - createdAt;
+
+        if (timeSpan.TotalMinutes < 1)
+            return "Just now";
+        if (timeSpan.TotalMinutes < 2)
+            return "1 min ago";
+        if (timeSpan.TotalMinutes < 60)
+            return $"{(int)timeSpan.TotalMinutes} min ago";
+        if (timeSpan.TotalHours < 2)
+            return "1 hour ago";
+        if (timeSpan.TotalHours < 24)
+            return $"{(int)timeSpan.TotalHours} hours ago";
+        if (timeSpan.TotalDays < 2)
+            return "Yesterday";
+        if (timeSpan.TotalDays < 7)
+            return $"{(int)timeSpan.TotalDays} days ago";
+        if (timeSpan.TotalDays < 30)
+            return $"{(int)(timeSpan.TotalDays / 7)} weeks ago";
+        
+        return createdAt.ToString("MMM dd, yyyy");
     }
 
     public async Task<IReadOnlyList<CategoryStatsDto>> GetCategoryDistributionAsync(

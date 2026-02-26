@@ -26,6 +26,24 @@
   overflow: hidden;
 }
 
+:host-context(body.dark-theme) {
+  --bg: #121212;
+  --text: #e0e0e0;
+  --muted: #888;
+  --card: #1e1e1e;
+  --border: #333;
+  --shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  --primary: #bb86fc;
+  --primary-light: rgba(187, 134, 252, 0.15);
+  --primary-strong: #9c64fc;
+  --success: #03dac6;
+  --success-light: rgba(3, 218, 198, 0.15);
+  --danger: #cf6679;
+  --danger-light: rgba(207, 102, 121, 0.15);
+  --warning: #f8b400;
+  --warning-light: rgba(248, 180, 0, 0.15);
+}
+
 /* ========== LAYOUT ========== */
 .settings-container {
   max-width: 920px;
@@ -79,6 +97,29 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+:host-context(body.dark-theme) .page-title {
+  background: linear-gradient(135deg, #e0e0e0, #a0a0a0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+:host-context(body.dark-theme) .toggle-track {
+  background: #555;
+}
+
+:host-context(body.dark-theme) .toast.success {
+  background: #1a3a2a;
+  color: #03dac6;
+  border-left-color: #03dac6;
+}
+
+:host-context(body.dark-theme) .toast.error {
+  background: #3d1a1a;
+  color: #cf6679;
+  border-left-color: #cf6679;
 }
 .page-subtitle {
   margin: 4px 0 0;

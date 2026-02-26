@@ -14,6 +14,20 @@
   --hover-row: #f8fafc;
 }
 
+:host-context(body.dark-theme) {
+  --pastel-1: #1a1215;
+  --pastel-2: #14161e;
+  --pastel-3: #121a14;
+  --pastel-4: #1a1610;
+  --ink: #e0e0e0;
+  --ink-soft: #b0b0b0;
+  --muted: rgba(100, 100, 100, 0.35);
+  --muted-strong: rgba(100, 100, 100, 0.5);
+  --card-bg: #1e1e1e;
+  --head-bg: #252525;
+  --hover-row: #2a2a2a;
+}
+
 :host { display: block; }
 :host ::ng-deep main.content {
   padding: 0 !important;
@@ -137,7 +151,7 @@
 .icon-btn {
   appearance: none;
   border: 1px solid var(--muted-strong);
-  background: #ffffff;
+  background: var(--card-bg);
   color: var(--ink);
   padding: 6px 10px;
   border-radius: 10px;
@@ -148,7 +162,7 @@
 .icon-btn:hover {
   transform: translateY(-1px);
   box-shadow: 0 6px 18px rgba(15, 23, 42, 0.12);
-  background: #fff;
+  background: var(--hover-row);
 }
 
 /* Danger button style for delete */
@@ -173,7 +187,7 @@
   cursor: pointer;
 }
 .btn-secondary {
-  background: #ffffff;
+  background: var(--card-bg);
   color: var(--ink);
 }
 .btn-secondary:hover { background: var(--hover-row); }
@@ -212,4 +226,25 @@
   /* Improves text rendering on light backgrounds */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+:host-context(body.dark-theme) .icon-btn-danger:hover {
+  background: #2d1a1a;
+}
+
+:host-context(body.dark-theme) .cat-bg {
+  background:
+    radial-gradient(1200px 800px at 20% 15%, var(--pastel-1) 0%, transparent 60%),
+    radial-gradient(1000px 700px at 80% 20%, var(--pastel-2) 0%, transparent 60%),
+    radial-gradient(1200px 900px at 25% 80%, var(--pastel-3) 0%, transparent 60%),
+    linear-gradient(180deg, #121212 0%, #1a1a1a 100%);
+}
+
+:host-context(body.dark-theme) .cat-bg::before {
+  opacity: 0;
+}
+
+:host-context(body.dark-theme) .btn-primary {
+  background: linear-gradient(135deg, #bb86fc, #03dac6);
+  color: #121212;
 }
