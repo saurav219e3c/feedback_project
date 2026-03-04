@@ -6,14 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FeedbackSystem.API.Controllers;
 
-[ApiController]
-[Route("api/manager")]
+[ApiController] // this attribute tell sthat Asp.net core this controller is an api controller
+[Route("api/manager")] //api rote portnumber/api/manager 
 [Authorize(Roles = "Manager,Admin")]
 public class ManagerController : ControllerBase
 {
-    private readonly IManagerService _service;
+    private readonly IManagerService _service; //is a field declaration used in dependency injection (DI).
 
-    public ManagerController(IManagerService service) => _service = service;
+  public ManagerController(IManagerService service) => _service = service;
 
     private string GetUserId()
     {

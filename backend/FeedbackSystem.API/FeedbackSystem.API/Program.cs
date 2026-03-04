@@ -32,7 +32,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // --------------------------------------------------
-// CORS
+// CORS register the CORS service into the Dependency Injection (DI)
 // --------------------------------------------------
 builder.Services.AddCors(options =>
 {
@@ -63,14 +63,14 @@ if (string.IsNullOrWhiteSpace(issuer) ||
 builder.Services
     .AddAuthentication(options =>
     {
-        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme; //How the app should validate the user's identity.
+      options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; //How the app should respond when an unauthenticated user tries to access a restricted resource (usually by returning a 401 Unauthorized).
     })
     .AddJwtBearer(options =>
     {
         options.RequireHttpsMetadata = false; // set true in prod only with https
-        options.SaveToken = true;
-        options.TokenValidationParameters = new TokenValidationParameters
+        options.SaveToken = true; //this allows the application to store the token in the AuthenticationProperties, making it accessible via HttpContext.GetTokenAsync().
+      options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuer = true,
             ValidIssuer = issuer,
@@ -78,10 +78,12 @@ builder.Services
             ValidAudience = audience,
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key!)),
-            ValidateLifetime = true,
+            ValidateLifetime = true, //rejects tokens that have expired.
             ClockSkew = TimeSpan.FromMinutes(2)
         };
-    });
+    }); // This line configures the cryptographic key used to verify the digital signature of the JWT. When the server issues a token, it creates a signature by hashing the header, payload, and this secret key (typically using HMAC-SHA256).
+
+       //When a request comes back, the server recalculates that hash using this same IssuerSigningKey. If the incoming token's signature matches the recalculated hash, we know the token hasn't been tampered with and was legitimately issued by our server."
 
 // --------------------------------------------------
 // Authorization Policies
@@ -195,6 +197,7 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseMiddleware<ErrorHandlerMiddleware>();  // production error handler
+    //app.UseMiddleware<GlobalExceptionHandler>(); // global exception handler with ProblemDetails
 }
 
 if (app.Environment.IsDevelopment())

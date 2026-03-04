@@ -123,7 +123,7 @@ public class MyDataService : IMyDataService
     if (category == null)
       throw new InvalidOperationException($"Category '{dto.CategoryId}' not found.");
 
-    // 3. Create feedback entity
+    // 3. map th fb entities
     var feedback = mapper.Map<Feedback>(dto);
     feedback.FromUserId = userId;
     feedback.CreatedAt = DateTime.UtcNow;

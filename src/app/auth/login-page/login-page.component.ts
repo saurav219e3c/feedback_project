@@ -42,6 +42,7 @@ export class LoginPageComponent implements OnInit {
   get f() { return this.form.controls; }
 
   onLogin() {
+    debugger;
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       

@@ -16,7 +16,7 @@ export class ApiService {
   }
 
   post<T>(path: string, body: unknown) {
-    return this.http.post<T>(`${this.baseUrl}${path}`, body);
+    return this.http.post<T>(`${this.baseUrl}${path}`, body); //base url 5001/auth/login
   }
 
   put<T>(path: string, body: unknown) {

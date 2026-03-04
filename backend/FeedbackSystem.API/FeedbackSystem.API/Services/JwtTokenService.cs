@@ -1,4 +1,4 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using FeedbackSystem.API.Entities;
@@ -24,7 +24,7 @@ namespace FeedbackSystem.API.Services
                 throw new InvalidOperationException("JWT Key missing in configuration.");
 
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_opt.Key));
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256); //create digital signature for our token
 
             var claims = new List<Claim>
             {

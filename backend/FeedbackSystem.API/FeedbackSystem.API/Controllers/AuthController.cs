@@ -1,4 +1,4 @@
-﻿using FeedbackSystem.API.DTOs;
+using FeedbackSystem.API.DTOs;
 using FeedbackSystem.API.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +11,7 @@ public class AuthController : ControllerBase
 {
     private readonly IAuthService _auth;
 
-    public AuthController(IAuthService auth) => _auth = auth;
+    public AuthController(IAuthService auth) => _auth = auth; //Dependency Injection: IAuthService is injected by the container.
 
     [HttpPost("login")]
     [AllowAnonymous]
@@ -32,7 +32,7 @@ public class AuthController : ControllerBase
         return CreatedAtAction(nameof(Register), new { id = user.UserId }, user);
     }
 
-    // ✅ Public registration endpoint - No authentication required
+   
     // Role is always forced to "Employee" regardless of input
     [HttpPost("register-public")]
     [AllowAnonymous]

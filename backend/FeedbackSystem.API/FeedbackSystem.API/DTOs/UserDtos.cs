@@ -1,11 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace FeedbackSystem.API.DTOs;
 
+//MANAGER REGISTER RESPONSE  
 public record UserReadDto(
     string UserId, string FullName, string Email, string? Phone, string Role, string DepartmentId, string DepartmentName, bool IsActive, DateTime CreatedAt
 );
 
+// REGISTER USER 
 public record UserCreateDto(
     [Required, StringLength(20)] string UserId,
     [Required, StringLength(50)] string FullName,
@@ -22,7 +24,7 @@ public record UserUpdateDto(
     bool IsActive
 );
 
-// Profile update (for authenticated user updating their own profile)
+// Profile update RESPONSE FOR EMPLOYEE/MANAGER
 public record ProfileUpdateDto(
     [Required, StringLength(50)] string FullName,
     [Required, EmailAddress] string Email,
@@ -31,6 +33,8 @@ public record ProfileUpdateDto(
     string? Phone
 );
 
+
+//UPDATE PROFILE 
 public record ProfileReadDto(
     string UserId,
     string FullName,
@@ -42,7 +46,7 @@ public record ProfileReadDto(
     DateTime CreatedAt
 );
 
-// ✅ User statistics
+// USER STATS 
 public record UserStatsDto(
     int TotalUsers,
     int ActiveUsers,

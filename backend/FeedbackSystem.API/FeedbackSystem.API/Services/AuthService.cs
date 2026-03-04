@@ -1,4 +1,4 @@
-﻿using FeedbackSystem.API.DTOs;
+using FeedbackSystem.API.DTOs;
 using FeedbackSystem.API.Entities;
 using FeedbackSystem.API.Repositories;
 using FeedbackSystem.API.Security;
@@ -7,6 +7,7 @@ namespace FeedbackSystem.API.Services;
 
 public class AuthService : IAuthService
 {
+
     private readonly IUserRepository _users;
     private readonly IJwtTokenService _jwt;
 
@@ -16,6 +17,9 @@ public class AuthService : IAuthService
         _jwt = jwt;
     }
 
+
+    //USER LOGIN
+
     public async Task<AuthResponseDto?> LoginAsync(LoginRequestDto dto, CancellationToken ct = default)
     {
         var user = await _users.GetByEmailAsync(dto.Email, ct);
@@ -24,6 +28,8 @@ public class AuthService : IAuthService
         if (!PasswordHasher.Verify(dto.Password, user.PasswordHash))
             return null;
 
+
+        //generating the jwt token 
         var (token, expires) = _jwt.CreateToken(user);
         var authUser = new AuthUserDto(
             user.UserId,
@@ -37,7 +43,8 @@ public class AuthService : IAuthService
         );
         return new AuthResponseDto(token, expires, authUser);
     }
-
+    
+    //REGISTER USER   
     public async Task<UserReadDto> RegisterAsync(RegisterUserDto dto, CancellationToken ct = default)
     {
         if (await _users.EmailExistsAsync(dto.Email, ct))
@@ -77,7 +84,7 @@ public class AuthService : IAuthService
         );
     }
 
-    // ✅ Public registration - Always forces role to "Employee"
+    // Public registration
     public async Task<UserReadDto> PublicRegisterAsync(PublicRegisterDto dto, CancellationToken ct = default)
     {
         if (await _users.EmailExistsAsync(dto.Email, ct))
@@ -118,7 +125,7 @@ public class AuthService : IAuthService
         );
     }
 
-    // ✅ Manager public registration - Always forces role to "Manager"
+    // Manager public registration 
     public async Task<UserReadDto> ManagerPublicRegisterAsync(ManagerPublicRegisterDto dto, CancellationToken ct = default)
     {
         if (await _users.EmailExistsAsync(dto.Email, ct))
@@ -138,7 +145,7 @@ public class AuthService : IAuthService
             PasswordHash = PasswordHasher.Hash(dto.Password),
             RoleId = managerRole.RoleId,
             DepartmentId = dto.DepartmentId,
-            IsActive = true,
+            IsActive = false, // ONLY ADMIN HAS AUTHORITIES TO ACTIVE MANAGER
             CreatedAt = DateTime.UtcNow
         };
 

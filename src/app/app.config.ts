@@ -5,7 +5,7 @@ import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 
 import { authInterceptor } from './core/interceptors/auth.interceptor';
-import { errorInterceptor } from './core/interceptors/error.interceptor'; // if you added centralized error handling
+import { errorInterceptor } from './core/interceptors/error.interceptor'; 
 import { API_BASE_URL } from './core/config/api-tokens';
 
 export const appConfig: ApplicationConfig = {
@@ -19,7 +19,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(
       withInterceptors([
         authInterceptor,
-        errorInterceptor, // remove this if you didn't add the error interceptor
+        errorInterceptor, 
       ])
     ),
   ],

@@ -14,7 +14,7 @@ public class MappingProfile : Profile
     //submit fb => entity
     CreateMap<MyFeedbackSubmitDto, Feedback>()
         .ForMember(dest => dest.IsAnonymous, opt => opt.MapFrom(src => src.IsAnonymous ?? false))
-        .ForMember(dest => dest.FromUserId, opt => opt.Ignore())
+        .ForMember(dest => dest.FromUserId, opt => opt.Ignore()) // we are authiticated user in service 
         .ForMember(dest => dest.CreatedAt, opt => opt.Ignore());
 
     // entity => show fb for employee
@@ -27,10 +27,10 @@ public class MappingProfile : Profile
     CreateMap<MyRecognitionSubmitDto, Recognition>()
         .ForMember(dest => dest.RecognitionId, opt => opt.Ignore())
         .ForMember(dest => dest.FromUserId, opt => opt.Ignore())
-        .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
-        .ForMember(dest => dest.FromUser, opt => opt.Ignore())
-        .ForMember(dest => dest.ToUser, opt => opt.Ignore())
-        .ForMember(dest => dest.Badge, opt => opt.Ignore());
+        .ForMember(dest => dest.CreatedAt, opt => opt.Ignore());
+        //.ForMember(dest => dest.FromUser, opt => opt.Ignore())
+        //.ForMember(dest => dest.ToUser, opt => opt.Ignore())
+        //.ForMember(dest => dest.Badge, opt => opt.Ignore());
 
     //entity to show reco
     CreateMap<Recognition, MyAllRecognitionItemDto>()

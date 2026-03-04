@@ -200,7 +200,7 @@ namespace FeedbackSystem.API.Repositories
     public async Task<List<Feedback>> GetAllFeedbacksAsync(string userId, string? direction, CancellationToken ct)
     {
       var query = _db.Feedbacks
-        .Include(f => f.Category)
+        .Include(f => f.Category) // navgation proper available for category name
         .Include(f => f.FromUser)
         .AsNoTracking();
 

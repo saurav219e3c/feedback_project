@@ -14,7 +14,7 @@ public interface IUserRepository
     Task UpdateAsync(User user, CancellationToken ct = default);
     Task DeleteAsync(User user, CancellationToken ct = default);
     
-    // ✅ Count methods
+    // COUNT methods
     Task<int> GetTotalCountAsync(CancellationToken ct = default);
     Task<int> GetActiveCountAsync(CancellationToken ct = default);
     

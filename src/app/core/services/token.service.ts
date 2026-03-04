@@ -5,6 +5,7 @@ const ACCESS_TOKEN_KEY = 'access_token';
 
 @Injectable({ providedIn: 'root' })
 export class TokenService {
+  
   setToken(token: string): void {
     sessionStorage.setItem(ACCESS_TOKEN_KEY, token);
   }

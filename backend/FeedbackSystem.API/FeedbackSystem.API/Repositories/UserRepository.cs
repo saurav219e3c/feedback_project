@@ -1,4 +1,4 @@
-﻿using FeedbackSystem.API.Data;
+using FeedbackSystem.API.Data;
 using FeedbackSystem.API.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -46,7 +46,7 @@ public class UserRepository : IUserRepository
         await _db.SaveChangesAsync(ct);
     }
 
-    // ✅ Count methods
+    //  Count methods
     public Task<int> GetTotalCountAsync(CancellationToken ct = default) =>
         _db.Users.CountAsync(ct);
 
@@ -68,7 +68,7 @@ public class UserRepository : IUserRepository
         return depId;
     }
 
-    // ✅ Search
+    //  Search
     public Task<List<User>> SearchAsync(string query, CancellationToken ct = default)
     {
         var lowerQuery = query.ToLower();
