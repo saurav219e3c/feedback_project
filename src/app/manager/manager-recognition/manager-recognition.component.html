@@ -1,84 +1,83 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
   
   <!-- Header Section -->
-  <div class="relative mb-8">
-    <div class="absolute inset-0 bg-gradient-to-r from-amber-400 via-orange-500 to-pink-500 rounded-2xl opacity-10"></div>
-    <div class="relative flex flex-col sm:flex-row justify-between items-start sm:items-center p-6 gap-4">
-      <div class="flex items-center space-x-4">
-        <div class="w-14 h-14 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center shadow-lg shadow-orange-200">
-          <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+  <div class="bg-white rounded-3xl shadow-xl border border-gray-100 ring-1 ring-gray-50 mb-10">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center p-8 gap-6">
+      <div class="flex items-center space-x-6">
+        <div class="w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-3xl flex items-center justify-center shadow-xl shadow-orange-200 ring-4 ring-white">
+          <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
           </svg>
         </div>
         <div>
-          <h2 class="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">
+          <h2 class="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent leading-tight">
             Recognition Wall
           </h2>
-          <p class="text-gray-500 text-sm mt-1">Celebrating excellence across teams</p>
+          <p class="text-gray-600 text-base mt-2 font-medium">Celebrating excellence and achievements across teams</p>
         </div>
       </div>
       
       <button (click)="loadData()"
-        class="group inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-semibold rounded-xl hover:from-amber-600 hover:to-orange-600 shadow-lg shadow-orange-200 transition-all duration-300 hover:scale-105">
-        <svg class="w-4 h-4 mr-2 group-hover:rotate-180 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        class="group inline-flex items-center px-6 py-3.5 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-bold rounded-2xl hover:from-amber-600 hover:to-orange-600 shadow-xl shadow-orange-200 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orange-300">
+        <svg class="w-5 h-5 mr-3 group-hover:rotate-180 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
         </svg>
-        Refresh
+        Refresh Data
       </button>
     </div>
   </div>
 
   <!-- Stats Bar -->
-  <div *ngIf="!isLoading && !errorMessage && recognitions.length > 0" class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
-    <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-      <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 bg-amber-100 rounded-xl flex items-center justify-center">
-          <svg class="w-5 h-5 text-amber-600" fill="currentColor" viewBox="0 0 24 24">
+  <div *ngIf="!isLoading && !errorMessage && recognitions.length > 0" class="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-12">
+    <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 ring-1 ring-gray-50">
+      <div class="flex items-center space-x-4">
+        <div class="w-12 h-12 bg-gradient-to-br from-amber-100 to-amber-50 rounded-2xl flex items-center justify-center ring-2 ring-amber-100">
+          <svg class="w-6 h-6 text-amber-600" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
           </svg>
         </div>
         <div>
-          <p class="text-2xl font-bold text-gray-800">{{ recognitions.length }}</p>
-          <p class="text-xs text-gray-500 font-medium">Total Awards</p>
+          <p class="text-2xl font-black text-gray-800">{{ recognitions.length }}</p>
+          <p class="text-sm text-gray-600 font-semibold">Total Awards</p>
         </div>
       </div>
     </div>
-    <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-      <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center">
-          <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 ring-1 ring-gray-50">
+      <div class="flex items-center space-x-4">
+        <div class="w-12 h-12 bg-gradient-to-br from-green-100 to-green-50 rounded-2xl flex items-center justify-center ring-2 ring-green-100">
+          <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
           </svg>
         </div>
         <div>
-          <p class="text-2xl font-bold text-gray-800">{{ getTotalPoints() }}</p>
-          <p class="text-xs text-gray-500 font-medium">Total Points</p>
+          <p class="text-2xl font-black text-gray-800">{{ getTotalPoints() }}</p>
+          <p class="text-sm text-gray-600 font-semibold">Total Points</p>
         </div>
       </div>
     </div>
-    <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-      <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center">
-          <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 ring-1 ring-gray-50">
+      <div class="flex items-center space-x-4">
+        <div class="w-12 h-12 bg-gradient-to-br from-blue-100 to-blue-50 rounded-2xl flex items-center justify-center ring-2 ring-blue-100">
+          <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
           </svg>
         </div>
         <div>
-          <p class="text-2xl font-bold text-gray-800">{{ getUniqueRecipients() }}</p>
-          <p class="text-xs text-gray-500 font-medium">Recipients</p>
+          <p class="text-2xl font-black text-gray-800">{{ getUniqueRecipients() }}</p>
+          <p class="text-sm text-gray-600 font-semibold">Recipients</p>
         </div>
       </div>
     </div>
-    <div class="bg-white rounded-2xl p-4 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-      <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center">
-          <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 ring-1 ring-gray-50">
+      <div class="flex items-center space-x-4">
+        <div class="w-12 h-12 bg-gradient-to-br from-purple-100 to-purple-50 rounded-2xl flex items-center justify-center ring-2 ring-purple-100">
+          <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
           </svg>
         </div>
         <div>
-          <p class="text-2xl font-bold text-gray-800">{{ getAvgPoints() }}</p>
-          <p class="text-xs text-gray-500 font-medium">Avg Points</p>
+          <p class="text-2xl font-black text-gray-800">{{ getAvgPoints() }}</p>
+          <p class="text-sm text-gray-600 font-semibold">Avg Points</p>
         </div>
       </div>
     </div>
@@ -124,28 +123,28 @@
   </div>
 
   <!-- Recognition Cards Grid -->
-  <div *ngIf="!isLoading && !errorMessage && recognitions.length > 0" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+  <div *ngIf="!isLoading && !errorMessage && recognitions.length > 0" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
     <div *ngFor="let item of recognitions; let i = index" 
-         class="group relative bg-white rounded-3xl shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:-translate-y-2"
-         [class.ring-2]="i === 0"
+         class="group relative bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 hover:-translate-y-3 ring-1 ring-gray-50 hover:ring-2 hover:ring-orange-200"
+         [class.ring-4]="i === 0"
          [class.ring-amber-400]="i === 0"
-         [class.ring-offset-4]="i === 0">
-      
-      <!-- Latest Badge -->
-      <div *ngIf="i === 0" class="absolute top-4 right-4 z-10">
-        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r from-amber-400 to-orange-500 text-white shadow-lg">
-          <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
-          </svg>
-          Latest
-        </span>
-      </div>
+         [class.ring-offset-8]="i === 0">
       
       <!-- Top Gradient Bar -->
       <div class="h-2 w-full" [ngClass]="getGradientClass(item.points)"></div>
       
       <!-- Card Content -->
       <div class="p-6">
+        
+        <!-- Latest Badge - Above Points -->
+        <div *ngIf="i === 0" class="flex justify-end mb-2">
+          <span class="inline-flex items-center px-2 py-1 rounded-lg text-[10px] font-semibold bg-gradient-to-r from-amber-400 to-orange-500 text-white shadow-sm">
+            <svg class="w-2 h-2 mr-1" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+            </svg>
+            Latest
+          </span>
+        </div>
         
         <!-- Points & Category Header -->
         <div class="flex justify-between items-start mb-5">
