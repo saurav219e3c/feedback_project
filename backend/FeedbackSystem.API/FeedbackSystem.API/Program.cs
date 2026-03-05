@@ -64,7 +64,7 @@ builder.Services
     .AddAuthentication(options =>
     {
         options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme; //How the app should validate the user's identity.
-      options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; //How the app should respond when an unauthenticated user tries to access a restricted resource (usually by returning a 401 Unauthorized).
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; //How the app should respond when an unauthenticated user tries to access a restricted resource (usually by returning a 401 Unauthorized).
     })
     .AddJwtBearer(options =>
     {
