@@ -1,4 +1,4 @@
-﻿namespace FeedbackSystem.API.Entities
+namespace FeedbackSystem.API.Entities
 {
     public class Feedback
     {
@@ -10,6 +10,7 @@
         public bool IsAnonymous { get; set; }
         public DateTime CreatedAt { get; set; }
 
+        //navigation properties
         public User FromUser { get; set; } = null!;
         public User ToUser { get; set; } = null!;
         public Category Category { get; set; } = null!;

@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using FeedbackSystem.API.Entities;
 
 namespace FeedbackSystem.API.Data;
@@ -20,7 +20,6 @@ public class AppDbContext : DbContext
     public DbSet<Notification> Notifications => Set<Notification>();
     public DbSet<ActivityLog> ActivityLogs => Set<ActivityLog>();
 
-    // NEW: Departments
     public DbSet<Department> Departments => Set<Department>();
 
     protected override void OnModelCreating(ModelBuilder model)
@@ -36,7 +35,7 @@ public class AppDbContext : DbContext
             e.HasIndex(x => x.RoleName).IsUnique();
         });
 
-        // ---------- DEPARTMENTS (NEW) ----------
+        // ---------- DEPARTMENTS----------
         model.Entity<Department>(e =>
         {
             e.ToTable("Departments");
@@ -71,14 +70,14 @@ public class AppDbContext : DbContext
              .OnDelete(DeleteBehavior.Restrict)
              .HasConstraintName("FK_Users_Roles");
 
-            // ✅ NEW: User → Department (many-to-one)
+            //  User → Department (many-to-one)
             e.HasOne(x => x.Department)
              .WithMany(d => d.Users)
              .HasForeignKey(x => x.DepartmentId)
              .OnDelete(DeleteBehavior.Restrict)
              .HasConstraintName("FK_Users_Departments");
 
-            // (Optional but useful) index for lookups by department
+            // index for lookups by department
             e.HasIndex(x => x.DepartmentId).HasDatabaseName("IX_Users_DepartmentId");
         });
 

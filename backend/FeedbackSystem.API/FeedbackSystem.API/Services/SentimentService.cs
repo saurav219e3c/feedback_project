@@ -1,5 +1,6 @@
 using FeedbackSystem.API.Data;
-using FeedbackSystem.API.DTOs;
+using FeedbackSystem.API.DTOs.Admin;
+using FeedbackSystem.API.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace FeedbackSystem.API.Services

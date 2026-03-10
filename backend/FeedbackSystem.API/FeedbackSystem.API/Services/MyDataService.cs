@@ -2,7 +2,8 @@ using AutoMapper;
 using FeedbackSystem.API.Data;
 using FeedbackSystem.API.DTOs;
 using FeedbackSystem.API.Entities;
-using FeedbackSystem.API.Repositories;
+using FeedbackSystem.API.Repositories.Interfaces;
+using FeedbackSystem.API.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace FeedbackSystem.API.Services;

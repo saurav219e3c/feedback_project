@@ -1,6 +1,7 @@
 using System.Security.Claims;
-using FeedbackSystem.API.DTOs;
-using FeedbackSystem.API.Services;
+using FeedbackSystem.API.DTOs.Admin;
+using FeedbackSystem.API.DTOs.Manager;
+using FeedbackSystem.API.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

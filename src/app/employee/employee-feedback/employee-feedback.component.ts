@@ -36,7 +36,9 @@ export class EmployeeFeedbackComponent implements OnInit {
     this.currentUser=this.empService.getCurrentUser();
     //this.feedbackList = this.empService.getMyReceivedFeedback();
     //load data into signal
+    debugger;
     this.empService.getMyReceivedFeedback().subscribe({
+      
       next: (response) => {
         // const data = response.items || response || [];
         // this.rawFeedback.set(data);

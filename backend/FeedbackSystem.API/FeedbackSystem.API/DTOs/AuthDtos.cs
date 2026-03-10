@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 namespace FeedbackSystem.API.DTOs;
 
@@ -16,7 +16,7 @@ public record RegisterUserDto(
     [Required] string DepartmentId
 );
 
-// ✅ Public registration DTO - Role is ignored and forced to Employee
+//  Public registration DTO - Role is ignored and forced to Employee
 public record PublicRegisterDto(
     [Required, StringLength(20)] string UserId,
     [Required, StringLength(50)] string FullName,
@@ -25,7 +25,7 @@ public record PublicRegisterDto(
     [Required] string DepartmentId
 );
 
-// ✅ Manager public registration DTO - Role is forced to Manager
+// Manager public registration DTO 
 public record ManagerPublicRegisterDto(
     [Required, StringLength(20)] string UserId,
     [Required, StringLength(50)] string FullName,

@@ -1,0 +1,25 @@
+using FeedbackSystem.API.DTOs.Admin;
+using FeedbackSystem.API.DTOs.Manager;
+
+namespace FeedbackSystem.API.Services.Interfaces;
+
+public interface IManagerService
+{
+    // Dashboard
+    Task<ManagerDashboardDto> GetDashboardAsync(string managerId, CancellationToken ct);
+    
+    // Feedback with status
+    Task<PagedResult<ManagerFeedbackItemDto>> GetFeedbackListAsync(
+        string managerId, string? status, string? categoryId, string? search, 
+        int page, int pageSize, CancellationToken ct);
+    
+    // Update status
+    Task<bool> UpdateFeedbackStatusAsync(string managerId, int feedbackId, string newStatus, string? remarks, CancellationToken ct);
+    
+    // Recent activity
+    Task<IReadOnlyList<RecentActivityDto>> GetRecentActivityAsync(string managerId, int count, CancellationToken ct);
+    
+    // Category distribution
+    Task<IReadOnlyList<CategoryStatsDto>> GetCategoryDistributionAsync(
+        string managerId, string? status, CancellationToken ct);
+}

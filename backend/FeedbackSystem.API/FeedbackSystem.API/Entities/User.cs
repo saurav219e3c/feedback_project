@@ -1,4 +1,4 @@
-﻿namespace FeedbackSystem.API.Entities
+namespace FeedbackSystem.API.Entities
 {
     public class User
     {
@@ -9,12 +9,13 @@
         public string PasswordHash { get; set; } = null!;
         public string? Phone { get; set; }
 
-        public int RoleId { get; set; }
+        
         public bool IsActive { get; set; }
         public DateTime CreatedAt { get; set; }
 
-        // ✅ New: FK to Department
+        // FK 
         public string DepartmentId { get; set; } = null!;
+        public int RoleId { get; set; }
 
         // Navigations
         public Role Role { get; set; } = null!;
