@@ -37,17 +37,23 @@
         </div>
       </article>
 
-      <!-- Activity -->
+      <!-- Activity (clickable rows) -->
       <article class="card">
         <h3 class="card-title">Activity</h3>
         <div class="rows">
-          <div class="row">
+          <div class="row clickable-row" (click)="openLog('feedback')">
             <span class="label">Feedback</span>
-            <span class="value">{{ user.feedback === -1 ? 'Loading...' : user.feedback }}</span>
+            <span class="value link-value">
+              {{ user.feedback === -1 ? 'Loading...' : user.feedback }}
+              <span class="view-icon">→</span>
+            </span>
           </div>
-          <div class="row">
+          <div class="row clickable-row" (click)="openLog('recognition')">
             <span class="label">Recognition</span>
-            <span class="value">{{ user.recognition === -1 ? 'Loading...' : user.recognition }}</span>
+            <span class="value link-value">
+              {{ user.recognition === -1 ? 'Loading...' : user.recognition }}
+              <span class="view-icon">→</span>
+            </span>
           </div>
         </div>
       </article>
@@ -86,6 +92,135 @@
         </div>
       </article>
     </div>
+  </section>
+</div>
+
+<!-- ═══════ LOG OVERLAY (page-over-page modal) ═══════ -->
+<div *ngIf="logOpen" class="log-backdrop" (click)="closeLog()">
+  <section class="log-modal" (click)="stopPropagation($event)" role="dialog" aria-modal="true" aria-label="Activity log">
+    <header class="log-header">
+      <div class="log-title-wrap">
+        <button class="back-btn" (click)="closeLog()" aria-label="Back">← Back</button>
+        <h2 class="log-title">{{ user.name }} — Activity Log</h2>
+      </div>
+      <button class="close" (click)="closeLog()" aria-label="Close">✕</button>
+    </header>
+
+    <!-- Type tabs (Feedback / Recognition) -->
+    <nav class="type-tabs">
+      <button class="type-tab" [class.active]="logType === 'feedback'" (click)="switchLogType('feedback')">
+        📝 Feedback
+      </button>
+      <button class="type-tab" [class.active]="logType === 'recognition'" (click)="switchLogType('recognition')">
+        🏆 Recognition
+      </button>
+    </nav>
+
+    <!-- Direction tabs (Given / Received) -->
+    <nav class="dir-tabs">
+      <button class="dir-tab" [class.active]="logTab === 'given'" (click)="switchTab('given')">Given</button>
+      <button class="dir-tab" [class.active]="logTab === 'received'" (click)="switchTab('received')">Received</button>
+    </nav>
+
+    <!-- Loading -->
+    <div *ngIf="logLoading" class="log-loading">
+      <div class="spinner"></div>
+      <span>Loading…</span>
+    </div>
+
+    <!-- ── FEEDBACK LIST ── -->
+    <div *ngIf="!logLoading && logType === 'feedback'" class="log-list">
+      <div *ngIf="currentFeedbackItems.length === 0" class="empty-state">
+        <div class="empty-icon">📭</div>
+        <div class="empty-text">No feedback {{ logTab }} records found.</div>
+      </div>
+      <div *ngFor="let fb of currentFeedbackItems; let i = index" class="log-card feedback-card" [style.animation-delay.ms]="i * 60">
+        <div class="log-card-accent accent-blue"></div>
+        <div class="log-card-content">
+          <div class="log-card-top">
+            <div class="log-card-meta">
+              <span class="log-card-category">{{ fb.categoryName }}</span>
+              <span class="log-card-id">#{{ fb.feedbackId }}</span>
+            </div>
+            <span class="log-card-date">{{ fb.createdAt | date:'MMM d, yyyy · h:mm a' }}</span>
+          </div>
+          <div class="log-card-people">
+            <div class="person-block">
+              <div class="avatar avatar-from">{{ fb.isAnonymous ? '?' : (fb.fromUserName | slice:0:1) }}</div>
+              <div class="person-info">
+                <span class="person-role">From</span>
+                <span class="person-name">{{ fb.isAnonymous ? 'Anonymous' : fb.fromUserName }}</span>
+              </div>
+            </div>
+            <div class="arrow-connector">→</div>
+            <div class="person-block">
+              <div class="avatar avatar-to">{{ (fb.toUserName | slice:0:1) }}</div>
+              <div class="person-info">
+                <span class="person-role">To</span>
+                <span class="person-name">{{ fb.toUserName }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="log-card-comment">
+            <span class="comment-icon">💬</span>
+            <p class="comment-text">{{ fb.comments }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── RECOGNITION LIST ── -->
+    <div *ngIf="!logLoading && logType === 'recognition'" class="log-list">
+      <div *ngIf="currentRecognitionItems.length === 0" class="empty-state">
+        <div class="empty-icon">🏆</div>
+        <div class="empty-text">No recognition {{ logTab }} records found.</div>
+      </div>
+      <div *ngFor="let rec of currentRecognitionItems; let i = index" class="log-card recognition-card" [style.animation-delay.ms]="i * 60">
+        <div class="log-card-accent accent-amber"></div>
+        <div class="log-card-content">
+          <div class="log-card-top">
+            <div class="log-card-meta">
+              <span class="log-card-badge">🏅 {{ rec.badgeName }}</span>
+              <span class="log-card-points">+{{ rec.points }} pts</span>
+              <span class="log-card-id">#{{ rec.recognitionId }}</span>
+            </div>
+            <span class="log-card-date">{{ rec.createdAt | date:'MMM d, yyyy · h:mm a' }}</span>
+          </div>
+          <div class="log-card-people">
+            <div class="person-block">
+              <div class="avatar avatar-from">{{ (rec.fromUserName | slice:0:1) }}</div>
+              <div class="person-info">
+                <span class="person-role">From</span>
+                <span class="person-name">{{ rec.fromUserName }}</span>
+              </div>
+            </div>
+            <div class="arrow-connector">→</div>
+            <div class="person-block">
+              <div class="avatar avatar-to">{{ (rec.toUserName | slice:0:1) }}</div>
+              <div class="person-info">
+                <span class="person-role">To</span>
+                <span class="person-name">{{ rec.toUserName }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="log-card-comment">
+            <span class="comment-icon">✉️</span>
+            <p class="comment-text">{{ rec.message }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PAGINATION ── -->
+    <footer *ngIf="!logLoading && totalRecords > 0" class="log-pagination">
+      <span class="page-info">Page {{ currentPage }} of {{ totalPages }} ({{ totalRecords }} records)</span>
+      <div class="page-btns">
+        <button class="page-btn" [disabled]="currentPage <= 1" (click)="goToPage(1)">«</button>
+        <button class="page-btn" [disabled]="currentPage <= 1" (click)="goToPage(currentPage - 1)">‹</button>
+        <button class="page-btn" [disabled]="currentPage >= totalPages" (click)="goToPage(currentPage + 1)">›</button>
+        <button class="page-btn" [disabled]="currentPage >= totalPages" (click)="goToPage(totalPages)">»</button>
+      </div>
+    </footer>
   </section>
 </div>
 
