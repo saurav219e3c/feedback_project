@@ -103,7 +103,7 @@ namespace FeedbackSystem.API.Repositories
             return (items, total);
         }
 
-        // ✅ Count-only (same filters)
+        // Count-only (same filters)
         public Task<int> CountAllAsync(
             DateTime? from, DateTime? to, string? search, string? departmentScopeId,
             string? fromUserId, string? toUserId, CancellationToken ct)
@@ -155,7 +155,7 @@ namespace FeedbackSystem.API.Repositories
             return q;
         }
 
-        // ✅ Category statistics
+        // Category statistics
         public async Task<IReadOnlyList<RecognitionBadgeStatsDto>> GetByBadgeAsync(
             DateTime? from, DateTime? to, string? departmentScopeId, string? userId, CancellationToken ct)
         {

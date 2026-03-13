@@ -13,7 +13,7 @@
         public bool IsActive { get; set; }
         public DateTime CreatedAt { get; set; }
 
-        // ✅ New: FK to Department
+        // New: FK to Department
         public string DepartmentId { get; set; } = null!;
 
         // Navigations

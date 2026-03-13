@@ -18,10 +18,7 @@ public class SettingsController : ControllerBase
         _logger = logger;
     }
 
-    /// <summary>
-    /// GET /api/settings – returns the structured settings object
-    /// Accessible by all authenticated users (read-only for non-admins)
-    /// </summary>
+    
     [HttpGet]
     [Authorize]
     public async Task<IActionResult> GetSettings(CancellationToken ct)
@@ -38,10 +35,7 @@ public class SettingsController : ControllerBase
         }
     }
 
-    /// <summary>
-    /// PUT /api/settings – accepts the structured settings object and persists it
-    /// Only accessible by Admin users
-    /// </summary>
+    
     [HttpPut]
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> SaveSettings([FromBody] AppSettingsDto settings, CancellationToken ct)

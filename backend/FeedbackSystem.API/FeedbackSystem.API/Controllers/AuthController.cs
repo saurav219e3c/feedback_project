@@ -49,7 +49,7 @@ public class AuthController : ControllerBase
         }
     }
 
-    // ✅ Manager public registration endpoint - No authentication required
+    // Manager public registration endpoint - No authentication required
     // Role is always forced to "Manager" regardless of input
     [HttpPost("register-manager")]
     [AllowAnonymous]

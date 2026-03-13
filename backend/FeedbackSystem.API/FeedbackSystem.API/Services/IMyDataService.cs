@@ -7,9 +7,7 @@ namespace FeedbackSystem.API.Services;
 /// </summary>
 public interface IMyDataService
 {
-    // Feedback
-   // Task<MyFeedbackSubmitResultDto> SubmitMyFeedbackAsync(string userId, MyFeedbackSubmitDto dto, CancellationToken ct);
-
+   
   //SUBMIT FB
   Task<MyFeedbackSubmitResultDto> SubmitMyFeedbackAsync(string userId, MyFeedbackSubmitDto dto, CancellationToken ct);
 

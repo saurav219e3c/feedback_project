@@ -7,10 +7,10 @@
         public string FromUserId { get; set; } = null!;
         public string ToUserId { get; set; } = null!;
 
-        // ✅ Using Badge instead of Category
+        // Using Badge instead of Category
         public string BadgeId { get; set; } = null!;
 
-        // ✅ Points 1–10
+        // Points 1–10
         public int Points { get; set; }
 
         public string Message { get; set; } = null!;

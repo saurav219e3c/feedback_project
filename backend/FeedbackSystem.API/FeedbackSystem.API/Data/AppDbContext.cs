@@ -71,7 +71,7 @@ public class AppDbContext : DbContext
              .OnDelete(DeleteBehavior.Restrict)
              .HasConstraintName("FK_Users_Roles");
 
-            // ✅ NEW: User → Department (many-to-one)
+            // NEW: User => Department (many-to-one)
             e.HasOne(x => x.Department)
              .WithMany(d => d.Users)
              .HasForeignKey(x => x.DepartmentId)
@@ -161,7 +161,7 @@ public class AppDbContext : DbContext
             e.Property(x => x.Message).IsRequired().HasMaxLength(500);
             e.Property(x => x.CreatedAt).HasDefaultValueSql("GETDATE()");
 
-            // ✅ Points with check constraint (1–10)
+            // Points with check constraint (1–10)
             e.Property(x => x.Points).IsRequired();
 
             // CHECK constraint at table-level (SQL Server)
@@ -182,7 +182,7 @@ public class AppDbContext : DbContext
              .OnDelete(DeleteBehavior.Restrict)
              .HasConstraintName("FK_Recognition_ToUser");
 
-            // ✅ Badge relationship (replaces Category)
+            //  Badge relationship (replaces Category)
             e.HasOne(x => x.Badge)
              .WithMany(b => b.Recognitions)
              .HasForeignKey(x => x.BadgeId)

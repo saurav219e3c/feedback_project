@@ -10,13 +10,13 @@ public interface IUserService
     Task<bool> UpdateAsync(string id, UserUpdateDto dto, CancellationToken ct = default);
     Task<bool> DeleteAsync(string id, CancellationToken ct = default);
     
-    // ✅ Statistics
+    // Statistics
     Task<UserStatsDto> GetStatsAsync(CancellationToken ct = default);
     
-    // ✅ Search
+    //  Search
     Task<List<UserReadDto>> SearchAsync(string query, CancellationToken ct = default);
 
-    // ✅ Profile
+    //  Profile
     Task<ProfileReadDto?> GetProfileAsync(string userId, CancellationToken ct = default);
     Task<bool> UpdateProfileAsync(string userId, ProfileUpdateDto dto, CancellationToken ct = default);
 }

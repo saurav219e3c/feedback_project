@@ -46,14 +46,14 @@ public class UserRepository : IUserRepository
         await _db.SaveChangesAsync(ct);
     }
 
-    // ✅ Count methods
+    // Count methods
     public Task<int> GetTotalCountAsync(CancellationToken ct = default) =>
         _db.Users.CountAsync(ct);
 
     public Task<int> GetActiveCountAsync(CancellationToken ct = default) =>
         _db.Users.CountAsync(u => u.IsActive, ct);
 
-    // ✅ Helpers for InsightsService
+    // Helpers for InsightsService
     public Task<bool> UserExistsAsync(string userId, CancellationToken ct = default) =>
         _db.Users.AsNoTracking().AnyAsync(u => u.UserId == userId, ct);
 
@@ -68,7 +68,7 @@ public class UserRepository : IUserRepository
         return depId;
     }
 
-    // ✅ Search
+    // Search
     public Task<List<User>> SearchAsync(string query, CancellationToken ct = default)
     {
         var lowerQuery = query.ToLower();

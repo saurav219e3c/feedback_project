@@ -77,7 +77,7 @@ public class AuthService : IAuthService
         );
     }
 
-    // ✅ Public registration - Always forces role to "Employee"
+    // Public registration - Always forces role to "Employee"
     public async Task<UserReadDto> PublicRegisterAsync(PublicRegisterDto dto, CancellationToken ct = default)
     {
         if (await _users.EmailExistsAsync(dto.Email, ct))
@@ -118,7 +118,7 @@ public class AuthService : IAuthService
         );
     }
 
-    // ✅ Manager public registration - Always forces role to "Manager"
+    // Manager public registration - Always forces role to "Manager"
     public async Task<UserReadDto> ManagerPublicRegisterAsync(ManagerPublicRegisterDto dto, CancellationToken ct = default)
     {
         if (await _users.EmailExistsAsync(dto.Email, ct))

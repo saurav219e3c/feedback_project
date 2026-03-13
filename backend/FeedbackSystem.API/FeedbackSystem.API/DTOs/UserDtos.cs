@@ -42,7 +42,7 @@ public record ProfileReadDto(
     DateTime CreatedAt
 );
 
-// ✅ User statistics
+//  User statistics
 public record UserStatsDto(
     int TotalUsers,
     int ActiveUsers,

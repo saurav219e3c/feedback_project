@@ -121,7 +121,7 @@ public class UserService : IUserService
         return true;
     }
 
-    // ✅ Statistics
+    // Statistics
     public async Task<UserStatsDto> GetStatsAsync(CancellationToken ct = default)
     {
         var totalUsers = await _repo.GetTotalCountAsync(ct);
@@ -133,7 +133,7 @@ public class UserService : IUserService
         return new UserStatsDto(totalUsers, activeUsers, inactiveUsers, totalFeedbacks, totalRecognitions);
     }
 
-    // ✅ Search
+    // Search
     public async Task<List<UserReadDto>> SearchAsync(string query, CancellationToken ct = default)
     {
         var users = await _repo.SearchAsync(query, ct);
@@ -150,7 +150,7 @@ public class UserService : IUserService
         )).ToList();
     }
 
-    // ✅ Profile - Get current user's profile
+    // Profile - Get current user's profile
     public async Task<ProfileReadDto?> GetProfileAsync(string userId, CancellationToken ct = default)
     {
         var user = await _repo.GetByIdAsync(userId, ct);
@@ -168,7 +168,7 @@ public class UserService : IUserService
         );
     }
 
-    // ✅ Profile - Update current user's profile
+    // Profile - Update current user's profile
     public async Task<bool> UpdateProfileAsync(string userId, ProfileUpdateDto dto, CancellationToken ct = default)
     {
         var user = await _repo.GetByIdAsync(userId, ct);

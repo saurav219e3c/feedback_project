@@ -6,10 +6,6 @@ using System.Security.Claims;
 
 namespace FeedbackSystem.API.Controllers;
 
-/// <summary>
-/// Employee's personal feedback and recognition endpoints
-/// All endpoints are accessible to authenticated employees for their own data
-/// </summary>
 [ApiController]
 [Route("api/[controller]")]
 [Authorize]  // Any authenticated user can access their own data
@@ -28,35 +24,14 @@ public class MyController : ControllerBase
 
   // ==================== FEEDBACK ====================
 
-  /// <summary>
   /// POST /api/my/feedback - Submit feedback
-  /// </summary>
+  
   [HttpPost("feedback")]
   public async Task<ActionResult<MyFeedbackSubmitResultDto>> SubmitFeedback(
       [FromBody] MyFeedbackSubmitDto dto,
       CancellationToken ct)
   {
-    //try
-    //{
-    //  var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-    //  _logger.LogInformation("Extracted userId from token: {UserId}", userId);
-
-    //  if (string.IsNullOrEmpty(userId))
-    //    return Unauthorized(new { message = "User ID not found in token." });
-
-    //  var result = await _myDataService.SubmitMyFeedbackAsync(userId, dto, ct);
-    //  return Ok(result);
-    //}
-    //catch (InvalidOperationException ex)
-    //{
-    //  _logger.LogWarning(ex, "Feedback submission validation failed for user");
-    //  return BadRequest(new { message = ex.Message });
-    //}
-    //catch (Exception ex)
-    //{
-    //  _logger.LogError(ex, "Failed to submit feedback");
-    //  return StatusCode(500, new { message = "Failed to submit feedback.", detail = ex.Message });
-    //}
+   
 
     var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
     _logger.LogInformation("Extracted userId from token: {UserId}", userId);
@@ -80,20 +55,8 @@ public class MyController : ControllerBase
       [FromQuery] string? direction,
       CancellationToken ct)
   {
-    //try
-    //{
-    //  var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-    //  if (string.IsNullOrEmpty(userId))
-    //    return Unauthorized(new { message = "User ID not found in token." });
-
-    //  var result = await _myDataService.GetMyFeedbackAsync(userId, direction, ct);
-    //  return Ok(result);
-    //}
-    //catch (Exception ex)
-    //{
-    //  _logger.LogError(ex, "Failed to get feedback");
-    //  return StatusCode(500, new { message = "Failed to retrieve feedback.", detail = ex.Message });
-    //}
+    
+   
 
     var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
@@ -117,25 +80,7 @@ public class MyController : ControllerBase
       [FromBody] MyRecognitionSubmitDto dto,
       CancellationToken ct)
   {
-    //try
-    //{
-    //  var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-    //  if (string.IsNullOrEmpty(userId))
-    //    return Unauthorized(new { message = "User ID not found in token." });
-
-    //  var result = await _myDataService.SubmitMyRecognitionAsync(userId, dto, ct);
-    //  return Ok(result);
-    //}
-    //catch (InvalidOperationException ex)
-    //{
-    //  _logger.LogWarning(ex, "Recognition submission validation failed for user");
-    //  return BadRequest(new { message = ex.Message });
-    //}
-    //catch (Exception ex)
-    //{
-    //  _logger.LogError(ex, "Failed to submit recognition");
-    //  return StatusCode(500, new { message = "Failed to submit recognition.", detail = ex.Message });
-    //}
+    
     var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
     if (string.IsNullOrEmpty(userId))
       throw new UnauthorizedAccessException("User ID not found in token.");

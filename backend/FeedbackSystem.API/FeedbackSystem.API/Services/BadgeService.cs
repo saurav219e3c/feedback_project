@@ -10,12 +10,12 @@ namespace FeedbackSystem.API.Services
 
         public BadgeService(IBadgeRepository repo) => _repo = repo;
 
-        // ── helpers ─────────────────────────────────────────────────────────
+        // ── helpers
 
         private static BadgeDto ToDto(Badge b) =>
             new BadgeDto(b.BadgeId, b.BadgeName, b.Description, b.IconClass, b.IsActive, b.CreatedAt);
 
-        // ── queries ──────────────────────────────────────────────────────────
+        // ── queries 
 
         public async Task<BadgeDto?> GetByIdAsync(string badgeId, CancellationToken ct = default)
         {
@@ -42,7 +42,7 @@ namespace FeedbackSystem.API.Services
             return await _repo.GetTotalCountAsync(ct);
         }
 
-        // ── commands ─────────────────────────────────────────────────────────
+        // ── commands 
 
         public async Task<BadgeDto> CreateAsync(CreateBadgeDto dto, CancellationToken ct = default)
         {

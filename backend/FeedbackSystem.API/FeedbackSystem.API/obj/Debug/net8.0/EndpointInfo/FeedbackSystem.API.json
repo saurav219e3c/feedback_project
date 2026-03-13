@@ -2412,17 +2412,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/MyRecognitionSubmitResultDto"
+                  "$ref": "#/components/schemas/MyRecognitionResponseDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MyRecognitionSubmitResultDto"
+                  "$ref": "#/components/schemas/MyRecognitionResponseDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/MyRecognitionSubmitResultDto"
+                  "$ref": "#/components/schemas/MyRecognitionResponseDto"
                 }
               }
             }
@@ -2450,7 +2450,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/MyRecognitionDto"
+                    "$ref": "#/components/schemas/MyAllRecognitionItemDto"
                   }
                 }
               },
@@ -2458,7 +2458,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/MyRecognitionDto"
+                    "$ref": "#/components/schemas/MyAllRecognitionItemDto"
                   }
                 }
               },
@@ -2466,7 +2466,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/MyRecognitionDto"
+                    "$ref": "#/components/schemas/MyAllRecognitionItemDto"
                   }
                 }
               }
@@ -3635,6 +3635,52 @@
         },
         "additionalProperties": false
       },
+      "MyAllRecognitionItemDto": {
+        "type": "object",
+        "properties": {
+          "recognitionId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fromUserId": {
+            "type": "string",
+            "nullable": true
+          },
+          "fromUserName": {
+            "type": "string",
+            "nullable": true
+          },
+          "toUserId": {
+            "type": "string",
+            "nullable": true
+          },
+          "toUserName": {
+            "type": "string",
+            "nullable": true
+          },
+          "badgeId": {
+            "type": "string",
+            "nullable": true
+          },
+          "badgeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "points": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
       "MyFeedbackDto": {
         "type": "object",
         "properties": {
@@ -3642,15 +3688,15 @@
             "type": "integer",
             "format": "int32"
           },
-          "direction": {
+          "fromUserId": {
             "type": "string",
             "nullable": true
           },
-          "otherUserId": {
+          "toUserId": {
             "type": "string",
             "nullable": true
           },
-          "otherUserName": {
+          "fromUserName": {
             "type": "string",
             "nullable": true
           },
@@ -3715,44 +3761,23 @@
         },
         "additionalProperties": false
       },
-      "MyRecognitionDto": {
+      "MyRecognitionResponseDto": {
         "type": "object",
         "properties": {
           "recognitionId": {
             "type": "integer",
             "format": "int32"
           },
-          "direction": {
-            "type": "string",
-            "nullable": true
+          "success": {
+            "type": "boolean"
           },
-          "otherUserId": {
-            "type": "string",
-            "nullable": true
-          },
-          "otherUserName": {
-            "type": "string",
-            "nullable": true
-          },
-          "badgeId": {
-            "type": "string",
-            "nullable": true
-          },
-          "badgeName": {
+          "message": {
             "type": "string",
             "nullable": true
           },
           "points": {
             "type": "integer",
             "format": "int32"
-          },
-          "message": {
-            "type": "string",
-            "nullable": true
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
           }
         },
         "additionalProperties": false
@@ -3775,27 +3800,6 @@
           "message": {
             "type": "string",
             "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "MyRecognitionSubmitResultDto": {
-        "type": "object",
-        "properties": {
-          "recognitionId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "success": {
-            "type": "boolean"
-          },
-          "message": {
-            "type": "string",
-            "nullable": true
-          },
-          "pointsAwarded": {
-            "type": "integer",
-            "format": "int32"
           }
         },
         "additionalProperties": false

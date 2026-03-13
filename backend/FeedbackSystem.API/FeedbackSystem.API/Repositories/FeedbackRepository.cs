@@ -110,7 +110,7 @@ namespace FeedbackSystem.API.Repositories
       return (items, total);
     }
 
-    // ✅ Count-only (same filters, no projection/paging)
+    // Count-only (same filters, no projection/paging)
     public Task<int> CountAllAsync(
         DateTime? from, DateTime? to, string? categoryId, string? search, string? departmentScopeId,
         string? fromUserId, string? toUserId, CancellationToken ct)
@@ -163,11 +163,11 @@ namespace FeedbackSystem.API.Repositories
       return q;
     }
 
-    // ✅ Total count across entire system
+    // Total count across entire system
     public Task<int> GetTotalCountAsync(CancellationToken ct) =>
         _db.Feedbacks.CountAsync(ct);
 
-    // ✅ Category statistics
+    // Category statistics
     public async Task<IReadOnlyList<CategoryStatsDto>> GetByCategoryAsync(
         DateTime? from, DateTime? to, string? departmentScopeId, string? userId, CancellationToken ct)
     {

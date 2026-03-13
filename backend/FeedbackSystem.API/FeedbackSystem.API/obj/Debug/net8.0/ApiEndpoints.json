@@ -1495,7 +1495,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "FeedbackSystem.API.DTOs.MyRecognitionSubmitResultDto",
+        "Type": "FeedbackSystem.API.DTOs.MyRecognitionResponseDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1521,7 +1521,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.List\u00601[[FeedbackSystem.API.DTOs.MyRecognitionDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[FeedbackSystem.API.DTOs.MyAllRecognitionItemDto, FeedbackSystem.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
