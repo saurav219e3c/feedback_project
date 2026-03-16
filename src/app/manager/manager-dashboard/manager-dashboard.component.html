@@ -1,0 +1,171 @@
+<div class="min-h-screen bg-slate-50 p-4 md:p-8">
+  
+  <!-- Error Alert -->
+  <div *ngIf="errorMessage" class="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg flex items-center justify-between">
+    <div class="flex items-center gap-2 text-red-700">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      </svg>
+      <span class="text-sm font-medium">{{ errorMessage }}</span>
+    </div>
+    <button (click)="refreshData()" class="text-sm font-medium text-red-600 hover:text-red-800">Retry</button>
+  </div>
+
+  <header class="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+    <div>
+      <h1 class="text-2xl font-bold text-slate-800 tracking-tight">Performance Dashboard</h1>
+    </div>
+    <div class="flex items-center gap-2">
+      <button (click)="refreshData()" 
+        class="flex items-center gap-2 bg-white border border-slate-200 px-4 py-2 rounded-lg text-sm font-medium text-slate-600 shadow-sm transition-all duration-200 hover:text-blue-600 active:scale-95"
+        [disabled]="isLoading">
+        <svg class="w-4 h-4" [class.animate-spin]="isLoading" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+        </svg>
+        <span>{{ isLoading ? 'Loading...' : 'Refresh' }}</span>
+      </button>
+      <button (click)="downloadReport()" 
+        class="flex items-center gap-2 bg-white border border-slate-200 px-4 py-2 rounded-lg text-sm font-medium text-slate-600 shadow-sm transition-all duration-200 hover:text-blue-600 active:scale-95">
+        <svg class="w-4 h-4 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+        </svg>
+        <span>Download Report</span>
+      </button>
+    </div>
+  </header>
+
+  <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow group">
+      <div class="flex items-center justify-between mb-4">
+        <div class="p-3 bg-blue-50 rounded-xl group-hover:bg-blue-600 transition-colors">
+          <svg class="w-6 h-6 text-blue-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path></svg>
+        </div>
+        <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-full">Total</span>
+      </div>
+      <h3 class="text-slate-500 text-sm font-medium">Total Feedback</h3>
+      <p class="text-3xl font-bold text-slate-900 mt-1">{{ display.totalFeedback }}</p>
+    </div>
+
+    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow group">
+      <div class="flex items-center justify-between mb-4">
+        <div class="p-3 bg-amber-50 rounded-xl group-hover:bg-amber-500 transition-colors">
+          <svg class="w-6 h-6 text-amber-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        </div>
+        <span class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-1 rounded-full">Action Required</span>
+      </div>
+      <h3 class="text-slate-500 text-sm font-medium">Pending Reviews</h3>
+      <p class="text-3xl font-bold text-slate-900 mt-1">{{ display.pendingReviews }}</p> 
+    </div>
+
+    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow group">
+      <div class="flex items-center justify-between mb-4">
+        <div class="p-3 bg-emerald-50 rounded-xl group-hover:bg-emerald-500 transition-colors">
+          <svg class="w-6 h-6 text-emerald-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+        </div>
+        <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">Score</span>
+      </div>
+      <h3 class="text-slate-500 text-sm font-medium">Engagement Score</h3>
+      <p class="text-3xl font-bold text-slate-900 mt-1">{{ display.engagementScore }}%</p> 
+    </div>
+
+    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:shadow-md transition-shadow group">
+      <div class="flex items-center justify-between mb-4">
+        <div class="p-3 bg-purple-50 rounded-xl group-hover:bg-purple-600 transition-colors">
+          <svg class="w-6 h-6 text-purple-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        </div>
+        <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2 py-1 rounded-full">Processed</span>
+      </div>
+      <h3 class="text-slate-500 text-sm font-medium">Processed Feedback</h3>
+      <p class="text-3xl font-bold text-slate-900 mt-1">{{ display.processedFeedback }}</p>
+      <div class="mt-2 flex items-center gap-2 text-xs text-slate-500">
+        <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded">{{ display.acknowledged }} Ack</span>
+        <span class="bg-green-100 text-green-700 px-2 py-1 rounded">{{ display.resolved }} Res</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+    
+    <div class="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-slate-100 flex flex-col overflow-hidden" style="height: 450px;">
+      <div class="p-6 border-b border-slate-50 shrink-0">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="font-bold text-slate-800">Feedback Distribution</h3>
+            <span class="text-xs font-semibold text-slate-400">By Category</span>
+          </div>
+          <div class="flex bg-slate-100 p-1 rounded-lg">
+            <button *ngFor="let s of ['All', 'Pending', 'Resolved']"
+              (click)="onFilterChange(s)"
+              [ngClass]="statusFilter === s ? 'bg-white text-blue-600 shadow-sm' : 'text-slate-500'"
+              class="px-3 py-1 text-[10px] font-bold rounded-md transition-all">
+              {{ s }}
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="p-6 overflow-y-auto flex-1">
+        <div class="space-y-6">
+          <ng-container *ngIf="categoryData.length > 0; else noData">
+            <div *ngFor="let item of categoryData" class="group">
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-sm font-medium text-slate-700">{{ item.name }}</span>
+                <span class="text-xs text-slate-500 font-bold">{{ item.count }} reports ({{ item.percent }}%)</span>
+              </div>
+              <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                <div class="h-full rounded-full transition-all duration-1000 ease-out"
+                     [ngClass]="item.colorClass"
+                     [style.width.%]="item.percent"></div>
+              </div>
+            </div>
+          </ng-container>
+
+          <ng-template #noData>
+            <div class="py-12 flex flex-col items-center justify-center text-slate-400">
+              <p class="text-sm font-medium italic">No feedback for this status</p>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 flex flex-col overflow-hidden" style="height: 450px;">
+      <div class="p-6 border-b border-slate-50 shrink-0">
+        <h3 class="font-bold text-slate-800 mb-3">Recent Activity</h3>
+        <input type="text" [(ngModel)]="searchQuery" placeholder="Search logs..." class="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-100 rounded-lg focus:outline-none focus:ring-1 focus:ring-indigo-500">
+      </div>
+      
+      <div class="p-6 overflow-y-auto flex-1">
+        <ul class="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px before:h-full before:w-0.5 before:bg-slate-100">
+          <li *ngFor="let item of filteredActivities | slice:0:10" class="relative flex items-start gap-4">
+            <div class="flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 shrink-0 z-10" 
+                 [ngClass]="{
+                   'border-blue-500': item.colorClass === 'blue',
+                   'border-emerald-500': item.colorClass === 'emerald',
+                   'border-amber-500': item.colorClass === 'amber'
+                 }">
+              <div class="w-2 h-2 rounded-full" 
+                   [ngClass]="{
+                     'bg-blue-500': item.colorClass === 'blue',
+                     'bg-emerald-500': item.colorClass === 'emerald',
+                     'bg-amber-500': item.colorClass === 'amber'
+                   }"></div>
+            </div>
+            <div class="flex-1">
+              <div class="flex justify-between items-start">
+                <p class="text-sm font-semibold text-slate-800">{{ item.title }}</p>
+                <span class="text-[10px] font-bold text-indigo-500 uppercase">{{ item.time }}</span>
+              </div>
+              <p class="text-xs text-slate-500 font-medium">{{ item.userName }}</p>
+              <p class="text-[11px] text-slate-400 mt-1 leading-tight">{{ item.detail }}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <a routerLink="/manager/feedback" class="p-4 text-sm font-semibold text-indigo-600 hover:bg-slate-50 border-t text-center shrink-0">
+        View All Activity
+      </a>
+    </div>
+  </section>
+</div>

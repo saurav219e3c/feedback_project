@@ -47,8 +47,9 @@ namespace FeedbackSystem.API.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(20)");
 
                     b.HasKey("ActivityId");
 
@@ -81,13 +82,48 @@ namespace FeedbackSystem.API.Migrations
                     b.ToTable("AppSettings", (string)null);
                 });
 
+            modelBuilder.Entity("FeedbackSystem.API.Entities.Badge", b =>
+                {
+                    b.Property<string>("BadgeId")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("BadgeName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(225)
+                        .HasColumnType("nvarchar(225)");
+
+                    b.Property<string>("IconClass")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
+                    b.HasKey("BadgeId");
+
+                    b.HasIndex("BadgeName")
+                        .IsUnique();
+
+                    b.ToTable("Badges", (string)null);
+                });
+
             modelBuilder.Entity("FeedbackSystem.API.Entities.Category", b =>
                 {
-                    b.Property<int>("CategoryId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"));
+                    b.Property<string>("CategoryId")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("CategoryName")
                         .IsRequired()
@@ -116,6 +152,39 @@ namespace FeedbackSystem.API.Migrations
                     b.ToTable("Categories", (string)null);
                 });
 
+            modelBuilder.Entity("FeedbackSystem.API.Entities.Department", b =>
+                {
+                    b.Property<string>("DepartmentId")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<string>("DepartmentName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(225)
+                        .HasColumnType("nvarchar(225)");
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
+                    b.HasKey("DepartmentId");
+
+                    b.HasIndex("DepartmentName")
+                        .IsUnique();
+
+                    b.ToTable("Departments", (string)null);
+                });
+
             modelBuilder.Entity("FeedbackSystem.API.Entities.Feedback", b =>
                 {
                     b.Property<int>("FeedbackId")
@@ -124,8 +193,9 @@ namespace FeedbackSystem.API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FeedbackId"));
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
+                    b.Property<string>("CategoryId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Comments")
                         .IsRequired()
@@ -136,16 +206,18 @@ namespace FeedbackSystem.API.Migrations
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("GETDATE()");
 
-                    b.Property<int>("FromUserId")
-                        .HasColumnType("int");
+                    b.Property<string>("FromUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<bool>("IsAnonymous")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
                         .HasDefaultValue(false);
 
-                    b.Property<int>("ToUserId")
-                        .HasColumnType("int");
+                    b.Property<string>("ToUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(20)");
 
                     b.HasKey("FeedbackId");
 
@@ -181,8 +253,13 @@ namespace FeedbackSystem.API.Migrations
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("GETDATE()");
 
-                    b.Property<int>("ReviewedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("ReviewedBy")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("ReviewerUserId")
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -193,7 +270,7 @@ namespace FeedbackSystem.API.Migrations
 
                     b.HasIndex("FeedbackId");
 
-                    b.HasIndex("ReviewedBy");
+                    b.HasIndex("ReviewerUserId");
 
                     b.ToTable("FeedbackReview", (string)null);
                 });
@@ -224,8 +301,9 @@ namespace FeedbackSystem.API.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(20)");
 
                     b.HasKey("NotificationId");
 
@@ -242,30 +320,45 @@ namespace FeedbackSystem.API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RecognitionId"));
 
+                    b.Property<string>("BadgeId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(20)");
+
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("GETDATE()");
 
-                    b.Property<int>("FromUserId")
-                        .HasColumnType("int");
+                    b.Property<string>("FromUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Message")
                         .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<int>("ToUserId")
+                    b.Property<int>("Points")
                         .HasColumnType("int");
 
+                    b.Property<string>("ToUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(20)");
+
                     b.HasKey("RecognitionId");
+
+                    b.HasIndex("BadgeId")
+                        .HasDatabaseName("IX_Recognition_BadgeId");
 
                     b.HasIndex("FromUserId");
 
                     b.HasIndex("ToUserId")
                         .HasDatabaseName("IX_Recognition_ToUserId");
 
-                    b.ToTable("Recognition", (string)null);
+                    b.ToTable("Recognition", null, t =>
+                        {
+                            t.HasCheckConstraint("CK_Recognition_Points_Range", "[Points] BETWEEN 1 AND 10");
+                        });
                 });
 
             modelBuilder.Entity("FeedbackSystem.API.Entities.Role", b =>
@@ -301,16 +394,19 @@ namespace FeedbackSystem.API.Migrations
 
             modelBuilder.Entity("FeedbackSystem.API.Entities.User", b =>
                 {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
+                    b.Property<string>("UserId")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<string>("DepartmentId")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -332,10 +428,16 @@ namespace FeedbackSystem.API.Migrations
                         .HasMaxLength(225)
                         .HasColumnType("nvarchar(225)");
 
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
 
                     b.HasKey("UserId");
+
+                    b.HasIndex("DepartmentId")
+                        .HasDatabaseName("IX_Users_DepartmentId");
 
                     b.HasIndex("Email")
                         .IsUnique();
@@ -392,16 +494,12 @@ namespace FeedbackSystem.API.Migrations
                     b.HasOne("FeedbackSystem.API.Entities.Feedback", "Feedback")
                         .WithMany("Reviews")
                         .HasForeignKey("FeedbackId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired()
-                        .HasConstraintName("FK_FeedbackReview_Feedback");
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("FeedbackSystem.API.Entities.User", "Reviewer")
                         .WithMany("ReviewsDone")
-                        .HasForeignKey("ReviewedBy")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired()
-                        .HasConstraintName("FK_FeedbackReview_User");
+                        .HasForeignKey("ReviewerUserId");
 
                     b.Navigation("Feedback");
 
@@ -422,6 +520,13 @@ namespace FeedbackSystem.API.Migrations
 
             modelBuilder.Entity("FeedbackSystem.API.Entities.Recognition", b =>
                 {
+                    b.HasOne("FeedbackSystem.API.Entities.Badge", "Badge")
+                        .WithMany("Recognitions")
+                        .HasForeignKey("BadgeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_Recognition_Badge");
+
                     b.HasOne("FeedbackSystem.API.Entities.User", "FromUser")
                         .WithMany("RecognitionsFrom")
                         .HasForeignKey("FromUserId")
@@ -436,6 +541,8 @@ namespace FeedbackSystem.API.Migrations
                         .IsRequired()
                         .HasConstraintName("FK_Recognition_ToUser");
 
+                    b.Navigation("Badge");
+
                     b.Navigation("FromUser");
 
                     b.Navigation("ToUser");
@@ -443,6 +550,13 @@ namespace FeedbackSystem.API.Migrations
 
             modelBuilder.Entity("FeedbackSystem.API.Entities.User", b =>
                 {
+                    b.HasOne("FeedbackSystem.API.Entities.Department", "Department")
+                        .WithMany("Users")
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("FK_Users_Departments");
+
                     b.HasOne("FeedbackSystem.API.Entities.Role", "Role")
                         .WithMany("Users")
                         .HasForeignKey("RoleId")
@@ -450,12 +564,24 @@ namespace FeedbackSystem.API.Migrations
                         .IsRequired()
                         .HasConstraintName("FK_Users_Roles");
 
+                    b.Navigation("Department");
+
                     b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("FeedbackSystem.API.Entities.Badge", b =>
+                {
+                    b.Navigation("Recognitions");
                 });
 
             modelBuilder.Entity("FeedbackSystem.API.Entities.Category", b =>
                 {
                     b.Navigation("Feedbacks");
+                });
+
+            modelBuilder.Entity("FeedbackSystem.API.Entities.Department", b =>
+                {
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("FeedbackSystem.API.Entities.Feedback", b =>

@@ -1,0 +1,178 @@
+
+<!-- Full-bleed background layer (same theme as Category Management) -->
+<div class="dept-bg"></div>
+
+<!-- Foreground content on top of the background -->
+<div class="dept-container">
+  <!-- Header: Title + Add Department button -->
+  <div class="dept-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+    <h3 class="mb-0 dept-title">Department Management</h3>
+
+    <div class="header-actions">
+      <button type="button" class="btn-add" (click)="startAdd()" *ngIf="!addMode()">
+        + Add Department
+      </button>
+    </div>
+  </div>
+
+  <!-- Loading/Error states -->
+  <div class="dept-card p-3 mb-3" *ngIf="loading()">
+    <div class="text-center text-muted">Loading...</div>
+  </div>
+  <div class="dept-card p-3 mb-3" *ngIf="error()">
+    <div class="text-center text-danger">{{ error() }}</div>
+  </div>
+
+  <!-- ✅ Inline Add/Edit form (now placed ABOVE the table) -->
+  <div class="dept-card p-3 mb-3" *ngIf="addMode()">
+    <h6 class="mb-3">Add Department</h6>
+
+    <form [formGroup]="addForm" (ngSubmit)="saveAdd()" class="row g-3">
+      <div class="col-md-5">
+        <label class="form-label">Department Name</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="departmentName"
+          placeholder="e.g., Engineering"
+          required
+        />
+      </div>
+
+      <div class="col-md-7">
+        <label class="form-label">Description</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="description"
+          placeholder="Short description"
+        />
+      </div>
+
+      <div class="col-12 d-flex gap-2 justify-content-end">
+        <button type="button" class="btn-secondary" (click)="cancelAdd()">Cancel</button>
+        <button type="submit" class="btn-primary" [disabled]="addForm.invalid">
+          Add
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Table card -->
+  <div class="dept-card p-0">
+    <div class="table-responsive">
+      <table class="table table-sm dept-table mb-0">
+        <thead>
+          <tr>
+            <th scope="col">Department Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Department ID</th>
+            <th scope="col">Status</th>
+            <th scope="col" class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let d of departments(); trackBy: trackById">
+            <!-- View mode -->
+            <ng-container *ngIf="editRowId() !== d.departmentId">
+              <td class="fw-semibold">{{ d.departmentName }}</td>
+              <td class="text-muted">{{ d.description }}</td>
+              <td><code>{{ d.departmentId | uppercase}}</code></td>
+
+              <!-- Status -->
+              <td>
+                <span
+                  class="badge"
+                  [class.bg-success]="d.isActive"
+                  [class.bg-secondary]="!d.isActive"
+                >
+                  {{ d.isActive ? 'Active' : 'Inactive' }}
+                </span>
+              </td>
+
+              <!-- Actions: Update + Delete -->
+              <td class="text-center">
+                <button
+                  class="icon-btn"
+                  title="Update"
+                  (click)="startEdit(d)"
+                  aria-label="Update department"
+                >
+                  ✎
+                </button>
+
+                <button
+                  class="icon-btn icon-btn-danger"
+                  title="Delete"
+                  (click)="delete(d)"
+                  aria-label="Delete department"
+                >
+                  🗑
+                </button>
+              </td>
+            </ng-container>
+
+            <!-- Edit mode -->
+            <ng-container *ngIf="editRowId() === d.departmentId">
+              <td>
+                <input
+                  type="text"
+                  class="form-control form-control-sm"
+                  [formControl]="editForm.controls.departmentName"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  class="form-control form-control-sm"
+                  [formControl]="editForm.controls.description"
+                />
+              </td>
+              <td><code>{{ d.departmentId }}</code></td>
+              <td>
+                <span
+                  class="badge"
+                  [class.bg-success]="d.isActive"
+                  [class.bg-secondary]="!d.isActive"
+                >
+                  {{ d.isActive ? 'Active' : 'Inactive' }}
+                </span>
+              </td>
+              <td class="text-center">
+                <button
+                  class="icon-btn icon-btn-success"
+                  title="Save"
+                  (click)="saveEdit(d)"
+                  [disabled]="editForm.invalid"
+                  aria-label="Save changes"
+                >
+                  ✓
+                </button>
+
+                <button
+                  class="icon-btn"
+                  title="Cancel"
+                  (click)="cancelEdit()"
+                  aria-label="Cancel edit"
+                >
+                  ✕
+                </button>
+              </td>
+            </ng-container>
+          </tr>
+
+          <!-- Empty state -->
+          <tr *ngIf="!loading() && !departments().length">
+            <td colspan="5">
+              <div class="empty-state">
+                <div class="empty-icon">🏢</div>
+                <p class="mb-1">No departments available.</p>
+                <small class="text-muted">Click "Add Department" to create one.</small>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

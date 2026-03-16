@@ -1,0 +1,90 @@
+<div class="viewport-register">
+  <div class="glass-card">
+    
+    <div class="side-panel branding">
+      <div class="branding-overlay">
+        <h1>Welcome</h1>
+        <p>Join our centralized portal for feedback and professional growth.</p>
+      </div>
+    </div>
+
+    <div class="side-panel form-content">
+      <div class="content-wrapper">
+        <div class="header-area">
+          <h2>Create Account</h2>
+          <!-- <span class="role-tag" *ngIf="roleFromLogin">{{ roleFromLogin | titlecase }} Registration</span> -->
+          <span class="role-tag" >{{ "employee"| titlecase }} Registration</span>
+        </div>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="register-form" novalidate>
+          <div class="grid">
+            <div class="field">
+              <label>User ID</label>
+              <input type="text" formControlName="userId" placeholder="ABC1234" />
+              <small class="error" *ngIf="f['userId'].touched && f['userId'].invalid">
+                Format: 3 letters + 4 digits (e.g. ABC1234)
+              </small>
+            </div>
+
+            <div class="field">
+              <label>Full Name</label>
+              <input type="text" formControlName="name" placeholder="John Doe" />
+              <small class="error" *ngIf="f['name'].touched && f['name'].invalid">Name is required</small>
+            </div>
+
+            <div class="field">
+              <label>Email Address</label>
+              <input type="email" formControlName="email" placeholder="name@company.com" />
+              <small class="error" *ngIf="f['email'].touched && f['email'].invalid">Valid email required</small>
+            </div>
+
+            <!-- <div class="field">
+              <label>Role</label>
+              <select formControlName="role">
+                <option>{{ "employee" | titlecase }}</option>?
+                <option *ngFor="let r of roles" [value]="r">{{ r | titlecase }}</option>?
+              </select>
+            </div> -->
+
+            <div class="field">
+              <label>Department</label>
+              <select formControlName="department">
+                <option value="" disabled>Select department</option>
+                <option *ngFor="let d of departments" [value]="d.departmentId">{{ d.departmentName }}</option>
+              </select>
+              <small class="error" *ngIf="f['department'].touched && f['department'].invalid">
+                Department is required
+              </small>
+            </div>
+            
+            <div class="field">
+              <label>Password</label>
+              <input type="password" formControlName="password" placeholder="••••••••" />
+              <small class="error" *ngIf="f['password'].touched && f['password'].invalid">
+                Min 6 chars, 1 uppercase, 1 digit, 1 special char.
+              </small>
+            </div>
+
+            <div class="field">
+              <label>Confirm Password</label>
+              <input type="password" formControlName="confirmPassword" placeholder="••••••••" />
+              <small class="error" *ngIf="f['confirmPassword'].touched && form.errors?.['passwordMismatch']">
+                Passwords do not match.
+              </small>
+            </div>
+          </div>
+
+          <button type="submit" class="register-btn" [disabled]="form.invalid">Sign Up</button>
+        </form>
+
+        <div class="action-footer">
+          <button class="text-link" type="button" (click)="goToLogin()">Already have an account? Login</button>
+          <button class="manager-link" type="button" (click)="goToManagerRegister()">
+            👔 Register as Manager
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

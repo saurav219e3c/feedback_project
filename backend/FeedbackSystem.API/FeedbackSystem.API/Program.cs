@@ -10,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // --------------------------------------------------
@@ -124,7 +125,15 @@ builder.Services.AddSwaggerGen(c =>
 // --------------------------------------------------
 // AutoMapper
 // --------------------------------------------------
-builder.Services.AddAutoMapper(typeof(MappingProfile));
+// Add this instead:
+builder.Services.AddAutoMapper(cfg =>
+{
+  // This is the critical fix for the MaxInteger error
+  cfg.ShouldMapMethod = m => false;
+
+  // Register your profile
+  cfg.AddProfile<MappingProfile>();
+}, typeof(Program).Assembly);
 
 // --------------------------------------------------
 // Dependency Injection: Repositories & Services
@@ -132,10 +141,33 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 
+builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+builder.Services.AddScoped<IDepartmentService, DepartmentService>();
+
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUserService, UserService>();
+
+builder.Services.AddScoped<IFeedbackRepository, FeedbackRepository>();
+builder.Services.AddScoped<IRecognitionRepository, RecognitionRepository>();
+builder.Services.AddScoped<IBadgeRepository, BadgeRepository>();
+builder.Services.AddScoped<IBadgeService, BadgeService>();
+builder.Services.AddScoped<IInsightsService, InsightsService>();
+builder.Services.AddScoped<ISentimentService, SentimentService>();
+builder.Services.AddScoped<IDashboardService, DashboardService>();
+builder.Services.AddScoped<IManagerService, ManagerService>();
+
+builder.Services.AddScoped<IActivityRepository, ActivityRepository>();
+builder.Services.AddScoped<IActivityService, ActivityService>();
+
+builder.Services.AddScoped<ISettingsRepository, SettingsRepository>();
+builder.Services.AddScoped<ISettingsService, SettingsService>();
+
+builder.Services.AddScoped<IMyDataService, MyDataService>();
+builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
+builder.Services.AddScoped<INotificationService, NotificationService>();
+
 
 // --------------------------------------------------
 // Build the Application

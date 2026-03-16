@@ -1,0 +1,225 @@
+
+/* Layout containers */
+.layout {
+  display: flex;
+  min-height: calc(100vh - 56px); /* minus topbar height */
+  background: #f8fafc; /* subtle app background */
+}
+
+/* Topbar */
+.topbar {
+  height: 56px;
+  padding: 0 12px;
+  border-bottom: 1px solid #e5e7eb;
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 1001; /* above sidebar */
+}
+.topbar-title {
+  font-size: 1rem;
+  margin: 0 0 0 8px;
+}
+
+/* Hamburger button (three lines) */
+.hamburger {
+  background: transparent;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #111827; /* dark lines */
+  border-radius: 2px;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  position: fixed;
+  top: 56px; /* below topbar */
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%); /* hidden by default on mobile */
+  transition: transform 200ms ease;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+/* Show when toggled */
+.sidebar.open {
+  transform: translateX(0);
+}
+
+/* Main content */
+.content {
+  flex: 1;
+  padding: 16px;
+  margin-left: 0; /* mobile default */
+}
+
+/* Backdrop for mobile */
+.backdrop {
+  position: fixed;
+  inset: 56px 0 0 0; /* below topbar */
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 999; /* below sidebar */
+}
+
+/* Desktop behavior: sidebar always visible */
+@media (min-width: 1400px) { /* Bootstrap lg breakpoint */
+  .sidebar {
+    position: sticky;
+    top: 56px;
+    transform: none !important; /* always shown */
+  }
+  .content {
+    margin-left: 260px; /* reserve space for sidebar */
+  }
+  .backdrop {
+    display: none !important;
+  }
+}
+/* Profile Icon Styling */
+.profile-icon {
+  width: 38px;
+  height: 38px;
+  background-color: #15803d; /* Tailwind green-700 */
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.profile-icon:hover {
+  transform: scale(1.05);
+}
+
+/* Notification Badge */
+.badge-notify {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #dc3545;
+  color: white;
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+/* Square Profile Popup */
+.profile-popup {
+  position: absolute;
+  right: 0;
+  top: 45px;
+  width: 220px;
+  background: white;
+  z-index: 1100;
+  animation: slideIn 0.2s ease-out;
+}
+
+.popup-header {
+  padding: 15px;
+  border-bottom: 1px solid #f1f5f9;
+  text-align: center;
+}
+
+.popup-header .name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin: 0;
+  color: #1e293b;
+}
+
+.popup-header .email {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.action-btn {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #475569;
+  border: none;
+  padding: 8px 12px;
+}
+
+.action-btn:hover {
+  background-color: #f8fafc;
+  color: #4f46e5;
+}
+
+.action-btn.logout {
+  color: #dc3545;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.cursor-pointer { cursor: pointer; }
+
+/* Notification Popup Styles */
+.notification-popup {
+  position: absolute;
+  right: 0;
+  top: 45px;
+  width: 320px;
+  max-height: 400px;
+  background: white;
+  z-index: 1100;
+  animation: slideIn 0.2s ease-out;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.notification-list {
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.notification-item {
+  transition: background-color 0.15s ease;
+}
+
+.notification-item:hover {
+  background-color: #f8fafc;
+}
+
+.notification-item.unread {
+  background-color: #eff6ff;
+  border-left: 3px solid #3b82f6;
+}
+
+.notification-item.unread:hover {
+  background-color: #dbeafe;
+}
+
+.notification-box {
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.15s ease;
+}
+
+.notification-box:hover {
+  background-color: #f1f5f9;
+}

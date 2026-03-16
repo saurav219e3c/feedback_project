@@ -1,0 +1,137 @@
+
+<!-- Full-bleed background layer (same theme as User Management) -->
+<div class="cat-bg"></div>
+
+<!-- Foreground content on top of the background -->
+<div class="cat-container">
+  <!-- Header: Title + Add Category button -->
+  <div class="cat-header d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+    <h3 class="mb-0 cat-title">Category Management</h3>
+
+    <div class="header-actions">
+      <button type="button" class="btn-add" (click)="openAddForm()">
+        + Add Category
+      </button>
+    </div>
+  </div>
+
+  <!-- ✅ Inline Add/Edit form (now placed ABOVE the table) -->
+  <div class="cat-card p-3 mb-3" *ngIf="formOpen">
+    <h6 class="mb-3">{{ editIndex === null ? 'Add Category' : 'Update Category' }}</h6>
+
+    <!-- Show current ID in Update mode (read-only) -->
+    <div *ngIf="editIndex !== null" class="mb-2">
+      <small class="text-muted">Category ID:</small>
+      <div><code>{{ formModel.id }}</code></div>
+    </div>
+
+    <form (ngSubmit)="saveCategory()" class="row g-3">
+      <div class="col-md-5">
+        <label class="form-label">Category Name</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="formModel.name"
+          name="name"
+          placeholder="e.g., Communication Skills"
+          required
+        />
+      </div>
+
+      <div class="col-md-7">
+        <label class="form-label">Description</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="formModel.description"
+          name="description"
+          placeholder="Short description"
+          required
+        />
+      </div>
+
+      <div class="col-12 d-flex gap-2 justify-content-end">
+        <button type="button" class="btn-secondary" (click)="closeForm()">Cancel</button>
+        <button type="submit" class="btn-primary">
+          {{ editIndex === null ? 'Add' : 'Update' }}
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Table card -->
+  <div class="cat-card p-0">
+    <div class="table-responsive">
+      <table class="table table-sm cat-table mb-0">
+        <thead>
+          <tr>
+            <th scope="col">Category Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Category ID</th>
+            <th scope="col">Status</th>
+            <th scope="col" class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cat of categories; let i = index">
+            <td class="fw-semibold">{{ cat.name }}</td>
+            <td class="text-muted">{{ cat.description }}</td>
+            <td><code>{{ cat.id }}</code></td>
+
+            <!-- Status derived from disabled -->
+            <td>
+              <span
+                class="badge"
+                [class.bg-success]="!cat.disabled"
+                [class.bg-secondary]="cat.disabled"
+              >
+                {{ cat.disabled ? 'Inactive' : 'Active' }}
+              </span>
+            </td>
+
+            <!-- Actions: Update + Disable/Enable -->
+            <td class="text-center">
+              <button
+                class="icon-btn"
+                title="Update"
+                (click)="editCategory(i)"
+                aria-label="Update category"
+              >
+                ✎
+              </button>
+
+              <button
+                class="icon-btn"
+                [title]="cat.disabled ? 'Enable' : 'Disable'"
+                (click)="toggleDisabled(i)"
+                [attr.aria-label]="cat.disabled ? 'Enable category' : 'Disable category'"
+              >
+                {{ cat.disabled ? '⟲' : '⛔' }}
+              </button>
+
+              <button
+                class="icon-btn icon-btn-danger"
+                title="Delete"
+                (click)="deleteCategory(i)"
+                aria-label="Delete category"
+              >
+                🗑
+              </button>
+            </td>
+          </tr>
+
+          <!-- Empty state -->
+          <tr *ngIf="!categories.length">
+            <td colspan="5">
+              <div class="empty-state">
+                <div class="empty-icon">📂</div>
+                <p class="mb-1">No categories available.</p>
+                <small class="text-muted">Click “Add Category” to create one.</small>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,169 @@
+
+/* Fill the entire viewport with a clean white/neutral background */
+.fill-window {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Background: subtle off-white gradient (no transparency) */
+.dashboard-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, #f7f9fc 0%, #eef2f7 100%);
+}
+
+/* Foreground content sits above background */
+.dashboard-theme,
+.content-area,
+.white-header,
+.white-card,
+.white-panel { position: relative; z-index: 1; }
+
+/* ---- Professional white header ---- */
+.white-header {
+  background: #ffffff !important;
+  border-color: #e6e9ee !important;
+}
+.white-header .h3, .white-header h1 {
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: #1a1a1a;
+  letter-spacing: 0.2px;
+}
+
+/* ---- White cards & panels with subtle borders and shadow ---- */
+.white-card,
+.white-panel {
+  background: #ffffff;
+  border: 2px solid #e6e9ee;
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+}
+
+/* Panel header & body */
+.white-panel-header {
+  background: #ffffff;
+  border-bottom: 1.5px solid #e6e9ee;
+}
+.white-panel-body {
+  background: #f9fbff; /* slight tint behind charts for separation */
+  border-radius: 10px;
+}
+
+/* List items over white */
+.white-list .list-group-item {
+  background: #ffffff;
+  border-color: #e6e9ee;
+  color: #1a1a1a;
+}
+
+/* ---- Bold typography ---- */
+.white-card .card-title,
+.white-panel-header strong {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #1a1a1a;
+}
+.white-card .display-6 {
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  color: #1a1a1a;
+}
+.white-list .fw-semibold { font-weight: 700; }
+
+/* ---- Buttons compact + active ring ---- */
+.card-header .btn-group .btn { padding: 0.25rem 0.7rem; font-weight: 600; }
+.card-header .btn-group .btn.active { box-shadow: inset 0 0 0 1px currentColor; }
+
+/* Feedback (blue) button accent */
+.theme-feedback .btn-outline-primary.active,
+.theme-feedback .btn-outline-primary:hover {
+  color: #fff !important;
+  background-color: #2F7BFF !important;
+  border-color: #2F7BFF !important;
+}
+.theme-feedback .btn-outline-secondary.active,
+.theme-feedback .btn-outline-secondary:hover {
+  color: #fff !important;
+  background-color: rgba(47, 123, 255, 0.2) !important;
+  border-color: #6AA6FF !important;
+}
+
+/* Recognition (saffron/orange) button accent */
+.theme-recognition .btn-outline-warning.active,
+.theme-recognition .btn-outline-warning:hover {
+  color: #111 !important;
+  background-color: #FFB300 !important;
+  border-color: #FFB300 !important;
+}
+.theme-recognition .btn-outline-secondary.active,
+.theme-recognition .btn-outline-secondary:hover {
+  color: #111 !important;
+  background-color: rgba(255, 143, 0, 0.2) !important;
+  border-color: #FF8F00 !important;
+}
+
+/* Canvas sizing */
+.card-body canvas { width: 100% !important; height: 260px !important; }
+
+/* Existing rules retained */
+.chart-min-h { min-height: 280px; }
+.list-group-item { padding-top: 0.65rem; padding-bottom: 0.65rem; }
+
+/* ===== DARK MODE ===== */
+:host-context(body.dark-theme) .dashboard-bg {
+  background: linear-gradient(180deg, #121212 0%, #1a1a1a 100%);
+}
+
+:host-context(body.dark-theme) .white-header {
+  background: #1e1e1e !important;
+  border-color: #333 !important;
+}
+
+:host-context(body.dark-theme) .white-header .h3,
+:host-context(body.dark-theme) .white-header h1 {
+  color: #e0e0e0;
+}
+
+:host-context(body.dark-theme) .white-card,
+:host-context(body.dark-theme) .white-panel {
+  background: #1e1e1e;
+  border: 2px solid #333;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+}
+
+:host-context(body.dark-theme) .white-panel-header {
+  background: #1e1e1e;
+  border-bottom: 1.5px solid #333;
+}
+
+:host-context(body.dark-theme) .white-panel-body {
+  background: #252525;
+}
+
+:host-context(body.dark-theme) .white-list .list-group-item {
+  background: #1e1e1e;
+  border-color: #333;
+  color: #e0e0e0;
+}
+
+:host-context(body.dark-theme) .white-card .card-title,
+:host-context(body.dark-theme) .white-panel-header strong {
+  color: #e0e0e0;
+}
+
+:host-context(body.dark-theme) .white-card .display-6 {
+  color: #e0e0e0;
+}
+
+:host-context(body.dark-theme) .white-list .fw-semibold {
+  color: #e0e0e0;
+}
+
+:host-context(body.dark-theme) .fill-window {
+  background: #121212;
+}

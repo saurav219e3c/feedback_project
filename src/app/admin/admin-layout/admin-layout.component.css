@@ -1,0 +1,276 @@
+/* ---------- Theme Variables ---------- */
+:root {
+  --bg-app: #f7f9fc;
+  --bg-card: #ffffff;
+  --bg-iconbar: #ffffff;
+
+  --border-soft: #e6e9ef;
+  --border-strong: #d7dce5;
+
+  --text-strong: #0f172a;
+  --text-medium: #334155;
+  --text-soft: #64748b;
+
+  --brand: #2563eb;
+  --brand-weak: #93c5fd;
+
+  --shadow-soft: 0 6px 18px rgba(15, 23, 42, 0.06);
+  --shadow-xs: 0 2px 8px rgba(15, 23, 42, 0.06);
+
+  --radius-md: 12px;
+  --radius-sm: 8px;
+}
+
+:host-context(body.dark-theme) {
+  --bg-app: #121212;
+  --bg-card: #1e1e1e;
+  --bg-iconbar: #1a1a1a;
+
+  --border-soft: #333;
+  --border-strong: #444;
+
+  --text-strong: #e0e0e0;
+  --text-medium: #b0b0b0;
+  --text-soft: #888;
+
+  --brand: #bb86fc;
+  --brand-weak: #9c64fc;
+
+  --shadow-soft: 0 6px 18px rgba(0, 0, 0, 0.4);
+  --shadow-xs: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ---------- App Layout ---------- */
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg-app);
+  position: relative;
+}
+
+/* ---------- Main content ---------- */
+.content {
+  flex: 1;
+  padding: 24px;
+  margin-right: 64px; /* leave space for right icon bar */
+}
+
+/* Card surface for router content */
+.card-surface {
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  padding: 16px;
+  min-height: 60vh;
+}
+
+/* ---------- Right Icon Bar ---------- */
+.icon-bar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 64px;
+  background: var(--bg-iconbar);
+  border-left: 1px solid var(--border-soft);
+  box-shadow: -4px 0 16px rgba(15, 23, 42, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 0;
+  gap: 4px;
+  z-index: 1000;
+  overflow: visible;
+}
+
+/* Spacer to push logout to bottom */
+.icon-spacer {
+  flex: 1;
+}
+
+/* Icon item */
+.icon-item {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  color: var(--text-soft);
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  overflow: visible;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.icon-item i {
+  font-size: 20px;
+  transition: color 180ms ease;
+}
+
+.icon-item:hover {
+  background: #f0f7ff;
+  color: #93c5fd;
+  border-color: #dbeafe;
+  transform: scale(1.08);
+}
+
+.icon-item:hover i {
+  color: #93c5fd;
+}
+
+.icon-item.active {
+  background: #eef2ff;
+  border-color: #c7d2fe;
+  color: #4338ca;
+}
+
+.icon-item.active i {
+  color: #4338ca;
+}
+
+.icon-item.active::before {
+  content: '';
+  position: absolute;
+  left: -1px;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  /* Using right side indicator since bar is on right */
+  left: auto;
+  right: -1px;
+  border-radius: 3px 0 0 3px;
+  background: #4338ca;
+}
+
+/* Logout item special styling */
+.logout-item:hover {
+  background: #fff5f5;
+  color: #fca5a5;
+  border-color: #fee2e2;
+}
+
+.logout-item:hover i {
+  color: #fca5a5;
+}
+
+/* ---------- Tooltip on hover ---------- */
+.icon-tooltip {
+  position: absolute;
+  right: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: #0f172a;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 180ms ease, visibility 180ms ease, transform 180ms ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  letter-spacing: 0.3px;
+}
+
+/* Tooltip arrow */
+.icon-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -5px;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-left-color: #0f172a;
+  border-right: none;
+}
+
+/* Show tooltip on hover */
+.icon-item:hover .icon-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(-4px);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 576px) {
+  .icon-bar {
+    width: 52px;
+    padding: 10px 0;
+  }
+
+  .icon-item {
+    width: 38px;
+    height: 38px;
+  }
+
+  .icon-item i {
+    font-size: 18px;
+  }
+
+  .content {
+    margin-right: 52px;
+    padding: 12px;
+  }
+}
+
+/* ---------- Dark mode ---------- */
+:host-context(body.dark-theme) .icon-bar {
+  box-shadow: -4px 0 16px rgba(0, 0, 0, 0.3);
+}
+
+:host-context(body.dark-theme) .icon-item:hover {
+  background: #2a2a2a;
+  color: #bb86fc;
+  border-color: #444;
+}
+
+:host-context(body.dark-theme) .icon-item:hover i {
+  color: #bb86fc;
+}
+
+:host-context(body.dark-theme) .icon-item.active {
+  background: #2d2040;
+  border-color: #5a3d8a;
+  color: #bb86fc;
+}
+
+:host-context(body.dark-theme) .icon-item.active i {
+  color: #bb86fc;
+}
+
+:host-context(body.dark-theme) .icon-item.active::before {
+  background: #bb86fc;
+}
+
+:host-context(body.dark-theme) .icon-tooltip {
+  background: #2a2a2a;
+  color: #e0e0e0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+:host-context(body.dark-theme) .icon-tooltip::after {
+  border-left-color: #2a2a2a;
+}
+
+:host-context(body.dark-theme) .logout-item:hover {
+  background: #2d1a1a;
+  color: #f87171;
+  border-color: #7f1d1d;
+}
+
+:host-context(body.dark-theme) .logout-item:hover i {
+  color: #f87171;
+}
+
+/* ---------- Theme Toggle ---------- */
+.theme-toggle-item {
+  cursor: pointer;
+}
+

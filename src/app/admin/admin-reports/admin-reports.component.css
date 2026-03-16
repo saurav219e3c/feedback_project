@@ -1,0 +1,148 @@
+.reports-container {
+  padding: 16px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.state {
+  padding: 16px;
+  border-radius: 8px;
+  background: #f1f5f9;
+  color: #0f172a;
+}
+.state.error {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+.card {
+  grid-column: span 4;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  min-height: 260px;
+}
+.card.wide { grid-column: span 8; }
+.card.tall { min-height: 340px; }
+
+.card-title {
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.card-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.date-selectors {
+  display: flex;
+  gap: 8px;
+}
+
+.month-select, .year-select {
+  padding: 4px 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
+}
+
+.month-select:focus, .year-select:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.chart {
+  position: relative;
+  flex: 1;
+  min-height: 200px;
+}
+
+.table-wrap {
+  overflow: auto;
+  max-height: 320px;
+}
+
+table.activities {
+  width: 100%;
+  border-collapse: collapse;
+}
+table.activities th, table.activities td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid #f1f5f9;
+}
+table.activities thead th {
+  position: sticky;
+  top: 0;
+  background: #f8fafc;
+  z-index: 1;
+}
+
+@media (max-width: 1200px) {
+  .card, .card.wide { grid-column: span 12; }
+}
+
+/* ===== DARK MODE ===== */
+:host-context(body.dark-theme) .reports-container {
+  color: #e0e0e0;
+}
+
+:host-context(body.dark-theme) .state {
+  background: #252525;
+  color: #e0e0e0;
+}
+
+:host-context(body.dark-theme) .state.error {
+  background: #3d1a1a;
+  color: #f87171;
+}
+
+:host-context(body.dark-theme) .card {
+  background: #1e1e1e;
+  border: 1px solid #333;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  color: #e0e0e0;
+}
+
+:host-context(body.dark-theme) .card-title {
+  color: #e0e0e0;
+}
+
+:host-context(body.dark-theme) .month-select,
+:host-context(body.dark-theme) .year-select {
+  background: #252525;
+  border-color: #444;
+  color: #e0e0e0;
+}
+
+:host-context(body.dark-theme) table.activities th,
+:host-context(body.dark-theme) table.activities td {
+  border-bottom-color: #333;
+  color: #e0e0e0;
+}
+
+:host-context(body.dark-theme) table.activities thead th {
+  background: #252525;
+  color: #b0b0b0;
+}

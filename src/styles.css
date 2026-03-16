@@ -1,1 +1,85 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+/* Remove card-surface wrapper styling for full-bleed child pages */
+.card-surface:has(> app-admin-settings),
+.card-surface:has(> app-admin-reports),
+.card-surface:has(> app-admin-dashboard),
+.card-surface:has(> app-category-management),
+.card-surface:has(> app-department-management),
+.card-surface:has(> app-user-management),
+.card-surface:has(> app-badge-management) {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+body {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.card, .card-surface {
+  background-color: var(--card-background-color);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+.form-control {
+    background-color: var(--input-background-color);
+    color: var(--text-color);
+    border-color: var(--input-border-color);
+}
+
+.form-control:focus {
+    background-color: var(--input-background-color);
+    color: var(--text-color);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.25rem rgba(var(--accent-color), 0.25);
+}
+
+.btn-primary {
+    background-color: var(--button-background-color);
+    border-color: var(--button-background-color);
+    color: var(--button-text-color);
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+.text-muted {
+  color: var(--text-secondary-color) !important;
+}
+
+a {
+  color: var(--accent-color);
+}
+
+.icon-bar {
+  background-color: var(--surface-color);
+  border-left: 1px solid var(--border-color);
+}
+
+.icon-item {
+  color: var(--icon-color);
+}
+
+.icon-item:hover {
+  background-color: var(--hover-color);
+}
+
+.icon-item.active {
+  color: var(--icon-active-color);
+  background-color: var(--active-color);
+}
+
+.icon-tooltip {
+  background-color: var(--surface-highlight-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}

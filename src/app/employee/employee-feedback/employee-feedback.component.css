@@ -1,0 +1,132 @@
+/* Color Palette & Variables */
+:host {
+  --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  --card-bg: #ffffff;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --bg-subtle: #f8fafc;
+}
+
+/* Card Container */
+.modern-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 24px;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.modern-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border-color: #6366f1;
+}
+
+/* Floating Category Tag */
+.category-tag {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: var(--primary-gradient);
+  color: white;
+  padding: 4px 16px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+/* Avatar Styling */
+.avatar-wrapper {
+  position: relative;
+}
+
+/* Style for Real Users (Blue) */
+.avatar-main {
+  width: 52px;
+  height: 52px;
+  background: #f1f5f9;
+  color: #6366f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+/* Style for Anonymous Users (Grey) - Added this because your HTML uses it */
+.avatar-anon {
+  width: 52px;
+  height: 52px;
+  background: #e2e8f0;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  font-size: 1.2rem;
+}
+
+.status-indicator {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 14px;
+  height: 14px;
+  background: #22c55e;
+  border: 3px solid white;
+  border-radius: 50%;
+}
+
+/* Text & Typography */
+.text-overline {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* Comment Box Styling */
+.feedback-body {
+  background: var(--bg-subtle);
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 15px; /* Spacing from the bottom divider */
+  
+  /* Text Wrapping & Scrolling fixes */
+  word-wrap: break-word;     
+  overflow-wrap: break-word; 
+  word-break: break-word;    
+  max-height: 150px;         
+  overflow-y: auto;          
+}
+
+.feedback-body i {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.feedback-body p {
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* Scrollbar Customization */
+.feedback-body::-webkit-scrollbar {
+  width: 6px;
+}
+.feedback-body::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 10px;
+}
+.feedback-body::-webkit-scrollbar-track {
+  background: transparent;
+}

@@ -1,0 +1,90 @@
+<div class="viewport-register">
+  <div class="glass-card">
+
+    <div class="side-panel branding">
+      <div class="branding-overlay">
+        <h1>Manager Portal</h1>
+        <p>Register as a Manager to lead your team and drive performance insights.</p>
+      </div>
+    </div>
+
+    <div class="side-panel form-content">
+      <div class="content-wrapper">
+        <div class="header-area">
+          <h2>Create Account</h2>
+          <span class="role-tag">Manager Registration</span>
+        </div>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="register-form" novalidate>
+          <div class="grid">
+            <div class="field">
+              <label>User ID</label>
+              <input type="text" formControlName="userId" placeholder="mng1234" />
+              <small class="error" *ngIf="f['userId'].touched && f['userId'].invalid">
+                Format: mng + 4 digits (e.g. mng1234)
+              </small>
+            </div>
+
+            <div class="field">
+              <label>Full Name</label>
+              <input type="text" formControlName="name" placeholder="John Doe" />
+              <small class="error" *ngIf="f['name'].touched && f['name'].invalid">
+                Name must be 8–80 characters
+              </small>
+            </div>
+
+            <div class="field">
+              <label>Email Address</label>
+              <input type="email" formControlName="email" placeholder="name@company.com" />
+              <small class="error" *ngIf="f['email'].touched && f['email'].invalid">
+                Valid email required
+              </small>
+            </div>
+
+            <div class="field">
+              <label>Department</label>
+              <select formControlName="department">
+                <option value="" disabled>
+                  {{ loadingDepartments ? 'Loading...' : 'Select department' }}
+                </option>
+                <option *ngFor="let d of departments" [value]="d.departmentId">
+                  {{ d.departmentName }}
+                </option>
+              </select>
+              <small class="error" *ngIf="f['department'].touched && f['department'].invalid">
+                Department is required
+              </small>
+            </div>
+
+            <div class="field">
+              <label>Password</label>
+              <input type="password" formControlName="password" placeholder="••••••••" />
+              <small class="error" *ngIf="f['password'].touched && f['password'].invalid">
+                Min 6 chars, 1 uppercase, 1 digit, 1 special char.
+              </small>
+            </div>
+
+            <div class="field">
+              <label>Confirm Password</label>
+              <input type="password" formControlName="confirmPassword" placeholder="••••••••" />
+              <small class="error" *ngIf="f['confirmPassword'].touched && form.errors?.['passwordMismatch']">
+                Passwords do not match.
+              </small>
+            </div>
+          </div>
+
+          <button type="submit" class="register-btn" [disabled]="form.invalid || loading">
+            {{ loading ? 'Registering...' : 'Sign Up as Manager' }}
+          </button>
+        </form>
+
+        <div class="action-footer">
+          <button class="text-link" type="button" (click)="goToLogin()">
+            Already have an account? Login as Manager
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

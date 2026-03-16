@@ -1,0 +1,127 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white px-3 topbar border-bottom">
+  
+  <div class="d-flex align-items-center">
+    
+    <button
+      type="button"
+      class="hamburger btn btn-light border me-3 d-flex align-items-center justify-content-center"
+      (click)="toggleSidebar()"
+      [attr.aria-expanded]="isSidebarOpen"
+      aria-label="Toggle sidebar"
+    >
+      <i class="bi" [ngClass]="isSidebarOpen ? 'bi-x-lg' : 'bi-list'"></i>
+    </button>
+  
+    <span class="navbar-brand fw-bold mb-0 h1">FEEDBACKTRACK SYSTEM</span>
+    
+  </div>
+
+  <div class="ms-auto d-flex align-items-center">
+    <div class="position-relative">
+
+      <div 
+        class="profile-trigger d-flex align-items-center" 
+        (click)="toggleProfile($event)" 
+        [class.active]="isProfileOpen"
+      >
+        <div class="me-3 d-none d-md-block text-end">
+          <div class="fw-bold small text-dark" style="line-height: 1.2;">{{ userName }}</div>
+        </div>
+
+        <div class="nav-profile-avatar shadow-sm">
+          {{ getInitials(userName) }}
+        </div>
+      </div>
+
+      <div class="dropdown-menu-custom shadow-lg border-0" [class.show]="isProfileOpen">
+        <div class="text-center py-4 px-3 bg-light-subtle rounded-top-4">
+          <div class="avatar-initials-large mb-3 mx-auto shadow">
+            {{ getInitials(userName) }}
+          </div>
+          <h6 class="fw-bold mb-0">{{ userName }}</h6>
+          <p class="text-muted small mb-0">{{ userEmail }}</p>
+          <span class="badge bg-primary-subtle text-primary rounded-pill mt-2 px-3 py-2" style="font-size: 0.7rem;">
+            ID: {{ employeeId }}
+          </span>
+        </div>
+
+        <div class="p-2">
+          <a class="dropdown-item rounded-3 py-2 px-3 mb-1 cursor-pointer" routerLink="/employee/profile">
+            <div class="d-flex align-items-center">
+              <div class="icon-box bg-primary-subtle text-primary me-3">
+                <i class="bi bi-person"></i>
+              </div>
+              <span class="fw-medium">View Profile</span>
+            </div>
+          </a>
+
+          <button 
+            class="dropdown-item rounded-3 py-2 px-3 text-danger w-100 border-0 bg-transparent text-start" 
+            (click)="logout()"
+          >
+            <div class="d-flex align-items-center">
+              <div class="icon-box bg-danger-subtle text-danger me-3">
+                <i class="bi bi-box-arrow-right"></i>
+              </div>
+              <span class="fw-medium">Logout</span>
+            </div>
+          </button>
+        </div>
+        </div>
+
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="container-fluid p-0">
+  <div class="layout">
+
+    <div id="sidebar" class="sidebar bg-light" [class.sidebar-closed]="!isSidebarOpen">
+      <ul class="nav flex-column sidebar-menu p-2" (click)="onNavClick()">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/employee/dashboard" routerLinkActive="active">
+            <i class="bi bi-house-door me-2"></i> Dashboard
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/employee/feedback" routerLinkActive="active">
+            <i class="bi bi-pencil-square me-2"></i> Submit Feedback
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/employee/recivedfeedback" routerLinkActive="active">
+            <i class="bi bi-inbox me-2"></i> Received Feedback
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/employee/recognition" routerLinkActive="active">
+            <i class="bi bi-star me-2"></i> Give Recognition
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/employee/received-recognition" routerLinkActive="active">
+            <i class="bi bi-trophy me-2"></i> Received Recognition
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/employee/notifications" routerLinkActive="active">
+            <i class="bi bi-bell me-2"></i> Notifications
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div 
+      class="sidebar-overlay" 
+      *ngIf="isSidebarOpen" 
+      (click)="toggleSidebar()">
+    </div>
+
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+
+  </div>
+</div>

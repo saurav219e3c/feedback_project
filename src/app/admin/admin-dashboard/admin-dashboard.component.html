@@ -1,0 +1,138 @@
+<!-- Theme wrapper: switches classes based on dataset (feedback / recognition) -->
+<div
+  [ngClass]="{
+    'theme-feedback': currentDataset === 'feedback',
+    'theme-recognition': currentDataset === 'recognition'
+  }"
+  class="dashboard-theme fill-window"
+>
+  <!-- Background layer (now white, no transparency) -->
+  <div class="dashboard-bg"></div>
+
+  <!-- Foreground content -->
+  <header class="border-bottom py-3 mb-4 white-header sticky-top">
+    <div class="container-fluid">
+      <h1 class="h3 mb-0">Dashboard</h1>
+    </div>
+  </header>
+
+  <main class="container-fluid content-area">
+    <!-- Cards Row -->
+    <section class="row g-3 mb-4">
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card h-100 shadow-sm white-card">
+          <div class="card-body">
+            <h5 class="card-title">Total Users</h5>
+            <p class="card-text display-6 mb-1">{{ summary?.totalUsers ?? 0 }}</p>
+            <small class="text-muted">All registered users</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card h-100 shadow-sm white-card">
+          <div class="card-body">
+            <h5 class="card-title">Active Users (30d)</h5>
+            <p class="card-text display-6 mb-1">{{ summary?.activeUsers ?? 0 }}</p>
+            <small class="text-muted">Engaged in last 30 days</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card h-100 shadow-sm white-card">
+          <div class="card-body">
+            <h5 class="card-title">Total Feedback</h5>
+            <p class="card-text display-6 mb-1">{{ summary?.totalFeedback ?? 0 }}</p>
+            <small class="text-muted">All feedback entries</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="card h-100 shadow-sm white-card">
+          <div class="card-body">
+            <h5 class="card-title">Recognitions</h5>
+            <p class="card-text display-6 mb-1">{{ summary?.totalRecognition ?? 0 }}</p>
+            <small class="text-muted">Kudos / shout-outs</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bar / Line Chart (slides in same canvas) -->
+    <section class="row mb-4">
+      <div class="col-12">
+        <div class="card h-100 shadow-sm white-panel">
+          <div class="card-header d-flex align-items-center justify-content-between flex-wrap gap-2 white-panel-header">
+            <strong>BAR / LINE CHART</strong>
+
+            <!-- Dataset toggle -->
+            <div class="btn-group btn-group-sm" role="group" aria-label="Dataset">
+              <button class="btn btn-outline-primary"
+                      [class.active]="currentDataset === 'feedback'"
+                      (click)="setDataset('feedback')">
+                Feedback
+              </button>
+              <button class="btn btn-outline-warning"
+                      [class.active]="currentDataset === 'recognition'"
+                      (click)="setDataset('recognition')">
+                Recognitions
+              </button>
+            </div>
+
+            <!-- Month/Year Selection for Weekly Trends -->
+            <div class="d-flex gap-2 align-items-center" *ngIf="currentBarView !== 'category'">
+              <select class="form-select form-select-sm" style="width: auto;" 
+                      [value]="selectedMonth" (change)="onMonthChange($event)">
+                <option *ngFor="let m of months" [value]="m.value">{{ m.name }}</option>
+              </select>
+              <input type="number" class="form-control form-control-sm" style="width: 80px;" 
+                     [value]="selectedYear" (change)="onYearChange($event)"
+                     min="2020" max="2030">
+            </div>
+
+            <!-- View toggle -->
+            <div class="btn-group btn-group-sm" role="group" aria-label="Chart view">
+              <button class="btn btn-outline-secondary" [class.active]="currentBarView === 'category'"
+                      (click)="showCategoryBar()">Category</button>
+              <button class="btn btn-outline-secondary" [class.active]="currentBarView === 'weekly-line'"
+                      (click)="showWeeklyTrend('line')">Weekly (Line)</button>
+              <button class="btn btn-outline-secondary" [class.active]="currentBarView === 'weekly-bar'"
+                      (click)="showWeeklyTrend('bar')">Weekly (Bar)</button>
+            </div>
+          </div>
+
+          <!-- Hover to pause auto-rotation -->
+          <div class="card-body chart-min-h white-panel-body"
+               (mouseenter)="pauseAutoSlide()"
+               (mouseleave)="resumeAutoSlide()">
+            <canvas #barArea></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Activity Only -->
+    <section class="row g-3">
+      <div class="col-12 col-lg-6">
+        <div class="card h-100 shadow-sm white-panel">
+          <div class="card-header white-panel-header">
+            <strong>ACTIVITY</strong>
+          </div>
+          <div class="card-body" style="min-height: 280px;">
+            <ul class="list-group list-group-flush white-list">
+              <li class="list-group-item d-flex justify-content-between align-items-start" *ngFor="let a of activities | slice:0:7">
+                <div class="me-auto">
+                  <div class="fw-semibold">{{ a.user }} <span class="text-muted">• {{ a.action }}</span></div>
+                  <small class="text-muted">{{ a.details }}</small>
+                </div>
+                <span class="badge bg-light text-dark">{{ a.time }}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>

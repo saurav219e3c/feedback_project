@@ -1,0 +1,66 @@
+<div class="viewport-lock">
+  <div class="glass-card">
+    
+    <div class="side-panel branding">
+      <div class="branding-overlay">
+        <h1>Welcome</h1>
+        <p>Your centralized portal for account management and feedback.</p>
+      </div>
+    </div>
+
+    <div class="side-panel form-content">
+      <div class="content-wrapper">
+        <div class="header-area">
+          <h2>Login</h2>
+          <span class="role-tag" *ngIf="role">{{ role }}</span>
+        </div>
+
+        <form [formGroup]="form" (ngSubmit)="onLogin()" class="login-form" novalidate>
+ 
+          <!-- EMAIL FIELD -->
+          <div class="field">
+            <label>Email</label>
+            <input 
+              type="email" 
+              formControlName="email" 
+              placeholder="Enter your email"
+              [class.is-invalid]="f['email'].touched && f['email'].invalid" />
+            
+            <div class="error-container" *ngIf="f['email'].touched && f['email'].errors">
+              <small class="error-text" *ngIf="f['email'].errors['required']">Email is required.</small>
+              <small class="error-text" *ngIf="f['email'].errors['email']">Please enter a valid email.</small>
+            </div>
+          </div>
+          <!-- PASSWORD FIELD -->
+          
+          <div class="field">
+            <label>Password</label>
+            <input 
+              type="password" 
+              formControlName="password" 
+              placeholder="••••••••"
+              [class.is-invalid]="f['password'].touched && f['password'].invalid" />
+            
+            <div class="error-container" *ngIf="f['password'].touched && f['password'].errors">
+              <small class="error-text" *ngIf="f['password'].errors['required']">Password is required.</small>
+              <small class="error-text" *ngIf="f['password'].errors['minlength']">Must be at least 6 characters.</small>
+            </div>
+          </div>
+           <!-- SIGN IN or LOGGED IN BUTTON -->
+          <button type="submit" class="login-btn" [disabled]="form.invalid" >Sign In</button>
+        </form>
+        <!-- FORGOT PASS N REGISTER PAGE NAVI -->
+        <div class="action-footer">
+          <ng-container *ngIf="role === 'employee'">
+            <button class="text-link" (click)="onForgotPassword()">Forgot Password?</button>
+            <div class="line"></div>
+            <button class="text-link" (click)="goToRegister()">Register</button>
+          </ng-container>
+          <ng-container *ngIf="role === 'admin' || role === 'manager'">
+            <p class="admin-text">Recovery handled by IT.</p>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

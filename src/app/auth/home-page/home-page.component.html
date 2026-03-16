@@ -1,0 +1,96 @@
+<div class="home-container">
+  <nav class="glass-header" >
+    <div class="nav-logo">Feedback Track</div>
+    <div class="nav-actions" *ngIf="showNavButtons">
+      <ng-container *ngIf="!(isLoggedIn$ | async); else loggedInButtons">
+        <button class="nav-btn login-btn" (click)="scrollToRoles()">Login</button>
+        <button class="nav-btn register-btn" [routerLink]="['/auth/register-page']">Register</button>
+      </ng-container>
+      <ng-template #loggedInButtons>
+        <button class="nav-btn login-btn" (click)="logout()">Logout</button>
+      </ng-template>
+    </div>
+  </nav>
+
+  <header class="hero-section">
+    <div class="hero-content">
+      <div class="badge-container">
+        <div class="badge">Internal System</div>
+      </div>
+      <h1 class="project-name typing-text">
+        {{ typedMainTitle }}<span class="cursor" *ngIf="!mainTitleComplete">|</span>
+      </h1>
+      <p class="project-subtitle">Internal Employee Feedback & Recognition System</p>
+      
+      <a (click)="scrollToAbout()" class="explore-btn">
+        <span class="philosophy-text">Our Philosophy</span>
+        <div class="mouse-icon">
+          <div class="wheel"></div>
+        </div>
+      </a>
+    </div>
+  </header>
+
+  <section id="about-anchor" class="about-section">
+    <div class="section-container">
+      <div class="about-header">
+        <span class="text-accent">Empowering Every Voice</span>
+        <h2>Cultivating Excellence Through <span class="highlight">Insights</span></h2>
+        <p class="section-subtitle">Feedback Track is a sophisticated ecosystem designed to transform organizational culture.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="card-icon">🚀</div>
+          <h3>Rapid Recognition</h3>
+          <p>Instant peer-to-peer appreciation to keep the team's morale at its peak every single day.</p>
+        </div>
+
+        <div class="feature-card highlighted-card">
+          <div class="card-icon">📊</div>
+          <h3>Smart Analytics</h3>
+          <p>Data-driven insights that help managers understand team dynamics and identify top talent effortlessly.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="card-icon">🛡️</div>
+          <h3>Safe & Transparent</h3>
+          <p>A secure platform where every voice matters, ensuring honest feedback in a professional environment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="roles-anchor" class="roles-section">
+    <div class="section-header">
+      <h2 class="roles-title typing-text">{{ typedPortalTitle }}<span class="cursor" *ngIf="!portalTitleComplete">|</span></h2>
+      <p class="roles-subtitle">Please choose your specialized role to begin your journey.</p>
+    </div>
+    
+    <div class="cards-grid">
+      <a class="glass-card" [routerLink]="['/auth/login-page']" [queryParams]="{role: 'admin'}">
+        <div class="icon-box">
+          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Admin">
+        </div>
+        <h3>Admin</h3>
+        <span class="portal-link">ACCESS PORTAL</span>
+      </a>
+
+      <a class="glass-card" [routerLink]="['/auth/login-page']" [queryParams]="{role: 'manager'}">
+        <div class="icon-box">
+          <img src="https://cdn-icons-png.flaticon.com/512/912/912318.png" alt="Manager">
+        </div>
+        <h3>Manager</h3>
+        <span class="portal-link">ACCESS PORTAL</span>
+      </a>
+
+      <a class="glass-card" [routerLink]="['/auth/login-page']" [queryParams]="{role: 'employee'}">
+        <div class="icon-box">
+          <img src="https://cdn-icons-png.flaticon.com/512/1256/1256650.png" alt="Employee">
+        </div>
+        <h3>Employee</h3>
+        <span class="portal-link">ACCESS PORTAL</span>
+      </a>
+    </div>
+  </section>
+</div>

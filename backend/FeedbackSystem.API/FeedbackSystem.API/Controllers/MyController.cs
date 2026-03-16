@@ -1,0 +1,149 @@
+using FeedbackSystem.API.DTOs;
+using FeedbackSystem.API.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+
+namespace FeedbackSystem.API.Controllers;
+
+[ApiController]
+[Route("api/[controller]")]
+[Authorize]  // Any authenticated user can access their own data
+public class MyController : ControllerBase
+{
+  private readonly IMyDataService _myDataService;
+  private readonly ILogger<MyController> _logger;
+
+  public MyController(
+      IMyDataService myDataService,
+      ILogger<MyController> logger)
+  {
+    _myDataService = myDataService;
+    _logger = logger;
+  }
+
+  // ==================== FEEDBACK ====================
+
+  /// POST /api/my/feedback - Submit feedback
+  
+  [HttpPost("feedback")]
+  public async Task<ActionResult<MyFeedbackSubmitResultDto>> SubmitFeedback(
+      [FromBody] MyFeedbackSubmitDto dto,
+      CancellationToken ct)
+  {
+   
+
+    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+    _logger.LogInformation("Extracted userId from token: {UserId}", userId);
+
+    if (string.IsNullOrEmpty(userId))
+      return Unauthorized();
+
+    // GlobalExceptionHandler will catch InvalidOperationException or generic Exceptions
+    var result = await _myDataService.SubmitMyFeedbackAsync(userId, dto, ct);
+
+    return Ok(result);
+
+
+  }
+
+  /// <summary>
+  /// GET /api/my/feedback?direction=given|received - Get my feedback
+  /// </summary>
+  [HttpGet("feedback")]
+  public async Task<ActionResult<List<MyFeedbackDto>>> GetMyFeedback(
+      [FromQuery] string? direction,
+      CancellationToken ct)
+  {
+    
+   
+
+    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+    if (string.IsNullOrEmpty(userId))
+      return Unauthorized(new { message = "User ID not found in token." });
+
+    // If this throws an exception, the GlobalExceptionHandler will automatically
+    // catch it, log it, and return a standardized 500 response!
+    var result = await _myDataService.GetMyFeedbackAsync(userId, direction, ct);
+
+    return Ok(result);
+  }
+
+  // ==================== RECOGNITION ====================
+
+  /// <summary>
+  /// POST /api/my/recognition - Submit recognition
+  /// </summary>
+  [HttpPost("recognition")]
+  public async Task<ActionResult<MyRecognitionResponseDto>> SubmitRecognition(
+      [FromBody] MyRecognitionSubmitDto dto,
+      CancellationToken ct)
+  {
+    
+    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+    if (string.IsNullOrEmpty(userId))
+      throw new UnauthorizedAccessException("User ID not found in token.");
+
+    var result = await _myDataService.SubmitMyRecognitionAsync(userId, dto, ct);
+
+    return Ok(result);
+  }
+
+  /// <summary>
+  /// GET /api/my/recognition?direction=given|received - Get my recognition
+  /// </summary>
+  [HttpGet("recognition")]
+  public async Task<ActionResult<List<MyAllRecognitionItemDto>>> GetMyRecognition(
+      [FromQuery] string? direction,
+      CancellationToken ct)
+  {
+    //try
+    //{
+    //  var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+    //  if (string.IsNullOrEmpty(userId))
+    //    return Unauthorized(new { message = "User ID not found in token." });
+
+    //  var result = await _myDataService.GetMyRecognitionAsync(userId, direction, ct);
+    //  return Ok(result);
+    //}
+    //catch (Exception ex)
+    //{
+    //  _logger.LogError(ex, "Failed to get recognition");
+    //  return StatusCode(500, new { message = "Failed to retrieve recognition.", detail = ex.Message });
+    //}
+    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+    if (string.IsNullOrEmpty(userId))
+      throw new UnauthorizedAccessException("User ID not found in token."); // Handled globally
+
+    var result = await _myDataService.GetMyRecognitionAsync(userId, direction, ct);
+
+    return Ok(result);
+  }
+
+  // ==================== SUMMARY ====================
+
+  /// <summary>
+  /// GET /api/my/summary - Get my overall statistics
+  /// </summary>
+  [HttpGet("summary")]
+  public async Task<ActionResult<MySummaryDto>> GetMySummary(CancellationToken ct)
+  {
+    try
+    {
+      var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+      if (string.IsNullOrEmpty(userId))
+        return Unauthorized(new { message = "User ID not found in token." });
+
+      var result = await _myDataService.GetMySummaryAsync(userId, ct);
+      return Ok(result);
+    }
+    catch (Exception ex)
+    {
+      _logger.LogError(ex, "Failed to get summary");
+      return StatusCode(500, new { message = "Failed to retrieve summary.", detail = ex.Message });
+    }
+  }
+
+}

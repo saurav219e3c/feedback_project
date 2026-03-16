@@ -1,0 +1,153 @@
+/* Color Palette & Variables */
+:host {
+  --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  --card-bg: #ffffff;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --bg-subtle: #f8fafc;
+}
+
+/* Layout Elements */
+.header-line {
+  height: 4px;
+  width: 80px;
+  background: linear-gradient(90deg, #6366f1, #a855f7);
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+/* The Modern Card */
+.recognition-card {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 2px solid #f1f3f5; /* Initial subtle border */
+  transition: all 0.4s cubic-bezier(.25,.8,.25,1);
+  
+  /* IMPORTANT: This must be 'visible' so the Points Circle can pop out */
+  overflow: visible; 
+  
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ensures all cards in a row match height */
+}
+
+.recognition-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Points Floating Circle */
+.points-circle {
+  position: absolute;
+  top: -18px;
+  right: -18px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  line-height: 1;
+  border: 5px solid #fff;
+  z-index: 5;
+  transition: transform 0.3s ease;
+}
+
+.recognition-card:hover .points-circle {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.points-circle .score { 
+  font-size: 1.5rem; 
+}
+
+.points-circle small { 
+  font-size: 0.6rem; 
+  text-transform: uppercase; 
+  letter-spacing: 1px;
+}
+
+/* Content Elements */
+.badge-tag {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-size: 0.7rem;
+  background: rgba(0, 0, 0, 0.04);
+  padding: 8px 16px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* --- FIXED QUOTE CONTAINER START --- */
+.quote-container {
+  position: relative;
+  
+  /* Controls Height & Scroll */
+  min-height: 90px;
+  max-height: 140px;      /* Stops card from getting too tall */
+  overflow-y: auto;       /* Adds scrollbar if text is long */
+  
+  /* Text Wrapping Logic */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  
+  margin-bottom: 15px;    /* Space before footer */
+  padding-right: 5px;     /* Space for scrollbar */
+}
+
+/* Scrollbar Styling for Quote */
+.quote-container::-webkit-scrollbar {
+  width: 4px;
+}
+.quote-container::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 10px;
+}
+.quote-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+/* --- FIXED QUOTE CONTAINER END --- */
+
+.quote-text {
+  font-size: 1.05rem;
+  color: #334155;
+  line-height: 1.6;
+  font-style: italic;
+  margin-top: -10px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+/* Footer & Avatar Styling */
+.user-avatar {
+  width: 48px;
+  height: 48px;
+  background: #f8fafc;
+  color: #6366f1;
+  border-radius: 14px; /* Modern "Squircle" */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.2rem;
+  border: 1px solid #e2e8f0;
+}
+
+.x-small { 
+  font-size: 0.72rem; 
+  line-height: 1.4;
+}
+
+.recognition-card:hover .user-avatar {
+  background: #ffffff;
+  border-color: #6366f1;
+  transition: all 0.3s ease;
+}

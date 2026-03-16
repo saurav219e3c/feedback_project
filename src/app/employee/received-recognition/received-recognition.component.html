@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="text-center mb-5">
+    <h1 class="display-6 fw-bold text-dark">Employee Recognition Feed</h1>
+    <div class="header-line mx-auto"></div>
+  </div>
+
+  <div *ngIf="recognitionView().length === 0" class="text-center py-5">
+    <h4 class="text-muted">No badges earned yet! 🏆</h4>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-lg-4 mb-5" *ngFor="let item of recognitionView()">
+      
+      <div class="recognition-card shadow-sm h-100 position-relative"
+           #card
+           style="transition: border-color 0.3s ease;"
+           (mouseenter)="card.style.borderColor = getBadgeTheme(item.badgeName, item.points).color"
+           (mouseleave)="card.style.borderColor = '#f1f3f5'">
+        
+        <div class="points-circle shadow" 
+             [style.background-color]="getBadgeTheme(item.badgeName, item.points).color">
+          <span class="score">{{ item.points }}</span>
+          <small>pts</small>
+        </div>
+
+        <div class="card-body p-4">
+          <div class="mb-3">
+            <span class="badge-tag" [style.color]="getBadgeTheme(item.badgeName, item.points).color">
+              <i class="bi" [ngClass]="getBadgeTheme(item.badgeName, item.points).icon"></i> 
+              {{ item.badgeName }}
+            </span>
+          </div>
+
+          <div class="quote-container">
+            <i class="bi bi-quote fs-2 text-light-emphasis opacity-25"></i>
+            <p class="quote-text">{{ item.message }}</p>
+          </div>
+
+          <div class="d-flex align-items-center mt-4 pt-3 border-top border-light">
+            
+            <div class="user-avatar shadow-sm">
+             {{ item.senderName.charAt(0).toUpperCase() }}
+            </div>
+
+            <div class="ms-3">
+              <h6 class="mb-0 fw-bold text-dark">
+                {{ item.senderName }}
+              </h6>
+              
+              <div class="text-muted x-small d-flex flex-column">
+                <span>From ID: <strong>{{ item.fromUserId }}</strong></span>
+                <span>{{ item.createdAt | date:'mediumDate' }}</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

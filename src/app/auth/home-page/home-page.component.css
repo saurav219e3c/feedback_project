@@ -1,0 +1,226 @@
+:host {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+}
+
+.home-container { background: #0b0e14; color: #ffffff; }
+
+/* --- HEADER --- */
+.glass-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  z-index: 1000;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.glass-header.scrolled {
+  background: rgba(11, 14, 20, 0.85);
+  backdrop-filter: blur(10px);
+}
+
+.nav-logo { font-size: 1.6rem; font-weight: 800; color: #ffffff; }
+
+.nav-actions { display: flex; gap: 15px; }
+
+.nav-btn {
+  padding: 12px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.login-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Hide login button on scroll as requested earlier */
+.glass-header.scrolled .login-btn {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.register-btn { background: #2563eb; color: #ffffff; }
+
+/* --- HERO (Upper Part) --- */
+.hero-section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(11, 14, 20, 0.4), rgba(11, 14, 20, 0.85)),
+              url('https://plus.unsplash.com/premium_vector-1682269171829-9bac81f32e1d?w=1200');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+}
+
+/* --- BADGE STYLING --- */
+.badge-container {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: #ffffff;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  animation: badgeGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes badgeGlow {
+  0% {
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  }
+  100% {
+    box-shadow: 0 6px 25px rgba(59, 130, 246, 0.5);
+  }
+}
+
+.project-name { font-size: clamp(3.5rem, 10vw, 6.5rem); font-weight: 900; }
+.project-name span { display: inline-block; opacity: 0; transform: translateY(30px); animation: wordFadeIn 0.8s forwards ease-out; }
+.project-name span:nth-child(2) { animation-delay: 0.3s; }
+@keyframes wordFadeIn { to { opacity: 1; transform: translateY(0); } }
+
+.mouse-icon { width: 26px; height: 42px; border: 2px solid #ffffff; border-radius: 15px; position: relative; margin: 15px auto; }
+.wheel { width: 4px; height: 8px; background: #60a5fa; border-radius: 2px; position: absolute; left: 50%; transform: translateX(-50%); top: 8px; animation: scrollWheel 1.5s infinite; }
+@keyframes scrollWheel { 0% { opacity: 1; top: 8px; } 100% { opacity: 0; top: 25px; } }
+
+/* --- MIDDLE SECTION (Energetic About) --- */
+.about-section {
+  padding: 100px 5%;
+  background: #ffffff;
+  color: #1e293b;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.section-container { max-width: 1200px; margin: 0 auto; width: 100%; }
+.about-header { text-align: center; margin-bottom: 60px; }
+.about-header h2 { font-size: 3rem; font-weight: 800; color: #0f172a; }
+.highlight { color: #2563eb; }
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.feature-card {
+  padding: 40px;
+  background: #f8fafc;
+  border-radius: 30px;
+  border: 1px solid #e2e8f0;
+  transition: 0.4s ease;
+  text-align: center;
+}
+
+.feature-card:hover { transform: translateY(-15px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+
+.highlighted-card { background: #0f172a; color: #ffffff; border: none; transform: scale(1.05); }
+.highlighted-card h3 { color: #ffffff; }
+.card-icon { font-size: 3rem; margin-bottom: 20px; display: block; }
+
+/* --- ROLES (Bottom Part - Image Style) --- */
+.roles-section {
+  padding: 100px 5%;
+  background: linear-gradient(rgba(11, 14, 20, 0.7), rgba(11, 14, 20, 0.7)),
+              url('https://plus.unsplash.com/premium_vector-1682269171829-9bac81f32e1d?w=1200');
+  background-size: cover;
+  background-attachment: fixed;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.roles-title { font-size: 3rem; font-weight: 700; margin-bottom: 10px; color: #ffffff; }
+.roles-subtitle { color: #cbd5e1; margin-bottom: 50px; }
+
+.cards-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  padding: 40px;
+  width: 320px;
+  text-decoration: none;
+  transition: 0.3s;
+  color: #ffffff;
+}
+
+.glass-card:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.15); }
+
+.icon-box {
+  width: 90px; height: 90px;
+  background: #ffffff;
+  border-radius: 20px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.icon-box img { width: 60%; }
+
+.portal-link {
+  display: block;
+  margin-top: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  opacity: 0.7;
+}
+/* --- TYPING ANIMATION --- */
+.typing-text {
+  display: inline-block;
+  position: relative;
+}
+
+.cursor {
+  display: inline-block;
+  animation: blink 1s infinite;
+  color: #64ffda;
+  font-weight: normal;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+/* Make cursor disappear after typing is complete */
+.typing-complete .cursor {
+  animation: none;
+  opacity: 0;
+}

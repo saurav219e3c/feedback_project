@@ -1,0 +1,11 @@
+
+/* Minimum height for chart areas so the cards look balanced even before charts render */
+.chart-min-h {
+  min-height: 280px;
+}
+
+/* Slightly tighten list spacing if desired */
+.list-group-item {
+  padding-top: 0.65rem;
+  padding-bottom: 0.65rem;
+}

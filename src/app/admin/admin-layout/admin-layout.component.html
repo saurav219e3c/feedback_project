@@ -1,0 +1,64 @@
+
+<div class="layout">
+  <!-- Main content -->
+  <main class="content">
+    <section class="page-body card-surface">
+      <router-outlet></router-outlet>
+    </section>
+  </main>
+
+  <!-- Right icon bar -->
+  <nav class="icon-bar" role="navigation" aria-label="Admin navigation">
+    <a
+      class="icon-item"
+      routerLink="/admin"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >
+      <i class="bi bi-speedometer2"></i>
+      <span class="icon-tooltip">Dashboard</span>
+    </a>
+
+    <a class="icon-item" routerLink="/admin/users" routerLinkActive="active">
+      <i class="bi bi-people"></i>
+      <span class="icon-tooltip">Users</span>
+    </a>
+
+    <a class="icon-item" routerLink="/admin/categories" routerLinkActive="active">
+      <i class="bi bi-tags"></i>
+      <span class="icon-tooltip">Categories</span>
+    </a>
+
+    <a class="icon-item" routerLink="/admin/departments" routerLinkActive="active">
+      <i class="bi bi-building"></i>
+      <span class="icon-tooltip">Departments</span>
+    </a>
+
+    <a class="icon-item" routerLink="/admin/badges" routerLinkActive="active">
+      <i class="bi bi-award"></i>
+      <span class="icon-tooltip">Badges</span>
+    </a>
+
+    <a class="icon-item" routerLink="/admin/reports" routerLinkActive="active">
+      <i class="bi bi-graph-up"></i>
+      <span class="icon-tooltip">Reports</span>
+    </a>
+
+    <a class="icon-item" routerLink="/admin/settings" routerLinkActive="active">
+      <i class="bi bi-sliders"></i>
+      <span class="icon-tooltip">Settings</span>
+    </a>
+
+    <div class="icon-spacer"></div>
+
+    <a class="icon-item theme-toggle-item" (click)="toggleTheme()">
+      <i class="bi" [ngClass]="isDarkMode() ? 'bi-sun' : 'bi-moon'"></i>
+      <span class="icon-tooltip">Toggle Theme</span>
+    </a>
+
+    <a class="icon-item logout-item" (click)="logout()">
+      <i class="bi bi-box-arrow-right"></i>
+      <span class="icon-tooltip">Logout</span>
+    </a>
+  </nav>
+</div>
