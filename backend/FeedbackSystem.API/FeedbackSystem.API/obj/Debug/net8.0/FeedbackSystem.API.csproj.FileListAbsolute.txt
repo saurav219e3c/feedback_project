@@ -173,4 +173,3 @@ C:\Project\feedback_project\backend\FeedbackSystem.API\FeedbackSystem.API\bin\De
 C:\Project\feedback_project\backend\FeedbackSystem.API\FeedbackSystem.API\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Project\feedback_project\backend\FeedbackSystem.API\FeedbackSystem.API\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
 C:\Project\feedback_project\backend\FeedbackSystem.API\FeedbackSystem.API\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Saurav\cts_feedback_project\backend\FeedbackSystem.API\FeedbackSystem.API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
