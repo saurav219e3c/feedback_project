@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saurav_Kumar_Editable_Resume</title>
+    <style>
+        :root {
+            --primary-blue: #0f3460;
+            --text-gray: #333333;
+            --border-color: #333333;
+        }
+        body {
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+        .resume-page {
+            width: 210mm;
+            height: 297mm;
+            padding: 12mm 15mm;
+            margin: 10px auto;
+            background: white;
+            color: #333;
+            box-shadow: 0 0 15px rgba(0,0,0,0.15);
+            box-sizing: border-box;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            text-align: center;
+            border-bottom: 3px solid var(--primary-blue);
+            padding-bottom: 10px;
+            margin-bottom: 12px;
+        }
+        h1 { 
+            margin: 0 0 3px 0; 
+            color: var(--primary-blue); 
+            text-transform: uppercase; 
+            font-size: 24px; 
+            font-weight: 700;
+            letter-spacing: 1px; 
+        }
+        .contact-info { 
+            font-size: 11px; 
+            margin-top: 3px; 
+            color: #333; 
+            line-height: 1.3;
+        }
+        .download-btn { 
+            background: var(--primary-blue); 
+            color: #fff; 
+            border: none; 
+            padding: 8px 14px; 
+            border-radius: 3px; 
+            cursor: pointer; 
+            font-weight: 600; 
+            margin-top: 8px; 
+            font-size: 11px;
+        }
+        .download-btn:hover { background: #0a2140; }
+
+        .download-btn-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .section { 
+            margin-bottom: 12px; 
+            text-align: left; 
+        }
+        .section-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #fff;
+            background-color: var(--primary-blue);
+            border: none;
+            margin: 8px 0 6px 0;
+            padding: 5px 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        .item {
+            margin-bottom: 8px;
+        }
+        .item-header { 
+            display: flex; 
+            justify-content: space-between; 
+            font-weight: 700; 
+            font-size: 12px;
+            margin-bottom: 2px;
+        }
+        .item-sub { 
+            display: flex; 
+            justify-content: space-between; 
+            font-style: italic; 
+            font-size: 11px; 
+            color: #555; 
+            margin-bottom: 3px; 
+        }
+        ul { 
+            margin: 4px 0 0 18px; 
+            padding: 0; 
+        }
+        li { 
+            font-size: 11px; 
+            margin-bottom: 2px; 
+            line-height: 1.35;
+            color: #333;
+        }
+        p { 
+            font-size: 11px; 
+            margin: 4px 0; 
+            line-height: 1.4;
+        }
+        
+        /* Make editable areas look clickable but clean */
+        [contenteditable="true"]:hover {
+            background-color: #fffacd;
+            outline: 1px dashed #999;
+        }
+
+        .no-pdf {
+            display: none !important;
+        }
+
+        @media print {
+            body { background: none; }
+            .resume-page { margin: 0; box-shadow: none; height: auto; min-height: 297mm; }
+            [contenteditable="true"]:hover { background: none; outline: none; }
+            .download-btn { display: none; }
+        }
+    </style>
+</head>
+<body>
+ 
+<div class="download-btn-container">
+    <button class="download-btn" id="downloadPdfBtn" title="Download resume as PDF">Download PDF</button>
+</div>
+
+<div class="resume-page">
+    <header>
+        <h1 contenteditable="true">SAURAV KUMAR</h1>
+        <div class="contact-info" contenteditable="true">
+            +91-9801492957 | sv9510@srmist.edu.in | Chengalpattu, Tamil Nadu <br>
+            LinkedIn: linkedin.com/in/saurav-kumar-605026233/ | GitHub: github.com/saurav9988
+        </div>
+    </header>
+ 
+    <div class="section">
+        <div class="section-title">Professional Summary</div>
+        <p contenteditable="true">
+            B.Tech Computer Science student specializing in Artificial Intelligence & Machine Learning. Proficient in Java, Python, and full-stack development. Experienced in building AI-integrated web applications and scalable software solutions.
+        </p>
+    </div>
+ 
+    <div class="section">
+        <div class="section-title">Technical Skills</div>
+        <p contenteditable="true">
+            <strong>Languages:</strong> Python, Java, C, PL/SQL, JavaScript, HTML, CSS <br>
+            <strong>Frameworks & Tools:</strong> Angular, NodeJS, .NET, Flask, PyTorch, OpenCV, YOLO v8, AWS, Git <br>
+            <strong>Full-Stack Development:</strong> Full-Stack Engineer (FSE), Angular, .NET backend
+        </p>
+    </div>
+ 
+    <div class="section">
+        <div class="section-title">Experience & Projects</div>
+        
+        <div class="item">
+            <div class="item-header" contenteditable="true">Employee Feedback & Recognition System</div>
+            <div class="item-sub" contenteditable="true"><span>.NET, Angular, SQL</span> <span>Recent</span></div>
+            <ul contenteditable="true">
+                <li>Architected a full-stack platform with an admin dashboard for user and category management.</li>
+                <li>Implemented real-time feedback tracking and peer recognition features.</li>
+                <li>Developed interactive data visualization charts for performance analytics.</li>
+            </ul>
+        </div>
+ 
+        <div style="margin-top: 10px;" class="item">
+            <div class="item-header" contenteditable="true">KYC Verification System</div>
+            <div class="item-sub" contenteditable="true"><span>Python, YOLO v8, Flask</span> <span>SRM Project</span></div>
+            <ul contenteditable="true">
+                <li>Automated data extraction from Aadhaar and PAN cards using YOLO v8 and EasyOCR.</li>
+                <li>Reduced manual processing time by integrating a user-friendly Flask backend.</li>
+            </ul>
+        </div>
+ 
+        <div style="margin-top: 10px;" class="item">
+            <div class="item-header" contenteditable="true">MedTech Healthcare Application</div>
+            <div class="item-sub" contenteditable="true"><span>Angular, NodeJS, ML</span> <span>Project</span></div>
+            <ul contenteditable="true">
+                <li>Developed a symptom-based lab test recommendation system with integrated medical history tracking.</li>
+                <li>Utilized OCR for digital prescription scanning and automated health reminders.</li>
+            </ul>
+        </div>
+    </div>
+ 
+    <div class="section">
+        <div class="section-title">Education</div>
+        <div class="item">
+            <div class="item-header" contenteditable="true">SRM Institute of Science & Technology</div>
+            <div class="item-sub" contenteditable="true"><span>B.Tech in CSE (AI & Machine Learning) | CGPA: 9.14</span> <span>2021 – 2025</span></div>
+        </div>
+        <div style="margin-top: 8px;" class="item">
+            <div class="item-header" contenteditable="true">Trient Public School</div>
+            <div class="item-sub" contenteditable="true"><span>12th CBSE | 74.8%</span> <span>2020</span></div>
+        </div>
+    </div>
+ 
+    <div class="section">
+        <div class="section-title">Certifications & Achievements</div>
+        <ul contenteditable="true">
+            <li><strong>AWS Academy — Machine Learning Foundations:</strong> Completed coursework covering ML workflows, model training, and deployment on AWS.</li>
+            <li><strong>Udemy — Introduction to Automata Theory:</strong> 16.5-hour certificate covering formal languages and computational models.</li>
+            <li><strong>Pentathon (SRM Cintel's Next Gen AI Club):</strong> Participant and recognized contributor for AI innovation projects.</li>
+            <li><strong>Hackathons & Open Source:</strong> Active participant in hackathons and contributor to open-source projects and university competitions.</li>
+        </ul>
+    </div>
+</div>
+ 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+<script>
+    (function(){
+        const btn = document.getElementById('downloadPdfBtn');
+        if(btn){
+            btn.addEventListener('click', function(){
+                const element = document.querySelector('.resume-page');
+                const noPdfElements = document.querySelectorAll('.no-pdf');
+                
+                // Hide elements with no-pdf class
+                noPdfElements.forEach(el => el.style.display = 'none');
+                
+                const opt = {
+                    margin:       [0, 0, 0, 0],
+                    filename:     'Saurav_Kumar_Resume.pdf',
+                    image:        { type: 'jpeg', quality: 0.99 },
+                    html2canvas:  { scale: 3, useCORS: true, logging: false, backgroundColor: '#ffffff', allowTaint: true },
+                    jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait', compress: true },
+                    pagebreak:    { mode: ['avoid-all'], before: '.no-break' }
+                };
+                
+                html2pdf()
+                    .set(opt)
+                    .from(element)
+                    .toPdf()
+                    .get('pdf').then(function(pdf) {
+                        // Remove empty pages
+                        const pageCount = pdf.internal.pages.length;
+                        if(pageCount > 1) {
+                            for(let i = pageCount; i > 1; i--) {
+                                pdf.deletePage(i);
+                            }
+                        }
+                    })
+                    .save()
+                    .then(() => {
+                        // Restore elements after PDF generation
+                        noPdfElements.forEach(el => el.style.display = '');
+                    });
+            });
+        }
+    })();
+</script>
+</body>
+</html>
+ 
